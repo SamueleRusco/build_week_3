@@ -1,7 +1,6 @@
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Button, Form } from "react-bootstrap";
 
-function BasicExample() {
+const MyForm = () => {
   /*   const handleSubmit = async (e) => {
     e.preventDefault();
     putProfileFetch();
@@ -22,14 +21,14 @@ function BasicExample() {
         <Form.Control type="input" placeholder="enter position" />
         <Form.Label>Bio</Form.Label>
         <Form.Control type="input" placeholder="Enter short Bio" />
-        <Form.Label>area</Form.Label>
-        <Form.Control type="input" placeholder="Enter area" />
+        <Form.Label>Area</Form.Label>
+        <Form.Control type="input" placeholder="Enter Area" />
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
   );
-}
+};
 
-export default BasicExample;
+export default MyForm;

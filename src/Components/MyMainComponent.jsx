@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
-
+import MyForm from "./MyForm";
 const MyMainComponent = () => {
   return (
     <Container>
@@ -11,6 +11,7 @@ const MyMainComponent = () => {
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyAnalisisComponent />
+          <MyForm />
         </Col>
         <Col xs={4} xl={3} className="bg-danger "></Col>
       </Row>
