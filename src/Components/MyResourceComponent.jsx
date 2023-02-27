@@ -1,5 +1,11 @@
 import { Card, Row, Col, Button, Badge } from "react-bootstrap";
-import { EyeFill, PeopleFill, Router, XLg } from "react-bootstrap-icons";
+import {
+  ArrowRight,
+  EyeFill,
+  PeopleFill,
+  Router,
+  XLg,
+} from "react-bootstrap-icons";
 import { useState } from "react";
 
 const MyResourceComponent = () => {
@@ -8,7 +14,7 @@ const MyResourceComponent = () => {
   return (
     <>
       {visible && (
-        <Card className="my-2 py-3 text-start">
+        <Card className="my-2 pt-3 pb-2 text-start">
           <Card.Body>
             <Card.Title style={{ fontSize: "1.2rem" }}>{"Risorse"}</Card.Title>
             <Card.Subtitle
@@ -22,7 +28,10 @@ const MyResourceComponent = () => {
               <Card.Body>
                 <Row>
                   <Col xs={12}>
-                    <p style={{ fontSize: "1rem", fontWeight: "600" }}>
+                    <p
+                      className="mb-0"
+                      style={{ fontSize: "1rem", fontWeight: "600" }}
+                    >
                       <Router className="text-secondary" /> Modalità creazione
                       di contenuti
                       <Badge
@@ -42,10 +51,14 @@ const MyResourceComponent = () => {
                     </p>
                   </Col>
                   <Col xs={12} style={{ borderTop: "1px solid lightgrey" }}>
-                    <p style={{ fontSize: "1rem", fontWeight: "600" }}>
+                    <p
+                      className="mb-0"
+                      style={{ fontSize: "1rem", fontWeight: "600" }}
+                    >
                       <PeopleFill className="me-2 text-secondary" />
                       La mia rete
                     </p>
+                    <p>Salva e gestisci i tuoi collegamenti e interessi.</p>
                   </Col>
                 </Row>
               </Card.Body>
@@ -66,6 +79,16 @@ const MyResourceComponent = () => {
               />
             </Button>
           </Card.Body>
+          <div
+            className="text-center pt-2"
+            style={{
+              borderTop: "1px solid lightgrey",
+              fontWeight: "600",
+              color: "grey",
+            }}
+          >
+            Mostra tutte le attività <ArrowRight />
+          </div>
         </Card>
       )}
     </>
