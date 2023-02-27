@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import MyAnalisisComponent from "./MyAnalisisComponent";
+import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 
@@ -11,6 +12,7 @@ const MyMainComponent = () => {
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyAnalisisComponent />
+          <MyResourceComponent />
         </Col>
         <Col xs={4} xl={3} className="bg-danger "></Col>
       </Row>
