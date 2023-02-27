@@ -6,7 +6,7 @@ import MyInterestComponent from "./MyInterestComponent";
 import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
-
+import MyForm from "./MyForm";
 const MyMainComponent = () => {
   return (
     <Container>
@@ -19,6 +19,7 @@ const MyMainComponent = () => {
           <MyActivitiesComponent />
           <MyFormationComponent />
           <MyInterestComponent />
+          <MyForm />
         </Col>
         <Col xs={4} xl={3} className="bg-danger "></Col>
       </Row>
