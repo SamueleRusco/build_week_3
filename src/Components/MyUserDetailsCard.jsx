@@ -1,5 +1,5 @@
 import { Card, Button } from "react-bootstrap";
-import { CardText } from "react-bootstrap-icons";
+import { CardText, Pencil } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 
 const MyUserDetailsCard = () => {
@@ -35,7 +35,7 @@ const MyUserDetailsCard = () => {
         ></Button>
       </div>
 
-      <Card.Body className="text-start pt-5">
+      <Card.Body className="text-start pt-5 position-relative">
         <Card.Title className="mt-2 mb-0" style={{ fontSize: "1.7rem" }}>
           Nome
         </Card.Title>
@@ -46,11 +46,29 @@ const MyUserDetailsCard = () => {
             informazioni di contatto
           </a>
         </p>
+        <Button
+          className="position-absolute"
+          style={{
+            top: "3%",
+            right: "3%",
+            fontSize: "1.4rem",
+            backgroundColor: "white",
+            color: "grey",
+            border: "none",
+          }}
+        >
+          <Pencil />
+        </Button>
         <MyButtonComponent
           text="Disponibile per"
-          color={"rgb(0, 115, 177)"}
+          bgColor={"rgb(0, 115, 177)"}
           textColor="white"
         />
+        <MyButtonComponent
+          text="Aggiungi sezione del profilo"
+          bgColor={"white"}
+        />
+        <MyButtonComponent text="Altro" textColor="grey" borderColor={"grey"} />
         <Card.Text>
           This is a longer card with supporting text below as a natural lead-in
           to additional content. This content is a little bit longer.
