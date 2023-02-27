@@ -47,7 +47,6 @@ const MyInterestComponent = () => {
             >
               Aziende
             </Button>
-            {selectedBrand && <h3>Linkedin</h3>}
           </div>
           <div>
             <Button
@@ -67,9 +66,10 @@ const MyInterestComponent = () => {
             >
               Scuole o università
             </Button>
-            {selectedSchool && <h3>Epicode</h3>}
           </div>
         </div>
+        {selectedBrand && <h3 className="ms-2">Linkedin</h3>}{" "}
+        {selectedSchool && <h3 className="ms-2">Epicode</h3>}
       </Card>
     </>
   );
