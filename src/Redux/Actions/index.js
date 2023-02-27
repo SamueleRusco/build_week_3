@@ -2,7 +2,8 @@ export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILE_ERROR = "GET_PROFILE_ERROR";
 export const GET_PROFILE_LOADING = "GET_PROFILE_LOADING";
 
-const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/";
+const baseEndpoint =
+  "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d";
 
 export const getProfileAction = () => {
   let key =
