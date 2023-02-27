@@ -19,10 +19,10 @@ const MyUserDetailsCard = () => {
             width: "150px",
             left: "4%",
             bottom: "-25%",
+            backgroundColor: "grey",
+            border: "4px solid white",
           }}
-        >
-          awejfioew
-        </Button>
+        ></Button>
         <Button
           className="position-absolute"
           style={{
