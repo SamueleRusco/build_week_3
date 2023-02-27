@@ -1,10 +1,10 @@
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
-import "./App.css"
+
 
 
 const MyFooterPart = () => {
   return (
-    <Container id="footer" className="">
+    <Container style= {{backgroundColor: 'red'}} id="footer" className="">
       <Row className="pl-3 pb-2 mt-5">
         <Image src="../images/promoted/linkedinADS.png" alt="linkedin logo" />
       </Row>
