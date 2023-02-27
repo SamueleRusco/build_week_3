@@ -68,8 +68,8 @@ const MyInterestComponent = () => {
             </Button>
           </div>
         </div>
-        {selectedBrand && <h3 className="ms-2">Linkedin</h3>}{" "}
-        {selectedSchool && <h3 className="ms-2">Epicode</h3>}
+        {selectedBrand && <h3 className="ms-2 mt-2">Linkedin</h3>}{" "}
+        {selectedSchool && <h3 className="ms-2 mt-2">Epicode</h3>}
       </Card>
     </>
   );
