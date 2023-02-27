@@ -1,18 +1,15 @@
-import { useState } from "react";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { EyeFill, XLg } from "react-bootstrap-icons";
-import MyButtonComponent from "./MyButtonComponent";
+import { useState } from "react";
 
-const MySkillsQuizComponent = () => {
+const MyAnalisisComponent = () => {
   const [visible, setVisible] = useState(true);
   return (
     <>
       {visible && (
         <Card className="my-2 py-3 text-start">
           <Card.Body>
-            <Card.Title style={{ fontSize: "1.2rem" }}>
-              {"Rispondi a un quiz sulle competenze"}
-            </Card.Title>
+            <Card.Title style={{ fontSize: "1.2rem" }}>{"Analisi"}</Card.Title>
             <Card.Subtitle
               className="mb-2 text-muted"
               style={{ fontWeight: "400" }}
@@ -35,11 +32,6 @@ const MySkillsQuizComponent = () => {
                     </p>
                   </Col>
                 </Row>
-                <MyButtonComponent
-                  text={"Quiz valutazione competenze"}
-                  textColor={"grey"}
-                  borderColor={"grey"}
-                />
               </Card.Body>
             </Card>
             <Button
@@ -63,4 +55,4 @@ const MySkillsQuizComponent = () => {
     </>
   );
 };
-export default MySkillsQuizComponent;
+export default MyAnalisisComponent;
