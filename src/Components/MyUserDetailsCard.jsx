@@ -1,6 +1,7 @@
-import { Card, Button } from "react-bootstrap";
-import { CardText, Pencil } from "react-bootstrap-icons";
+import { Card, Button, Row } from "react-bootstrap";
+import { CameraFill, Pencil } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
+import MyJobAdvisorCard from "./MyJobAdvisorCard";
 
 const MyUserDetailsCard = () => {
   return (
@@ -24,18 +25,28 @@ const MyUserDetailsCard = () => {
           }}
         ></Button>
         <Button
-          className="position-absolute"
+          className="position-absolute position-relative
+          pe-2"
           style={{
             height: "40px",
             width: "40px",
             borderRadius: "50%",
             right: "4%",
             top: "10%",
+            backgroundColor: "white",
+            border: "none",
+            color: "rgb(0, 115, 177)",
+            fontSize: "1.5rem",
           }}
-        ></Button>
+        >
+          <CameraFill
+            className="position-absolute"
+            style={{ top: "22%", left: "22%" }}
+          />
+        </Button>
       </div>
 
-      <Card.Body className="text-start pt-5 position-relative">
+      <Card.Body className="text-start pt-5 pb-4 position-relative">
         <Card.Title className="mt-2 mb-0" style={{ fontSize: "1.7rem" }}>
           Nome
         </Card.Title>
@@ -59,20 +70,40 @@ const MyUserDetailsCard = () => {
         >
           <Pencil />
         </Button>
-        <MyButtonComponent
-          text="Disponibile per"
-          bgColor={"rgb(0, 115, 177)"}
-          textColor="white"
-        />
-        <MyButtonComponent
-          text="Aggiungi sezione del profilo"
-          bgColor={"white"}
-        />
-        <MyButtonComponent text="Altro" textColor="grey" borderColor={"grey"} />
-        <Card.Text>
-          This is a longer card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
+        <div>
+          <MyButtonComponent
+            text="Disponibile per"
+            bgColor={"rgb(0, 115, 177)"}
+            textColor="white"
+          />
+          <MyButtonComponent
+            text="Aggiungi sezione del profilo"
+            bgColor={"white"}
+          />
+          <MyButtonComponent
+            text="Altro"
+            textColor="grey"
+            borderColor={"grey"}
+          />
+        </div>
+        <Row style={{ overflow: "hidden", flexWrap: "nowrap" }}>
+          <MyJobAdvisorCard
+            cardTitle={"Disponibile a lavorare"}
+            cardText={"Ruoli di sviluppatore frontend"}
+            cardLink={"Mostra dettagli"}
+            bgColor={"#DCE6F1"}
+          />
+          <MyJobAdvisorCard
+            cardTitle={"Fai sapere che stai facendo selezione"}
+            cardText={"Attrai candidati qualificati"}
+            cardLink={"inizia"}
+          />
+          <MyJobAdvisorCard
+            cardTitle={"Metti in risalto i servizi che offri"}
+            cardText={"La tua azienda apparirà nei motori di ricerca"}
+            cardLink={"inizia"}
+          />
+        </Row>
       </Card.Body>
     </Card>
   );
