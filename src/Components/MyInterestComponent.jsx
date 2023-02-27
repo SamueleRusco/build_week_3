@@ -3,7 +3,8 @@ import { EyeFill, Pencil, PlusLg } from "react-bootstrap-icons";
 import { useState } from "react";
 
 const MyInterestComponent = () => {
-  const [visible, setVisible] = useState(true);
+  const [selectedBrand, setSelectedBrand] = useState(true);
+  const [selectedSchool, setSelectedSchool] = useState(false);
   return (
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
@@ -36,12 +37,17 @@ const MyInterestComponent = () => {
                 color: "#057642",
                 fontWeight: "600",
                 border: "none",
-                borderBottom: "2px solid #057642",
+                borderBottom: (selectedBrand && "2px solid #057642") || "none",
                 borderRadius: "0px",
+              }}
+              onClick={() => {
+                setSelectedBrand(true);
+                setSelectedSchool(false);
               }}
             >
               Aziende
             </Button>
+            {selectedBrand && <h3>Linkedin</h3>}
           </div>
           <div>
             <Button
@@ -51,12 +57,17 @@ const MyInterestComponent = () => {
                 color: "#057642",
                 fontWeight: "600",
                 border: "none",
-                borderBottom: "2px solid #057642",
+                borderBottom: (selectedSchool && "2px solid #057642") || "none",
                 borderRadius: "0px",
+              }}
+              onClick={() => {
+                setSelectedBrand(false);
+                setSelectedSchool(true);
               }}
             >
               Scuole o università
             </Button>
+            {selectedSchool && <h3>Epicode</h3>}
           </div>
         </div>
       </Card>
