@@ -26,7 +26,7 @@ const MyMainComponent = () => {
           <MyActivitiesComponent />
           <MyFormationComponent />
           <MyInterestComponent />
-          <MyForm />
+          {/* <MyForm /> */}
         </Col>
         <Col
           xs={4}
