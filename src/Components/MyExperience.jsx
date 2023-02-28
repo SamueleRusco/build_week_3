@@ -92,17 +92,17 @@ const MyExperience = () => {
                   <p style={{ fontSize: "0.9rem" }}>{element.endDate}</p>
                 </Col>
                 <Col xs={2}>
-                  <Button
+                  {/* <Button
                     onClick={() => {
                       setEditModalOn(true);
                       console.log("ewafwe", element._id);
                     }}
                   >
                     Edit
-                  </Button>
+                  </Button> */}
                   <MyEditExperiencesModal
-                    editModalOn={editModalOn}
-                    setEditModalOn={setEditModalOn}
+                    // editModalOn={editModalOn}
+                    // setEditModalOn={setEditModalOn}
                     id={element._id}
                   />
                 </Col>

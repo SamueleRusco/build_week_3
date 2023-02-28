@@ -1,7 +1,8 @@
 import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
-const MyEditExperiencesModal = ({ editModalOn, setEditModalOn, id }) => {
+const MyEditExperiencesModal = ({ id }) => {
+  const [editModalOn, setEditModalOn] = useState(false);
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -42,6 +43,13 @@ const MyEditExperiencesModal = ({ editModalOn, setEditModalOn, id }) => {
 
   return (
     <>
+      <Button
+        onClick={() => {
+          setEditModalOn(true);
+        }}
+      >
+        Edit
+      </Button>
       <Modal
         show={editModalOn}
         onHide={() => setEditModalOn(false)}
