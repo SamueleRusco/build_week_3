@@ -9,7 +9,7 @@ const MyEditExperiencesModal = ({ editModalOn, setEditModalOn, id }) => {
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences/${id}`;
-
+  console.log("sono basePoint", id);
   const editModalFetch = async () => {
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
@@ -27,6 +27,7 @@ const MyEditExperiencesModal = ({ editModalOn, setEditModalOn, id }) => {
     });
     let data = await response.json();
     console.log("sono edit", data);
+    console.log("sono basePoint", id);
   };
   const deleteModalFetch = async () => {
     let key =
