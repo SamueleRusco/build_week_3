@@ -3,6 +3,15 @@ import { Card, Button, Row, Image } from "react-bootstrap";
 import { CameraFill, Pencil } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
+import { useState } from "react";
+import { Card, Button, Row } from "react-bootstrap";
+import {
+  ArrowLeft,
+  ArrowLeftCircleFill,
+  ArrowRightCircleFill,
+  CameraFill,
+  Pencil,
+} from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
 
@@ -13,15 +22,22 @@ const MyUserDetailsCard = () => {
   useEffect(() => {
     dispatch(getProfileAction());
   }, []);
+  const [sliderCounter, setSliderCounter] = useState(0);
   return (
     <Card style={{ borderRadius: "10px", marginTop: "100px" }}>
       <div className="position-relative">
-        <Card.Img
+        <div
           variant="top"
-          src="https://placekitten.com/100"
-          style={{ height: "160px" }}
-        />
-        <Image
+          style={{
+            height: "160px",
+            width: "100%",
+            backgroundImage: "url(https://placekitten.com/100)",
+            backgroundSize: "cover",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+        ></div>
+        <Button
           className="p-5 position-absolute"
           src={profile.image}
           style={{
@@ -96,13 +112,47 @@ const MyUserDetailsCard = () => {
             borderColor={"grey"}
           />
         </div>
-        <Row style={{ overflow: "hidden", flexWrap: "nowrap" }}>
-          <MyJobAdvisorCard
-            cardTitle={"Disponibile a lavorare"}
-            cardText={"Ruoli di sviluppatore frontend"}
-            cardLink={"Mostra dettagli"}
-            bgColor={"#DCE6F1"}
-          />
+        <Row
+          className="position-relative"
+          style={{ overflow: "hidden", flexWrap: "nowrap" }}
+        >
+          {sliderCounter > 0 && (
+            <ArrowLeftCircleFill
+              className="position-absolute"
+              style={{
+                fontSize: "1.7rem",
+                left: "-48%",
+                top: "50%",
+                zIndex: "1",
+              }}
+              onClick={() => {
+                sliderCounter > 0 && setSliderCounter(sliderCounter - 1);
+              }}
+            />
+          )}
+          {sliderCounter < 1 && (
+            <ArrowRightCircleFill
+              className="position-absolute"
+              style={{
+                fontSize: "1.7rem",
+                right: "-48%",
+                top: "50%",
+                zIndex: "1",
+              }}
+              onClick={() => {
+                sliderCounter < 2 && setSliderCounter(sliderCounter + 1);
+                console.log(sliderCounter);
+              }}
+            />
+          )}
+          {sliderCounter === 0 && (
+            <MyJobAdvisorCard
+              cardTitle={"Disponibile a lavorare"}
+              cardText={"Ruoli di sviluppatore frontend"}
+              cardLink={"Mostra dettagli"}
+              bgColor={"#DCE6F1"}
+            />
+          )}
           <MyJobAdvisorCard
             cardTitle={"Fai sapere che stai facendo selezione"}
             cardText={"Attrai candidati qualificati"}
