@@ -25,7 +25,7 @@ const MyUserDetailsCard = () => {
   }, []);
   const [sliderCounter, setSliderCounter] = useState(0);
   return (
-    <Card style={{ borderRadius: "10px", marginTop: "100px" }}>
+    <Card style={{ borderRadius: "10px" }}>
       <div className="position-relative">
         <div
           variant="top"

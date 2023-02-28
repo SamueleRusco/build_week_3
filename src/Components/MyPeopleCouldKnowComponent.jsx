@@ -8,13 +8,14 @@ import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 const MyPeopleCouldKnowComponent = () => {
   const [visible, setVisible] = useState(true);
   const usersList = [1, 2, 3, 4, 5];
-  const peopleArray = useSelector((state) => state.allProfiles.results);
+  const peopleArray = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
-  console.log("jefoajw", peopleArray && peopleArray);
+  console.log("jefoajw", peopleArray);
 
   useEffect(() => {
     dispatch(getAllProfileFetchAction());
-  });
+  }, []);
+
   return (
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
@@ -30,7 +31,7 @@ const MyPeopleCouldKnowComponent = () => {
             </Col>
           </Row>
           <Row>
-            {/* {peopleArray &&
+            {peopleArray &&
               peopleArray?.map((element, index) => {
                 return (
                   index < 6 && (
@@ -40,18 +41,16 @@ const MyPeopleCouldKnowComponent = () => {
                     >
                       <Col xs={3}>
                         <img
-                          src="https://placekitten.com/200"
+                          src={element.image}
                           alt=""
                           style={{ width: "48px", borderRadius: "50%" }}
                         />
                       </Col>
                       <Col xs={9}>
                         <p className="mb-0" style={{ fontWeight: "600" }}>
-                          {element.name} Colapinto
+                          {element.name} {element.surname}
                         </p>
-                        <p style={{ fontSize: "0.9rem" }}>
-                          Analist consultant - Junior developer
-                        </p>
+                        <p style={{ fontSize: "0.9rem" }}>{element.title}</p>
                         <MyButtonComponent
                           text={"collegati"}
                           textColor={"dimgrey"}
@@ -61,9 +60,9 @@ const MyPeopleCouldKnowComponent = () => {
                     </Row>
                   )
                 );
-              })} */}
+              })}
 
-            {peopleArray && (
+            {/* {peopleArray && (
               <Row
                 className="py-3"
                 style={{ borderTop: "1px solid lightgrey" }}
@@ -89,7 +88,7 @@ const MyPeopleCouldKnowComponent = () => {
                   />
                 </Col>
               </Row>
-            )}
+            )} */}
           </Row>
         </Card.Body>
       </Card>
