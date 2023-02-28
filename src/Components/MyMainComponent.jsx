@@ -3,6 +3,7 @@ import MyActivitiesComponent from "./MyActivitiesComponent";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MyFormationComponent from "./MyFormationComponent";
 import MyInterestComponent from "./MyInterestComponent";
+import MyProfileSettongsComponent from "./MyprofileSettingsCard";
 import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
@@ -20,7 +21,9 @@ const MyMainComponent = () => {
           <MyFormationComponent />
           <MyInterestComponent />
         </Col>
-        <Col xs={4} xl={3} className="bg-danger "></Col>
+        <Col xs={4} xl={3} style={{ backgroundColor: "#f3f2ef" }}>
+          <MyProfileSettongsComponent />
+        </Col>
       </Row>
     </Container>
   );
