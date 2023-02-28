@@ -1,3 +1,4 @@
+import { async } from "q";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -11,18 +12,55 @@ const MyForm = () => {
   const [bio, setBio] = useState("");
   const [area, setArea] = useState("");
 
-  const putProfileFetch = () => {};
+  const putProfileFetch = async () => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmRhY2YxOTNlNjAwMTM4MDdmNTUiLCJpYXQiOjE2Nzc0ODc1MzMsImV4cCI6MTY3ODY5NzEzM30.28A_muadu_RXL6zQnjtabqpaF0Z-NZkfstgseIRnVsQ";
 
-  useEffect(() => {
-    putProfileFetch();
-  }, []);
-  const handleSubmit = async (e) => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name,
+          surname,
+        }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
+  // {
+  //   _id: "5fc4ae95b708c200175de88d",
+  //   name: "Ari",
+  //   surname: "Razab",
+  //   email: "arianrazab@yahoo.com",
+  //   username: "AriiMe",
+  //   title: "Software Developer",
+  //   bio: "yeeeeet",
+  //   area: "Frankfurt am main",
+  //   image:
+  //     "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+  //   createdAt: "2020-11-30T08:34:29.820Z",
+  //   updatedAt: "2020-11-30T08:34:29.820Z",
+  //   __v: 0,
+  // }
+
+  // useEffect(() => {
+  //   putProfileFetch();
+  // }, []);
+  const handleSubmit = (e) => {
     e.preventDefault();
     putProfileFetch();
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      {/* <Form> */}
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -75,7 +113,14 @@ const MyForm = () => {
           placeholder="Enter Area"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button
+        // onClick={(e) => {
+        //   e.preventDefault();
+        //   putProfileFetch();
+        // }}
+        variant="primary"
+        type="submit"
+      >
         Submit
       </Button>
     </Form>

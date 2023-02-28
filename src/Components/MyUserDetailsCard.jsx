@@ -14,7 +14,7 @@ const MyUserDetailsCard = () => {
     dispatch(getProfileAction());
   }, []);
   return (
-    <Card style={{ borderRadius: "10px" }}>
+    <Card style={{ borderRadius: "10px", marginTop: "100px" }}>
       <div className="position-relative">
         <Card.Img
           variant="top"
