@@ -9,17 +9,17 @@ const MyExperienceForm = () => {
   return (
     <>
       {visible && (
-        <Form>
+        <Form className="p-3">
           <hr />
-          <Form.Group controlId="formQualifica">
+          <Form.Group className="mb-4" controlId="formQualifica">
             <Form.Text className="text-muted">Qualifica</Form.Text>
             <Form.Control
               type="text"
               placeholder="Esempio: Teaching assistant"
             />
           </Form.Group>
-          <Form.Text className="text-muted">Tipo di impiego</Form.Text>
-          <Form.Group controlId="workOptions">
+          <Form.Group className="mb-4" controlId="workOptions">
+            <Form.Text className="text-muted">Tipo di impiego</Form.Text>
             <Form.Control
               style={{
                 border: "1px solid lightgrey",
@@ -43,15 +43,15 @@ const MyExperienceForm = () => {
               <option value="Stagionale">Stagionale</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="formAzienda">
+          <Form.Group className="mb-4" controlId="formAzienda">
             <Form.Text className="text-muted">Nome Azienda</Form.Text>
             <Form.Control type="text" placeholder="Esempio: Epicode" />
           </Form.Group>
-          <Form.Group controlId="formLocalità">
+          <Form.Group className="mb-4" controlId="formLocalità">
             <Form.Text className="text-muted">Località</Form.Text>
             <Form.Control type="text" placeholder="Esempio: Milano, Italia" />
           </Form.Group>
-          <Form.Group controlId="workOptions2">
+          <Form.Group className="mb-4" controlId="workOptions2">
             <Form.Control
               style={{
                 border: "1px solid lightgrey",
@@ -69,7 +69,7 @@ const MyExperienceForm = () => {
               <option value="Autonomo">Autonomo</option>
             </Form.Control>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Group className="mb-4" controlId="formBasicCheckbox">
               <Form.Check
                 type="checkbox"
                 variant="success"
@@ -79,19 +79,22 @@ const MyExperienceForm = () => {
           </Form.Group>
           <Row>
             <Col>
-              <Form.Text className="text-muted">Data di inizio</Form.Text>
-              <Form.Group className="active" controlId="formDatePickerStart">
+              <Form.Group
+                className="active mb-4"
+                controlId="formDatePickerStart"
+              >
+                <Form.Text className="text-muted">Data di inizio</Form.Text>
                 <input type="date" id="dateStandardStart" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Text className="text-muted">Data di fine</Form.Text>
-              <Form.Group className="active" controlId="formDatePickerEnd">
+              <Form.Group className="active mb-4" controlId="formDatePickerEnd">
+                <Form.Text className="text-muted">Data di fine</Form.Text>
                 <input type="date" id="dateStandardEnd" />
               </Form.Group>
             </Col>
           </Row>
-          <Form.Group controlId="formQualifica">
+          <Form.Group className="mb-4" controlId="formQualifica">
             <Form.Text className="text-muted">Settore</Form.Text>
             <Form.Control
               type="text"
@@ -102,11 +105,11 @@ const MyExperienceForm = () => {
               segnalazioni più pertinenti
             </Form.Text>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Descrizione</Form.Label>
             <Form.Control as="textarea" />
           </Form.Group>
-          <Form.Group controlId="formSommario">
+          <Form.Group className="mb-4" controlId="formSommario">
             <Form.Text className="text-muted">Sommario del profilo</Form.Text>
             <Form.Control type="text" />
             <Form.Text className="text-muted">
@@ -119,7 +122,7 @@ const MyExperienceForm = () => {
             Ti consigliamo di aggiungere le 5 competenze più utilizzate in
             questo ruolo.
           </Form.Text>
-          <div>
+          <div className="pt-4 mb-4">
             <Button //ci andrà onClick per mostrare inputfield delle competenze
               style={{
                 borderRadius: "25px",
@@ -135,7 +138,7 @@ const MyExperienceForm = () => {
             Aggiungi o inserisci un link a documenti, foto, siti, presentazioni
             e video esterni.
           </Form.Text>
-          <div>
+          <div className="pt-4">
             <Button // ci andrà onclick per caricare link media
               style={{
                 borderRadius: "20px",

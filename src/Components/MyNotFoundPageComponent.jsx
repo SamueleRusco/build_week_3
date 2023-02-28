@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyExperiencePageComponent = () => {
+const MyNotFoundPageComponent = () => {
   return (
     <div style={{ height: "80vh" }}>
       <div className="d-flex justify-content-center align-items-center h-100">
@@ -10,4 +10,4 @@ const MyExperiencePageComponent = () => {
   );
 };
 
-export default MyExperiencePageComponent;
+export default MyNotFoundPageComponent;
