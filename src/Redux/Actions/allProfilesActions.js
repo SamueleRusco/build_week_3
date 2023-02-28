@@ -29,7 +29,10 @@ export const getAllProfileFetchAction = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("tutti i profili", data);
-        dispatch(getAllProfileAction(data));
+        dispatch({
+          type: GET_ALL_PROFILE,
+          payload: data,
+        });
       } else {
         alert("error fetching profiles");
         console.log("error");

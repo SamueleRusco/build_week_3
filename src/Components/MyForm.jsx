@@ -11,28 +11,21 @@ const MyForm = () => {
   const [title, setTitle] = useState("");
   const [bio, setBio] = useState("");
   const [area, setArea] = useState("");
+  const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
 
   const putProfileFetch = async () => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmRhY2YxOTNlNjAwMTM4MDdmNTUiLCJpYXQiOjE2Nzc0ODc1MzMsImV4cCI6MTY3ODY5NzEzM30.28A_muadu_RXL6zQnjtabqpaF0Z-NZkfstgseIRnVsQ";
-
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name,
-          surname,
-        }),
-      }
-    );
-    const data = await response.json();
-    console.log(data);
+    let key =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
+    let response = await fetch(baseEndpoint, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", Authorization: key },
+      body: JSON.stringify({ name: name }),
+    });
+    let data = await response.json();
+    console.log("sono put", data);
   };
+
+  useEffect(() => {}, [name]);
 
   // {
   //   _id: "5fc4ae95b708c200175de88d",
@@ -53,13 +46,13 @@ const MyForm = () => {
   // useEffect(() => {
   //   putProfileFetch();
   // }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    putProfileFetch();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   putProfileFetch();
+  // };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       {/* <Form> */}
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name</Form.Label>
@@ -114,10 +107,10 @@ const MyForm = () => {
         />
       </Form.Group>
       <Button
-        // onClick={(e) => {
-        //   e.preventDefault();
-        //   putProfileFetch();
-        // }}
+        onClick={(e) => {
+          e.preventDefault();
+          putProfileFetch();
+        }}
         variant="primary"
         type="submit"
       >

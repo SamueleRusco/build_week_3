@@ -37,6 +37,26 @@ export const getProfileAction = () => {
   };
 };
 
+// const putProfileFetch = async () => {
+//   const token =
+//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmRhY2YxOTNlNjAwMTM4MDdmNTUiLCJpYXQiOjE2Nzc0ODc1MzMsImV4cCI6MTY3ODY5NzEzM30.28A_muadu_RXL6zQnjtabqpaF0Z-NZkfstgseIRnVsQ";
+
+//   let response = await fetch(
+//     "https://striveschool-api.herokuapp.com/api/profile",
+//     {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         name,
+//       }),
+//     }
+//   );
+//   const data = await response.json();
+//   console.log(data);
+// };
 /* import Profiles from "./Profiles";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
