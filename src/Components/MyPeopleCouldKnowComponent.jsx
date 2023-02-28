@@ -1,11 +1,21 @@
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { EyeFill, Pencil, PersonAdd, PlusLg } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 
 const MyPeopleCouldKnowComponent = () => {
   const [visible, setVisible] = useState(true);
   const usersList = [1, 2, 3, 4, 5];
+  const peopleArray = useSelector((state) => state.allProfiles.result);
+  const dispatch = useDispatch();
+  console.log("jefoajw", peopleArray);
+
+  useEffect(() => {
+    dispatch(getAllProfileFetchAction());
+  }, []);
+
   return (
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
@@ -21,10 +31,41 @@ const MyPeopleCouldKnowComponent = () => {
             </Col>
           </Row>
           <Row>
-            {usersList.map((element, index) => (
+            {peopleArray &&
+              peopleArray?.map((element, index) => {
+                return (
+                  index < 6 && (
+                    <Row
+                      className="py-3"
+                      style={{ borderTop: index > 0 && "1px solid lightgrey" }}
+                    >
+                      <Col xs={3}>
+                        <img
+                          src={element.image}
+                          alt=""
+                          style={{ width: "48px", borderRadius: "50%" }}
+                        />
+                      </Col>
+                      <Col xs={9}>
+                        <p className="mb-0" style={{ fontWeight: "600" }}>
+                          {element.name} {element.surname}
+                        </p>
+                        <p style={{ fontSize: "0.9rem" }}>{element.title}</p>
+                        <MyButtonComponent
+                          text={"collegati"}
+                          textColor={"dimgrey"}
+                          borderColor={"dimgrey"}
+                        />
+                      </Col>
+                    </Row>
+                  )
+                );
+              })}
+
+            {/* {peopleArray && (
               <Row
                 className="py-3"
-                style={{ borderTop: index > 0 && "1px solid lightgrey" }}
+                style={{ borderTop: "1px solid lightgrey" }}
               >
                 <Col xs={3}>
                   <img
@@ -35,7 +76,7 @@ const MyPeopleCouldKnowComponent = () => {
                 </Col>
                 <Col xs={9}>
                   <p className="mb-0" style={{ fontWeight: "600" }}>
-                    Francesco Colapinto
+                    {peopleArray && peopleArray?.[0].name} Colapinto
                   </p>
                   <p style={{ fontSize: "0.9rem" }}>
                     Analist consultant - Junior developer
@@ -47,7 +88,7 @@ const MyPeopleCouldKnowComponent = () => {
                   />
                 </Col>
               </Row>
-            ))}
+            )} */}
           </Row>
         </Card.Body>
       </Card>

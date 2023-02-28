@@ -1,5 +1,9 @@
+import { useEffect } from "react";
+import { Card, Button, Row, Image } from "react-bootstrap";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileAction } from "../Redux/Actions";
 import { useState } from "react";
-import { Card, Button, Row } from "react-bootstrap";
 import {
   ArrowLeft,
   ArrowLeftCircleFill,
@@ -9,8 +13,16 @@ import {
 } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
+import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 
 const MyUserDetailsCard = () => {
+  const profile = useSelector((state) => state.profiles.result);
+  const allProfiles = useSelector((state) => state.allProfiles.result);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileAction());
+  }, []);
   const [sliderCounter, setSliderCounter] = useState(0);
   return (
     <Card style={{ borderRadius: "10px" }}>
@@ -28,6 +40,7 @@ const MyUserDetailsCard = () => {
         ></div>
         <Button
           className="p-5 position-absolute"
+          src={profile.image}
           style={{
             borderRadius: "50%",
             height: "150px",
@@ -37,7 +50,7 @@ const MyUserDetailsCard = () => {
             backgroundColor: "grey",
             border: "4px solid white",
           }}
-        ></Button>
+        />
         <Button
           className="position-absolute position-relative
           pe-2"
@@ -62,11 +75,11 @@ const MyUserDetailsCard = () => {
 
       <Card.Body className="text-start pt-5 pb-4 position-relative">
         <Card.Title className="mt-2 mb-0" style={{ fontSize: "1.7rem" }}>
-          Nome
+          {profile.name} {profile.surname}
         </Card.Title>
-        <p className="mb-0">Studente presso roba</p>
+        <p className="mb-0">{profile.bio}</p>
         <p className="text-secondary" style={{ fontSize: "14px" }}>
-          indirizzo ·{" "}
+          indirizzo · {profile.email}{" "}
           <a href="1" style={{ textDecoration: "none", fontWeight: "600" }}>
             informazioni di contatto
           </a>

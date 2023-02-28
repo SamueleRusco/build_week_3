@@ -9,12 +9,12 @@ import MyProfileSettongsComponent from "./MyprofileSettingsCard";
 import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
-
+import MyForm from "./MyForm";
 const MyMainComponent = () => {
   return (
     <Container className="py-4" style={{ marginTop: "80px" }}>
       <Row>
-        <Col xs={8} xl={7} className="offset-xl-1">
+        <Col xs={12} md={7} xl={7} className="offset-xl-1">
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyAnalisisComponent />
@@ -22,8 +22,15 @@ const MyMainComponent = () => {
           <MyActivitiesComponent />
           <MyFormationComponent />
           <MyInterestComponent />
+          <MyForm />
         </Col>
-        <Col xs={4} xl={3} style={{ backgroundColor: "#f3f2ef" }}>
+        <Col
+          xs={4}
+          md={5}
+          xl={3}
+          className="d-none d-md-block"
+          style={{ backgroundColor: "#f3f2ef" }}
+        >
           <MyProfileSettongsComponent />
           <MyPeopleCouldKnowComponent />
           <MyGroupAdvisorComponent />
