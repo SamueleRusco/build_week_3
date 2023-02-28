@@ -1,18 +1,15 @@
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 
-
-
 const MyFooterPart = () => {
   return (
     <Container id="footer" className="">
-      
-      <Row className="pl-3 pb-2 mt-5">
+      <Row className="pl-3 pb-2 mt-5 footerRow">
         <Image src="../images/promoted/linkedinADS.png" alt="linkedin logo" />
       </Row>
 
-      <Row >
+      <Row className="footerRow">
         <Col xs={12} md={10}>
-          <Row>
+          <Row className="footerRow">
             <div className="mr-3">
               <Col>
                 <a href=""> Infromazioni </a>
@@ -93,7 +90,7 @@ const MyFooterPart = () => {
           </Row>
         </Col>
       </Row>
-      <Row>
+      <Row className="footerRow">
         <Col className="mt-4">
           <p>linkedin corporation &copy; {new Date().getFullYear()}</p>
         </Col>
@@ -102,9 +99,6 @@ const MyFooterPart = () => {
   );
 };
 
-
 /*gdgd*/
-
-
 
 export default MyFooterPart;
