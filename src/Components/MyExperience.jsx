@@ -95,6 +95,7 @@ const MyExperience = () => {
                   <Button
                     onClick={() => {
                       setEditModalOn(true);
+                      console.log("ewafwe", element._id);
                     }}
                   >
                     Edit
