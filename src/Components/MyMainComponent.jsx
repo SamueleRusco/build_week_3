@@ -2,7 +2,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import MyActivitiesComponent from "./MyActivitiesComponent";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MyFormationComponent from "./MyFormationComponent";
+import MyGroupAdvisorComponent from "./MyGroupsAdvisorComponent";
 import MyInterestComponent from "./MyInterestComponent";
+import MyPeopleCouldKnowComponent from "./MyPeopleCouldKnowComponent";
 import MyProfileSettongsComponent from "./MyprofileSettingsCard";
 import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
@@ -23,6 +25,8 @@ const MyMainComponent = () => {
         </Col>
         <Col xs={4} xl={3} style={{ backgroundColor: "#f3f2ef" }}>
           <MyProfileSettongsComponent />
+          <MyPeopleCouldKnowComponent />
+          <MyGroupAdvisorComponent />
         </Col>
       </Row>
     </Container>
