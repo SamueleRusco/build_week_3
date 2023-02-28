@@ -100,4 +100,9 @@ const MyFooterPart = () => {
   );
 };
 
+
+/*gdgd*/
+
+
+
 export default MyFooterPart;
