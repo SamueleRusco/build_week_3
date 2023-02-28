@@ -33,9 +33,9 @@ const MyForm = () => {
         surname: surname,
         email: email,
         username: username,
-        title: title,
+        // title: title,
         bio: bio,
-        // area: area,
+        area: area,
       }),
     });
     let data = await response.json();
