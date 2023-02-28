@@ -4,69 +4,67 @@ import { Container, Row, Col, Image, Form } from "react-bootstrap";
 
 const MyFooterPart = () => {
   return (
-    <Container id="footer" className="">
-      
+    <Container style= {{backgroundColor: 'red'}} id="footer" className="">
       <Row className="pl-3 pb-2 mt-5">
         <Image src="../images/promoted/linkedinADS.png" alt="linkedin logo" />
       </Row>
-
-      <Row >
+      <Row>
         <Col xs={12} md={10}>
           <Row>
             <div className="mr-3">
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Infromazioni </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href="">Linee guida della community</a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href="">Privacy e condizioni</a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> sales solutions </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href="">Centro sicurezza</a>
               </Col>
             </div>
             <div className="mr-3">
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Accessibilità </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Carriera</a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Opzioni di annuncio </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href="">Mobile </a>
               </Col>
             </div>
             <div className="mr-3">
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> talent solutions </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Soluzioni di Marketing </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Pubblicità </a>
               </Col>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <a href=""> Piccole imprese </a>
               </Col>
             </div>
             <div id="footer-settings" className="mr-3">
-              <Col className="d-flex flex-row">
+              <Col xs={12} md={6} lg={3} className="d-flex flex-row">
                 <i class="bi bi-question-circle-fill mx-0 mt-2"></i>
                 <div className="ml-2">
                   <a href=""> Domande? </a>
                   <p> Visita il nostro centro assistenza </p>
                 </div>
               </Col>
-              <Col className="d-flex flex-row">
+              <Col xs={12} md={6} lg={3} className="d-flex flex-row">
                 <i class="bi bi-gear-fill mx-0 mt-2"></i>
                 <div className="ml-2">
                   <a href=""> Gestisci il tuo account e la tua privacy </a>
@@ -75,7 +73,7 @@ const MyFooterPart = () => {
               </Col>
             </div>
             <div>
-              <Col>
+              <Col xs={12} md={6} lg={3}>
                 <Form>
                   <Form.Group controlId="languages">
                     <Form.Label>Seleziona Lingua</Form.Label>
