@@ -45,15 +45,10 @@
   background-color: #f3f2ef;
 }
 
-#footer {
-  margin-left: 200px;
-  margin-top: 200px;
-}
-
 .footerRow {
   display: flex;
   flex-wrap: nowrap;
-  width: 11rem;
+  max-width: 50%;
 }
 
 #footer img {
