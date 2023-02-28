@@ -38,23 +38,17 @@
 }
 */
 
-
-
-
 /*Footer*/
-
-
 
 #footer {
   margin-left: 200px;
   margin-top: 200px;
 }
 
-.row{
+.footerRow {
   display: flex;
   flex-wrap: nowrap;
   width: 11rem;
-  
 }
 
 #footer img {
@@ -90,4 +84,3 @@
 #footer form {
   width: 220px;
 }
-
