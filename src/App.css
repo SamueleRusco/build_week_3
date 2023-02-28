@@ -47,6 +47,13 @@
 
 #footer {
   margin-left: 200px;
+  margin-top: 200px;
+}
+
+.footerRow {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 11rem;
 }
 
 #footer img {
