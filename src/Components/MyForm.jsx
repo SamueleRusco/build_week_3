@@ -13,13 +13,30 @@ const MyForm = () => {
   const [area, setArea] = useState("");
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
 
+  let user = {
+    name,
+    surname,
+    email,
+    username,
+    title,
+    bio,
+    area,
+  };
   const putProfileFetch = async () => {
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
     let response = await fetch(baseEndpoint, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: key },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify({
+        name: name,
+        surname: surname,
+        email: email,
+        username: username,
+        title: title,
+        bio: bio,
+        // area: area,
+      }),
     });
     let data = await response.json();
     console.log("sono put", data);

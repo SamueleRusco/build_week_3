@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MyNavBarComponents = (props) => {
   return (
     <Container>
       <Content>
-        <Logo>
-          <a href="/home">
-            <img src="/images/home-logo.svg" alt="" />
-          </a>
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <a href="/home">
+              <img src="/images/home-logo.svg" alt="" />
+            </a>
+          </Logo>
+        </Link>
         <Search>
           <div>
             <input type="text" placeholder="Search" />
@@ -57,10 +60,10 @@ const MyNavBarComponents = (props) => {
             <User>
               <a>
                 <img src="/images/user.svg" alt="" />
-                <span>Me
+                <span>
+                  Me
                   <img src="/images/down-icon.svg" alt="" />
                 </span>
-                
               </a>
 
               <SignOut>
@@ -164,7 +167,6 @@ const NavListWrap = styled.ul`
   list-style-type: none;
   margin-top: 10px;
   margin-bottom: 10px;
-
 
   .active {
     span:after {
