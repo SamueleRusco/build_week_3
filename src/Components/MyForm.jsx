@@ -91,7 +91,7 @@ const MyForm = () => {
         <Form.Control
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          type="email"
+          type="input"
           placeholder="Enter email"
         />
         <Form.Label>Username</Form.Label>

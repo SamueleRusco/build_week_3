@@ -10,6 +10,8 @@ import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyForm from "./MyForm";
+import MyExperience from "./MyExperience";
+import MyExperienceForm from "./MyExperienceForm";
 const MyMainComponent = () => {
   return (
     <Container className="py-4" style={{ marginTop: "80px" }}>
@@ -17,6 +19,8 @@ const MyMainComponent = () => {
         <Col xs={12} md={7} xl={7} className="offset-xl-1">
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
+          <MyExperience />
+
           <MyAnalisisComponent />
           <MyResourceComponent />
           <MyActivitiesComponent />
