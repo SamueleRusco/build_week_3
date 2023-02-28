@@ -12,7 +12,7 @@ import MyUserDetailsCard from "./MyUserDetailsCard";
 
 const MyMainComponent = () => {
   return (
-    <Container>
+    <Container className="py-4" style={{ marginTop: "80px" }}>
       <Row>
         <Col xs={8} xl={7} className="offset-xl-1">
           <MyUserDetailsCard />

@@ -22,6 +22,8 @@ const MyUserDetailsCard = () => {
             width: "100%",
             backgroundImage: "url(https://placekitten.com/100)",
             backgroundSize: "cover",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
           }}
         ></div>
         <Button

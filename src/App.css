@@ -39,12 +39,11 @@
 }
 */
 
-
-
-
 /*Footer*/
 
-
+.App {
+  background-color: #f3f2ef;
+}
 
 #footer {
   margin-left: 200px;
@@ -83,4 +82,3 @@
 #footer form {
   width: 220px;
 }
-
