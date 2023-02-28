@@ -1,11 +1,20 @@
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { EyeFill, Pencil, PersonAdd, PlusLg } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 
 const MyPeopleCouldKnowComponent = () => {
   const [visible, setVisible] = useState(true);
   const usersList = [1, 2, 3, 4, 5];
+  const peopleArray = useSelector((state) => state.allProfiles.results);
+  const dispatch = useDispatch();
+  console.log(peopleArray);
+
+  useEffect(() => {
+    dispatch(getAllProfileFetchAction());
+  });
   return (
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
@@ -21,33 +30,38 @@ const MyPeopleCouldKnowComponent = () => {
             </Col>
           </Row>
           <Row>
-            {usersList.map((element, index) => (
-              <Row
-                className="py-3"
-                style={{ borderTop: index > 0 && "1px solid lightgrey" }}
-              >
-                <Col xs={3}>
-                  <img
-                    src="https://placekitten.com/200"
-                    alt=""
-                    style={{ width: "48px", borderRadius: "50%" }}
-                  />
-                </Col>
-                <Col xs={9}>
-                  <p className="mb-0" style={{ fontWeight: "600" }}>
-                    Francesco Colapinto
-                  </p>
-                  <p style={{ fontSize: "0.9rem" }}>
-                    Analist consultant - Junior developer
-                  </p>
-                  <MyButtonComponent
-                    text={"collegati"}
-                    textColor={"dimgrey"}
-                    borderColor={"dimgrey"}
-                  />
-                </Col>
-              </Row>
-            ))}
+            {peopleArray &&
+              peopleArray?.map((element, index) => {
+                return (
+                  index < 6 && (
+                    <Row
+                      className="py-3"
+                      style={{ borderTop: index > 0 && "1px solid lightgrey" }}
+                    >
+                      <Col xs={3}>
+                        <img
+                          src="https://placekitten.com/200"
+                          alt=""
+                          style={{ width: "48px", borderRadius: "50%" }}
+                        />
+                      </Col>
+                      <Col xs={9}>
+                        <p className="mb-0" style={{ fontWeight: "600" }}>
+                          {element.name} Colapinto
+                        </p>
+                        <p style={{ fontSize: "0.9rem" }}>
+                          Analist consultant - Junior developer
+                        </p>
+                        <MyButtonComponent
+                          text={"collegati"}
+                          textColor={"dimgrey"}
+                          borderColor={"dimgrey"}
+                        />
+                      </Col>
+                    </Row>
+                  )
+                );
+              })}
           </Row>
         </Card.Body>
       </Card>

@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { Card, Button, Row, Image } from "react-bootstrap";
-import { CameraFill, Pencil } from "react-bootstrap-icons";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
 import { useState } from "react";
-import { Card, Button, Row } from "react-bootstrap";
 import {
   ArrowLeft,
   ArrowLeftCircleFill,
@@ -14,9 +13,11 @@ import {
 } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
+import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
+  const allProfiles = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
 
   useEffect(() => {

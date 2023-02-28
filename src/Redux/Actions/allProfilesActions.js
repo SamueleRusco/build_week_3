@@ -28,7 +28,7 @@ export const getAllProfileFetchAction = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log("tutti i profili", data);
         dispatch(getAllProfileAction(data));
       } else {
         alert("error fetching profiles");
