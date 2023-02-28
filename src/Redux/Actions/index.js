@@ -16,7 +16,7 @@ export const getProfileAction = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         dispatch({
           type: GET_PROFILE,
           payload: data,

@@ -10,7 +10,6 @@ const MyPeopleCouldKnowComponent = () => {
   const usersList = [1, 2, 3, 4, 5];
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
-  console.log("jefoajw", peopleArray);
 
   useEffect(() => {
     dispatch(getAllProfileFetchAction());

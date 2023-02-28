@@ -1,10 +1,43 @@
-import { useState } from "react";
+import { element } from "prop-types";
+import { useEffect, useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { EyeFill, XLg } from "react-bootstrap-icons";
+import { Pencil, XLg } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
+import MyEditExperiencesModal from "./MyEditExperiencesModal";
 import MyExperienceForm from "./MyExperienceForm";
 
 const MyExperience = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [editModalOn, setEditModalOn] = useState(false);
+  const [experiences, setExperiences] = useState(null);
+
+  const baseEndpoint =
+    "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
+
+  const getExperienceFetch = async () => {
+    let key =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
+    let response = await fetch(baseEndpoint, {
+      method: "GET",
+      headers: { Authorization: key },
+      // body: JSON.stringify({
+      //   role: role,
+      //   company: company,
+      //   startDate: startDate,
+      //   endDate: endDate,
+      //   description: description,
+      //   area: area,
+      // }),
+    });
+    let data = await response.json();
+    setExperiences(data);
+    console.log("sono get", experiences);
+  };
+
+  useEffect(() => {
+    getExperienceFetch();
+  }, []);
+
   return (
     <>
       <Card className="my-2 py-3 text-start position-relative">
@@ -17,7 +50,64 @@ const MyExperience = () => {
           <div>inserire qui esperienze</div>
           {/*inserire qui esperienze */}
         </Card.Body>
-        <MyExperienceForm />
+        <Button
+          className="position-absolute"
+          style={{
+            top: "3%",
+            right: "3%",
+            fontSize: "1.4rem",
+            backgroundColor: "white",
+            color: "grey",
+            border: "none",
+          }}
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
+          <Pencil />
+        </Button>
+        <MyExperienceForm showModal={showModal} setShowModal={setShowModal} />
+        {experiences &&
+          experiences?.map((element, index) => {
+            console.log("sono id", element._id);
+            return (
+              <Row
+                className="py-3"
+                style={{ borderTop: index > 0 && "1px solid lightgrey" }}
+                key={element._id}
+              >
+                <Col xs={3}>
+                  <img
+                    src={element.image || ""}
+                    alt=""
+                    style={{ width: "48px", borderRadius: "50%" }}
+                  />
+                </Col>
+                <Col xs={7}>
+                  <p className="mb-0" style={{ fontWeight: "600" }}>
+                    {element.role} {element.company}
+                  </p>
+                  <p style={{ fontSize: "0.9rem" }}>{element.description}</p>
+                  <p style={{ fontSize: "0.9rem" }}>{element.startDate}</p>
+                  <p style={{ fontSize: "0.9rem" }}>{element.endDate}</p>
+                </Col>
+                <Col xs={2}>
+                  <Button
+                    onClick={() => {
+                      setEditModalOn(true);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <MyEditExperiencesModal
+                    editModalOn={editModalOn}
+                    setEditModalOn={setEditModalOn}
+                    id={element._id}
+                  />
+                </Col>
+              </Row>
+            );
+          })}
       </Card>
     </>
   );
