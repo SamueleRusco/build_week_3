@@ -156,6 +156,7 @@ const MyForm = ({ showModal, setShowModal }) => {
               e.preventDefault();
               putProfileFetch();
               setRefreshed(true);
+              setShowModal(false);
             }}
             variant="primary"
             type="submit"
