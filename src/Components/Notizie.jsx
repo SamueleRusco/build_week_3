@@ -37,6 +37,7 @@ const Notizie = () => {
       });
 
       const datiNotizie = await result.json();
+      console.log("GET", datiNotizie);
       setTutteNotizie(datiNotizie);
       dispatch(listaCommentiAction(datiNotizie));
       dispatch(
@@ -95,14 +96,14 @@ const Notizie = () => {
                   </Card.Subtitle>
                   {post.user._id === "63fc659cf193e60013807f4d" ? (
                     <>
-                      <Button
+                      {/* <Button
                         onClick={() => {
                           setEditPost(true);
                           console.log("fejafwea", post._id);
                         }}
                       >
                         eccomi
-                      </Button>
+                      </Button> */}
                       <MyEditPostComponent
                         editPost={editPost}
                         setEditPost={setEditPost}
