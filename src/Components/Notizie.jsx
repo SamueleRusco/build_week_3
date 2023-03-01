@@ -20,9 +20,6 @@ const Notizie = () => {
 
   useEffect(() => {
     fetchNotizie();
-    console.log("listacommenti", listaCommenti);
-    console.log("listacommentifiltrati", commentiFiltrati);
-    console.log("id", listaCommenti[0].user._id);
   }, []);
 
   const filtro = (element) => element.user._id === idUtilizzatore;
@@ -40,15 +37,13 @@ const Notizie = () => {
       const datiNotizie = await result.json();
       setTutteNotizie(datiNotizie);
       dispatch(listaCommentiAction(datiNotizie));
-      // dispatch(
-      //   commentiFiltratiAction(
-      //     datiNotizie.filter((element) => {
-      //       return element.user._id === "63fc659cf193e60013807f4d";
-      //     })
-      //   )
-      // );
-
-      console.log("array di post", datiNotizie);
+      dispatch(
+        commentiFiltratiAction(
+          listaCommenti.filter(
+            (element) => element.user?._id === "63fc659cf193e60013807f4d"
+          )
+        )
+      );
     } catch (error) {
       console.log(error);
     }
@@ -96,6 +91,11 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
+                  {post.user._id === "63fc659cf193e60013807f4d" ? (
+                    <Button>eccomi</Button>
+                  ) : (
+                    ""
+                  )}
                 </Card.Body>
               </Card>
             )
