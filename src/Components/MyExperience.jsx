@@ -116,6 +116,7 @@ const MyExperience = () => {
                     // editModalOn={editModalOn}
                     // setEditModalOn={setEditModalOn}
                     id={element._id}
+                    refresh={getExperienceFetch}
                   />
                 </Col>
               </Row>

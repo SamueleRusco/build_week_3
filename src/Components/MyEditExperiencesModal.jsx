@@ -1,8 +1,10 @@
 import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Pencil, PencilFill } from "react-bootstrap-icons";
+import { useFetcher } from "react-router-dom";
 
-const MyEditExperiencesModal = ({ id }) => {
+const MyEditExperiencesModal = ({ id, refresh }) => {
+  const [refreshed, setRefreshed] = useState(false);
   const [editModalOn, setEditModalOn] = useState(false);
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
@@ -38,6 +40,11 @@ const MyEditExperiencesModal = ({ id }) => {
     });
     // let data = await response.json();
   };
+
+  useEffect(() => {
+    refresh();
+    setRefreshed(false);
+  }, [refreshed]);
 
   return (
     <>
@@ -148,6 +155,7 @@ const MyEditExperiencesModal = ({ id }) => {
               //   postExperienceFetch();
               editModalFetch();
               setEditModalOn(false);
+              setRefreshed(!refreshed);
             }}
           >
             Invia
@@ -158,6 +166,7 @@ const MyEditExperiencesModal = ({ id }) => {
               //   postExperienceFetch();
               deleteModalFetch();
               setEditModalOn(false);
+              setRefreshed(!refreshed);
             }}
           >
             Elimina

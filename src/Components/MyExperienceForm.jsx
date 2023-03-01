@@ -36,6 +36,7 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   };
 
   useEffect(() => {
+    setRefreshed(false);
     refresh();
   }, [refreshed]);
 
@@ -154,7 +155,7 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
               } else {
                 postExperienceFetch();
                 setShowModal(false);
-                setRefreshed(!refreshed);
+                setRefreshed(true);
               }
             }}
           >
