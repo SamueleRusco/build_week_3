@@ -49,6 +49,12 @@ const MyExperienceForm = ({ showModal, setShowModal }) => {
           >
             Chiudi
           </Button>
+          <div className="text-center mt-3">
+            <h5 style={{ fontSize: "1rem" }}>
+              Per aggiungere un'esperienza compila tutti i campi
+            </h5>
+          </div>
+
           <hr />
           <Form.Group className="mb-4" controlId="formQualifica">
             <Form.Text className="text-muted">Qualifica</Form.Text>
@@ -131,8 +137,12 @@ const MyExperienceForm = ({ showModal, setShowModal }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              postExperienceFetch();
-              setShowModal(false);
+              if (role === "") {
+                alert("per favore compila tutti i campi prima di proseguire");
+              } else {
+                postExperienceFetch();
+                setShowModal(false);
+              }
             }}
           >
             Invia

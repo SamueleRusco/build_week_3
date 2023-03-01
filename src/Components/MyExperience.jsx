@@ -40,7 +40,7 @@ const MyExperience = () => {
 
   return (
     <>
-      <Card className="my-2 py-3 text-start position-relative">
+      <Card className="my-2 py-3 px-5 text-start position-relative">
         <Card.Body>
           <Card.Title style={{ fontSize: "1.2rem" }}>{"Esperienze"}</Card.Title>
           <Card.Subtitle
@@ -76,14 +76,14 @@ const MyExperience = () => {
                 style={{ borderTop: index > 0 && "1px solid lightgrey" }}
                 key={element._id}
               >
-                <Col xs={3}>
+                {/* <Col xs={3}>
                   <img
                     src={element.image || ""}
                     alt=""
                     style={{ width: "48px", borderRadius: "50%" }}
                   />
-                </Col>
-                <Col xs={7}>
+                </Col> */}
+                <Col xs={10}>
                   <p className="mb-0" style={{ fontWeight: "600" }}>
                     {element.role} {element.company}
                   </p>

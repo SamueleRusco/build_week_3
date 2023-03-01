@@ -142,6 +142,7 @@ const MyEditExperiencesModal = ({ id }) => {
             />
           </Form.Group>
           <Button
+            className="me-2"
             type="submit"
             onClick={(e) => {
               e.preventDefault();
