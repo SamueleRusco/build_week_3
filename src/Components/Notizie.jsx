@@ -1,14 +1,31 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-import { EyeFill, XLg } from "react-bootstrap-icons";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  commentiFiltratiAction,
+  listaCommentiAction,
+} from "../Redux/Actions/postReducerActions";
+import NewPost from "./NewPost";
 
 const Notizie = () => {
+  const idUtilizzatore = useSelector((state) => state.posts.loginId);
+  const listaCommenti = useSelector((state) => state.posts.commenti);
+  const commentiFiltrati = useSelector((state) => state.posts.commentiFiltrati);
+  const dispatch = useDispatch();
   const [tutteNotizie, setTutteNotizie] = useState();
+  const [showModal, setShowModal] = useState(false);
+
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
   useEffect(() => {
     fetchNotizie();
+    console.log("listacommenti", listaCommenti);
+    console.log("listacommentifiltrati", commentiFiltrati);
+    console.log("id", listaCommenti[0].user._id);
   }, []);
+
+  const filtro = (element) => element.user._id === idUtilizzatore;
 
   const fetchNotizie = async () => {
     let key =
@@ -19,9 +36,19 @@ const Notizie = () => {
         method: "GET",
         headers: { Authorization: key },
       });
-      const datiNotizie = await result.json();
 
+      const datiNotizie = await result.json();
       setTutteNotizie(datiNotizie);
+      dispatch(listaCommentiAction(datiNotizie));
+      // dispatch(
+      //   commentiFiltratiAction(
+      //     datiNotizie.filter((element) => {
+      //       return element.user._id === "63fc659cf193e60013807f4d";
+      //     })
+      //   )
+      // );
+
+      console.log("array di post", datiNotizie);
     } catch (error) {
       console.log(error);
     }
@@ -29,6 +56,14 @@ const Notizie = () => {
 
   return (
     <>
+      <Button
+        onClick={(e) => {
+          setShowModal(true);
+        }}
+      >
+        Scrivi nuovo Post
+      </Button>
+      <NewPost showModal={showModal} setShowModal={setShowModal} />
       <h4>Notizie</h4>
       {tutteNotizie &&
         tutteNotizie.reverse().map((post, i) => {
@@ -45,7 +80,7 @@ const Notizie = () => {
                       }}
                     />
                     {"   "}
-                    Nome
+                    {post.user.name} {post.user.surname}
                   </Card.Title>
 
                   <Card.Body>
