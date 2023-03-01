@@ -15,7 +15,7 @@ const postReducer = (state = initialState, action) => {
     case LISTA_COMMENTI:
       return {
         ...state,
-        commenti: action.payload,
+        commenti: action.payload.reverse(),
       };
     case COMMENTI_FILTRATI_UTENTE:
       return {

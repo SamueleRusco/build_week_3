@@ -21,35 +21,44 @@ const NewPost = ({ showModal, setShowModal }) => {
   };
 
   return (
-    <Modal
-      show={showModal}
-      onHide={() => setShowModal(false)}
-      dialogClassName="modal-90w"
-    >
-      <Form>
-        <Form.Group>
-          <FormLabel>scrivi il tuo post</FormLabel>
-          <FormControl
-            onChange={(e) => setText(e.target.value)}
-            value={text}
-            type="input"
-            placeholder="scrivi qualcosa"
-          ></FormControl>
-        </Form.Group>
-        <Button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            postExperienceFetch();
-          }}
-        >
-          post
-        </Button>
-        <Button onClick={(e) => setShowModal(false)} variant="danger">
-          Annulla
-        </Button>
-      </Form>
-    </Modal>
+    <>
+      {/* <Button
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        Show Modal
+      </Button> */}
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        dialogClassName="modal-90w"
+      >
+        <Form>
+          <Form.Group>
+            <FormLabel>scrivi il tuo post</FormLabel>
+            <FormControl
+              onChange={(e) => setText(e.target.value)}
+              value={text}
+              type="input"
+              placeholder="scrivi qualcosa"
+            ></FormControl>
+          </Form.Group>
+          <Button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              postExperienceFetch();
+            }}
+          >
+            post
+          </Button>
+          <Button onClick={(e) => setShowModal(false)} variant="danger">
+            Annulla
+          </Button>
+        </Form>
+      </Modal>
+    </>
   );
 };
 

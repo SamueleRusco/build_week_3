@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-
+import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
   commentiFiltratiAction,
@@ -15,11 +15,13 @@ const Notizie = () => {
   const dispatch = useDispatch();
   const [tutteNotizie, setTutteNotizie] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [editPost, setEditPost] = useState(false);
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
   useEffect(() => {
     fetchNotizie();
+    console.log(tutteNotizie);
   }, []);
 
   const filtro = (element) => element.user._id === idUtilizzatore;
@@ -60,8 +62,8 @@ const Notizie = () => {
       </Button>
       <NewPost showModal={showModal} setShowModal={setShowModal} />
       <h4>Notizie</h4>
-      {tutteNotizie &&
-        tutteNotizie.reverse().map((post, i) => {
+      {listaCommenti &&
+        listaCommenti?.map((post, i) => {
           return (
             i < 10 && (
               <Card key={i} className="my-2 py-3 text-start">
@@ -92,7 +94,21 @@ const Notizie = () => {
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
                   {post.user._id === "63fc659cf193e60013807f4d" ? (
-                    <Button>eccomi</Button>
+                    <>
+                      <Button
+                        onClick={() => {
+                          setEditPost(true);
+                          console.log("fejafwea", post._id);
+                        }}
+                      >
+                        eccomi
+                      </Button>
+                      <MyEditPostComponent
+                        editPost={editPost}
+                        setEditPost={setEditPost}
+                        postId={post?._id}
+                      />
+                    </>
                   ) : (
                     ""
                   )}
