@@ -14,6 +14,10 @@ const MyExperience = () => {
   const baseEndpoint =
     "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
 
+  useEffect(() => {
+    getExperienceFetch();
+  }, []);
+
   const getExperienceFetch = async () => {
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
@@ -30,13 +34,11 @@ const MyExperience = () => {
       // }),
     });
     let data = await response.json();
+
     setExperiences(data);
+
     console.log("sono get", experiences);
   };
-
-  useEffect(() => {
-    getExperienceFetch();
-  }, []);
 
   return (
     <>
@@ -66,7 +68,11 @@ const MyExperience = () => {
         >
           <Pencil />
         </Button>
-        <MyExperienceForm showModal={showModal} setShowModal={setShowModal} />
+        <MyExperienceForm
+          showModal={showModal}
+          setShowModal={setShowModal}
+          refresh={getExperienceFetch}
+        />
         {experiences &&
           experiences?.map((element, index) => {
             console.log("sono id", element._id);

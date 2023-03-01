@@ -3,7 +3,8 @@ import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { Plus, PlusLg, XLg } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
-const MyExperienceForm = ({ showModal, setShowModal }) => {
+const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
+  const [refreshed, setRefreshed] = useState(false);
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -33,6 +34,10 @@ const MyExperienceForm = ({ showModal, setShowModal }) => {
     let data = await response.json();
     console.log("sono post", data);
   };
+
+  useEffect(() => {
+    refresh();
+  }, [refreshed]);
 
   return (
     <>
@@ -149,6 +154,7 @@ const MyExperienceForm = ({ showModal, setShowModal }) => {
               } else {
                 postExperienceFetch();
                 setShowModal(false);
+                setRefreshed(!refreshed);
               }
             }}
           >
