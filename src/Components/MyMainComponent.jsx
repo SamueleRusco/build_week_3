@@ -15,8 +15,8 @@ const MyMainComponent = () => {
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyExperience />
-          <Notizie />
           <NewPost />
+          <Notizie />
 
           <MyAnalisisComponent />
           <MyForm />
