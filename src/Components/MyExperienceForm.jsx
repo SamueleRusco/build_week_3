@@ -137,7 +137,14 @@ const MyExperienceForm = ({ showModal, setShowModal }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              if (role === "") {
+              if (
+                role === "" ||
+                company === "" ||
+                startDate === "" ||
+                endDate === "" ||
+                description === "" ||
+                area === ""
+              ) {
                 alert("per favore compila tutti i campi prima di proseguire");
               } else {
                 postExperienceFetch();
