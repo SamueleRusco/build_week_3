@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 
-const MyForm = () => {
+const MyForm = ({ showModal, setShowModal }) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +32,7 @@ const MyForm = () => {
         surname: surname,
         email: email,
         username: username,
-        // title: title,
+        title: title,
         bio: bio,
         area: area,
       }),
@@ -68,71 +68,85 @@ const MyForm = () => {
   // };
 
   return (
-    <Form>
-      {/* <Form> */}
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          type="input"
-          placeholder="Enter Name"
-        />
-
-        <Form.Label>Surname</Form.Label>
-        <Form.Control
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-          type="input"
-          placeholder="Enter Surname"
-        />
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="input"
-          placeholder="Enter email"
-        />
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          type="input"
-          placeholder="Enter Username"
-        />
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          type="input"
-          placeholder="enter position"
-        />
-        <Form.Label>Bio</Form.Label>
-        <Form.Control
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-          type="input"
-          placeholder="Enter short Bio"
-        />
-        <Form.Label>Area</Form.Label>
-        <Form.Control
-          value={area}
-          onChange={(e) => setArea(e.target.value)}
-          type="input"
-          placeholder="Enter Area"
-        />
-      </Form.Group>
-      <Button
-        onClick={(e) => {
-          e.preventDefault();
-          putProfileFetch();
-        }}
-        variant="primary"
-        type="submit"
+    <>
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        dialogClassName="modal-90w"
       >
-        Submit
-      </Button>
-    </Form>
+        <Form>
+          <Button
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            X
+          </Button>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              type="input"
+              placeholder="Enter Name"
+            />
+
+            <Form.Label>Surname</Form.Label>
+            <Form.Control
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              type="input"
+              placeholder="Enter Surname"
+            />
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Enter email"
+            />
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="input"
+              placeholder="Enter Username"
+            />
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="input"
+              placeholder="enter position"
+            />
+            <Form.Label>Bio</Form.Label>
+            <Form.Control
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              type="input"
+              placeholder="Enter short Bio"
+            />
+            <Form.Label>Area</Form.Label>
+            <Form.Control
+              value={area}
+              onChange={(e) => setArea(e.target.value)}
+              type="input"
+              placeholder="Enter Area"
+            />
+          </Form.Group>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              putProfileFetch();
+            }}
+            variant="primary"
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+      </Modal>
+    </>
   );
 };
 

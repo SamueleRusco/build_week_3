@@ -14,7 +14,7 @@ import {
 import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
 import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
-
+import MyForm from "./MyForm";
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
   const allProfiles = useSelector((state) => state.allProfiles.result);
@@ -23,7 +23,10 @@ const MyUserDetailsCard = () => {
   useEffect(() => {
     dispatch(getProfileAction());
   }, []);
+
   const [sliderCounter, setSliderCounter] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Card style={{ borderRadius: "10px" }}>
       <div className="position-relative">
@@ -94,9 +97,13 @@ const MyUserDetailsCard = () => {
             color: "grey",
             border: "none",
           }}
+          onClick={() => {
+            setShowModal(true);
+          }}
         >
           <Pencil />
         </Button>
+        <MyForm showModal={showModal} setShowModal={setShowModal} />
         <div>
           <MyButtonComponent
             text="Disponibile per"
