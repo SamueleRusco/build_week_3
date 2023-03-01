@@ -11,6 +11,15 @@ const MyPeopleCouldKnowComponent = () => {
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
 
+  const randomizeContacts = (arr) => {
+    let randomizedArr = [];
+    while (randomizedArr.length < 6) {
+      let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
+      randomizedArr.push(randomGuy);
+    }
+    return randomizedArr;
+  };
+
   useEffect(() => {
     dispatch(getAllProfileFetchAction());
   }, []);
@@ -31,7 +40,7 @@ const MyPeopleCouldKnowComponent = () => {
           </Row>
           <Row>
             {peopleArray &&
-              peopleArray?.map((element, index) => {
+              randomizeContacts(peopleArray).map((element, index) => {
                 return (
                   index < 6 && (
                     <Row

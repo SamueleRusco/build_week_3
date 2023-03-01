@@ -2,11 +2,23 @@ import { Card, Row, Col, Button } from "react-bootstrap";
 import { ArrowDown, ArrowRight, ArrowUp } from "react-bootstrap-icons";
 import { useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
+import { useSelector } from "react-redux";
 
 const MyGroupAdvisorComponent = () => {
   const [visible, setVisible] = useState(true);
   const [show, setShow] = useState(false);
   const usersList = [1, 2, 3, 4, 5];
+  const peopleArray = useSelector((state) => state.allProfiles.result);
+
+  const randomizeContacts = (arr) => {
+    let randomizedArr = [];
+    while (randomizedArr.length < 6) {
+      let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
+      randomizedArr.push(randomGuy);
+    }
+    return randomizedArr;
+  };
+
   return (
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
@@ -22,39 +34,11 @@ const MyGroupAdvisorComponent = () => {
             </Col>
           </Row>
           <Row>
-            {usersList.map((element, index) => {
-              return (
-                <>
-                  {show ? (
-                    <Row
-                      className="py-3"
-                      style={{
-                        borderTop: index > 0 && "1px solid lightgrey",
-                      }}
-                    >
-                      <Col xs={3}>
-                        <img
-                          src="https://placekitten.com/200"
-                          alt=""
-                          style={{ width: "48px" }}
-                        />
-                      </Col>
-                      <Col xs={9}>
-                        <p className="mb-0" style={{ fontWeight: "600" }}>
-                          Francesco Colapinto
-                        </p>
-                        <p style={{ fontSize: "0.9rem" }}>
-                          Analist consultant - Junior developer
-                        </p>
-                        <MyButtonComponent
-                          text={"collegati"}
-                          textColor={"dimgrey"}
-                          borderColor={"dimgrey"}
-                        />
-                      </Col>
-                    </Row>
-                  ) : (
-                    index < 2 && (
+            {peopleArray &&
+              randomizeContacts(peopleArray).map((element, index) => {
+                return (
+                  <>
+                    {index < 6 && show ? (
                       <Row
                         className="py-3"
                         style={{
@@ -63,30 +47,57 @@ const MyGroupAdvisorComponent = () => {
                       >
                         <Col xs={3}>
                           <img
-                            src="https://placekitten.com/200"
+                            src={element.image || ""}
                             alt=""
                             style={{ width: "48px" }}
                           />
                         </Col>
                         <Col xs={9}>
                           <p className="mb-0" style={{ fontWeight: "600" }}>
-                            Francesco Colapinto
+                            {element.name} {element.surname}
                           </p>
-                          <p style={{ fontSize: "0.9rem" }}>
-                            Analist consultant - Junior developer
-                          </p>
+                          <p style={{ fontSize: "0.9rem" }}>{element.title}</p>
                           <MyButtonComponent
-                            text={"partecipa"}
+                            text={"collegati"}
                             textColor={"dimgrey"}
                             borderColor={"dimgrey"}
                           />
                         </Col>
                       </Row>
-                    )
-                  )}
-                </>
-              );
-            })}
+                    ) : (
+                      index < 2 && (
+                        <Row
+                          className="py-3"
+                          style={{
+                            borderTop: index > 0 && "1px solid lightgrey",
+                          }}
+                        >
+                          <Col xs={3}>
+                            <img
+                              src={element.image || ""}
+                              alt=""
+                              style={{ width: "48px" }}
+                            />
+                          </Col>
+                          <Col xs={9}>
+                            <p className="mb-0" style={{ fontWeight: "600" }}>
+                              {element.name} {element.surname}
+                            </p>
+                            <p style={{ fontSize: "0.9rem" }}>
+                              {element.title}
+                            </p>
+                            <MyButtonComponent
+                              text={"partecipa"}
+                              textColor={"dimgrey"}
+                              borderColor={"dimgrey"}
+                            />
+                          </Col>
+                        </Row>
+                      )
+                    )}
+                  </>
+                );
+              })}
             <div
               className="text-center pt-2"
               style={{
