@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import { EyeFill, XLg } from "react-bootstrap-icons";
 
 const Notizie = () => {
   const [tutteNotizie, setTutteNotizie] = useState();
@@ -19,7 +20,7 @@ const Notizie = () => {
         headers: { Authorization: key },
       });
       const datiNotizie = await result.json();
-      console.log(datiNotizie);
+
       setTutteNotizie(datiNotizie);
     } catch (error) {
       console.log(error);
@@ -28,10 +29,42 @@ const Notizie = () => {
 
   return (
     <>
-      <div>hello world</div>
+      <h4>Notizie</h4>
       {tutteNotizie &&
-        tutteNotizie.map((post, i) => {
-          return i < 1 && <Card></Card>;
+        tutteNotizie.reverse().map((post, i) => {
+          return (
+            i < 10 && (
+              <Card key={i} className="my-2 py-3 text-start">
+                <Card.Body>
+                  <Card.Title style={{ fontSize: "1.2rem" }}>
+                    <img
+                      src={post.user.image}
+                      alt="propic"
+                      style={{
+                        width: "25px",
+                      }}
+                    />
+                    {"   "}
+                    Nome
+                  </Card.Title>
+
+                  <Card.Body>
+                    <Row>
+                      <Col xs={12}>
+                        <p>{post.text}</p>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                  <Card.Subtitle
+                    className=" text-muted"
+                    style={{ fontWeight: "400" }}
+                  >
+                    pubblicato il {post?.createdAt?.substring(0, 10)}
+                  </Card.Subtitle>
+                </Card.Body>
+              </Card>
+            )
+          );
         })}
     </>
   );

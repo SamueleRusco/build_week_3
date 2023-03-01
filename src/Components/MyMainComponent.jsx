@@ -5,6 +5,8 @@ import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyForm from "./MyForm";
 import MyExperience from "./MyExperience";
 import MyExperienceForm from "./MyExperienceForm";
+import Notizie from "./Notizie";
+import NewPost from "./NewPost";
 const MyMainComponent = () => {
   return (
     <Container>
@@ -13,6 +15,8 @@ const MyMainComponent = () => {
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyExperience />
+          <Notizie />
+          <NewPost />
 
           <MyAnalisisComponent />
           <MyForm />
