@@ -49,16 +49,16 @@ const MyPeopleCouldKnowComponent = () => {
                     >
                       <Col xs={3}>
                         <img
-                          src={element.image}
+                          src={element?.image}
                           alt=""
                           style={{ width: "48px", borderRadius: "50%" }}
                         />
                       </Col>
                       <Col xs={9}>
                         <p className="mb-0" style={{ fontWeight: "600" }}>
-                          {element.name} {element.surname}
+                          {element?.name} {element?.surname}
                         </p>
-                        <p style={{ fontSize: "0.9rem" }}>{element.title}</p>
+                        <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
                         <MyButtonComponent
                           text={"collegati"}
                           textColor={"dimgrey"}
