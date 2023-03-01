@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { getProfileAction } from "../Redux/Actions";
 
 const MyForm = ({ showModal, setShowModal }) => {
+  const [refreshed, setRefreshed] = useState(false);
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -42,7 +46,10 @@ const MyForm = ({ showModal, setShowModal }) => {
     console.log("sono put", data);
   };
 
-  useEffect(() => {}, [name]);
+  useEffect(() => {
+    setRefreshed(false);
+    dispatch(getProfileAction());
+  }, [refreshed]);
 
   // {
   //   _id: "5fc4ae95b708c200175de88d",
@@ -75,17 +82,19 @@ const MyForm = ({ showModal, setShowModal }) => {
         onHide={() => setShowModal(false)}
         dialogClassName="modal-90w"
       >
-        <Form>
-          <Button
-            onClick={() => {
-              setShowModal(false);
-            }}
+        <Form className="p-3">
+          <div
+            className="text-center py-3 px-3 mb-4"
+            style={{ borderBottom: "1px solid lightgrey" }}
           >
-            X
-          </Button>
+            <h5 style={{ fontSize: "1rem" }}>
+              Inserisci i dati che vuoi modificare
+            </h5>
+          </div>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              className="mb-4"
               onChange={(e) => setName(e.target.value)}
               value={name}
               type="input"
@@ -94,6 +103,7 @@ const MyForm = ({ showModal, setShowModal }) => {
 
             <Form.Label>Surname</Form.Label>
             <Form.Control
+              className="mb-4"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
               type="input"
@@ -101,6 +111,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
             <Form.Label>Email</Form.Label>
             <Form.Control
+              className="mb-4"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -108,6 +119,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
             <Form.Label>Username</Form.Label>
             <Form.Control
+              className="mb-4"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="input"
@@ -115,6 +127,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
             <Form.Label>Title</Form.Label>
             <Form.Control
+              className="mb-4"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               type="input"
@@ -122,6 +135,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
             <Form.Label>Bio</Form.Label>
             <Form.Control
+              className="mb-4"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               type="input"
@@ -129,6 +143,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
             <Form.Label>Area</Form.Label>
             <Form.Control
+              className="mb-5"
               value={area}
               onChange={(e) => setArea(e.target.value)}
               type="input"
@@ -136,14 +151,23 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
           </Form.Group>
           <Button
+            className="me-2"
             onClick={(e) => {
               e.preventDefault();
               putProfileFetch();
+              setRefreshed(true);
             }}
             variant="primary"
             type="submit"
           >
-            Submit
+            Invia
+          </Button>
+          <Button
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            Chiudi
           </Button>
         </Form>
       </Modal>
