@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
+
 const MyPosts = () => {
   const [tutteNotizie, setTutteNotizie] = useState();
   const [showModal, setShowModal] = useState(false);
+  const loginId = useSelector((state) => state.posts.loginId);
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
@@ -37,44 +40,42 @@ const MyPosts = () => {
       <NewPost showModal={showModal} setShowModal={setShowModal} />
       <h4>Notizie</h4>
       {tutteNotizie &&
-        tutteNotizie
-          .reverse()
-          .filter()
-          .map((post, i) => {
-            return (
-              i < 10 && (
-                <Card key={i} className="my-2 py-3 text-start">
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "1.2rem" }}>
-                      <img
-                        src={post.user.image}
-                        alt="propic"
-                        style={{
-                          width: "25px",
-                        }}
-                      />
-                      {"   "}
-                      {post.user.name} {post.user.surname}
-                    </Card.Title>
+        tutteNotizie.reverse().map((post, i) => {
+          console.log("esiste post?", post);
+          return (
+            i < 10 && (
+              <Card key={i} className="my-2 py-3 text-start">
+                <Card.Body>
+                  <Card.Title style={{ fontSize: "1.2rem" }}>
+                    <img
+                      src={post.user.image}
+                      alt="propic"
+                      style={{
+                        width: "25px",
+                      }}
+                    />
+                    {"   "}
+                    {post.user.name} {post.user.surname}
+                  </Card.Title>
 
-                    <Card.Body>
-                      <Row>
-                        <Col xs={12}>
-                          <p>{post.text}</p>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                    <Card.Subtitle
-                      className=" text-muted"
-                      style={{ fontWeight: "400" }}
-                    >
-                      pubblicato il {post?.createdAt?.substring(0, 10)}
-                    </Card.Subtitle>
+                  <Card.Body>
+                    <Row>
+                      <Col xs={12}>
+                        <p>{post.text}</p>
+                      </Col>
+                    </Row>
                   </Card.Body>
-                </Card>
-              )
-            );
-          })}
+                  <Card.Subtitle
+                    className=" text-muted"
+                    style={{ fontWeight: "400" }}
+                  >
+                    pubblicato il {post?.createdAt?.substring(0, 10)}
+                  </Card.Subtitle>
+                </Card.Body>
+              </Card>
+            )
+          );
+        })}
     </>
   );
 };
