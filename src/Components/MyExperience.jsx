@@ -14,7 +14,7 @@ const MyExperience = () => {
             className="mb-2 text-muted"
             style={{ fontWeight: "400" }}
           ></Card.Subtitle>
-          <div>inserire qui esperienze</div>
+
           {/*inserire qui esperienze */}
         </Card.Body>
         <MyExperienceForm />
