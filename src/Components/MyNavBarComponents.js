@@ -3,15 +3,17 @@ import styled from "styled-components";
 
 const MyNavBarComponents = (props) => {
   return (
-    <Container>
+    <MyContainer>
       <Content>
-        <Link to="/">
-          <Logo>
-            <a href="/home">
-              <img src="/images/home-logo.svg" alt="" />
-            </a>
-          </Logo>
-        </Link>
+        <div>
+          <Link to={"/news"}>
+            <Logo>
+              <span>
+                <img src="/images/home-logo.svg" alt="" />
+              </span>
+            </Logo>
+          </Link>
+        </div>
         <Search>
           <div>
             <input type="text" placeholder="Search" />
@@ -22,12 +24,14 @@ const MyNavBarComponents = (props) => {
         </Search>
         <Nav>
           <NavListWrap>
-            <NavList className="active">
-              <a>
-                <img src="/images/nav-home.svg" alt="" />
-                <span>Home</span>
-              </a>
-            </NavList>
+            <Link to={"/news"} style={{ textDecoration: "none" }}>
+              <NavList className="active">
+                <a>
+                  <img src="/images/nav-home.svg" alt="" />
+                  <span>Home</span>
+                </a>
+              </NavList>
+            </Link>
 
             <NavList>
               <a>
@@ -58,13 +62,15 @@ const MyNavBarComponents = (props) => {
             </NavList>
 
             <User>
-              <a>
-                <img src="/images/user.svg" alt="" />
-                <span>
-                  Me
-                  <img src="/images/down-icon.svg" alt="" />
-                </span>
-              </a>
+              <Link to={"/"}>
+                <a>
+                  <img src="/images/user.svg" alt="" />
+                  <span>
+                    Me
+                    <img src="/images/down-icon.svg" alt="" />
+                  </span>
+                </a>
+              </Link>
 
               <SignOut>
                 <a>Sign Out</a>
@@ -83,11 +89,11 @@ const MyNavBarComponents = (props) => {
           </NavListWrap>
         </Nav>
       </Content>
-    </Container>
+    </MyContainer>
   );
 };
 
-const Container = styled.div`
+const MyContainer = styled.div`
   background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   left: 0;

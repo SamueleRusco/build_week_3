@@ -40,8 +40,8 @@ const MyExperience = () => {
 
   return (
     <>
-      <Card className="my-2 py-3 px-5 text-start position-relative">
-        <Card.Body>
+      <Card className="my-2 py-3 px-3 text-start position-relative">
+        <Card.Body className="px-0">
           <Card.Title style={{ fontSize: "1.2rem" }}>{"Esperienze"}</Card.Title>
           <Card.Subtitle
             className="mb-2 text-muted"
@@ -54,7 +54,7 @@ const MyExperience = () => {
           className="position-absolute"
           style={{
             top: "3%",
-            right: "3%",
+            right: "2%",
             fontSize: "1.4rem",
             backgroundColor: "white",
             color: "grey",
@@ -88,10 +88,16 @@ const MyExperience = () => {
                     {element.role} {element.company}
                   </p>
                   <p style={{ fontSize: "0.9rem" }}>{element.description}</p>
-                  <p style={{ fontSize: "0.9rem" }}>{element.startDate}</p>
-                  <p style={{ fontSize: "0.9rem" }}>{element.endDate}</p>
+                  <p style={{ fontSize: "0.9rem" }}>
+                    {element.startDate &&
+                      "Data di inizio: " + element?.startDate?.substring(0, 10)}
+                  </p>
+                  <p style={{ fontSize: "0.9rem" }}>
+                    {element.endDate &&
+                      "Data di fine: " + element?.endDate?.substring(0, 10)}
+                  </p>
                 </Col>
-                <Col xs={2}>
+                <Col xs={2} style={{ textAlign: "end" }}>
                   {/* <Button
                     onClick={() => {
                       setEditModalOn(true);

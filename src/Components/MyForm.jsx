@@ -36,6 +36,7 @@ const MyForm = ({ showModal, setShowModal }) => {
         bio: bio,
         area: area,
       }),
+      // body: JSON.stringify(user)
     });
     let data = await response.json();
     console.log("sono put", data);

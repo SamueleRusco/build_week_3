@@ -1,5 +1,6 @@
 import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { Pencil, PencilFill } from "react-bootstrap-icons";
 
 const MyEditExperiencesModal = ({ id }) => {
   const [editModalOn, setEditModalOn] = useState(false);
@@ -44,11 +45,12 @@ const MyEditExperiencesModal = ({ id }) => {
   return (
     <>
       <Button
+        style={{ backgroundColor: "white", color: "grey", border: "none" }}
         onClick={() => {
           setEditModalOn(true);
         }}
       >
-        Edit
+        <PencilFill />
       </Button>
       <Modal
         show={editModalOn}
