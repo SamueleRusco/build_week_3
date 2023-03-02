@@ -22,10 +22,9 @@ const Notizie = () => {
 
   useEffect(() => {
     fetchNotizie();
-    console.log(tutteNotizie);
   }, []);
 
-  const filtro = (element) => element.user._id === idUtilizzatore;
+  // const filtro = (element) => element.user._id === idUtilizzatore;
 
   const fetchNotizie = async () => {
     let key =
@@ -38,8 +37,7 @@ const Notizie = () => {
       });
 
       const datiNotizie = await result.json();
-      console.log("GET", datiNotizie);
-      setTutteNotizie(datiNotizie);
+      // setTutteNotizie(datiNotizie);
       dispatch(
         listaCommentiAction(
           datiNotizie.filter(
