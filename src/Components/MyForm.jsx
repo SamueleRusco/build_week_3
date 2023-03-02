@@ -154,9 +154,21 @@ const MyForm = ({ showModal, setShowModal }) => {
             className="me-2"
             onClick={(e) => {
               e.preventDefault();
-              putProfileFetch();
-              setRefreshed(true);
-              setShowModal(false);
+              if (
+                name === "" ||
+                surname ||
+                email === "" ||
+                username === "" ||
+                bio === "" ||
+                title === "" ||
+                area === ""
+              ) {
+                alert("Per favore compila tutti i campi");
+              } else {
+                putProfileFetch();
+                setRefreshed(true);
+                setShowModal(false);
+              }
             }}
             variant="primary"
             type="submit"
