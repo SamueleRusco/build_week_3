@@ -12,6 +12,8 @@ import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyForm from "./MyForm";
 import MyExperience from "./MyExperience";
 import MyExperienceForm from "./MyExperienceForm";
+import Notizie from "./Notizie";
+import NewPost from "./NewPost";
 const MyMainComponent = () => {
   return (
     <Container className="py-4" style={{ marginTop: "80px" }}>
