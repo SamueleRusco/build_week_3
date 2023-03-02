@@ -27,19 +27,46 @@ const MyUserDetailsCard = () => {
 
   return (
     <Card style={{ borderRadius: "10px" }}>
-      <div className="position-relative">
+      <div style={{ position: "relative" }}>
         <div
           variant="top"
           style={{
-            height: "160px",
+            height: "260px",
             width: "100%",
-            backgroundImage: "url(https://placekitten.com/100)",
+            backgroundImage: "url(https://placekitten.com/200)",
             backgroundSize: "cover",
             borderTopLeftRadius: "10px",
             borderTopRightRadius: "10px",
+            position: "relative",
           }}
-        ></div>
-        <Card.Img
+        >
+          <div style={{ position: "absolute", bottom: "-12%" }}>
+            <div
+              style={{
+                height: "150px",
+                width: "150px",
+                borderRadius: "50%",
+                border: "1px solid grey",
+                overflow: "hidden",
+                position: "relative",
+
+                marginLeft: "20px",
+              }}
+            >
+              <img
+                src={profile.image}
+                style={{
+                  width: "170px",
+                  position: "absolute",
+                  right: "-15%",
+                  top: "-15%",
+                }}
+              ></img>
+            </div>
+          </div>
+        </div>
+
+        {/* <Card.Img
           className="p-5 position-absolute"
           src={profile.image}
           style={{
@@ -48,10 +75,10 @@ const MyUserDetailsCard = () => {
             width: "150px",
             left: "4%",
             bottom: "-25%",
-            backgroundColor: "grey",
+            backgroundColor: "green",
             border: "4px solid white",
           }}
-        ></Card.Img>
+        ></Card.Img> */}
         <Button
           className="position-absolute position-relative
           pe-2"
