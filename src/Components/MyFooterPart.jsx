@@ -57,14 +57,14 @@ const MyFooterPart = () => {
             </div>
             <div id="footer-settings" className="mr-3">
               <Col className="d-flex flex-row">
-                <i class="bi bi-question-circle-fill mx-0 mt-2"></i>
+                <i className="bi bi-question-circle-fill mx-0 mt-2"></i>
                 <div className="ml-2">
                   <a href=""> Domande? </a>
                   <p> Visita il nostro centro assistenza </p>
                 </div>
               </Col>
               <Col className="d-flex flex-row">
-                <i class="bi bi-gear-fill mx-0 mt-2"></i>
+                <i className="bi bi-gear-fill mx-0 mt-2"></i>
                 <div className="ml-2">
                   <a href=""> Gestisci il tuo account e la tua privacy </a>
                   <p> Vai alle impostazioni </p>

@@ -5,7 +5,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import profileReducer from "../Reducers/profileReducer";
 import allProfileReducer from "../Reducers/allProfilesReducer";
 import postReducer from "../Reducers/postReducer";
-
+import imgReducer from "../Reducers/profileImgReducer";
 const persistConfig = {
   key: "root ",
   storage,
@@ -20,6 +20,7 @@ const allReducers = combineReducers({
   profiles: profileReducer,
   posts: postReducer,
   allProfiles: allProfileReducer,
+  img: imgReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, allReducers);

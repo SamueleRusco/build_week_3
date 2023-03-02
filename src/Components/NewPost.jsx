@@ -3,6 +3,7 @@ import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
 
 const NewPost = ({ showModal, setShowModal }) => {
   const [text, setText] = useState("");
+  const [fd, setFd] = useState(new FormData());
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
   const postExperienceFetch = async () => {
