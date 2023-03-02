@@ -45,13 +45,31 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   //   };
   return (
     <>
-      <Button
+      {/* <Button
         onClick={() => {
           setEditPost(true);
           console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA", postId);
         }}
       >
         Send
+      </Button> */}
+      <Button
+        className="me-2"
+        type="submit"
+        onClick={(e) => {
+          // postExperienceFetch();
+          setEditPost(true);
+        }}
+      >
+        post
+      </Button>
+      <Button
+        onClick={() => {
+          deleteExperienceFetch();
+          setEditPost(false);
+        }}
+      >
+        Elimina post
       </Button>
       <Modal
         show={editPost}
@@ -83,21 +101,6 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
           >
             post
           </Button>
-          <Button
-            onClick={() => {
-              deleteExperienceFetch();
-              setEditPost(false);
-            }}
-          >
-            Elimina post
-          </Button>
-          {/* <Button
-            onClick={() => {
-              getExperienceFetch();
-            }}
-          >
-            GET
-          </Button> */}
           <Button
             onClick={(e) => {
               setEditPost(false);
