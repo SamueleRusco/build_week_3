@@ -177,16 +177,8 @@ const Notizie = () => {
 
                   <Card.Body>
                     <Row>
-                      <Col xs={12} className="position-realtive">
-                        <p>{post.text}</p>{" "}
-                        <div className="position-absolute">
-                          <p onClick={() => {}}>...</p>
-                          <MyEditPostComponent
-                            editPost={editPost}
-                            setEditPost={setEditPost}
-                            postId={post?._id}
-                          />
-                        </div>
+                      <Col xs={12}>
+                        <p>{post.text}</p>
                       </Col>
                     </Row>
                   </Card.Body>
@@ -206,6 +198,11 @@ const Notizie = () => {
                       >
                         eccomi
                       </Button> */}
+                      <MyEditPostComponent
+                        editPost={editPost}
+                        setEditPost={setEditPost}
+                        postId={post?._id}
+                      />
                     </>
                   ) : (
                     ""
