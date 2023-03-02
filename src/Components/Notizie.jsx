@@ -55,6 +55,7 @@ const Notizie = () => {
   return (
     <>
       <Button
+        style={{ marginTop: "200px" }}
         onClick={(e) => {
           setShowModal(true);
         }}
