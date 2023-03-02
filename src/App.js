@@ -1,22 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
-import MyNavBarComponents from "./components/MyNavBarComponents";
-import Rightside from "./components/Rightside";
-import Main from "./components/Main";
-import Leftside from "./components/Leftside";
-
+import "./App.css";
+import MyNavBarComponents from "./Components/MyNavBarComponents";
+import Rightside from "./Components/Rightside";
+import Main from "./Components/Main";
+import Leftside from "./Components/Leftside";
 
 function App() {
   return (
     <div className="App">
-      <MyNavBarComponents/>
+      <MyNavBarComponents />
       <div className="body">
-  
-      <Leftside/>
-      <Main/>
-      
-      <Rightside/>
-      
+        <Leftside />
+        <Main />
+
+        <Rightside />
       </div>
     </div>
   );

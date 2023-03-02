@@ -42,9 +42,6 @@ const Rightside = (props) => {
           alt=""
         />
       </BannerCard>
-
-
-
     </Container>
   );
 };
