@@ -6,7 +6,7 @@ const Rightside = (props) => {
     <Container>
       <FollowCard>
         <Title>
-          <h2>linkedIn Notizie</h2>
+          <p>LinkedIn Notizie</p>
           <img src="/images/feed-icon.svg" alt="" />
         </Title>
 
@@ -33,7 +33,7 @@ const Rightside = (props) => {
 
         <Recommendation>
           Visualizza altro
-          <img src="/images/right-icon.svg" alt="" />
+          <img src="" alt="" />
         </Recommendation>
       </FollowCard>
       <BannerCard>
@@ -65,12 +65,19 @@ const FollowCard = styled.div`
 `;
 
 const Title = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 16px; 
+  font-weight: 600;
+
   width: 100%;
-  color: rgba(0, 0, 0, 0.6);
+  color: #191919;
+     p{
+margin-bottom: 0;
+margin: 0;
+
+    }
 `;
 
 const FeedList = styled.ul`
@@ -115,11 +122,24 @@ const Avatar = styled.div`
   margin-right: 8px;
 `;
 
-const Recommendation = styled.a`
-  color: #0a66c2;
+const Recommendation = styled.div`
+  color: #6C6C6C;
   display: flex;
   align-items: center;
   font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 7px;
+
+
+
+
+  &:hover {
+    background-color: #EBEBEB;
+
+  }
+
 `;
 
 const BannerCard = styled(FollowCard)`
