@@ -158,13 +158,8 @@ const SearchIcon = styled.div`
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
-  @media (max-width: 768px) {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    background: white;
-    width: 100%;
-  }
+  /* MEDIA QUERY NAVBAR */
+
 `;
 
 const NavListWrap = styled.ul`

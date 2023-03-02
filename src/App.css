@@ -45,6 +45,35 @@
   background-color: #f3f2ef;
 }
 
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.feed-inputContainer {
+  background-color: white;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.feed-input {
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  display: flex;
+  padding: 10px;
+  color: gray;
+  padding-left: 15px;
+}
+
+/*Footer*/
+
+#footer {
+  margin-left: 200px;
+  margin-top: 200px;
+}
+
 .footerRow {
   display: flex;
   flex-wrap: nowrap;
