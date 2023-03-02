@@ -64,7 +64,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
       >
         Send
       </Button> */}
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column bg-warning">
         <Button
           className="mb-2 p-0 bg-transparent text-secondary text-start"
           style={{ border: "none", fontSize: "0.9rem" }}

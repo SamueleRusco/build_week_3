@@ -173,7 +173,7 @@ const Notizie = () => {
                       {"   "}
                       {post.user.name} {post.user.surname}
                     </Card.Title>
-                    {post.user._id === "63fc659cf193e60013807f4d" ? (
+                    {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
                       <div
                         style={{
                           cursor: "pointer",
@@ -210,7 +210,7 @@ const Notizie = () => {
                       </div>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
 
                   <Card.Body style={{ position: "relative" }}>
@@ -218,9 +218,9 @@ const Notizie = () => {
                       <Col xs={12}>
                         <p>{post.text}</p>
                         <div style={{}}>
-                          {post.user._id === "63fc659cf193e60013807f4d" ? (
+                          {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
                             <>
-                              {/* <p
+                              <p
                                 style={{
                                   backgroundColor:
                                     (showSettings && "lightgray") || "white",
@@ -234,11 +234,11 @@ const Notizie = () => {
                                 }}
                               >
                                 ...
-                              </p> */}
+                              </p>
                             </>
                           ) : (
                             ""
-                          )}
+                          )} */}
                         </div>
                       </Col>
                     </Row>
@@ -249,7 +249,7 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
-                  {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
+                  {post.user._id === "63fc659cf193e60013807f4d" ? (
                     <>
                       <MyEditPostComponent
                         editPost={editPost}
@@ -259,7 +259,7 @@ const Notizie = () => {
                     </>
                   ) : (
                     ""
-                  )} */}
+                  )}
                 </Card.Body>
               </Card>
             )
