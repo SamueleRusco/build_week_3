@@ -60,14 +60,50 @@ const Notizie = () => {
 
   return (
     <>
-      <Button
-        // style={{ marginTop: "200px" }}
-        onClick={(e) => {
-          setShowModal(true);
-        }}
-      >
-        Scrivi nuovo Post
-      </Button>
+      <Card>
+        <Card.Body>
+          <Button
+            className="text-start"
+            style={{
+              width: "100%",
+              borderRadius: "30px",
+              border: "1px solid lightgrey",
+              padding: "12px 20px",
+              backgroundColor: "white",
+              color: "dimgray",
+              fontWeight: "600",
+            }}
+            // style={{ marginTop: "200px" }}
+            onClick={(e) => {
+              setShowModal(true);
+            }}
+          >
+            Scrivi nuovo Post
+          </Button>
+          <Card.Body>
+            <div className="hover">
+              <button>
+                <span>Foto</span>
+              </button>
+            </div>
+            <div className="hover">
+              <button>
+                <span>Video</span>
+              </button>
+            </div>
+            <div className="hover">
+              <button>
+                <span>Evento</span>
+              </button>
+            </div>
+            <div className="hover">
+              <button>
+                <span>Scrivi un articolo</span>
+              </button>
+            </div>
+          </Card.Body>
+        </Card.Body>
+      </Card>
       <NewPost showModal={showModal} setShowModal={setShowModal} />
       <h4>Notizie</h4>
       {listaCommenti &&
