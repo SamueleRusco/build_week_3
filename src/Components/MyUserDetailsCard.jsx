@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
 import { useState } from "react";
 import {
-  ArrowLeft,
   ArrowLeftCircleFill,
   ArrowRightCircleFill,
   CameraFill,
@@ -13,11 +12,10 @@ import {
 } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
-import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
+
 import MyForm from "./MyForm";
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
-  const allProfiles = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +39,7 @@ const MyUserDetailsCard = () => {
             borderTopRightRadius: "10px",
           }}
         ></div>
-        <Button
+        <Card.Img
           className="p-5 position-absolute"
           src={profile.image}
           style={{
@@ -53,7 +51,7 @@ const MyUserDetailsCard = () => {
             backgroundColor: "grey",
             border: "4px solid white",
           }}
-        />
+        ></Card.Img>
         <Button
           className="position-absolute position-relative
           pe-2"

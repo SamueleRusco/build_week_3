@@ -18,19 +18,16 @@ import {
 } from "react-bootstrap-icons";
 
 const Notizie = () => {
-  const idUtilizzatore = useSelector((state) => state.posts.loginId);
   const listaCommenti = useSelector((state) => state.posts.commenti);
-  const commentiFiltrati = useSelector((state) => state.posts.commentiFiltrati);
   const dispatch = useDispatch();
-  const [tutteNotizie, setTutteNotizie] = useState();
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
-
   useEffect(() => {
     fetchNotizie();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // const filtro = (element) => element.user._id === idUtilizzatore;
@@ -38,7 +35,6 @@ const Notizie = () => {
   const fetchNotizie = async () => {
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-
     try {
       const result = await fetch(url, {
         method: "GET",
@@ -46,7 +42,7 @@ const Notizie = () => {
       });
 
       const datiNotizie = await result.json();
-      // setTutteNotizie(datiNotizie);
+
       dispatch(
         listaCommentiAction(
           datiNotizie.filter(

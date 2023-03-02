@@ -1,9 +1,12 @@
 import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { Pencil, PencilFill } from "react-bootstrap-icons";
-import { useFetcher } from "react-router-dom";
-
+import { PencilFill } from "react-bootstrap-icons";
+import { putExperienceImg } from "../Redux/Actions/putProfileImg";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 const MyEditExperiencesModal = ({ id, refresh }) => {
+  const dispatch = useDispatch();
+  const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
   const [editModalOn, setEditModalOn] = useState(false);
   const [role, setRole] = useState("");
@@ -46,6 +49,14 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
     setRefreshed(false);
   }, [refreshed]);
 
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
+      prev.delete("experience"); //ricordatevi di svuotare il FormData prima :)
+      prev.append("experience", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      return prev;
+    });
+  };
   return (
     <>
       <Button
@@ -147,6 +158,15 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
               }}
             />
           </Form.Group>
+          <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Aggiungi Immagine all`esperienza</Form.Label>
+            <Form.Control
+              className="mb-5"
+              type="file"
+              placeholder="Enter Area"
+              onChange={handleFile}
+            />
+          </Form.Group>
           <Button
             className="me-2"
             type="submit"
@@ -156,6 +176,8 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
               editModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
+              dispatch(putExperienceImg(fd, id));
+              console.log("id esperienza " + id);
             }}
           >
             Invia

@@ -3,8 +3,11 @@ import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
-
+import { putProfileImg } from "../Redux/Actions/putProfileImg";
+import { useSelector } from "react-redux";
 const MyForm = ({ showModal, setShowModal }) => {
+  const profileID = useSelector((state) => state.profiles.result._id);
+  const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -40,6 +43,7 @@ const MyForm = ({ showModal, setShowModal }) => {
         bio: bio,
         area: area,
       }),
+
       // body: JSON.stringify(user)
     });
     let data = await response.json();
@@ -51,29 +55,14 @@ const MyForm = ({ showModal, setShowModal }) => {
     dispatch(getProfileAction());
   }, [refreshed]);
 
-  // {
-  //   _id: "5fc4ae95b708c200175de88d",
-  //   name: "Ari",
-  //   surname: "Razab",
-  //   email: "arianrazab@yahoo.com",
-  //   username: "AriiMe",
-  //   title: "Software Developer",
-  //   bio: "yeeeeet",
-  //   area: "Frankfurt am main",
-  //   image:
-  //     "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-  //   createdAt: "2020-11-30T08:34:29.820Z",
-  //   updatedAt: "2020-11-30T08:34:29.820Z",
-  //   __v: 0,
-  // }
-
-  // useEffect(() => {
-  //   putProfileFetch();
-  // }, []);
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   putProfileFetch();
-  // };
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
+      prev.delete("profile"); //ricordatevi di svuotare il FormData prima :)
+      prev.append("profile", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      return prev;
+    });
+  };
 
   return (
     <>
@@ -118,6 +107,7 @@ const MyForm = ({ showModal, setShowModal }) => {
               placeholder="Enter email"
             />
             {/* <Form.Label>Username</Form.Label>
+            {/* <Form.Label>Username</Form.Label>
             <Form.Control
               className="mb-4"
               value={username}
@@ -149,27 +139,34 @@ const MyForm = ({ showModal, setShowModal }) => {
               type="input"
               placeholder="Enter Area"
             />
+            <Form.Label>Modifica la tua immagine profilo</Form.Label>
+            <Form.Control
+              className="mb-5"
+              type="file"
+              placeholder="Enter Area"
+              onChange={handleFile}
+            />
           </Form.Group>
           <Button
             className="me-2"
             onClick={(e) => {
               e.preventDefault();
-              if (
-                false
-                // name === "" ||
-                // surname ||
-                // email === "" ||
-                // username === "" ||
-                // bio === "" ||
-                // title === "" ||
-                // area === ""
+              /* if (
+                name === "" ||
+                surname ||
+                email === "" ||
+                username === "" ||
+                bio === "" ||
+                title === "" ||
+                area === ""
               ) {
                 alert("Per favore compila tutti i campi");
-              } else {
-                putProfileFetch();
-                setRefreshed(true);
-                setShowModal(false);
-              }
+              } else { */
+              putProfileFetch();
+              setRefreshed(true);
+              setShowModal(false);
+              dispatch(putProfileImg(fd, profileID));
+              /* } */
             }}
             variant="primary"
             type="submit"

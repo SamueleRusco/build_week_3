@@ -37,7 +37,7 @@ const MyExperience = () => {
 
     setExperiences(data);
 
-    console.log("sono get", experiences);
+    /* console.log("sono get", experiences); */
   };
 
   return (
@@ -75,20 +75,21 @@ const MyExperience = () => {
         />
         {experiences &&
           experiences?.map((element, index) => {
-            console.log("sono id", element._id);
+            /* console.log("sono id", element._id); */
             return (
               <Row
                 className="py-3"
                 style={{ borderTop: index > 0 && "1px solid lightgrey" }}
                 key={element._id}
               >
-                {/* <Col xs={3}>
+                <Col xs={3}>
                   <img
                     src={element.image || ""}
                     alt=""
                     style={{ width: "48px", borderRadius: "50%" }}
                   />
-                </Col> */}
+                </Col>{" "}
+                */}
                 <Col xs={10} className="position-relative">
                   <p className="mb-0" style={{ fontWeight: "600" }}>
                     {element.role} {element.company}
