@@ -19,6 +19,7 @@ const persistConfig = {
 const allReducers = combineReducers({
   profiles: profileReducer,
   posts: postReducer,
+  allProfiles: allProfileReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, allReducers);
