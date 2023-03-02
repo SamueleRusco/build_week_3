@@ -21,9 +21,6 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         commentiFiltrati: action.payload,
-        // .filter(
-        //   (element) => element.user._id === state.loginId
-        // ),
       };
 
     default:

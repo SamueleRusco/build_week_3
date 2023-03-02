@@ -2,7 +2,6 @@ import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { PencilFill } from "react-bootstrap-icons";
 import { putExperienceImg } from "../Redux/Actions/putProfileImg";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 const MyEditExperiencesModal = ({ id, refresh }) => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { PencilFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
@@ -7,9 +7,8 @@ import { putPostImg } from "../Redux/Actions/putProfileImg";
 const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
+  const dispatch = useDispatch();
   const url = "https://striveschool-api.herokuapp.com/api/posts/" + postId;
-  const urlGet = "https://striveschool-api.herokuapp.com/api/posts/";
-  console.log("sono post id", postId);
 
   const postExperienceFetch = async () => {
     let key =
@@ -18,7 +17,6 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
-        // cambio con quello che mi serve
         text: text,
       }),
     });
@@ -39,38 +37,19 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   const handleFile = (ev) => {
     setFd((prev) => {
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("profile"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("profile", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
+      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
       return prev;
     });
   };
-  //   const getExperienceFetch = async () => {
-  //     let key =
-  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-  //     let response = await fetch(urlGet, {
-  //       method: "GET",
-  //       headers: { Authorization: key },
-  //     });
-  //     let data = await response.json();
-  //     console.log("text", data);
-  //   };
   return (
     <>
-      {/* <Button
-        onClick={() => {
-          setEditPost(true);
-          console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA", postId);
-        }}
-      >
-        Send
-      </Button> */}
       <div className="d-flex flex-column bg-warning">
         <Button
           className="mb-2 p-0 bg-transparent text-secondary text-start"
           style={{ border: "none", fontSize: "0.9rem" }}
           type="submit"
           onClick={(e) => {
-            // postExperienceFetch();
             setEditPost(true);
           }}
         >
@@ -159,6 +138,14 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
               }}
             />
           </Form.Group>
+          <Form.Group className="mb-4" controlId="img">
+            <Form.Text className="text-muted">Carica Immagine</Form.Text>
+            <Form.Control
+              type="file"
+              placeholder="Carica Immagine"
+              onChange={handleFile}
+            />
+          </Form.Group>
 
           <Button
             className="me-2"
@@ -167,7 +154,9 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
               e.preventDefault();
               //   postExperienceFetch();
               postExperienceFetch();
+              dispatch(putPostImg(fd, postId));
               setEditPost(false);
+              console.log(postId);
               // setRefreshed(!refreshed);
             }}
           >

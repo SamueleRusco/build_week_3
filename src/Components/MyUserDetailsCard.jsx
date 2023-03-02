@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Card, Button, Row, Image } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
@@ -28,17 +28,18 @@ const MyUserDetailsCard = () => {
   return (
     <Card style={{ borderRadius: "10px" }}>
       <div className="position-relative">
-        <div
+        <Card.Img
           variant="top"
+          src={profile.image}
           style={{
             height: "160px",
             width: "100%",
-            backgroundImage: "url(https://placekitten.com/100)",
+            /* backgroundImage: "url(" + profile.image + ")", */
             backgroundSize: "cover",
             borderTopLeftRadius: "10px",
             borderTopRightRadius: "10px",
           }}
-        ></div>
+        ></Card.Img>
         <Card.Img
           className="p-5 position-absolute"
           src={profile.image}

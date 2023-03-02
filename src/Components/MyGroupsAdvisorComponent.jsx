@@ -1,5 +1,5 @@
-import { Card, Row, Col, Button } from "react-bootstrap";
-import { ArrowDown, ArrowRight, ArrowUp } from "react-bootstrap-icons";
+import { Card, Row, Col } from "react-bootstrap";
+import { ArrowDown, ArrowUp } from "react-bootstrap-icons";
 import { useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
 import { useSelector } from "react-redux";

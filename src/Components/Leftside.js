@@ -25,8 +25,7 @@ const Leftside = (props) => {
         </Widget>
         <Item>
           <span>
-            <img src="/images/item-icon.svg" alt="" />
-            I miei Elementi
+            <img src="/images/item-icon.svg" alt="" />I miei Elementi
           </span>
         </Item>
       </ArtCard>
@@ -53,9 +52,9 @@ const Leftside = (props) => {
 };
 
 const Container = styled.div`
-  margin-top:80px;
+  margin-top: 80px;
   grid-area: leftside;
-  flex:0.15;
+  flex: 0.15;
 `;
 
 const ArtCard = styled.div`

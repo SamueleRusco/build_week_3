@@ -159,7 +159,6 @@ const Nav = styled.nav`
   margin-left: auto;
   display: block;
   /* MEDIA QUERY NAVBAR */
-
 `;
 
 const NavListWrap = styled.ul`

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,7 +7,6 @@ import {
   listaCommentiAction,
 } from "../Redux/Actions/postReducerActions";
 import NewPost from "./NewPost";
-import { element } from "prop-types";
 import {
   CalendarDate,
   Image,
@@ -243,6 +242,10 @@ const Notizie = () => {
                       </Col>
                     </Row>
                   </Card.Body>
+                  <Card.Img
+                    src={post.image}
+                    style={{ width: "75%", height: "500px" }}
+                  ></Card.Img>
                   <Card.Subtitle
                     className=" text-muted"
                     style={{ fontWeight: "400" }}

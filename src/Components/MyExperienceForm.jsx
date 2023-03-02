@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
-import { Plus, PlusLg, XLg } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 
 const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   const [refreshed, setRefreshed] = useState(false);
+  const [fd, setFd] = useState(new FormData());
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
-  const baseEndpoint =
-    "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
-
-  console.log(role, company, startDate, endDate, description, area);
 
   const postExperienceFetch = async () => {
+    const baseEndpoint =
+      "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
+
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
     let response = await fetch(baseEndpoint, {
@@ -31,10 +29,24 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
         area: area,
       }),
     });
-    let data = await response.json();
-    console.log("sono post", data);
-  };
 
+    let data = await response.json();
+    let experienceId = data._id;
+
+    await fetch(baseEndpoint + "/" + experienceId + "/picture", {
+      method: "POST",
+      headers: { Authorization: key },
+      body: fd,
+    });
+    console.log(baseEndpoint + "/" + experienceId + "/picture");
+  };
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      prev.delete("experience");
+      prev.append("experience", ev.target.files[0]);
+      return prev;
+    });
+  };
   useEffect(() => {
     setRefreshed(false);
     refresh();
@@ -137,6 +149,14 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
+            />
+          </Form.Group>
+          <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Aggiungi un`immagine</Form.Label>
+            <Form.Control
+              onChange={handleFile}
+              type="file"
+              placeholder="Aggiungi un`immagine"
             />
           </Form.Group>
           <Button

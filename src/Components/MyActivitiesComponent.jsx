@@ -1,6 +1,5 @@
 import { Card, Row, Col } from "react-bootstrap";
 import { ArrowRight, EyeFill } from "react-bootstrap-icons";
-import { useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
 
 const MyActivitiesComponent = () => {

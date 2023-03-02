@@ -6,21 +6,36 @@ const NewPost = ({ showModal, setShowModal }) => {
   const [fd, setFd] = useState(new FormData());
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
-  const postExperienceFetch = async () => {
+  const postNewCommentFetch = async () => {
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
     let response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
-        // cambio con quello che mi serve
         text: text,
       }),
     });
     let data = await response.json();
-    console.log("text", text);
-  };
+    let postId = data._id;
 
+    console.log("id del post", postId);
+
+    await fetch(url + postId, {
+      method: "POST",
+      headers: { Authorization: key },
+      body: fd,
+    });
+
+    console.log("immagine gogogoo");
+  };
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
+      return prev;
+    });
+  };
   return (
     <>
       {/* <Button
@@ -45,11 +60,19 @@ const NewPost = ({ showModal, setShowModal }) => {
               placeholder="scrivi qualcosa"
             ></FormControl>
           </Form.Group>
+          <Form.Group>
+            <FormLabel>Aggiungi un`immagine</FormLabel>
+            <FormControl
+              onChange={handleFile}
+              type="file"
+              placeholder="Aggiungi un`immagine"
+            ></FormControl>
+          </Form.Group>
           <Button
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              postExperienceFetch();
+              postNewCommentFetch();
               setShowModal(false);
             }}
           >

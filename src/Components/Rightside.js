@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import MyFooterPart from "./MyFooterPart";
 
 const Rightside = (props) => {
   return (
