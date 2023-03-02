@@ -89,7 +89,7 @@ const MyExperience = () => {
                     style={{ width: "48px", borderRadius: "50%" }}
                   />
                 </Col> */}
-                <Col xs={10}>
+                <Col xs={10} className="position-relative">
                   <p className="mb-0" style={{ fontWeight: "600" }}>
                     {element.role} {element.company}
                   </p>

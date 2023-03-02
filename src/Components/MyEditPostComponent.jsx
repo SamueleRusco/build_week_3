@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
+import { PencilFill } from "react-bootstrap-icons";
 
 const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   const [text, setText] = useState("");
@@ -76,7 +77,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
         onHide={() => setEditPost(false)}
         dialogClassName="modal-90w"
       >
-        <Form>
+        {/* <Form>
           <Form.Group>
             <FormLabel>scrivi il tuo post</FormLabel>
             <FormControl
@@ -109,8 +110,68 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
           >
             Annulla
           </Button>
+        </Form> */}
+        <Button
+          style={{ backgroundColor: "white", color: "grey", border: "none" }}
+          onClick={() => {
+            setEditPost(true);
+          }}
+        >
+          <PencilFill />
+        </Button>
+        {/* <Modal
+        show={editModalOn}
+        onHide={() => setEditModalOn(false)}
+        dialogClassName="modal-90w"
+      > */}
+        <Form className="p-3">
+          <Button
+            onClick={() => {
+              setEditPost(false);
+            }}
+          >
+            Chiudi
+          </Button>
+          <hr />
+          <Form.Group className="mb-4" controlId="formQualifica">
+            <Form.Text className="text-muted">Qualifica</Form.Text>
+            <Form.Control
+              type="text"
+              placeholder="Esempio: Teaching assistant"
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            />
+          </Form.Group>
+
+          <Button
+            className="me-2"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              //   postExperienceFetch();
+              postExperienceFetch();
+              setEditPost(false);
+              // setRefreshed(!refreshed);
+            }}
+          >
+            Invia
+          </Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              //   postExperienceFetch();
+              deleteExperienceFetch();
+              setEditPost(false);
+              // setRefreshed(!refreshed);
+            }}
+          >
+            Elimina
+          </Button>
         </Form>
       </Modal>
+      {/* </Modal> */}
     </>
   );
 };

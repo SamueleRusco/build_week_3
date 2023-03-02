@@ -35,7 +35,7 @@ const MyForm = ({ showModal, setShowModal }) => {
         name: name,
         surname: surname,
         email: email,
-        username: username,
+        // username: username,
         title: title,
         bio: bio,
         area: area,
@@ -117,14 +117,14 @@ const MyForm = ({ showModal, setShowModal }) => {
               type="email"
               placeholder="Enter email"
             />
-            <Form.Label>Username</Form.Label>
+            {/* <Form.Label>Username</Form.Label>
             <Form.Control
               className="mb-4"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="input"
               placeholder="Enter Username"
-            />
+            /> */}
             <Form.Label>Title</Form.Label>
             <Form.Control
               className="mb-4"
@@ -155,13 +155,14 @@ const MyForm = ({ showModal, setShowModal }) => {
             onClick={(e) => {
               e.preventDefault();
               if (
-                name === "" ||
-                surname ||
-                email === "" ||
-                username === "" ||
-                bio === "" ||
-                title === "" ||
-                area === ""
+                false
+                // name === "" ||
+                // surname ||
+                // email === "" ||
+                // username === "" ||
+                // bio === "" ||
+                // title === "" ||
+                // area === ""
               ) {
                 alert("Per favore compila tutti i campi");
               } else {
