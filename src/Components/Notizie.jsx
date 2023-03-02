@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -163,18 +163,53 @@ const Notizie = () => {
           return (
             i < 10 && (
               <Card key={i} className="my-2 py-3 text-start">
-                <Card.Body>
-                  <Card.Title style={{ fontSize: "1.2rem" }}>
-                    <img
-                      src={post.user.image}
-                      alt="propic"
-                      style={{
-                        width: "25px",
-                      }}
-                    />
-                    {"   "}
-                    {post.user.name} {post.user.surname}
-                  </Card.Title>
+                <Card.Body style={{ paddingTop: "0" }}>
+                  <div className="d-flex justify-content-between">
+                    <Card.Title style={{ fontSize: "1.2rem" }}>
+                      <img
+                        src={post.user.image}
+                        alt="propic"
+                        style={{
+                          width: "25px",
+                        }}
+                      />
+                      {"   "}
+                      {post.user.name} {post.user.surname}
+                    </Card.Title>
+                    {post.user._id === "63fc659cf193e60013807f4d" ? (
+                      <div
+                        style={{
+                          backgroundColor:
+                            (showSettings && "lightgray") || "white",
+                          fontSize: "1.5rem",
+                          width: "5%",
+                          icon: "none",
+                        }}
+                        onClick={() => {
+                          setShowSettings(!showSettings);
+                        }}
+                      >
+                        ...
+                        <div
+                          style={{
+                            position: "absolute",
+                            backgroundColor: "green",
+                            right: "5%",
+                          }}
+                        >
+                          {showSettings && (
+                            <MyEditPostComponent
+                              editPost={editPost}
+                              setEditPost={setEditPost}
+                              postId={post?._id}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
 
                   <Card.Body style={{ position: "relative" }}>
                     <Row>
@@ -183,7 +218,7 @@ const Notizie = () => {
                         <div style={{}}>
                           {post.user._id === "63fc659cf193e60013807f4d" ? (
                             <>
-                              <p
+                              {/* <p
                                 style={{
                                   backgroundColor:
                                     (showSettings && "lightgray") || "white",
@@ -197,15 +232,7 @@ const Notizie = () => {
                                 }}
                               >
                                 ...
-                              </p>
-
-                              {showSettings && (
-                                <MyEditPostComponent
-                                  editPost={editPost}
-                                  setEditPost={setEditPost}
-                                  postId={post?._id}
-                                />
-                              )}
+                              </p> */}
                             </>
                           ) : (
                             ""
