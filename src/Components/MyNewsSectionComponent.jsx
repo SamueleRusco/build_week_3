@@ -3,7 +3,7 @@ import Notizie from "./Notizie";
 
 const MyNewsSectionComponent = () => {
   return (
-    <div style={{ height: "80vh", width: "100%" }}>
+    <div>
       <Notizie />
     </div>
   );
