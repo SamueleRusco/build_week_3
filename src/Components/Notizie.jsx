@@ -8,6 +8,13 @@ import {
 } from "../Redux/Actions/postReducerActions";
 import NewPost from "./NewPost";
 import { element } from "prop-types";
+import {
+  CalendarDate,
+  Image,
+  Paperclip,
+  PlayBtnFill,
+  TextParagraph,
+} from "react-bootstrap-icons";
 
 const Notizie = () => {
   const idUtilizzatore = useSelector((state) => state.posts.loginId);
@@ -60,10 +67,10 @@ const Notizie = () => {
 
   return (
     <>
-      <Card>
-        <Card.Body>
+      <Card className="mb-4">
+        <Card.Body className="pb-2">
           <Button
-            className="text-start"
+            className="text-start startPostBtnHover"
             style={{
               width: "100%",
               borderRadius: "30px",
@@ -80,28 +87,72 @@ const Notizie = () => {
           >
             Scrivi nuovo Post
           </Button>
-          <Card.Body>
-            <div className="hover">
-              <button>
-                <span>Foto</span>
+          <Row className="d-flex justify-content-between mt-2">
+            <Col
+              xs={3}
+              className="postBtnHover pt-1 pb-2 ps-3"
+              style={{ borderRadius: "5px", cursor: "pointer" }}
+            >
+              <button
+                className="bg-transparent"
+                style={{
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <Image className="me-1" style={{ color: "#0A66C2" }} />
+                <span style={{ color: "dimgray" }}>Foto</span>
               </button>
-            </div>
-            <div className="hover">
-              <button>
-                <span>Video</span>
+            </Col>
+            <Col
+              xs={3}
+              className="postBtnHover pt-1 pb-2 px-0"
+              style={{ borderRadius: "5px", cursor: "pointer" }}
+            >
+              <button
+                className="bg-transparent"
+                style={{
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <PlayBtnFill className="me-1" style={{ color: "#5f9b41" }} />
+                <span style={{ color: "dimgray" }}>Video</span>
               </button>
-            </div>
-            <div className="hover">
-              <button>
-                <span>Evento</span>
+            </Col>
+            <Col
+              xs={2}
+              className="postBtnHover pt-1 pb-2 px-0"
+              style={{ borderRadius: "5px", cursor: "pointer" }}
+            >
+              <button
+                className="bg-transparent"
+                style={{
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <CalendarDate className="me-1" style={{ color: "#c37d16" }} />
+                <span style={{ color: "dimgray" }}>Evento</span>
               </button>
-            </div>
-            <div className="hover">
-              <button>
-                <span>Scrivi un articolo</span>
+            </Col>
+            <Col
+              xs={4}
+              className="postBtnHover pt-1 pb-2 pe-2"
+              style={{ borderRadius: "5px", cursor: "pointer" }}
+            >
+              <button
+                className="bg-transparent text-start"
+                style={{
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <TextParagraph className="me-1" style={{ color: "#e16745" }} />
+                <span style={{ color: "dimgray" }}>Scrivi un articolo</span>
               </button>
-            </div>
-          </Card.Body>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
       <NewPost showModal={showModal} setShowModal={setShowModal} />

@@ -113,3 +113,10 @@
 /* #footer form {
   width: 220px;
 } */
+.postBtnHover:hover {
+  background-color: lightgrey !important;
+}
+
+.startPostBtnHover:hover {
+  background-color: lightgrey !important;
+}

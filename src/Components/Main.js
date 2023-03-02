@@ -6,7 +6,7 @@ import Notizie from "./Notizie";
 const Main = (props) => {
   return (
     <Container>
-      <FeedInputContainer>
+      {/* <FeedInputContainer>
         <FeedInput>
           <form>
             <input type="text" />
@@ -38,7 +38,7 @@ const Main = (props) => {
             </div>
           </div>
         </div>
-      </FeedInputContainer>
+      </FeedInputContainer> */}
 
       <div className="post">
         <Notizie />
