@@ -49,6 +49,7 @@ const NewPost = ({ showModal, setShowModal }) => {
             onClick={(e) => {
               e.preventDefault();
               postExperienceFetch();
+              setShowModal(false);
             }}
           >
             post

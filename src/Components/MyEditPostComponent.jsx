@@ -73,7 +73,12 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              postExperienceFetch();
+              if (text === "") {
+                alert("Inserisci modifica");
+              } else {
+                postExperienceFetch();
+                setEditPost(false);
+              }
             }}
           >
             post
@@ -81,6 +86,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
           <Button
             onClick={() => {
               deleteExperienceFetch();
+              setEditPost(false);
             }}
           >
             Elimina post
@@ -92,7 +98,12 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
           >
             GET
           </Button> */}
-          <Button onClick={(e) => setEditPost(false)} variant="danger">
+          <Button
+            onClick={(e) => {
+              setEditPost(false);
+            }}
+            variant="danger"
+          >
             Annulla
           </Button>
         </Form>

@@ -80,9 +80,13 @@ const MyUserDetailsCard = () => {
         <Card.Title className="mt-2 mb-0" style={{ fontSize: "1.7rem" }}>
           {profile.name} {profile.surname}
         </Card.Title>
-        <p className="mb-0">{profile.bio}</p>
+        <p className="mb-0">{profile.title}</p>
+        <p className="mb-0">
+          <span className="text-secondary">Username: </span>
+          {profile.username}
+        </p>
         <p className="text-secondary" style={{ fontSize: "14px" }}>
-          indirizzo · {profile.email}{" "}
+          indirizzo · {profile.area}{" "}
           <a href="1" style={{ textDecoration: "none", fontWeight: "600" }}>
             informazioni di contatto
           </a>
