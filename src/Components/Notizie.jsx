@@ -7,6 +7,7 @@ import {
   listaCommentiAction,
 } from "../Redux/Actions/postReducerActions";
 import NewPost from "./NewPost";
+import { element } from "prop-types";
 
 const Notizie = () => {
   const idUtilizzatore = useSelector((state) => state.posts.loginId);
@@ -39,7 +40,13 @@ const Notizie = () => {
       const datiNotizie = await result.json();
       console.log("GET", datiNotizie);
       setTutteNotizie(datiNotizie);
-      dispatch(listaCommentiAction(datiNotizie));
+      dispatch(
+        listaCommentiAction(
+          datiNotizie.filter(
+            (element, index) => index > datiNotizie.length - 12
+          )
+        )
+      );
       dispatch(
         commentiFiltratiAction(
           listaCommenti.filter(
@@ -47,6 +54,7 @@ const Notizie = () => {
           )
         )
       );
+      console.log("lista commenti ", listaCommenti);
     } catch (error) {
       console.log(error);
     }
