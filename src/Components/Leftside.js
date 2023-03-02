@@ -118,8 +118,8 @@ const AddPhotoText = styled.div`
 
 const Widget = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding-top: 12px;
-  padding-bottom: 12px;
+
+  
 
   & > a {
     text-decoration: none;
@@ -127,15 +127,19 @@ const Widget = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 4px 12px;
+    height: 54px;
+
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.08);
+      background-color: #EBEBEB;
     }
 
     div {
       display: flex;
       flex-direction: column;
       text-align: left;
+      
+
       span {
         font-size: 12px;
         line-height: 1.333;
@@ -160,7 +164,11 @@ const Item = styled.a`
   padding: 12px;
   font-size: 12px;
   display: block;
+  text-decoration: none;
+
+  
   span {
+
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 1);
@@ -170,7 +178,7 @@ const Item = styled.a`
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: #EBEBEB;
   }
 `;
 
@@ -185,7 +193,7 @@ const CommunityCard = styled(ArtCard)`
     font-size: 12px;
 
     &:hover {
-      color: #0a66c2;
+      background-color: #EBEBEB;
     }
 
     span {
