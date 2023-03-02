@@ -54,24 +54,29 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
       >
         Send
       </Button> */}
-      <Button
-        className="me-2"
-        type="submit"
-        onClick={(e) => {
-          // postExperienceFetch();
-          setEditPost(true);
-        }}
-      >
-        post
-      </Button>
-      <Button
-        onClick={() => {
-          deleteExperienceFetch();
-          setEditPost(false);
-        }}
-      >
-        Elimina post
-      </Button>
+      <div className="d-flex flex-column">
+        <Button
+          className="mb-2 p-0 bg-transparent text-secondary text-start"
+          style={{ border: "none", fontSize: "0.9rem" }}
+          type="submit"
+          onClick={(e) => {
+            // postExperienceFetch();
+            setEditPost(true);
+          }}
+        >
+          post
+        </Button>
+        <Button
+          className="me-2 p-0 bg-transparent text-secondary text-start"
+          style={{ border: "none", fontSize: "0.9rem" }}
+          onClick={() => {
+            deleteExperienceFetch();
+            setEditPost(false);
+          }}
+        >
+          Elimina
+        </Button>
+      </div>
       <Modal
         show={editPost}
         onHide={() => setEditPost(false)}

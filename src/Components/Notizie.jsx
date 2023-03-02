@@ -14,6 +14,7 @@ import {
   Paperclip,
   PlayBtnFill,
   TextParagraph,
+  ThreeDots,
 } from "react-bootstrap-icons";
 
 const Notizie = () => {
@@ -179,8 +180,9 @@ const Notizie = () => {
                     {post.user._id === "63fc659cf193e60013807f4d" ? (
                       <div
                         style={{
+                          cursor: "pointer",
                           backgroundColor:
-                            (showSettings && "lightgray") || "white",
+                            (showSettings && "lightgray") || "transparent",
                           fontSize: "1.5rem",
                           width: "5%",
                           icon: "none",
@@ -189,22 +191,26 @@ const Notizie = () => {
                           setShowSettings(!showSettings);
                         }}
                       >
-                        ...
-                        <div
-                          style={{
-                            position: "absolute",
-                            backgroundColor: "green",
-                            right: "5%",
-                          }}
-                        >
-                          {showSettings && (
+                        <ThreeDots />
+                        {showSettings && (
+                          <div
+                            className="p-2 px-3"
+                            style={{
+                              position: "absolute",
+                              zIndex: "1",
+                              right: "5%",
+                              minWidth: "60%",
+                              border: "1px solid lightgrey",
+                              borderRadius: "5px",
+                            }}
+                          >
                             <MyEditPostComponent
                               editPost={editPost}
                               setEditPost={setEditPost}
                               postId={post?._id}
                             />
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       ""
