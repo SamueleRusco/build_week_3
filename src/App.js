@@ -22,12 +22,6 @@ function App() {
         </Routes>
         <MyNavBarComponents />
         <MyFooterPart />
-        <div className="body">
-          <Leftside />
-          <Main />
-
-          <Rightside />
-        </div>
       </div>
     </BrowserRouter>
   );

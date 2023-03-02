@@ -1,67 +1,49 @@
 import { Button } from "bootstrap";
 import styled from "styled-components";
-import PostSections from "./PostSections";
-
-
-
+import Notizie from "./Notizie";
+// import PostSections from "./PostSections";
 
 const Main = (props) => {
   return (
-  <Container>
-<FeedInputContainer>
-  <FeedInput>
-  
-<form>
-<input type="text" />
-<button type="submit">Invia</button>
-</form>
-      
-  </FeedInput> 
-  <div className="feed-inputOptions">
-<div className="feed-inputFlex">
+    <Container>
+      <FeedInputContainer>
+        <FeedInput>
+          <form>
+            <input type="text" />
+            <button type="submit">Invia</button>
+          </form>
+        </FeedInput>
+        <div className="feed-inputOptions">
+          <div className="feed-inputFlex">
+            <div className="hover">
+              <button>
+                <span>Foto</span>
+              </button>
+            </div>
 
-<div className="hover">
+            <div className="hover">
+              <button>
+                <span>Video</span>
+              </button>
+            </div>
+            <div className="hover">
+              <button>
+                <span>Evento</span>
+              </button>
+            </div>
+            <div className="hover">
+              <button>
+                <span>Scrivi un articolo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </FeedInputContainer>
 
-<button>
-  <span>
-    Foto
-  </span>
-</button>
-</div>
-
-<div className="hover">
-<button>
-  <span>
-    Video
-  </span>
-</button>
-</div>
-<div className="hover">
-<button>
-  <span>
-    Evento
-  </span>
-</button>
-</div>
-<div className="hover">
-<button>
-  <span>
-    Scrivi un articolo
-  </span>
-</button>
-</div>
-</div>
-  </div>
-  </FeedInputContainer>
-
-<div className="post">
-
-</div>
-<PostSections/>
-
-  </Container>
-
-  
+      <div className="post">
+        <Notizie />
+      </div>
+    </Container>
   );
 };
 
@@ -69,9 +51,8 @@ const Container = styled.div`
   grid-area: main;
   flex: 0.4;
   margin-top: 80px;
-  margin-left:10px;
-  margin-right:10px;
-
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const FeedInputContainer = styled.div`
@@ -107,31 +88,29 @@ button {
 `;
 
 const FeedInput = styled.div`
-border: 1px solid lightgray;
+  border: 1px solid lightgray;
   border-radius: 30px;
   display: flex;
   padding: 10px;
   color: gray;
   padding-left: 15px;
 
-  form{
+  form {
     display: flex;
     width: 100%;
   }
 
-  input{
+  input {
     border: none;
     flex: 1;
     margin-left: 10px;
     outline-width: 0;
-    font-weight:600;
+    font-weight: 600;
   }
 
-  button{
+  button {
     display: none;
-
   }
-  `;
-
+`;
 
 export default Main;
