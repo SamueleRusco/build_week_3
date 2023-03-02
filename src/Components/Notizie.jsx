@@ -24,6 +24,7 @@ const Notizie = () => {
   const [tutteNotizie, setTutteNotizie] = useState();
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
 
@@ -175,10 +176,41 @@ const Notizie = () => {
                     {post.user.name} {post.user.surname}
                   </Card.Title>
 
-                  <Card.Body>
+                  <Card.Body style={{ position: "relative" }}>
                     <Row>
                       <Col xs={12}>
                         <p>{post.text}</p>
+                        <div style={{}}>
+                          {post.user._id === "63fc659cf193e60013807f4d" ? (
+                            <>
+                              <p
+                                style={{
+                                  backgroundColor:
+                                    (showSettings && "lightgray") || "white",
+                                  fontSize: "1.5rem",
+                                  position: "absolute",
+                                  bottom: "120%",
+                                  right: "5%",
+                                }}
+                                onClick={() => {
+                                  setShowSettings(!showSettings);
+                                }}
+                              >
+                                ...
+                              </p>
+
+                              {showSettings && (
+                                <MyEditPostComponent
+                                  editPost={editPost}
+                                  setEditPost={setEditPost}
+                                  postId={post?._id}
+                                />
+                              )}
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </div>
                       </Col>
                     </Row>
                   </Card.Body>
@@ -188,16 +220,8 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
-                  {post.user._id === "63fc659cf193e60013807f4d" ? (
+                  {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
                     <>
-                      {/* <Button
-                        onClick={() => {
-                          setEditPost(true);
-                          console.log("fejafwea", post._id);
-                        }}
-                      >
-                        eccomi
-                      </Button> */}
                       <MyEditPostComponent
                         editPost={editPost}
                         setEditPost={setEditPost}
@@ -206,7 +230,7 @@ const Notizie = () => {
                     </>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </Card.Body>
               </Card>
             )
