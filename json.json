@@ -1,22 +1,13 @@
 {
-  "_id": "5fc6ba2a0626b5001729ee1d",
-  "text": "Hello Wor.. ehm.. Strivers! ;D",
-  "username": "StefanoMiC",
-  "user": {
-    "_id": "5fc4c2beed266800170ea3d4",
-    "name": "Stefano",
-    "surname": "Miceli",
-    "email": "mic@nucleode.com",
-    "username": "StefanoMiC",
-    "title": "Front-End Developer & UX Designer",
-    "bio": "I'm very passionate about Graphic Design and any Visual Art. Never underestimate the power of a usable interface before a pretty one! \n\nI also love Photography and the developing process either in a dark room or the digital one.",
-    "area": "Udine, Friuli Venezia Giulia, Italy",
-    "image": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-    "createdAt": "2020-11-30T10:00:31.279Z",
-    "updatedAt": "2020-11-30T10:00:31.279Z",
-    "__v": 0
+  "source": {
+    "id": "engadget",
+    "name": "Engadget"
   },
-  "createdAt": "2020-12-01T21:48:26.995Z",
-  "updatedAt": "2020-12-01T21:50:50.616Z",
-  "__v": 0
+  "author": "Will Shanklin",
+  "title": "Movies Anywhere will soon shut down its Screen Pass content-sharing feature",
+  "description": "Movies Anywhere announced Wednesday that it’s soon shutting down Screen Pass, its movie-sharing feature launched during COVID-19 lockdowns. The Disney-owned platform didn’t provide a reason for the closure.“As the experience continues to evolve, we want to no…",
+  "url": "https://www.engadget.com/movies-anywhere-will-soon-shut-down-its-screen-pass-content-sharing-feature-181855250.html",
+  "urlToImage": "https://s.yimg.com/uu/api/res/1.2/Yjt943fjtfdorSwYWM84kg--~B/Zmk9ZmlsbDtoPTYzMDtweW9mZj0wO3c9MTIwMDthcHBpZD15dGFjaHlvbg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2023-02/76d85150-b925-11ed-b4f7-67997bec7d85.cf.jpg",
+  "publishedAt": "2023-03-02T18:18:55Z",
+  "content": "Movies Anywhere announced Wednesday that its soon shutting down Screen Pass, its movie-sharing feature launched during COVID-19 lockdowns. The Disney-owned platform didnt provide a reason for the clo… [+1117 chars]"
 }
