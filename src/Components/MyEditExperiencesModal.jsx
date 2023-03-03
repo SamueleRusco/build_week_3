@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { PencilFill } from "react-bootstrap-icons";
 import { putExperienceImg } from "../Redux/Actions/putProfileImg";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 const MyEditExperiencesModal = ({ id, refresh }) => {
+  const profileID = useSelector((state) => state.profiles.result._id);
   const dispatch = useDispatch();
   const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
@@ -14,7 +17,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
-  const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences/${id}`;
+  const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences/${id}`;
 
   const editModalFetch = async () => {
     let key =
@@ -175,7 +178,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
               editModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
-              dispatch(putExperienceImg(fd, id));
+              dispatch(putExperienceImg(fd, id, profileID));
               console.log("id esperienza " + id);
             }}
           >

@@ -5,7 +5,7 @@ import {
 } from "../Actions/postReducerActions";
 
 const initialState = {
-  loginId: "63fc659cf193e60013807f4d",
+  /* loginId: "63fc659cf193e60013807f4d", */
   commenti: [],
   commentiFiltrati: [],
 };

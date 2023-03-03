@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   const [refreshed, setRefreshed] = useState(false);
   const [fd, setFd] = useState(new FormData());
@@ -10,10 +10,10 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
+  const profileID = useSelector((state) => state.profiles.result._id);
 
   const postExperienceFetch = async () => {
-    const baseEndpoint =
-      "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experience`;
 
     let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";

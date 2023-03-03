@@ -15,8 +15,8 @@ import {
   TextParagraph,
   ThreeDots,
 } from "react-bootstrap-icons";
-
 const Notizie = () => {
+  const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
@@ -51,9 +51,7 @@ const Notizie = () => {
       );
       dispatch(
         commentiFiltratiAction(
-          listaCommenti.filter(
-            (element) => element.user?._id === "63fc659cf193e60013807f4d"
-          )
+          listaCommenti.filter((element) => element.user?._id === profileID)
         )
       );
       console.log("lista commenti ", listaCommenti);
@@ -172,73 +170,13 @@ const Notizie = () => {
                       {"   "}
                       {post.user.name} {post.user.surname}
                     </Card.Title>
-                    {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
-                      <div
-                        style={{
-                          cursor: "pointer",
-                          backgroundColor:
-                            (showSettings && "lightgray") || "transparent",
-                          fontSize: "1.5rem",
-                          width: "5%",
-                          icon: "none",
-                        }}
-                        onClick={() => {
-                          setShowSettings(!showSettings);
-                        }}
-                      >
-                        <ThreeDots />
-                        {showSettings && (
-                          <div
-                            className="p-2 px-3"
-                            style={{
-                              position: "absolute",
-                              zIndex: "1",
-                              right: "5%",
-                              minWidth: "60%",
-                              border: "1px solid lightgrey",
-                              borderRadius: "5px",
-                            }}
-                          >
-                            <MyEditPostComponent
-                              editPost={editPost}
-                              setEditPost={setEditPost}
-                              postId={post?._id}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      ""
-                    )} */}
                   </div>
 
                   <Card.Body style={{ position: "relative" }}>
                     <Row>
                       <Col xs={12}>
                         <p>{post.text}</p>
-                        <div style={{}}>
-                          {/* {post.user._id === "63fc659cf193e60013807f4d" ? (
-                            <>
-                              <p
-                                style={{
-                                  backgroundColor:
-                                    (showSettings && "lightgray") || "white",
-                                  fontSize: "1.5rem",
-                                  position: "absolute",
-                                  bottom: "120%",
-                                  right: "5%",
-                                }}
-                                onClick={() => {
-                                  setShowSettings(!showSettings);
-                                }}
-                              >
-                                ...
-                              </p>
-                            </>
-                          ) : (
-                            ""
-                          )} */}
-                        </div>
+                        <div style={{}}></div>
                       </Col>
                     </Row>
                   </Card.Body>
@@ -252,7 +190,7 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
-                  {post.user._id === "63fc659cf193e60013807f4d" ? (
+                  {post.user._id === profileID ? (
                     <>
                       <MyEditPostComponent
                         editPost={editPost}
