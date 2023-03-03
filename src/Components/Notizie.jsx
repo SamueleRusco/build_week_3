@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row, Spinner } from "react-bootstrap";
 import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +15,8 @@ import {
   TextParagraph,
   ThreeDots,
 } from "react-bootstrap-icons";
+import { GET_PROFILE_LOADING } from "../Redux/Actions";
+import { getProfileAction } from "../Redux/Actions";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
@@ -23,22 +25,32 @@ const Notizie = () => {
   const [editPost, setEditPost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const key = useSelector((state) => state.profiles.bearer);
-
+  const loader = useSelector((state) => state.profiles.loading);
+  const [refreshed, setRefreshed] = useState(false);
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
+  console.log(profileID);
+
   useEffect(() => {
     fetchNotizie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [refreshed]);
 
   // const filtro = (element) => element.user._id === idUtilizzatore;
 
   const fetchNotizie = async () => {
+    dispatch({ type: GET_PROFILE_LOADING, payload: true });
+    dispatch(getProfileAction(key));
+    console.log(loader);
     /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
     */ try {
       const result = await fetch(url, {
         method: "GET",
         headers: { Authorization: key },
+      });
+      dispatch({
+        type: GET_PROFILE_LOADING,
+        payload: false,
       });
 
       const datiNotizie = await result.json();
@@ -59,6 +71,8 @@ const Notizie = () => {
     } catch (error) {
       console.log(error);
     }
+    dispatch({ type: GET_PROFILE_LOADING, payload: false });
+    console.log(loader);
   };
 
   return (
@@ -152,8 +166,12 @@ const Notizie = () => {
         </Card.Body>
       </Card>
       <NewPost showModal={showModal} setShowModal={setShowModal} />
+      {/* {(loader && <Spinner variant="dark" />) || ({listaCommenti && */}
       <h4>Notizie</h4>
-      {listaCommenti &&
+      {loader ? (
+        <Spinner />
+      ) : (
+        listaCommenti &&
         listaCommenti?.map((post, i) => {
           return (
             i < 10 && (
@@ -195,12 +213,15 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
+
                   {post.user._id === profileID ? (
                     <>
                       <MyEditPostComponent
                         editPost={editPost}
                         setEditPost={setEditPost}
                         postId={post?._id}
+                        refreshFnc={setRefreshed}
+                        refreshed={refreshed}
                       />
                     </>
                   ) : (
@@ -210,7 +231,8 @@ const Notizie = () => {
               </Card>
             )
           );
-        })}
+        })
+      )}
     </>
   );
 };

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { PencilFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
 const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
+  const [refreshed, setRefreshed] = useState(false);
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
       method: "DELETE",
       headers: { "Content-Type": "application/json", Authorization: key },
     });
+    setRefreshed(!refreshed);
     let data = await response.json();
     console.log("text", data);
   };
@@ -158,7 +160,6 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
               dispatch(putPostImg(fd, postId, key));
               setEditPost(false);
               console.log(postId);
-              // setRefreshed(!refreshed);
             }}
           >
             Invia

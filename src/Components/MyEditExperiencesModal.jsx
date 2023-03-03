@@ -54,6 +54,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
       method: "DELETE",
       headers: { Authorization: key },
     });
+    setRefreshed(!refreshed);
     // let data = await response.json();
   };
 

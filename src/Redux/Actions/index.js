@@ -13,6 +13,10 @@ export const getProfileAction = (key) => {
         method: "GET",
         headers: { authorization: key },
       });
+      dispatch({
+        type: GET_PROFILE_LOADING,
+        payload: false,
+      });
       if (response.ok) {
         const data = await response.json();
         // console.log(data);
@@ -26,11 +30,19 @@ export const getProfileAction = (key) => {
         dispatch({
           type: GET_PROFILE_ERROR,
         });
+        dispatch({
+          type: GET_PROFILE_LOADING,
+          payload: false,
+        });
       }
     } catch (error) {
       console.log(error);
       dispatch({
         type: GET_PROFILE_ERROR,
+      });
+      dispatch({
+        type: GET_PROFILE_LOADING,
+        payload: false,
       });
     }
   };

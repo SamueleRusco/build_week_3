@@ -6,11 +6,13 @@ import {
 
 const initialState = {
   result: [],
-  loading: false,
+  loading: true,
   error: false,
   bearer:
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI",
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAxZDg5MWFiM2M1ZTAwMTM4MGJlYzkiLCJpYXQiOjE2Nzc4NDI1NzgsImV4cCI6MTY3OTA1MjE3OH0.Qs_oEpQZBqHikOTTmC3-OBqeaTX4v3QuV3B5FpsGtag",
 };
+/* Samuele bearer "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI",
+ */
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -27,7 +29,7 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE_LOADING:
       return {
         ...state,
-        loading: !state.loading,
+        loading: action.payload,
       };
     default:
       return state;

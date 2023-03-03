@@ -1,36 +1,35 @@
 import { useEffect, useState } from "react";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
 import { Pencil, XLg } from "react-bootstrap-icons";
 import MyEditExperiencesModal from "./MyEditExperiencesModal";
 import MyExperienceForm from "./MyExperienceForm";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { GET_PROFILE_LOADING } from "../Redux/Actions";
 const MyExperience = () => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [editModalOn, setEditModalOn] = useState(false);
   const [experiences, setExperiences] = useState(null);
   const profileID = useSelector((state) => state.profiles.result._id);
   const key = useSelector((state) => state.profiles.bearer);
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
-
+  const loader = useSelector((state) => state.profiles.loading);
+  console.log(loader);
   useEffect(() => {
     getExperienceFetch();
   }, []);
 
   const getExperienceFetch = async () => {
-    /* let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */ let response = await fetch(baseEndpoint, {
+    /* dispatch({ type: GET_PROFILE_LOADING, payload: true }); */
+    let response = await fetch(baseEndpoint, {
       method: "GET",
       headers: { Authorization: key },
-      // body: JSON.stringify({
-      //   role: role,
-      //   company: company,
-      //   startDate: startDate,
-      //   endDate: endDate,
-      //   description: description,
-      //   area: area,
-      // }),
     });
+    dispatch({
+      type: GET_PROFILE_LOADING,
+      payload: false,
+    });
+
     let data = await response.json();
 
     setExperiences(data);
@@ -71,6 +70,7 @@ const MyExperience = () => {
           setShowModal={setShowModal}
           refresh={getExperienceFetch}
         />
+
         {experiences &&
           experiences?.map((element, index) => {
             /* console.log("sono id", element._id); */
