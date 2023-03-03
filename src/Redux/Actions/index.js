@@ -4,10 +4,10 @@ export const GET_PROFILE_LOADING = "GET_PROFILE_LOADING";
 
 const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
 
-export const getProfileAction = () => {
-  let key =
+export const getProfileAction = (key) => {
+  /* let key =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-  return async (dispatch) => {
+   */ return async (dispatch) => {
     try {
       const response = await fetch(baseEndpoint, {
         method: "GET",

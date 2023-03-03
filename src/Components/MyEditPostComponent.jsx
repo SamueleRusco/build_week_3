@@ -155,7 +155,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
               e.preventDefault();
               //   postExperienceFetch();
               postExperienceFetch();
-              dispatch(putPostImg(fd, postId));
+              dispatch(putPostImg(fd, postId, key));
               setEditPost(false);
               console.log(postId);
               // setRefreshed(!refreshed);

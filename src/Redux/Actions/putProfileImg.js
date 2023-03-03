@@ -25,10 +25,10 @@ export const putProfileImg = (fd, profileID, key) => {
     });
   };
 };
-export const putExperienceImg = (fd, experienceID, profileID) => {
-  let key =
+export const putExperienceImg = (fd, experienceID, profileID, key) => {
+  /* let key =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-  return async (dispatch) => {
+  */ return async (dispatch) => {
     let response = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences/` +
         experienceID +
@@ -46,10 +46,10 @@ export const putExperienceImg = (fd, experienceID, profileID) => {
     });
   };
 };
-export const putPostImg = (fd, experienceID) => {
-  let key =
+export const putPostImg = (fd, experienceID, key) => {
+  /* let key =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-  return async (dispatch) => {
+  */ return async (dispatch) => {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/posts/" + experienceID,
       {

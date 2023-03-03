@@ -16,11 +16,11 @@ import MyJobAdvisorCard from "./MyJobAdvisorCard";
 import MyForm from "./MyForm";
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
-  /* const key = useSelector((state) => state.profiles.bearer); */
+  const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProfileAction());
+    dispatch(getProfileAction(key));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

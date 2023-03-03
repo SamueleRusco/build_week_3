@@ -163,9 +163,9 @@ const MyForm = ({ showModal, setShowModal }) => {
                 alert("Per favore compila tutti i campi");
               } else { */
               putProfileFetch();
+              dispatch(putProfileImg(fd, profileID, key));
               setRefreshed(true);
               setShowModal(false);
-              dispatch(putProfileImg(fd, profileID));
               /* } */
             }}
             variant="primary"
