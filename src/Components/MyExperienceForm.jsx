@@ -11,13 +11,14 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
   const profileID = useSelector((state) => state.profiles.result._id);
+  const key = useSelector((state) => state.profiles.bearer);
 
   const postExperienceFetch = async () => {
-    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experience`;
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
 
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(baseEndpoint, {
+     */ let response = await fetch(baseEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
@@ -29,7 +30,7 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
         area: area,
       }),
     });
-
+    console.log(baseEndpoint);
     let data = await response.json();
     let experienceId = data._id;
 

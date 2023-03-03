@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 const NewPost = ({ showModal, setShowModal }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
-
+  const key = useSelector((state) => state.profiles.bearer);
   const postNewCommentFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(url, {
+    */ let response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({

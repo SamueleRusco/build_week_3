@@ -4,9 +4,11 @@ import { PencilFill } from "react-bootstrap-icons";
 import { putExperienceImg } from "../Redux/Actions/putProfileImg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { GET_PROFILE_ERROR } from "../Redux/Actions";
 
 const MyEditExperiencesModal = ({ id, refresh }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
+  const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
   const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
@@ -18,13 +20,21 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
   const [description, setDescription] = useState("");
   const [area, setArea] = useState("");
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences/${id}`;
-
   const editModalFetch = async () => {
-    let key =
+    /*  let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
+    */
+    /* dispatch({
+      type: GET_PROFILE_ERROR,
+      payload:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI",
+    }); */
     let response = await fetch(baseEndpoint, {
       method: "PUT",
-      headers: { "Content-Type": "application/json", Authorization: key },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: key,
+      },
       body: JSON.stringify({
         role: role,
         company: company,
@@ -34,12 +44,13 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
         area: area,
       }),
     });
+
     // let data = await response.json();
   };
   const deleteModalFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(baseEndpoint, {
+    */ let response = await fetch(baseEndpoint, {
       method: "DELETE",
       headers: { Authorization: key },
     });
@@ -49,6 +60,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
   useEffect(() => {
     refresh();
     setRefreshed(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
 
   const handleFile = (ev) => {
@@ -178,7 +190,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
               editModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
-              dispatch(putExperienceImg(fd, id, profileID));
+              dispatch(putExperienceImg(fd, id, profileID, key));
               console.log("id esperienza " + id);
             }}
           >

@@ -22,6 +22,7 @@ const Notizie = () => {
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const key = useSelector((state) => state.profiles.bearer);
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   useEffect(() => {
@@ -32,9 +33,9 @@ const Notizie = () => {
   // const filtro = (element) => element.user._id === idUtilizzatore;
 
   const fetchNotizie = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    try {
+    */ try {
       const result = await fetch(url, {
         method: "GET",
         headers: { Authorization: key },

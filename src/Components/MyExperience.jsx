@@ -9,7 +9,7 @@ const MyExperience = () => {
   const [editModalOn, setEditModalOn] = useState(false);
   const [experiences, setExperiences] = useState(null);
   const profileID = useSelector((state) => state.profiles.result._id);
-
+  const key = useSelector((state) => state.profiles.bearer);
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
 
   useEffect(() => {
@@ -17,9 +17,9 @@ const MyExperience = () => {
   }, []);
 
   const getExperienceFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(baseEndpoint, {
+    */ let response = await fetch(baseEndpoint, {
       method: "GET",
       headers: { Authorization: key },
       // body: JSON.stringify({

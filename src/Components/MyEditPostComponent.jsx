@@ -3,17 +3,18 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { PencilFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
-
+import { useSelector } from "react-redux";
 const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
   const dispatch = useDispatch();
   const url = "https://striveschool-api.herokuapp.com/api/posts/" + postId;
+  const key = useSelector((state) => state.profiles.bearer);
 
   const postExperienceFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(url, {
+    */ let response = await fetch(url, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
@@ -25,9 +26,9 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
   };
 
   const deleteExperienceFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(url, {
+     */ let response = await fetch(url, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", Authorization: key },
     });

@@ -19,7 +19,7 @@ const MyForm = ({ showModal, setShowModal }) => {
   const [bio, setBio] = useState(datiProfilo.bio);
   const [area, setArea] = useState(datiProfilo.area);
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
-
+  const key = useSelector((state) => state.profiles.bearer);
   let user = {
     name,
     surname,
@@ -30,9 +30,9 @@ const MyForm = ({ showModal, setShowModal }) => {
     area,
   };
   const putProfileFetch = async () => {
-    let key =
+    /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    let response = await fetch(baseEndpoint, {
+     */ let response = await fetch(baseEndpoint, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({

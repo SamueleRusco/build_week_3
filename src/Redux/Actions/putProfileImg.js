@@ -4,10 +4,10 @@ export const PUT_PROFILE_IMG_LOADING = "PUT_PROFILE_IMG_LOADING";
 export const PUT_EXPERIENCE_IMG = "PUT_EXPERIENCE_IMG";
 export const PUT_POST_IMG = "PUT_POST_IMG";
 
-export const putProfileImg = (fd, profileID) => {
-  let key =
+export const putProfileImg = (fd, profileID, key) => {
+  /* let key =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-  return async (dispatch) => {
+   */ return async (dispatch) => {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/profile/" +
         profileID +
