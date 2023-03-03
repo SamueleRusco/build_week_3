@@ -1,45 +1,29 @@
 import styled from "styled-components";
+import MyFooterPart from "./MyFooterPart";
+import NewsWithFetch from "./NewsWithFetch";
 
 const Rightside = (props) => {
   return (
     <Container>
       <FollowCard>
         <Title>
-          <h2>linkedIn Notizie</h2>
+          <p>LinkedIn Notizie</p>
           <img src="/images/feed-icon.svg" alt="" />
         </Title>
 
         <FeedList>
-          <li>
-            <a>
-              <Avatar />
-            </a>
-            <div>
-              <span>#Linkedin</span>
-              <button>Segui</button>
-            </div>
-          </li>
-          <li>
-            <a>
-              <Avatar />
-            </a>
-            <div>
-              <span>#Video</span>
-              <button>Segui</button>
-            </div>
-          </li>
+          <NewsWithFetch />
         </FeedList>
 
-        <Recommendation>
-          Visualizza altro
-          <img src="/images/right-icon.svg" alt="" />
-        </Recommendation>
+        <Recommendation>Visualizza altro</Recommendation>
       </FollowCard>
       <BannerCard>
-        <img
-          src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
-          alt=""
-        />
+        <div>
+          <img
+            src="https://img.freepik.com/premium-psd/we-are-hiring-job-vacancy-web-banner-social-media-post-template_169307-1679.jpg?w=360"
+            alt="OOOO"
+          />
+        </div>
       </BannerCard>
     </Container>
   );
@@ -52,7 +36,6 @@ const Container = styled.div`
 `;
 
 const FollowCard = styled.div`
-  text-align: center;
   overflow: hidden;
   margin-bottom: 8px;
   background-color: #fff;
@@ -64,22 +47,30 @@ const FollowCard = styled.div`
 `;
 
 const Title = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
+  font-weight: 600;
+
   width: 100%;
-  color: rgba(0, 0, 0, 0.6);
+  color: #191919;
+  p {
+    margin-bottom: 0;
+    margin: 0;
+  }
 `;
 
 const FeedList = styled.ul`
   margin-top: 16px;
+  padding-left: 0px;
   li {
     display: flex;
     align-items: center;
     margin: 12px 0;
     position: relative;
     font-size: 14px;
+
     & > div {
       display: flex;
       flex-direction: column;
@@ -114,11 +105,19 @@ const Avatar = styled.div`
   margin-right: 8px;
 `;
 
-const Recommendation = styled.a`
-  color: #0a66c2;
+const Recommendation = styled.div`
+  color: #6c6c6c;
   display: flex;
   align-items: center;
   font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: #ebebeb;
+  }
 `;
 
 const BannerCard = styled(FollowCard)`

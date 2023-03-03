@@ -46,11 +46,20 @@ const MyGroupAdvisorComponent = () => {
                         }}
                       >
                         <Col xs={3}>
-                          <img
-                            src={element?.image || ""}
-                            alt=""
-                            style={{ width: "48px" }}
-                          />
+                          <div
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              borderRadius: "50%",
+                              overflow: "hidden",
+                            }}
+                          >
+                            <img
+                              src={element?.image || ""}
+                              alt=""
+                              style={{ width: "50px" }}
+                            />
+                          </div>
                         </Col>
                         <Col xs={9}>
                           <p className="mb-0" style={{ fontWeight: "600" }}>
@@ -73,11 +82,20 @@ const MyGroupAdvisorComponent = () => {
                           }}
                         >
                           <Col xs={3}>
-                            <img
-                              src={element?.image || ""}
-                              alt=""
-                              style={{ width: "48px" }}
-                            />
+                            <div
+                              style={{
+                                width: "50px",
+                                height: "50px",
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                              }}
+                            >
+                              <img
+                                src={element?.image || ""}
+                                alt=""
+                                style={{ width: "50px" }}
+                              />
+                            </div>
                           </Col>
                           <Col xs={9}>
                             <p className="mb-0" style={{ fontWeight: "600" }}>

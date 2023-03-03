@@ -95,7 +95,7 @@ const Notizie = () => {
               setShowModal(true);
             }}
           >
-            Scrivi nuovo Post
+            Avvia un Post
           </Button>
           <Row className="d-flex justify-content-between mt-2">
             <Col

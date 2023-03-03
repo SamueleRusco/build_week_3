@@ -48,6 +48,7 @@
 .body {
   display: flex;
   justify-content: center;
+
 }
 
 .feed-inputContainer {
@@ -69,10 +70,7 @@
 
 /*Footer*/
 
-#footer {
-  margin-left: 200px;
-  margin-top: 200px;
-}
+
 
 .footerRow {
   display: flex;
@@ -114,9 +112,9 @@
   width: 220px;
 } */
 .postBtnHover:hover {
-  background-color: lightgrey !important;
+  background-color: #EBEBEB !important;
 }
 
 .startPostBtnHover:hover {
-  background-color: lightgrey !important;
+  background-color: #EBEBEB !important;
 }

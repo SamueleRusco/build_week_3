@@ -29,37 +29,61 @@ const MyUserDetailsCard = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
-      {(loader && <Spinner variant="dark" />) || (
-        <Card style={{ borderRadius: "10px" }}>
-          <div className="position-relative">
-            <Card.Img
-              variant="top"
-              src={profile.image}
+    <Card style={{ borderRadius: "10px" }}>
+      <div style={{ position: "relative" }}>
+        <div
+          variant="top"
+          style={{
+            height: "260px",
+            width: "100%",
+            backgroundImage: "url(https://placekitten.com/200)",
+            backgroundSize: "cover",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+            position: "relative",
+          }}
+        >
+          <div style={{ position: "absolute", bottom: "-12%" }}>
+            <div
               style={{
-                height: "160px",
-                width: "100%",
-                /* backgroundImage: "url(" + profile.image + ")", */
-                backgroundSize: "cover",
-                borderTopLeftRadius: "10px",
-                borderTopRightRadius: "10px",
-              }}
-            ></Card.Img>
-            <Card.Img
-              className="p-5 position-absolute"
-              src={profile.image}
-              style={{
-                borderRadius: "50%",
                 height: "150px",
                 width: "150px",
-                left: "4%",
-                bottom: "-25%",
-                backgroundColor: "grey",
-                border: "4px solid white",
+                borderRadius: "50%",
+                border: "1px solid grey",
+                overflow: "hidden",
+                position: "relative",
+
+                marginLeft: "20px",
               }}
-            ></Card.Img>
-            <Button
-              className="position-absolute position-relative
+            >
+              <img
+                src={profile.image}
+                style={{
+                  width: "170px",
+                  position: "absolute",
+                  right: "-15%",
+                  top: "-15%",
+                }}
+              ></img>
+            </div>
+          </div>
+        </div>
+
+        {/* <Card.Img
+          className="p-5 position-absolute"
+          src={profile.image}
+          style={{
+            borderRadius: "50%",
+            height: "150px",
+            width: "150px",
+            left: "4%",
+            bottom: "-25%",
+            backgroundColor: "green",
+            border: "4px solid white",
+          }}
+        ></Card.Img> */}
+        <Button
+          className="position-absolute position-relative
           pe-2"
               style={{
                 height: "40px",

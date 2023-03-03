@@ -55,14 +55,22 @@ const NewPost = ({ showModal, setShowModal }) => {
         onHide={() => setShowModal(false)}
         dialogClassName="modal-90w"
       >
-        <Form>
+        <Form style={{ height: "270px" }}>
           <Form.Group>
-            <FormLabel>scrivi il tuo post</FormLabel>
+            <FormLabel>Crea un post</FormLabel>
+            <Button
+              style={{ marginLeft: "370px", color: "black", fontWeight: "500" }}
+              onClick={(e) => setShowModal(false)}
+              variant="danger"
+            >
+              X
+            </Button>
             <FormControl
+              style={{ height: "195px", border: "none" }}
               onChange={(e) => setText(e.target.value)}
               value={text}
               type="input"
-              placeholder="scrivi qualcosa"
+              placeholder="Di cosa vorresti parlare?"
             ></FormControl>
           </Form.Group>
           <Form.Group>
@@ -82,10 +90,7 @@ const NewPost = ({ showModal, setShowModal }) => {
               setRefreshed(!refreshed);
             }}
           >
-            post
-          </Button>
-          <Button onClick={(e) => setShowModal(false)} variant="danger">
-            Annulla
+            Pubblica
           </Button>
         </Form>
       </Modal>
