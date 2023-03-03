@@ -3,14 +3,14 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import { Pencil, XLg } from "react-bootstrap-icons";
 import MyEditExperiencesModal from "./MyEditExperiencesModal";
 import MyExperienceForm from "./MyExperienceForm";
-
+import { useSelector } from "react-redux";
 const MyExperience = () => {
   const [showModal, setShowModal] = useState(false);
   const [editModalOn, setEditModalOn] = useState(false);
   const [experiences, setExperiences] = useState(null);
+  const profileID = useSelector((state) => state.profiles.result._id);
 
-  const baseEndpoint =
-    "https://striveschool-api.herokuapp.com/api/profile/63fc659cf193e60013807f4d/experiences";
+  const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
 
   useEffect(() => {
     getExperienceFetch();

@@ -7,16 +7,17 @@ import { putProfileImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
 const MyForm = ({ showModal, setShowModal }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
+  const datiProfilo = useSelector((state) => state.profiles.result);
   const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [title, setTitle] = useState("");
-  const [bio, setBio] = useState("");
-  const [area, setArea] = useState("");
+  const [name, setName] = useState(datiProfilo.name);
+  const [surname, setSurname] = useState(datiProfilo.surname);
+  const [email, setEmail] = useState(datiProfilo.email);
+  const [username, setUsername] = useState(datiProfilo.username);
+  const [title, setTitle] = useState(datiProfilo.title);
+  const [bio, setBio] = useState(datiProfilo.bio);
+  const [area, setArea] = useState(datiProfilo.area);
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
 
   let user = {
@@ -38,7 +39,7 @@ const MyForm = ({ showModal, setShowModal }) => {
         name: name,
         surname: surname,
         email: email,
-        // username: username,
+        /* username: username, */
         title: title,
         bio: bio,
         area: area,
@@ -106,7 +107,6 @@ const MyForm = ({ showModal, setShowModal }) => {
               type="email"
               placeholder="Enter email"
             />
-            {/* <Form.Label>Username</Form.Label>
             {/* <Form.Label>Username</Form.Label>
             <Form.Control
               className="mb-4"
