@@ -37,12 +37,12 @@ const NewPost = ({ showModal, setShowModal }) => {
       >
         <Form>
           <Form.Group>
-            <FormLabel>scrivi il tuo post</FormLabel>
+            <FormLabel>Crea un post</FormLabel>
             <FormControl
               onChange={(e) => setText(e.target.value)}
               value={text}
               type="input"
-              placeholder="scrivi qualcosa"
+              placeholder="Di cosa vorresti parlare?"
             ></FormControl>
           </Form.Group>
           <Button
@@ -65,3 +65,5 @@ const NewPost = ({ showModal, setShowModal }) => {
 };
 
 export default NewPost;
+
+
