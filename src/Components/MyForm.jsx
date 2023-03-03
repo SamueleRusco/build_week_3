@@ -53,7 +53,7 @@ const MyForm = ({ showModal, setShowModal }) => {
 
   useEffect(() => {
     setRefreshed(false);
-    dispatch(getProfileAction());
+    dispatch(getProfileAction(key));
   }, [refreshed]);
 
   const handleFile = (ev) => {
