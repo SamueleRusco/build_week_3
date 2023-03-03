@@ -182,7 +182,11 @@ const Notizie = () => {
                   </Card.Body>
                   <Card.Img
                     src={post.image}
-                    style={{ width: "75%", height: "500px" }}
+                    style={{
+                      width: "100%",
+                      maxHeight: (post.image && "600px") || "0px",
+                    }}
+                    className="mb-3"
                   ></Card.Img>
                   <Card.Subtitle
                     className=" text-muted"
