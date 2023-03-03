@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 
 const MyPeopleCouldKnowComponent = () => {
+  const key = useSelector((state) => state.profiles.bearer);
   const [visible, setVisible] = useState(true);
   const usersList = [1, 2, 3, 4, 5];
   const peopleArray = useSelector((state) => state.allProfiles.result);
@@ -20,7 +21,7 @@ const MyPeopleCouldKnowComponent = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllProfileFetchAction());
+    dispatch(getAllProfileFetchAction(key));
   }, []);
 
   return (

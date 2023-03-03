@@ -16,10 +16,12 @@ import MyJobAdvisorCard from "./MyJobAdvisorCard";
 import MyForm from "./MyForm";
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
+  /* const key = useSelector((state) => state.profiles.bearer); */
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProfileAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [sliderCounter, setSliderCounter] = useState(0);
