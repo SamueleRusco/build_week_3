@@ -22,14 +22,14 @@ import { fontWeight } from "@mui/system";
 const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
-  const [refreshed, setRefreshed] = useState(false);
+  const user = useSelector((state) => state.profiles.result);
   const [classButton, setClassButton] = useState("disabled");
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   const key = useSelector((state) => state.profiles.bearer);
 
   const handleChangeText = (e) => {
-    // const text = e.target.value;
+    const text = e.target.value;
     setText(text);
     if (text !== "") {
       setClassButton("");
@@ -153,11 +153,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                       marginLeft: "10px",
                     }}
                   >
-                    <img
-                      src={"https://placekitten.com/200/200"}
-                      alt=""
-                      style={{ width: "50px" }}
-                    />
+                    <img src={user.image} alt="" style={{ width: "50px" }} />
                   </div>
                 </div>
 
@@ -170,7 +166,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                   }}
                 >
                   <p style={{ fontWeight: "600", margin: "0" }}>
-                    {"sa"} {"mues"}
+                    {user.name} {user.surname}
                   </p>
 
                   <Button
@@ -198,7 +194,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                 style={{ height: "35px", border: "none" }}
                 onChange={handleChangeText}
                 value={text}
-                type="input"
+                type="text"
                 placeholder="Di cosa vorresti parlare?"
               ></FormControl>
             </Form.Group>
