@@ -1,23 +1,12 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { Button, Form, FormGroup } from "react-bootstrap";
+import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import MyEditPostComponent from "./MyEditPostComponent";
 
-const MySingleNews = ({
-  post,
-  editPost,
-  setEditPost,
-  refreshed,
-  setRefreshed,
-  rateComment,
-  postCommentFetch,
-}) => {
-  const profileID = useSelector((state) => state.profiles.result_id);
-  const [selected, setSelected] = useState(false);
-  const [commento, setCommento] = useState("");
-  const [edit, setEdit] = useState("");
+const MySingleComment = ({ element, refreshed, setRefreshed }) => {
+  const [showEditInput, setShowEditInput] = useState(false);
   const userMail = useSelector((state) => state.profiles.result.email);
-  console.log(userMail);
+  const [edit, setEdit] = useState("");
 
   const deleteCommentFetch = async (idcommento) => {
     let response = await fetch(
@@ -43,155 +32,80 @@ const MySingleNews = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          comment: edit,
+          comment: edit.length > 0 && edit,
         }),
       }
     );
   };
 
   return (
-    <Card className="my-2 py-3 text-start">
-      <Card.Body style={{ paddingTop: "0" }}>
-        <div className="d-flex justify-content-between">
-          <Card.Title style={{ fontSize: "1.2rem" }}>
-            <img
-              src={post.user.image}
-              alt="propic"
-              style={{
-                width: "25px",
-              }}
-            />
-            {post.user.name} {post.user.surname}
-          </Card.Title>
-        </div>
-        <Card.Body style={{ position: "relative" }}>
-          <Row>
-            <Col xs={12}>
-              <p>{post.text}</p>
-              <div style={{}}></div>
-            </Col>
-          </Row>
-        </Card.Body>
-        <Card.Img
-          src={post.image}
-          style={{
-            width: "100%",
-            maxHeight: (post.image && "600px") || "0px",
-          }}
-          className="mb-3"
-        ></Card.Img>
-        <Card.Subtitle className=" text-muted" style={{ fontWeight: "400" }}>
-          pubblicato il {post?.createdAt?.substring(0, 10)}
-        </Card.Subtitle>
-        {(!selected && (
-          <Button
-            onClick={() => {
-              console.log(post._id);
-              // commenta(post._id);
-              // getCommentFetch();
-              // postCommentFetch();
-              setSelected(true);
-            }}
-          >
-            Comment id
-          </Button>
-        )) || (
-          <div>
+    <div className="d-flex justify-content-between align-items-center">
+      <p className="m-0">{element.comment}</p>
+      {element.author === userMail && (
+        <>
+          <div className="d-flex">
+            {!showEditInput && (
+              <Button
+                className="bg-transparent"
+                style={{ border: "none" }}
+                onClick={() => {
+                  setRefreshed(true);
+                  deleteCommentFetch(element._id);
+                }}
+              >
+                <XLg className="text-secondary" />
+              </Button>
+            )}
             <Form>
-              <Row>
-                <Col xs={7}>
-                  {" "}
-                  <Form.Control
-                    type="text"
-                    placeholder="Inserisci commento"
-                    value={commento}
-                    onChange={(e) => {
-                      setCommento(e.target.value);
-                    }}
-                  />
-                </Col>
-                <Col xs={2}>
-                  <Button
-                    onClick={() => {
-                      console.log(commento);
-                      postCommentFetch(commento, post._id);
-                      setSelected(false);
-                      setCommento("");
-                    }}
-                  >
-                    Invia
-                  </Button>
-                </Col>
-                <Col xs={3}>
-                  <Button
-                    className="bg-danger"
-                    onClick={() => {
-                      console.log(commento);
-
-                      setSelected(false);
-                    }}
-                  >
-                    Annulla
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          </div>
-        )}
-        {post.user._id === profileID ? (
-          <>
-            <MyEditPostComponent
-              editPost={editPost}
-              setEditPost={setEditPost}
-              postId={post?._id}
-              refreshFnc={setRefreshed}
-              refreshed={refreshed}
-            />
-          </>
-        ) : (
-          ""
-        )}{" "}
-        {rateComment &&
-          rateComment
-            .filter((element) => element.elementId === post._id)
-            .map((element) => (
-              <div>
-                {element.comment}
-                {element.author === userMail && (
-                  <>
+              {showEditInput && (
+                <>
+                  <FormGroup>
+                    <Form.Control
+                      type="text"
+                      placeholder="Modifica il commento"
+                      value={edit}
+                      onChange={(e) => setEdit(e.target.value)}
+                    />
                     <Button
-                      onClick={() => {
-                        deleteCommentFetch(element._id);
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setRefreshed(true);
+                        editCommentFetch(element._id);
                       }}
                     >
-                      Elimina
+                      Conferma
                     </Button>
-                    <Form>
-                      <FormGroup>
-                        <Form.Control
-                          type="text"
-                          placeholder="Modifica il commento"
-                          value={edit}
-                          onChange={(e) => setEdit(e.target.value)}
-                        />
-                      </FormGroup>
-                      <Button
-                        className="bg-danger"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          editCommentFetch(element._id);
-                        }}
-                      >
-                        Modifica commento
-                      </Button>
-                    </Form>
-                  </>
-                )}
-              </div>
-            ))}
-      </Card.Body>
-    </Card>
+                    <Button
+                      className="bg-danger"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowEditInput(false);
+                      }}
+                    >
+                      Annulla
+                    </Button>
+                  </FormGroup>
+                </>
+              )}
+              {!showEditInput && (
+                <Button
+                  className="bg-transparent"
+                  style={{ border: "none" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowEditInput(true);
+                    // editCommentFetch(element._id);
+                  }}
+                >
+                  <PencilFill className="text-secondary" />
+                </Button>
+              )}
+            </Form>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
-export default MySingleNews;
+export default MySingleComment;
