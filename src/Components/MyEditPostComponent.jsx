@@ -4,13 +4,20 @@ import { PencilFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
-const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
-  const [refreshed, setRefreshed] = useState(false);
+const MyEditPostComponent = ({
+  editPost,
+  setEditPost,
+  postId,
+  refreshed,
+  setRefreshed,
+}) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
   const dispatch = useDispatch();
   const url = "https://striveschool-api.herokuapp.com/api/posts/" + postId;
   const key = useSelector((state) => state.profiles.bearer);
+
+  console.log("Primo id", postId);
 
   const postExperienceFetch = async () => {
     /* let key =
@@ -37,6 +44,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
     let data = await response.json();
     console.log("text", data);
   };
+
   const handleFile = (ev) => {
     setFd((prev) => {
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
@@ -63,6 +71,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
           style={{ border: "none", fontSize: "0.9rem" }}
           onClick={() => {
             deleteExperienceFetch();
+            setRefreshed(true);
             setEditPost(false);
           }}
         >
@@ -159,7 +168,7 @@ const MyEditPostComponent = ({ editPost, setEditPost, postId }) => {
               postExperienceFetch();
               dispatch(putPostImg(fd, postId, key));
               setEditPost(false);
-              console.log(postId);
+              console.log("secondo", postId);
             }}
           >
             Invia

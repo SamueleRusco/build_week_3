@@ -14,11 +14,26 @@ const MySingleNews = ({
   rateComment,
   postCommentFetch,
 }) => {
-  const profileID = useSelector((state) => state.profiles.result_id);
+  const profileID = useSelector((state) => state.profiles.result._id);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
   const userMail = useSelector((state) => state.profiles.result.email);
-  console.log(userMail);
+  const bearer = useSelector((state) => state.profiles.bearer);
+
+  console.log(profileID);
+
+  const deleteNewsFetch = async (idcommento) => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: bearer,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
 
   return (
     <Card className="my-2 py-3 text-start">
@@ -116,7 +131,7 @@ const MySingleNews = ({
               editPost={editPost}
               setEditPost={setEditPost}
               postId={post?._id}
-              refreshFnc={setRefreshed}
+              setRefreshed={setRefreshed}
               refreshed={refreshed}
             />
           </>

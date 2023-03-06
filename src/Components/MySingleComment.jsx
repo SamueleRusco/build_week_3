@@ -40,7 +40,10 @@ const MySingleComment = ({ element, refreshed, setRefreshed }) => {
 
   return (
     <div className="d-flex justify-content-between align-items-center">
-      <p className="m-0">{element.comment}</p>
+      <p className="m-0">
+        {element.comment}{" "}
+        <span className="text-secondary">{element.author}</span>
+      </p>
       {element.author === userMail && (
         <>
           <div className="d-flex">
