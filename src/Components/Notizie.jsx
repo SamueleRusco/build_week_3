@@ -29,6 +29,8 @@ const Notizie = () => {
   const [refreshed, setRefreshed] = useState(false);
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   console.log(profileID);
+  const [rateComment, setRateComment] = useState(null);
+  const [showComment, setShowComment] = useState(false);
 
   useEffect(() => {
     fetchNotizie();
@@ -68,11 +70,54 @@ const Notizie = () => {
         )
       );
       console.log("lista commenti ", listaCommenti);
+      getCommentFetch();
     } catch (error) {
       console.log(error);
     }
     dispatch({ type: GET_PROFILE_LOADING, payload: false });
     console.log(loader);
+  };
+
+  const postCommentFetch = async () => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/comments/",
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          // content-type esprime il content type del body
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          comment: "ehy tu",
+          rate: "1",
+          elementId: "6405bb8402cacd00132f19be",
+        }),
+      }
+    );
+    if (response.ok) {
+      let data = await response.json();
+      console.log("commenti libri", data);
+    }
+  };
+  const getCommentFetch = async () => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/comments/",
+      {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      let data = await response.json();
+      setRateComment(data);
+      console.log("commenti libri", rateComment);
+    }
   };
 
   return (
@@ -190,7 +235,6 @@ const Notizie = () => {
                       {post.user.name} {post.user.surname}
                     </Card.Title>
                   </div>
-
                   <Card.Body style={{ position: "relative" }}>
                     <Row>
                       <Col xs={12}>
@@ -213,7 +257,30 @@ const Notizie = () => {
                   >
                     pubblicato il {post?.createdAt?.substring(0, 10)}
                   </Card.Subtitle>
-
+                  {(!showComment && (
+                    <Button
+                      onClick={() => {
+                        console.log(post._id);
+                        // commenta(post._id);
+                        // getCommentFetch();
+                        // postCommentFetch();
+                        setShowComment(true);
+                      }}
+                    >
+                      Comment id
+                    </Button>
+                  )) || (
+                    <div>
+                      inserisci commento{" "}
+                      <Button
+                        onClick={() => {
+                          setShowComment(false);
+                        }}
+                      >
+                        Invia
+                      </Button>
+                    </div>
+                  )}
                   {post.user._id === profileID ? (
                     <>
                       <MyEditPostComponent
@@ -226,7 +293,11 @@ const Notizie = () => {
                     </>
                   ) : (
                     ""
-                  )}
+                  )}{" "}
+                  {rateComment &&
+                    rateComment
+                      .filter((element) => element.elementId === post._id)
+                      .map((element) => <div>{element.comment}</div>)}
                 </Card.Body>
               </Card>
             )
