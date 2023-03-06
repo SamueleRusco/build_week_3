@@ -16,6 +16,7 @@ const MySingleNews = ({
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
   const userMail = useSelector((state) => state.profiles.result.email);
+  console.log(userMail);
 
   return (
     <Card className="my-2 py-3 text-start">
@@ -125,7 +126,9 @@ const MySingleNews = ({
             .map((element) => (
               <div>
                 {element.comment}
-                {<Button onClick={() => {}}>Elimina</Button>}
+                {element.author === userMail && (
+                  <Button onClick={() => {}}>Elimina</Button>
+                )}
               </div>
             ))}
       </Card.Body>
