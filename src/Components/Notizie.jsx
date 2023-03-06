@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Spinner } from "react-bootstrap";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -31,6 +31,7 @@ const Notizie = () => {
   console.log(profileID);
   const [rateComment, setRateComment] = useState(null);
   const [showComment, setShowComment] = useState(false);
+  const [commento, setCommento] = useState("");
 
   useEffect(() => {
     fetchNotizie();
@@ -90,7 +91,7 @@ const Notizie = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          comment: "ehy tu",
+          comment: commento.length > 0 && commento,
           rate: "1",
           elementId: "6405bb8402cacd00132f19be",
         }),
@@ -271,14 +272,45 @@ const Notizie = () => {
                     </Button>
                   )) || (
                     <div>
-                      inserisci commento{" "}
-                      <Button
-                        onClick={() => {
-                          setShowComment(false);
-                        }}
-                      >
-                        Invia
-                      </Button>
+                      <Form>
+                        <Row>
+                          <Col xs={7}>
+                            {" "}
+                            <Form.Control
+                              type="text"
+                              placeholder="Inserisci commento"
+                              value={commento}
+                              onChange={(e) => {
+                                setCommento(e.target.value);
+                              }}
+                            />
+                          </Col>
+                          <Col xs={2}>
+                            <Button
+                              onClick={() => {
+                                console.log(commento);
+                                postCommentFetch();
+                                setShowComment(false);
+                                setCommento("");
+                              }}
+                            >
+                              Invia
+                            </Button>
+                          </Col>
+                          <Col xs={3}>
+                            <Button
+                              className="bg-danger"
+                              onClick={() => {
+                                console.log(commento);
+
+                                setShowComment(false);
+                              }}
+                            >
+                              Annulla
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Form>
                     </div>
                   )}
                   {post.user._id === profileID ? (
