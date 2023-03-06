@@ -215,7 +215,12 @@ const Notizie = () => {
           </Row>
         </Card.Body>
       </Card>
-      <NewPost showModal={showModal} setShowModal={setShowModal} />
+      <NewPost
+        showModal={showModal}
+        setShowModal={setShowModal}
+        refreshed={refreshed}
+        setRefreshed={setRefreshed}
+      />
       {/* {(loader && <Spinner variant="dark" />) || ({listaCommenti && */}
       <h4>Notizie</h4>
       {loader ? (

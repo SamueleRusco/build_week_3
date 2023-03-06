@@ -2,15 +2,14 @@ import { useState } from "react";
 import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-const NewPost = ({ showModal, setShowModal }) => {
+
+const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   const key = useSelector((state) => state.profiles.bearer);
-  const [refreshed, setRefreshed] = useState(false);
-  useEffect(() => {
-    postNewCommentFetch();
-  }, [refreshed]);
+  // const [refreshed, setRefreshed] = useState(false);
+
   const postNewCommentFetch = async () => {
     /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
@@ -86,8 +85,8 @@ const NewPost = ({ showModal, setShowModal }) => {
             onClick={(e) => {
               e.preventDefault();
               postNewCommentFetch();
+              setRefreshed(true);
               setShowModal(false);
-              setRefreshed(!refreshed);
             }}
           >
             Pubblica
