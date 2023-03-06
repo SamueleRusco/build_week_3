@@ -18,6 +18,7 @@ import {
 import { GET_PROFILE_LOADING } from "../Redux/Actions";
 import { getProfileAction } from "../Redux/Actions";
 import MySingleComment from "./MySingleComment";
+import MySingleNews from "./MySingleComment";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
@@ -80,7 +81,7 @@ const Notizie = () => {
     console.log(loader);
   };
 
-  const postCommentFetch = async (commento, id) => {
+  const postCommentFetch = async (commento, id, fetchMethod) => {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/comments/",
       {
@@ -333,7 +334,7 @@ const Notizie = () => {
               //         .map((element) => <div>{element.comment}</div>)}
               //   </Card.Body>
               // </Card>
-              <MySingleComment
+              <MySingleNews
                 post={post}
                 showComment={showComment}
                 key={i}

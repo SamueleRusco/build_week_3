@@ -140,7 +140,7 @@ const MyForm = ({ showModal, setShowModal }) => {
               e.preventDefault();
               if (
                 name === "" ||
-                surname ||
+                surname === "" ||
                 email === "" ||
                 username === "" ||
                 bio === "" ||

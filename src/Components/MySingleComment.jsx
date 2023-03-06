@@ -3,7 +3,7 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import MyEditPostComponent from "./MyEditPostComponent";
 
-const MySingleComment = ({
+const MySingleNews = ({
   post,
   editPost,
   setEditPost,
@@ -15,6 +15,7 @@ const MySingleComment = ({
   const profileID = useSelector((state) => state.profiles.result_id);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
+  const userMail = useSelector((state) => state.profiles.result.email);
 
   return (
     <Card className="my-2 py-3 text-start">
@@ -121,10 +122,15 @@ const MySingleComment = ({
         {rateComment &&
           rateComment
             .filter((element) => element.elementId === post._id)
-            .map((element) => <div>{element.comment}</div>)}
+            .map((element) => (
+              <div>
+                {element.comment}
+                {<Button onClick={() => {}}>Elimina</Button>}
+              </div>
+            ))}
       </Card.Body>
     </Card>
   );
 };
 
-export default MySingleComment;
+export default MySingleNews;
