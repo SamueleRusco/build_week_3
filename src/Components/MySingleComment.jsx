@@ -18,6 +18,20 @@ const MySingleNews = ({
   const userMail = useSelector((state) => state.profiles.result.email);
   console.log(userMail);
 
+  const deleteCommentFetch = async (idcommento) => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/comments/" + idcommento,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
+
   return (
     <Card className="my-2 py-3 text-start">
       <Card.Body style={{ paddingTop: "0" }}>
@@ -127,7 +141,13 @@ const MySingleNews = ({
               <div>
                 {element.comment}
                 {element.author === userMail && (
-                  <Button onClick={() => {}}>Elimina</Button>
+                  <Button
+                    onClick={() => {
+                      deleteCommentFetch(element._id);
+                    }}
+                  >
+                    Elimina
+                  </Button>
                 )}
               </div>
             ))}
