@@ -20,32 +20,20 @@ const MyForm = ({ showModal, setShowModal }) => {
   const [area, setArea] = useState(datiProfilo.area);
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
   const key = useSelector((state) => state.profiles.bearer);
-  let user = {
-    name,
-    surname,
-    email,
-    username,
-    title,
-    bio,
-    area,
-  };
+
   const putProfileFetch = async () => {
-    /* let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-     */ let response = await fetch(baseEndpoint, {
+    let response = await fetch(baseEndpoint, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
         name: name,
         surname: surname,
         email: email,
-        /* username: username, */
+        username: username,
         title: title,
         bio: bio,
         area: area,
       }),
-
-      // body: JSON.stringify(user)
     });
     let data = await response.json();
     console.log("sono put", data);
@@ -58,9 +46,8 @@ const MyForm = ({ showModal, setShowModal }) => {
 
   const handleFile = (ev) => {
     setFd((prev) => {
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("profile"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("profile", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("profile");
+      prev.append("profile", ev.target.files[0]);
       return prev;
     });
   };
@@ -107,14 +94,14 @@ const MyForm = ({ showModal, setShowModal }) => {
               type="email"
               placeholder="Enter email"
             />
-            {/* <Form.Label>Username</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               className="mb-4"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="input"
               placeholder="Enter Username"
-            /> */}
+            />
             <Form.Label>Title</Form.Label>
             <Form.Control
               className="mb-4"
@@ -151,7 +138,7 @@ const MyForm = ({ showModal, setShowModal }) => {
             className="me-2"
             onClick={(e) => {
               e.preventDefault();
-              /* if (
+              if (
                 name === "" ||
                 surname ||
                 email === "" ||
@@ -161,12 +148,12 @@ const MyForm = ({ showModal, setShowModal }) => {
                 area === ""
               ) {
                 alert("Per favore compila tutti i campi");
-              } else { */
-              putProfileFetch();
-              dispatch(putProfileImg(fd, profileID, key));
-              setRefreshed(true);
-              setShowModal(false);
-              /* } */
+              } else {
+                putProfileFetch();
+                dispatch(putProfileImg(fd, profileID, key));
+                setRefreshed(true);
+                setShowModal(false);
+              }
             }}
             variant="primary"
             type="submit"
