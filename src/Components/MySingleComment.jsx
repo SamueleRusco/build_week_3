@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import MyEditPostComponent from "./MyEditPostComponent";
 
@@ -15,6 +15,7 @@ const MySingleNews = ({
   const profileID = useSelector((state) => state.profiles.result_id);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
+  const [edit, setEdit] = useState("");
   const userMail = useSelector((state) => state.profiles.result.email);
   console.log(userMail);
 
@@ -28,6 +29,22 @@ const MySingleNews = ({
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
           "Content-Type": "application/json",
         },
+      }
+    );
+  };
+  const editCommentFetch = async (idcommento) => {
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/comments/" + idcommento,
+      {
+        method: "PUT",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          comment: edit,
+        }),
       }
     );
   };
@@ -141,13 +158,34 @@ const MySingleNews = ({
               <div>
                 {element.comment}
                 {element.author === userMail && (
-                  <Button
-                    onClick={() => {
-                      deleteCommentFetch(element._id);
-                    }}
-                  >
-                    Elimina
-                  </Button>
+                  <>
+                    <Button
+                      onClick={() => {
+                        deleteCommentFetch(element._id);
+                      }}
+                    >
+                      Elimina
+                    </Button>
+                    <Form>
+                      <FormGroup>
+                        <Form.Control
+                          type="text"
+                          placeholder="Modifica il commento"
+                          value={edit}
+                          onChange={(e) => setEdit(e.target.value)}
+                        />
+                      </FormGroup>
+                      <Button
+                        className="bg-danger"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          editCommentFetch(element._id);
+                        }}
+                      >
+                        Modifica commento
+                      </Button>
+                    </Form>
+                  </>
                 )}
               </div>
             ))}
