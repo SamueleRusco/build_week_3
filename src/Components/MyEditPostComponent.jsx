@@ -17,18 +17,19 @@ const MyEditPostComponent = ({
   const url = "https://striveschool-api.herokuapp.com/api/posts/" + postId;
   const key = useSelector((state) => state.profiles.bearer);
 
-  console.log("Primo id", postId);
-
-  const postExperienceFetch = async () => {
+  const postExperienceFetch = async (id) => {
     /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */ let response = await fetch(url, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json", Authorization: key },
-      body: JSON.stringify({
-        text: text,
-      }),
-    });
+    */ let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/posts/" + id,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", Authorization: key },
+        body: JSON.stringify({
+          text: text,
+        }),
+      }
+    );
     let data = await response.json();
     console.log("text", data);
   };
@@ -53,6 +54,10 @@ const MyEditPostComponent = ({
       return prev;
     });
   };
+  useEffect(() => {
+    console.log("LIDIA", postId);
+  }, []);
+
   return (
     <>
       <div className="d-flex flex-column bg-warning">
@@ -165,10 +170,12 @@ const MyEditPostComponent = ({
             onClick={(e) => {
               e.preventDefault();
               //   postExperienceFetch();
-              postExperienceFetch();
+
+              postExperienceFetch(postId);
+              setRefreshed(true);
               dispatch(putPostImg(fd, postId, key));
               setEditPost(false);
-              console.log("secondo", postId);
+              console.log("LIDIAAAAAAAAAAAAAAAAAAAAAAAA", postId);
             }}
           >
             Invia

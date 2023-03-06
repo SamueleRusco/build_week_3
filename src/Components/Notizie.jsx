@@ -34,6 +34,7 @@ const Notizie = () => {
   const [rateComment, setRateComment] = useState(null);
   const [showComment, setShowComment] = useState(false);
   // const [commento, setCommento] = useState("");
+  const [scrollComment, setScrollComment] = useState(10);
 
   useEffect(() => {
     setRefreshed(false);
@@ -64,7 +65,7 @@ const Notizie = () => {
       dispatch(
         listaCommentiAction(
           datiNotizie.filter(
-            (element, index) => index > datiNotizie.length - 12
+            (element, index) => index > datiNotizie.length - 30
           )
         )
       );
@@ -229,7 +230,7 @@ const Notizie = () => {
         listaCommenti &&
         listaCommenti?.map((post, i) => {
           return (
-            i < 10 && (
+            i < scrollComment && (
               <MySingleNews
                 post={post}
                 showComment={showComment}
@@ -248,6 +249,14 @@ const Notizie = () => {
           );
         })
       )}
+      <Button
+        className="bg-secondary"
+        onClick={() => {
+          setScrollComment(scrollComment + 10);
+        }}
+      >
+        altri commenti
+      </Button>
     </>
   );
 };
