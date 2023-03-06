@@ -1,14 +1,42 @@
 import { useState } from "react";
-import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Form,
+  FormControl,
+  FormLabel,
+  Modal,
+  Row,
+} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+
+import {
+  CardImage,
+  CaretDownFill,
+  GlobeEuropeAfrica,
+  XLg,
+} from "react-bootstrap-icons";
+import { fontWeight } from "@mui/system";
 
 const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
+  const [refreshed, setRefreshed] = useState(false);
+  const [classButton, setClassButton] = useState("disabled");
+
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   const key = useSelector((state) => state.profiles.bearer);
-  // const [refreshed, setRefreshed] = useState(false);
+
+  const handleChangeText = (e) => {
+    // const text = e.target.value;
+    setText(text);
+    if (text !== "") {
+      setClassButton("");
+    } else {
+      setClassButton("disabled");
+    }
+  };
 
   const postNewCommentFetch = async () => {
     /* let key =
@@ -54,43 +82,162 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
         onHide={() => setShowModal(false)}
         dialogClassName="modal-90w"
       >
-        <Form style={{ height: "270px" }}>
-          <Form.Group>
-            <FormLabel>Crea un post</FormLabel>
-            <Button
-              style={{ marginLeft: "370px", color: "black", fontWeight: "500" }}
-              onClick={(e) => setShowModal(false)}
-              variant="danger"
-            >
-              X
-            </Button>
-            <FormControl
-              style={{ height: "195px", border: "none" }}
-              onChange={(e) => setText(e.target.value)}
-              value={text}
-              type="input"
-              placeholder="Di cosa vorresti parlare?"
-            ></FormControl>
-          </Form.Group>
-          <Form.Group>
-            <FormLabel>Aggiungi un`immagine</FormLabel>
+        <Form
+          style={{
+            height: "350px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <Form.Group>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  borderBottom: "1px solid lightgrey",
+                }}
+              >
+                <FormLabel
+                  style={{
+                    paddingLeft: "5px",
+                    paddingTop: "5px",
+                    fontSize: "1.2em",
+                    fontWeight: "400",
+                  }}
+                >
+                  Crea un post
+                </FormLabel>
+                <div
+                  className="closeButton"
+                  style={{
+                    height: "35px",
+                    width: "35px",
+                    borderRadius: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginRight: "10px",
+                  }}
+                >
+                  <Button
+                    style={{
+                      color: "grey",
+                      fontWeight: "800",
+                      backgroundColor: "transparent",
+                      margin: "0",
+
+                      paddingBottom: "10px",
+
+                      border: "none",
+                    }}
+                    onClick={(e) => setShowModal(false)}
+                  >
+                    <XLg />
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="py-3"
+                style={{ borderTop: "1px solid lightgrey", display: "flex" }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    <img
+                      src={"https://placekitten.com/200/200"}
+                      alt=""
+                      style={{ width: "50px" }}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    marginLeft: "10px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p style={{ fontWeight: "600", margin: "0" }}>
+                    {"sa"} {"mues"}
+                  </p>
+
+                  <Button
+                    style={{
+                      margin: "0",
+                      border: "1px solid grey",
+                      backgroundColor: "white",
+                      color: "grey",
+                      padding: "4px 12px 4px 12px",
+                      borderRadius: "20px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <GlobeEuropeAfrica style={{ marginRight: "5px" }} />
+                    <span style={{ textAlign: "center" }}>Chiunque</span>
+                    <CaretDownFill style={{ marginLeft: "5px" }} />
+                  </Button>
+                </div>
+              </div>
+              {/* setText(e.target.value) */}
+
+              <FormControl
+                style={{ height: "35px", border: "none" }}
+                onChange={handleChangeText}
+                value={text}
+                type="input"
+                placeholder="Di cosa vorresti parlare?"
+              ></FormControl>
+            </Form.Group>
+          </div>
+
+          <Form.Group className="d-flex" style={{ marginBottom: "10px" }}>
+            {/* <FormLabel>Aggiungi un`immagine</FormLabel> */}
             <FormControl
               onChange={handleFile}
               type="file"
               placeholder="Aggiungi un`immagine"
             ></FormControl>
+
+            <Button
+              className={classButton}
+              style={{
+                border: "none",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginRight: "10px",
+                marginLeft: "10px",
+                padding: "0 12px 0 12px",
+                fontWeight: "600",
+                color: "white",
+                backgroundColor: "#0a66c2",
+              }}
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                postNewCommentFetch();
+                setRefreshed(true);
+                setShowModal(false);
+              }}
+            >
+              Pubblica
+            </Button>
           </Form.Group>
-          <Button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              postNewCommentFetch();
-              setRefreshed(true);
-              setShowModal(false);
-            }}
-          >
-            Pubblica
-          </Button>
         </Form>
       </Modal>
     </>
