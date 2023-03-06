@@ -118,3 +118,13 @@
 .startPostBtnHover:hover {
   background-color: #EBEBEB !important;
 }
+
+.closeButton:hover {
+  background-color: #EBEBEB !important;
+  transition: 0.2s,
+}
+
+.disabled {
+  background-color: #EBEBEB !important;
+  color: darkgrey !important;
+}

@@ -118,8 +118,6 @@ const AddPhotoText = styled.div`
 const Widget = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 
-  
-
   & > a {
     text-decoration: none;
     display: flex;
@@ -128,16 +126,14 @@ const Widget = styled.div`
     padding: 4px 12px;
     height: 54px;
 
-
     &:hover {
-      background-color: #EBEBEB;
+      background-color: #ebebeb;
     }
 
     div {
       display: flex;
       flex-direction: column;
       text-align: left;
-      
 
       span {
         font-size: 12px;
@@ -145,12 +141,10 @@ const Widget = styled.div`
         &:first-child {
           color: rgba(0, 0, 0, 0.6);
           font-weight: 500;
-
         }
         &:nth-child(2) {
           color: rgba(0, 0, 0, 1);
           font-weight: 500;
-
         }
       }
     }
@@ -169,24 +163,20 @@ const Item = styled.a`
   display: block;
   text-decoration: none;
 
-  
   span {
-
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, 1);
     font-weight: 500;
-    
-    img {
-      color: #5E5E5E;
-      margin-right: 5px;
 
-      
+    img {
+      color: #5e5e5e;
+      margin-right: 5px;
     }
   }
 
   &:hover {
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
   }
 `;
 
@@ -195,6 +185,7 @@ const CommunityCard = styled(ArtCard)`
   text-align: left;
   display: flex;
   flex-direction: column;
+  position: sticky;
   a {
     color: black;
     padding: 4px 12px 4px 12px;
@@ -202,25 +193,22 @@ const CommunityCard = styled(ArtCard)`
 
     &:hover {
       text-decoration: underline !important;
-    
     }
 
     .spanBlue {
       display: flex;
-      color:#0D68C3;
+      color: #0d68c3;
       align-items: center;
       justify-content: space-between;
       font-weight: 500;
-
     }
-  
+
     .scopri {
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 600;
       font-size: 14px;
-
     }
 
     &:last-child {
