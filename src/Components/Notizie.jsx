@@ -43,6 +43,7 @@ const Notizie = () => {
   useEffect(() => {
     setRefreshed(false);
     fetchNotizie();
+    console.log("friend id list", friendIdList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
 
@@ -73,7 +74,6 @@ const Notizie = () => {
       console.log(error);
     }
     dispatch({ type: GET_PROFILE_LOADING, payload: false });
-    console.log(loader);
   };
 
   const postCommentFetch = async (commento, id, fetchMethod) => {
@@ -114,7 +114,6 @@ const Notizie = () => {
     if (response.ok) {
       let data = await response.json();
       setRateComment(data);
-      console.log("commenti libri", rateComment);
     }
   };
 

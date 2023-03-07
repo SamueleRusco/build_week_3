@@ -21,9 +21,6 @@ const MySingleNews = ({
   const userMail = useSelector((state) => state.profiles.result.email);
   const bearer = useSelector((state) => state.profiles.bearer);
 
-  console.log("sono post user id", post.user._id);
-  console.log("sono gli id", friendIdList.includes(post.user._id));
-
   const deleteNewsFetch = async (idcommento) => {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
