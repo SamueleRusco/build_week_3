@@ -17,7 +17,7 @@ const Rightside = (props) => {
 
         <Recommendation>Visualizza altro</Recommendation>
       </FollowCard>
-      <BannerCard>
+      <BannerCard className="fixed">
         <div>
           <img
             src="https://img.freepik.com/premium-psd/we-are-hiring-job-vacancy-web-banner-social-media-post-template_169307-1679.jpg?w=360"
@@ -121,6 +121,9 @@ const Recommendation = styled.div`
 `;
 
 const BannerCard = styled(FollowCard)`
+position: sticky;
+top: 80px;
+
   img {
     width: 100%;
     height: 100%;
