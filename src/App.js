@@ -21,7 +21,7 @@ function App() {
           <Route path="/news/" element={<MyNewsSectionComponent />} />
         </Routes>
         <MyNavBarComponents />
-        <MyFooterPart />
+       
       </div>
     </BrowserRouter>
   );

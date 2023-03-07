@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MyFooterPart from "./MyFooterPart";
+import MyFooterHome from "./MyFooterHome";
 import NewsWithFetch from "./NewsWithFetch";
 
 const Rightside = (props) => {
@@ -17,6 +17,7 @@ const Rightside = (props) => {
 
         <Recommendation>Visualizza altro</Recommendation>
       </FollowCard>
+    <div className="sonoSticky">
       <BannerCard className="fixed">
         <div>
           <img
@@ -25,6 +26,9 @@ const Rightside = (props) => {
           />
         </div>
       </BannerCard>
+
+      <MyFooterHome />
+    </div>
     </Container>
   );
 };
@@ -33,6 +37,12 @@ const Container = styled.div`
   margin-top: 80px;
   grid-area: rightside;
   flex: 0.15;
+
+  .sonoSticky {
+    position: sticky;
+    top: 80px;
+  }
+
 `;
 
 const FollowCard = styled.div`
@@ -94,7 +104,7 @@ const FeedList = styled.ul`
     }
   }
 `;
-
+/*
 const Avatar = styled.div`
   background-image: url("https://static-exp1.licdn.com/sc/h/1b4vl1r54ijmrmcyxzoidwmxs");
   background-size: contain;
@@ -104,7 +114,7 @@ const Avatar = styled.div`
   height: 48px;
   margin-right: 8px;
 `;
-
+*/
 const Recommendation = styled.div`
   color: #6c6c6c;
   display: flex;
@@ -121,13 +131,14 @@ const Recommendation = styled.div`
 `;
 
 const BannerCard = styled(FollowCard)`
-position: sticky;
-top: 80px;
+
 
   img {
     width: 100%;
     height: 100%;
   }
 `;
+
+
 
 export default Rightside;

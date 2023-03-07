@@ -14,6 +14,7 @@ import MyExperienceForm from "./MyExperienceForm";
 import Notizie from "./Notizie";
 import NewPost from "./NewPost";
 import NewsWithFetch from "./NewsWithFetch";
+import MyFooterPart from "./MyFooterPart";
 const MyMainComponent = () => {
   return (
     <Container className="py-4" style={{ marginTop: "80px" }}>
@@ -43,6 +44,7 @@ const MyMainComponent = () => {
           <MyGroupAdvisorComponent />
         </Col>
       </Row>
+      <MyFooterPart/>
     </Container>
   );
 };

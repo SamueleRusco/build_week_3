@@ -157,3 +157,18 @@
   background-color: #EBEBEB;
 
 }
+
+/*Footer home section*/
+
+.footerHome {
+  
+  display: flex;
+  
+  justify-content: center;
+  max-width: 65%;
+}
+
+
+.form-control:focus {
+  background-color: #0a66c2;
+}
