@@ -1,11 +1,15 @@
 import { ADD_FRIENDS } from "../Actions/friendsActions";
 import { REMOVE_FRIENDS } from "../Actions/friendsActions";
 
+const content = "63fc659cf193e60013807f4d";
+
 const initialState = {
   /* friendList: [], */
-  friendIdList: [],
+
+  friendIdList: [content],
 };
 
+/* "63fc659cf193e60013807f4d" */
 const friendsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FRIENDS:
