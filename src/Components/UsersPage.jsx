@@ -13,17 +13,12 @@ import {
 } from "../Redux/Actions/friendsActions";
 
 const UsersPage = () => {
-  const profile = useSelector((state) => state.profiles.result);
-  const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
-  const loader = useSelector((state) => state.profiles.loading);
-  const friendList = useSelector((state) => state.friends.friendList);
   const friendIdList = useSelector((state) => state.friends.friendIdList);
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const params = useParams();
-
-  const [sliderCounter, setSliderCounter] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  /* const [sliderCounter, setSliderCounter] = useState(0); */
 
   useEffect(() => {
     console.log(friendIdList);
