@@ -153,7 +153,7 @@ const MySingleNews = ({
                   </>
                 );
               })}
-          {rateComment.length > otherComments && (
+          {rateComment?.length > otherComments && (
             <Button
               onClick={() => {
                 setOtherComments(otherComments + 5);
