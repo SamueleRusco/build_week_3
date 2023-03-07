@@ -99,122 +99,120 @@ const NewPost = ({ showModal, setShowModal }) => {
             justifyContent: "space-between",
           }}
         >
-          <div>
-            <div style={{ display: "flex", flexDirection }}>
-              <Form.Group>
+          <Form.Group>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottom: "1px solid lightgrey",
+              }}
+            >
+              <FormLabel
+                style={{
+                  paddingLeft: "5px",
+                  paddingTop: "5px",
+                  fontSize: "1.2em",
+                  fontWeight: "400",
+                }}
+              >
+                Crea un post
+              </FormLabel>
+              <div
+                className="closeButton"
+                style={{
+                  height: "35px",
+                  width: "35px",
+                  borderRadius: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: "10px",
+                }}
+              >
+                <Button
+                  style={{
+                    color: "grey",
+                    fontWeight: "800",
+                    backgroundColor: "transparent",
+                    margin: "0",
+
+                    paddingBottom: "10px",
+
+                    border: "none",
+                  }}
+                  onClick={(e) => setShowModal(false)}
+                >
+                  <XLg />
+                </Button>
+              </div>
+            </div>
+            <div
+              className="py-3"
+              style={{
+                borderTop: "1px solid lightgrey",
+                display: "flex",
+              }}
+            >
+              <div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    borderBottom: "1px solid lightgrey",
+                    width: "50px",
+                    height: "50px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    marginLeft: "10px",
                   }}
                 >
-                  <FormLabel
-                    style={{
-                      paddingLeft: "5px",
-                      paddingTop: "5px",
-                      fontSize: "1.2em",
-                      fontWeight: "400",
-                    }}
-                  >
-                    Crea un post
-                  </FormLabel>
-                  <div
-                    className="closeButton"
-                    style={{
-                      height: "35px",
-                      width: "35px",
-                      borderRadius: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      marginRight: "10px",
-                    }}
-                  >
-                    <Button
-                      style={{
-                        color: "grey",
-                        fontWeight: "800",
-                        backgroundColor: "transparent",
-                        margin: "0",
-
-                        paddingBottom: "10px",
-
-                        border: "none",
-                      }}
-                      onClick={(e) => setShowModal(false)}
-                    >
-                      <XLg />
-                    </Button>
-                  </div>
+                  <img
+                    src={"https://placekitten.com/200/200"}
+                    alt=""
+                    style={{ width: "50px" }}
+                  />
                 </div>
-                <div
-                  className="py-3"
-                  style={{ borderTop: "1px solid lightgrey", display: "flex" }}
+              </div>
+
+              <div
+                style={{
+                  marginLeft: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <p style={{ fontWeight: "600", margin: "0" }}>
+                  {"sa"} {"mues"}
+                </p>
+
+                <Button
+                  style={{
+                    margin: "0",
+                    border: "1px solid grey",
+                    backgroundColor: "white",
+                    color: "grey",
+                    padding: "4px 12px 4px 12px",
+                    borderRadius: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
                 >
-                  <div>
-                    <div
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "50%",
-                        overflow: "hidden",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      <img
-                        src={"https://placekitten.com/200/200"}
-                        alt=""
-                        style={{ width: "50px" }}
-                      />
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      marginLeft: "10px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <p style={{ fontWeight: "600", margin: "0" }}>
-                      {"sa"} {"mues"}
-                    </p>
-
-                    <Button
-                      style={{
-                        margin: "0",
-                        border: "1px solid grey",
-                        backgroundColor: "white",
-                        color: "grey",
-                        padding: "4px 12px 4px 12px",
-                        borderRadius: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <GlobeEuropeAfrica style={{ marginRight: "5px" }} />
-                      <span style={{ textAlign: "center" }}>Chiunque</span>
-                      <CaretDownFill style={{ marginLeft: "5px" }} />
-                    </Button>
-                  </div>
-                </div>
-                {/* setText(e.target.value) */}
-
-                <FormControl
-                  style={{ height: "35px", border: "none" }}
-                  onChange={handleChangeText}
-                  value={text}
-                  type="input"
-                  placeholder="Di cosa vorresti parlare?"
-                ></FormControl>
-              </Form.Group>
+                  <GlobeEuropeAfrica style={{ marginRight: "5px" }} />
+                  <span style={{ textAlign: "center" }}>Chiunque</span>
+                  <CaretDownFill style={{ marginLeft: "5px" }} />
+                </Button>
+              </div>
             </div>
-            <EmojiSmileUpsideDown></EmojiSmileUpsideDown>
-          </div>
+            {/* setText(e.target.value) */}
+
+            <FormControl
+              style={{ height: "35px", border: "none" }}
+              onChange={handleChangeText}
+              value={text}
+              type="input"
+              placeholder="Di cosa vorresti parlare?"
+            ></FormControl>
+          </Form.Group>
 
           <Form.Group className="d-flex" style={{ marginBottom: "10px" }}>
             {/* <FormLabel>Aggiungi un`immagine</FormLabel> */}

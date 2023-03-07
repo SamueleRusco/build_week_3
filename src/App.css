@@ -128,3 +128,32 @@
   background-color: #EBEBEB !important;
   color: darkgrey !important;
 }
+
+.styleForm {
+  display: flex;
+  margin-left: 20px;
+
+  padding-right: 10px;
+
+}
+
+.styleForm>p {
+  color: #666666;
+  margin: 6px;
+  height: 30px;
+  width: 30px;
+  font-size: 1.2em;
+  ;
+
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.styleForm>p:hover {
+  background-color: #EBEBEB;
+
+}
