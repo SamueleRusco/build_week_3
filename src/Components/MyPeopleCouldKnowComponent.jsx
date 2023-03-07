@@ -73,7 +73,10 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                         </div>
                       </Col>
                       <Col xs={9}>
-                        <Link to={`/profiles/${element?._id}`}>
+                        <Link
+                          to={`/profiles/${element?._id}`}
+                          style={{ color: "black", textDecoration: "none" }}
+                        >
                           <p className="mb-0" style={{ fontWeight: "600" }}>
                             {element?.name} {element?.surname}
                           </p>
