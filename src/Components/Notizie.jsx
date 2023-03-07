@@ -33,14 +33,12 @@ const Notizie = () => {
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   const [rateComment, setRateComment] = useState(null);
   const [showComment, setShowComment] = useState(false);
-  // const [commento, setCommento] = useState("");
+
   const [scrollComment, setScrollComment] = useState(10);
 
   const friendPosts = listaCommenti.filter((e) =>
     friendIdList?.includes(e.user?._id)
   );
-
-  /* console.log(listaCommenti.user); */
 
   useEffect(() => {
     setRefreshed(false);
@@ -48,14 +46,10 @@ const Notizie = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
 
-  // const filtro = (element) => element.user._id === idUtilizzatore;
-
   const fetchNotizie = async () => {
     dispatch({ type: GET_PROFILE_LOADING, payload: true });
     dispatch(getProfileAction(key));
-    /* let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */ try {
+    try {
       const result = await fetch(url, {
         method: "GET",
         headers: { Authorization: key },
@@ -90,7 +84,6 @@ const Notizie = () => {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
-          // content-type esprime il content type del body
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -140,7 +133,6 @@ const Notizie = () => {
               color: "dimgray",
               fontWeight: "600",
             }}
-            // style={{ marginTop: "200px" }}
             onClick={(e) => {
               setShowModal(true);
             }}
