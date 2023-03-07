@@ -1,12 +1,12 @@
 import { ADD_FRIENDS } from "../Actions/friendsActions";
 import { REMOVE_FRIENDS } from "../Actions/friendsActions";
 
-const content = "63fc659cf193e60013807f4d";
-
+/* const content = "63fc659cf193e60013807f4d";
+content; */
 const initialState = {
   /* friendList: [], */
 
-  friendIdList: [content],
+  friendIdList: [],
 };
 
 /* "63fc659cf193e60013807f4d" */

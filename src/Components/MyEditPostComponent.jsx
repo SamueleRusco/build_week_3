@@ -54,9 +54,7 @@ const MyEditPostComponent = ({
       return prev;
     });
   };
-  useEffect(() => {
-    console.log("LIDIA", postId);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>

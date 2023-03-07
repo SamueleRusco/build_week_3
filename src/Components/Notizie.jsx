@@ -36,8 +36,8 @@ const Notizie = () => {
 
   const [scrollComment, setScrollComment] = useState(10);
 
-  const friendPosts = listaCommenti.filter((e) =>
-    friendIdList?.includes(e.user?._id)
+  const friendPosts = listaCommenti.filter(
+    (e) => friendIdList?.includes(e.user?._id) || e.user?._id === profileID
   );
 
   useEffect(() => {
