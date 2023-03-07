@@ -1,6 +1,6 @@
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CameraFill, Pencil } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
 import MyProfileSettongsComponent from "./MyprofileSettingsCard";
@@ -24,6 +24,10 @@ const UsersPage = () => {
 
   const [sliderCounter, setSliderCounter] = useState(0);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    console.log(friendIdList);
+  });
 
   return (
     <>
@@ -143,7 +147,6 @@ const UsersPage = () => {
                             textColor="white"
                             onClick={() => {
                               dispatch(friendsAdderAction(e._id));
-                              console.log(friendIdList);
                             }}
                           >
                             Follow
@@ -152,7 +155,6 @@ const UsersPage = () => {
                           <Button
                             onClick={() => {
                               dispatch(friendsRemoverAction(e._id));
-                              console.log(friendIdList);
                             }}
                           >
                             Unfollow

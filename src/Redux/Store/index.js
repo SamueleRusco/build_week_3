@@ -38,6 +38,6 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-window.onbeforeunload = function () {
-  localStorage.clear();
-};
+// window.onbeforeunload = function () {
+//   localStorage.clear();
+// };

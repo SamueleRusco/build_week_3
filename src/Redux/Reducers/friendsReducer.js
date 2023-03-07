@@ -20,10 +20,7 @@ const friendsReducer = (state = initialState, action) => {
         /* friendList: state.friendList.filter(
           (e) => e._id !== action.payload._id
         ), */
-        /* friendIdList: state.friendIdList.filter(
-          (e) => e._id !== action.payload
-        ), */
-        friendIdList: [5],
+        friendIdList: state.friendIdList.filter((id) => id !== action.payload),
       };
 
     default:
