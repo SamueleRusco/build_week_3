@@ -14,14 +14,17 @@ import MyButtonComponent from "./MyButtonComponent";
 import MyJobAdvisorCard from "./MyJobAdvisorCard";
 
 import MyForm from "./MyForm";
+import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 const MyUserDetailsCard = () => {
   const profile = useSelector((state) => state.profiles.result);
   const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
   const loader = useSelector((state) => state.profiles.loading);
+
   console.log(loader);
   useEffect(() => {
     dispatch(getProfileAction(key));
+    dispatch(getAllProfileFetchAction(key));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

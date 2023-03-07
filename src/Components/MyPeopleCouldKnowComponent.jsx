@@ -1,29 +1,37 @@
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
 import { Link } from "react-router-dom";
+import {
+  friendsAdderAction,
+  friendsRemoverAction,
+} from "../Redux/Actions/friendsActions";
 
-const MyPeopleCouldKnowComponent = () => {
+const MyPeopleCouldKnowComponent = ({ randomized }) => {
   const key = useSelector((state) => state.profiles.bearer);
   const [visible, setVisible] = useState(true);
   const usersList = [1, 2, 3, 4, 5];
-  const peopleArray = useSelector((state) => state.allProfiles.result);
+  // const peopleArray = useSelector((state) => state.allProfiles.result);
+  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const dispatch = useDispatch();
 
-  const randomizeContacts = (arr) => {
-    let randomizedArr = [];
-    while (randomizedArr.length < 6) {
-      let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
-      randomizedArr.push(randomGuy);
-    }
-    return randomizedArr;
-  };
+  // const randomizeContacts = (arr) => {
+  //   let randomizedArr = [];
+  //   while (randomizedArr.length < 6) {
+  //     let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
+  //     randomizedArr.push(randomGuy);
+  //   }
 
-  useEffect(() => {
-    dispatch(getAllProfileFetchAction(key));
-  }, []);
+  //   return randomizedArr;
+  // };
+
+  // const randomized = randomizeContacts(peopleArray);
+
+  // useEffect(() => {
+  //   dispatch(getAllProfileFetchAction(key));
+  // }, []);
 
   return (
     <>
@@ -40,8 +48,8 @@ const MyPeopleCouldKnowComponent = () => {
             </Col>
           </Row>
           <Row>
-            {peopleArray &&
-              randomizeContacts(peopleArray).map((element, index) => {
+            {randomized &&
+              randomized?.map((element, index) => {
                 return (
                   index < 6 && (
                     <Row
@@ -71,11 +79,41 @@ const MyPeopleCouldKnowComponent = () => {
                           </p>
                         </Link>
                         <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
-                        <MyButtonComponent
-                          text={"collegati"}
-                          textColor={"dimgrey"}
-                          borderColor={"dimgrey"}
-                        />
+                        {!friendIdList.includes(element?._id) ? (
+                          <Button
+                            className="me-2"
+                            style={{
+                              border: "1px solid dimgrey",
+                              borderRadius: "20px",
+                              padding: "4px 16px",
+                              fontWeight: "600",
+                              color: "dimgrey",
+                              backgroundColor: "white",
+                            }}
+                            onClick={() => {
+                              dispatch(friendsAdderAction(element._id));
+                            }}
+                          >
+                            collegati
+                          </Button>
+                        ) : (
+                          <Button
+                            className="me-2"
+                            style={{
+                              border: "1px solid rgb(0, 115, 177)",
+                              borderRadius: "20px",
+                              padding: "4px 16px",
+                              fontWeight: "600",
+                              color: "white",
+                              backgroundColor: "rgb(0, 115, 177)",
+                            }}
+                            onClick={() => {
+                              dispatch(friendsRemoverAction(element._id));
+                            }}
+                          >
+                            collegato
+                          </Button>
+                        )}
                       </Col>
                     </Row>
                   )

@@ -11,7 +11,22 @@ import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
 import NewsWithFetch from "./NewsWithFetch";
+import { useSelector } from "react-redux";
 const MyMainComponent = () => {
+  const peopleArray = useSelector((state) => state.allProfiles.result);
+
+  const randomizeContacts = (arr) => {
+    let randomizedArr = [];
+    while (randomizedArr.length < 6) {
+      let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
+      randomizedArr.push(randomGuy);
+    }
+
+    return randomizedArr;
+  };
+
+  const randomized = randomizeContacts(peopleArray);
+
   return (
     <Container className="py-4" style={{ marginTop: "80px" }}>
       <Row>
@@ -36,7 +51,7 @@ const MyMainComponent = () => {
           style={{ backgroundColor: "#f3f2ef" }}
         >
           <MyProfileSettongsComponent />
-          <MyPeopleCouldKnowComponent />
+          <MyPeopleCouldKnowComponent randomized={randomized} />
           <MyGroupAdvisorComponent />
         </Col>
       </Row>

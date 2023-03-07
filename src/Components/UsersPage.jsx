@@ -136,23 +136,39 @@ const UsersPage = () => {
                         <Pencil />
                       </Button>
                       <div>
-                        {!friendIdList.includes(e._id) ? (
+                        {!friendIdList.includes(e?._id) ? (
                           <Button
-                            bgColor={"rgb(0, 115, 177)"}
-                            textColor="white"
+                            className="me-2"
+                            style={{
+                              border: "1px solid dimgrey",
+                              borderRadius: "20px",
+                              padding: "4px 16px",
+                              fontWeight: "600",
+                              color: "dimgrey",
+                              backgroundColor: "white",
+                            }}
                             onClick={() => {
-                              dispatch(friendsAdderAction(e._id));
+                              dispatch(friendsAdderAction(e?._id));
                             }}
                           >
-                            Follow
+                            collegati
                           </Button>
                         ) : (
                           <Button
+                            className="me-2"
+                            style={{
+                              border: "1px solid rgb(0, 115, 177)",
+                              borderRadius: "20px",
+                              padding: "4px 16px",
+                              fontWeight: "600",
+                              color: "white",
+                              backgroundColor: "rgb(0, 115, 177)",
+                            }}
                             onClick={() => {
-                              dispatch(friendsRemoverAction(e._id));
+                              dispatch(friendsRemoverAction(e?._id));
                             }}
                           >
-                            Unfollow
+                            collegato
                           </Button>
                         )}
                       </div>
