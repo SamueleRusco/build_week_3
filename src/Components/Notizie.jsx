@@ -242,7 +242,7 @@ const Notizie = () => {
           setScrollComment(scrollComment + 10);
         }}
       >
-        altri commenti
+        altre notizie
       </Button>
     </>
   );

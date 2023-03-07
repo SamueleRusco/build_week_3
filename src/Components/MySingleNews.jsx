@@ -20,6 +20,7 @@ const MySingleNews = ({
   const [commento, setCommento] = useState("");
   const userMail = useSelector((state) => state.profiles.result.email);
   const bearer = useSelector((state) => state.profiles.bearer);
+  const [otherComments, setOtherComments] = useState(5);
 
   const deleteNewsFetch = async (idcommento) => {
     let response = await fetch(
@@ -79,7 +80,7 @@ const MySingleNews = ({
                 setSelected(true);
               }}
             >
-              Comment id
+              Scrivi commento
             </Button>
           )) || (
             <div>
@@ -138,14 +139,38 @@ const MySingleNews = ({
           {rateComment &&
             rateComment
               .filter((element) => element.elementId === post._id)
-              .map((element) => (
-                <MySingleComment
-                  element={element}
-                  key={element._id}
-                  refreshed={refreshed}
-                  setRefreshed={setRefreshed}
-                />
-              ))}
+              .map((element, index) => {
+                return (
+                  <>
+                    {index < otherComments && (
+                      <MySingleComment
+                        element={element}
+                        key={element._id}
+                        refreshed={refreshed}
+                        setRefreshed={setRefreshed}
+                      />
+                    )}
+                  </>
+                );
+              })}
+          {rateComment.length > otherComments && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments + 5);
+              }}
+            >
+              mostra altri
+            </Button>
+          )}
+          {otherComments > 5 && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments - 5);
+              }}
+            >
+              Mostra meno
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </>
