@@ -6,10 +6,7 @@ import MyFooterPart from "./Components/MyFooterPart";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyExperiencePageComponent from "./Components/MyNotFoundPageComponent";
 import MyNewsSectionComponent from "./Components/MyNewsSectionComponent";
-import Leftside from "./Components/Leftside";
-import Rightside from "./Components/Rightside";
-import Main from "./Components/Main";
-import styled from "styled-components";
+import UsersPage from "./Components/UsersPage";
 
 function App() {
   return (
@@ -19,6 +16,7 @@ function App() {
           <Route path="/" element={<MyMainComponent />} />
           <Route path="*" element={<MyExperiencePageComponent />} />
           <Route path="/news/" element={<MyNewsSectionComponent />} />
+          <Route path="/profiles/:usersId" element={<UsersPage />} />
         </Routes>
         <MyNavBarComponents />
         <MyFooterPart />

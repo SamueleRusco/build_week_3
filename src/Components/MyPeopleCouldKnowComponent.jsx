@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProfileFetchAction } from "../Redux/Actions/allProfilesActions";
+import { Link } from "react-router-dom";
 
 const MyPeopleCouldKnowComponent = () => {
   const key = useSelector((state) => state.profiles.bearer);
@@ -64,9 +65,11 @@ const MyPeopleCouldKnowComponent = () => {
                         </div>
                       </Col>
                       <Col xs={9}>
-                        <p className="mb-0" style={{ fontWeight: "600" }}>
-                          {element?.name} {element?.surname}
-                        </p>
+                        <Link to={`/profiles/${element?._id}`}>
+                          <p className="mb-0" style={{ fontWeight: "600" }}>
+                            {element?.name} {element?.surname}
+                          </p>
+                        </Link>
                         <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
                         <MyButtonComponent
                           text={"collegati"}

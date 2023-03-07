@@ -10,9 +10,6 @@ import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
-import MyExperienceForm from "./MyExperienceForm";
-import Notizie from "./Notizie";
-import NewPost from "./NewPost";
 import NewsWithFetch from "./NewsWithFetch";
 const MyMainComponent = () => {
   return (
