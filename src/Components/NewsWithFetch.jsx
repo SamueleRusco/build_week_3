@@ -18,7 +18,6 @@ const NewsWithFetch = () => {
       });
       const dati = await result.json();
       setNewsFetch(dati.articles);
-      console.log("dati fetch", dati.articles);
     } catch (error) {
       console.log("cè un errore", error);
     }

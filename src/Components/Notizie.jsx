@@ -26,15 +26,21 @@ const Notizie = () => {
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const key = useSelector((state) => state.profiles.bearer);
   const loader = useSelector((state) => state.profiles.loading);
   const [refreshed, setRefreshed] = useState(false);
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
-  console.log(profileID);
   const [rateComment, setRateComment] = useState(null);
   const [showComment, setShowComment] = useState(false);
   // const [commento, setCommento] = useState("");
   const [scrollComment, setScrollComment] = useState(10);
+
+  const friendPosts = listaCommenti.filter((e) =>
+    friendIdList?.includes(e.user?._id)
+  );
+
+  /* console.log(listaCommenti.user); */
 
   useEffect(() => {
     setRefreshed(false);
@@ -47,7 +53,6 @@ const Notizie = () => {
   const fetchNotizie = async () => {
     dispatch({ type: GET_PROFILE_LOADING, payload: true });
     dispatch(getProfileAction(key));
-    console.log(loader);
     /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
     */ try {
@@ -62,13 +67,7 @@ const Notizie = () => {
 
       const datiNotizie = await result.json();
 
-      dispatch(
-        listaCommentiAction(
-          datiNotizie.filter(
-            (element, index) => index > datiNotizie.length - 30
-          )
-        )
-      );
+      dispatch(listaCommentiAction(datiNotizie));
       dispatch(
         commentiFiltratiAction(
           listaCommenti.filter((element) => element.user?._id === profileID)
@@ -227,8 +226,7 @@ const Notizie = () => {
       {loader ? (
         <Spinner />
       ) : (
-        listaCommenti &&
-        listaCommenti?.map((post, i) => {
+        friendPosts?.map((post, i) => {
           return (
             i < scrollComment && (
               <MySingleNews
@@ -236,8 +234,6 @@ const Notizie = () => {
                 showComment={showComment}
                 key={i}
                 setShowComment={setShowComment}
-                // commento={commento}
-                // setCommento={setCommento}
                 editPost={editPost}
                 setEditPost={setEditPost}
                 refreshed={refreshed}
