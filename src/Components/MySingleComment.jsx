@@ -40,9 +40,9 @@ const MySingleComment = ({ element, refreshed, setRefreshed }) => {
 
   return (
     <div className="d-flex justify-content-between align-items-center">
-      <p className="m-0">{element.comment} </p>
-      <p className="text-secondary">{element.author}</p>
-      {element.author === userMail && (
+      <p className="m-0">{element?.comment} </p>
+      <p className="text-secondary">{element?.author}</p>
+      {element?.author === userMail && (
         <>
           <div className="d-flex">
             {!showEditInput && (
@@ -51,7 +51,7 @@ const MySingleComment = ({ element, refreshed, setRefreshed }) => {
                 style={{ border: "none" }}
                 onClick={() => {
                   setRefreshed(true);
-                  deleteCommentFetch(element._id);
+                  deleteCommentFetch(element?._id);
                 }}
               >
                 <XLg className="text-secondary" />
@@ -71,7 +71,7 @@ const MySingleComment = ({ element, refreshed, setRefreshed }) => {
                       onClick={(e) => {
                         e.preventDefault();
                         setRefreshed(true);
-                        editCommentFetch(element._id);
+                        editCommentFetch(element?._id);
                       }}
                     >
                       Conferma
