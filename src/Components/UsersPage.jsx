@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
-
 import { useDispatch, useSelector } from "react-redux";
-import { getProfileAction } from "../Redux/Actions";
 import { useState } from "react";
 import { CameraFill, Pencil } from "react-bootstrap-icons";
 import MyButtonComponent from "./MyButtonComponent";
@@ -10,18 +7,23 @@ import MyProfileSettongsComponent from "./MyprofileSettingsCard";
 import MyPeopleCouldKnowComponent from "./MyPeopleCouldKnowComponent";
 import MyGroupAdvisorComponent from "./MyGroupsAdvisorComponent";
 import { useParams } from "react-router-dom";
+import {
+  friendsAdderAction,
+  friendsRemoverAction,
+} from "../Redux/Actions/friendsActions";
 
 const UsersPage = () => {
   const profile = useSelector((state) => state.profiles.result);
   const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
   const loader = useSelector((state) => state.profiles.loading);
+  const friendList = useSelector((state) => state.friends.friendList);
+  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const params = useParams();
 
   const [sliderCounter, setSliderCounter] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  console.log("sono params", params.usersId);
 
   return (
     <>
@@ -135,11 +137,27 @@ const UsersPage = () => {
                         <Pencil />
                       </Button>
                       <div>
-                        <MyButtonComponent
-                          text="segui"
-                          bgColor={"rgb(0, 115, 177)"}
-                          textColor="white"
-                        />
+                        {!friendIdList.includes(e._id) ? (
+                          <Button
+                            bgColor={"rgb(0, 115, 177)"}
+                            textColor="white"
+                            onClick={() => {
+                              dispatch(friendsAdderAction(e._id));
+                              console.log(friendIdList);
+                            }}
+                          >
+                            Follow
+                          </Button>
+                        ) : (
+                          <Button
+                            onClick={() => {
+                              dispatch(friendsRemoverAction(e._id));
+                              console.log(friendIdList);
+                            }}
+                          >
+                            Unfollow
+                          </Button>
+                        )}
                       </div>
                     </Card.Body>
                   </Card>

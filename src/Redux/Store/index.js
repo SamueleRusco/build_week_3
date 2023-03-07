@@ -6,6 +6,8 @@ import profileReducer from "../Reducers/profileReducer";
 import allProfileReducer from "../Reducers/allProfilesReducer";
 import postReducer from "../Reducers/postReducer";
 import imgReducer from "../Reducers/profileImgReducer";
+import friendsReducer from "../Reducers/friendsReducer";
+
 const persistConfig = {
   key: "root ",
   storage,
@@ -21,6 +23,7 @@ const allReducers = combineReducers({
   posts: postReducer,
   allProfiles: allProfileReducer,
   img: imgReducer,
+  friends: friendsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, allReducers);
