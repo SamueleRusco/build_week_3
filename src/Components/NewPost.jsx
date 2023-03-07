@@ -14,8 +14,15 @@ import { useEffect } from "react";
 import {
   CardImage,
   CaretDownFill,
+  ChatRightDots,
+  ChatText,
+  Clock,
+  EmojiSmileUpsideDown,
+  FileText,
   GlobeEuropeAfrica,
+  ThreeDots,
   XLg,
+  Youtube,
 } from "react-bootstrap-icons";
 import { fontWeight } from "@mui/system";
 
@@ -90,115 +97,120 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
             justifyContent: "space-between",
           }}
         >
-          <div>
-            <Form.Group>
-              <div
+          <Form.Group>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottom: "1px solid lightgrey",
+              }}
+            >
+              <FormLabel
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  borderBottom: "1px solid lightgrey",
+                  paddingLeft: "5px",
+                  paddingTop: "5px",
+                  fontSize: "1.2em",
+                  fontWeight: "400",
                 }}
               >
-                <FormLabel
+                Crea un post
+              </FormLabel>
+              <div
+                className="closeButton"
+                style={{
+                  height: "35px",
+                  width: "35px",
+                  borderRadius: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: "10px",
+                }}
+              >
+                <Button
                   style={{
-                    paddingLeft: "5px",
-                    paddingTop: "5px",
-                    fontSize: "1.2em",
-                    fontWeight: "400",
+                    color: "grey",
+                    fontWeight: "800",
+                    backgroundColor: "transparent",
+                    margin: "0",
+
+                    paddingBottom: "10px",
+
+                    border: "none",
+                  }}
+                  onClick={(e) => setShowModal(false)}
+                >
+                  <XLg />
+                </Button>
+              </div>
+            </div>
+            <div
+              className="py-3"
+              style={{
+                borderTop: "1px solid lightgrey",
+                display: "flex",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    marginLeft: "10px",
                   }}
                 >
-                  Crea un post
-                </FormLabel>
-                <div
-                  className="closeButton"
+                  <img
+                    src={"https://placekitten.com/200/200"}
+                    alt=""
+                    style={{ width: "50px" }}
+                  />
+                </div>
+              </div>
+
+              <div
+                style={{
+                  marginLeft: "10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <p style={{ fontWeight: "600", margin: "0" }}>
+                  {user.name} {user.surname}
+                </p>
+
+                <Button
                   style={{
-                    height: "35px",
-                    width: "35px",
+                    margin: "0",
+                    border: "1px solid grey",
+                    backgroundColor: "white",
+                    color: "grey",
+                    padding: "4px 12px 4px 12px",
                     borderRadius: "20px",
                     display: "flex",
-                    justifyContent: "center",
                     alignItems: "center",
-                    marginRight: "10px",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <Button
-                    style={{
-                      color: "grey",
-                      fontWeight: "800",
-                      backgroundColor: "transparent",
-                      margin: "0",
-
-                      paddingBottom: "10px",
-
-                      border: "none",
-                    }}
-                    onClick={(e) => setShowModal(false)}
-                  >
-                    <XLg />
-                  </Button>
-                </div>
+                  <GlobeEuropeAfrica style={{ marginRight: "5px" }} />
+                  <span style={{ textAlign: "center" }}>Chiunque</span>
+                  <CaretDownFill style={{ marginLeft: "5px" }} />
+                </Button>
               </div>
-              <div
-                className="py-3"
-                style={{ borderTop: "1px solid lightgrey", display: "flex" }}
-              >
-                <div>
-                  <div
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      marginLeft: "10px",
-                    }}
-                  >
-                    <img src={user.image} alt="" style={{ width: "50px" }} />
-                  </div>
-                </div>
+            </div>
+            {/* setText(e.target.value) */}
 
-                <div
-                  style={{
-                    marginLeft: "10px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                  }}
-                >
-                  <p style={{ fontWeight: "600", margin: "0" }}>
-                    {user.name} {user.surname}
-                  </p>
-
-                  <Button
-                    style={{
-                      margin: "0",
-                      border: "1px solid grey",
-                      backgroundColor: "white",
-                      color: "grey",
-                      padding: "4px 12px 4px 12px",
-                      borderRadius: "20px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <GlobeEuropeAfrica style={{ marginRight: "5px" }} />
-                    <span style={{ textAlign: "center" }}>Chiunque</span>
-                    <CaretDownFill style={{ marginLeft: "5px" }} />
-                  </Button>
-                </div>
-              </div>
-              {/* setText(e.target.value) */}
-
-              <FormControl
-                style={{ height: "35px", border: "none" }}
-                onChange={handleChangeText}
-                value={text}
-                type="text"
-                placeholder="Di cosa vorresti parlare?"
-              ></FormControl>
-            </Form.Group>
-          </div>
+            <FormControl
+              style={{ height: "35px", border: "none" }}
+              onChange={handleChangeText}
+              value={text}
+              type="text"
+              placeholder="Di cosa vorresti parlare?"
+            ></FormControl>
+          </Form.Group>
 
           <Form.Group className="d-flex" style={{ marginBottom: "10px" }}>
             {/* <FormLabel>Aggiungi un`immagine</FormLabel> */}
@@ -206,33 +218,90 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
               onChange={handleFile}
               type="file"
               placeholder="Aggiungi un`immagine"
+              id="fileForm"
+              style={{ display: "none" }}
             ></FormControl>
 
-            <Button
-              className={classButton}
+            <div
               style={{
-                border: "none",
-                borderRadius: "20px",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginRight: "10px",
-                marginLeft: "10px",
-                padding: "0 12px 0 12px",
-                fontWeight: "600",
-                color: "white",
-                backgroundColor: "#0a66c2",
-              }}
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                postNewCommentFetch();
-                setRefreshed(true);
-                setShowModal(false);
+                width: "100%",
+                justifyContent: "space-between",
               }}
             >
-              Pubblica
-            </Button>
+              <label
+                className="styleForm"
+                htmlFor="fileForm"
+                style={{ borderRight: "1px solid lightgrey" }}
+              >
+                <p>
+                  <CardImage></CardImage>
+                </p>
+                <p>
+                  <Youtube></Youtube>
+                </p>
+                <p>
+                  <FileText></FileText>
+                </p>
+                <p>
+                  <ThreeDots></ThreeDots>
+                </p>
+              </label>
+
+              <div
+                style={{
+                  margin: "10px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    color: "#666666",
+                    fontWeight: "400",
+                    marginLeft: "10px",
+                  }}
+                >
+                  <ChatRightDots style={{ marginRight: "5px" }} />
+                  <span>Tutti</span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Clock></Clock>
+                  <Button
+                    className={classButton}
+                    style={{
+                      border: "none",
+                      borderRadius: "20px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginRight: "10px",
+                      marginLeft: "10px",
+                      padding: "0 12px 0 12px",
+                      fontWeight: "600",
+                      color: "white",
+                      backgroundColor: "#0a66c2",
+                    }}
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      postNewCommentFetch();
+                      setRefreshed(true);
+                      setShowModal(false);
+                    }}
+                  >
+                    Pubblica
+                  </Button>
+                </div>
+              </div>
+            </div>
           </Form.Group>
         </Form>
       </Modal>

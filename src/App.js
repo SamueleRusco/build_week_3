@@ -19,7 +19,7 @@ function App() {
           <Route path="/profiles/:usersId" element={<UsersPage />} />
         </Routes>
         <MyNavBarComponents />
-        <MyFooterPart />
+       
       </div>
     </BrowserRouter>
   );

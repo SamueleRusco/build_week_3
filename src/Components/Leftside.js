@@ -30,7 +30,7 @@ const Leftside = (props) => {
         </Item>
       </ArtCard>
 
-      <CommunityCard>
+      <CommunityCard className="fixed">
         <a>
           <span className="spanBlue">Gruppi</span>
         </a>
@@ -186,6 +186,8 @@ const CommunityCard = styled(ArtCard)`
   display: flex;
   flex-direction: column;
   position: sticky;
+  top: 80px;
+  
   a {
     color: black;
     padding: 4px 12px 4px 12px;

@@ -12,6 +12,7 @@ import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
 import NewsWithFetch from "./NewsWithFetch";
 import { useSelector } from "react-redux";
+import MyFooterPart from "./MyFooterPart";
 const MyMainComponent = () => {
   const peopleArray = useSelector((state) => state.allProfiles.result);
 
@@ -55,6 +56,7 @@ const MyMainComponent = () => {
           <MyGroupAdvisorComponent />
         </Col>
       </Row>
+      <MyFooterPart />
     </Container>
   );
 };
