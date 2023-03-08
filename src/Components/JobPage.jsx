@@ -7,6 +7,7 @@ import { jobsActions, searchJobsActions } from "../Redux/Actions/jobsActions";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import FilteredJobCard from "./FilteredJobCard";
+import { height } from "@mui/system";
 const JobPage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobsList);
@@ -21,7 +22,13 @@ const JobPage = () => {
   }, []);
 
   return (
-    <Container className="py-4" style={{ marginTop: "80px" }}>
+    <Container
+      className="py-4"
+      style={{
+        marginTop: "80px",
+        backgroundColor: "#f3f2ef",
+      }}
+    >
       <Row>
         <Col xs={3} md={4} className="d-none d-md-block"></Col>
         <Col xs={12} md={8} xl={7}>
@@ -74,6 +81,7 @@ const JobPage = () => {
           style={{ backgroundColor: "#f3f2ef" }}
         ></Col>
       </Row>
+
       <MyFooterPart />
     </Container>
   );
