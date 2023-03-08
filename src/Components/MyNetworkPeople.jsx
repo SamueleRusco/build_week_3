@@ -71,26 +71,24 @@ const MyNetworkPeople = ({ randomized }) => {
                 </p>
                 {!friendIdList.includes(element?._id) ? (
                   <Button
-                    className="me-2 buttonMyNetwork"
+                    className="me-2"
                     style={{
-                      border: "1px solid #0A66C2",
+                      border: "1px solid dimgrey",
                       borderRadius: "20px",
                       padding: "4px 16px",
                       fontWeight: "600",
-                      color: "#0A66C2",
+                      color: "dimgrey",
                       backgroundColor: "white",
-
-                      }}
-                      
+                    }}
                     onClick={() => {
                       dispatch(friendsAdderAction(element._id));
                     }}
                   >
-                    Collegati
+                    collegati
                   </Button>
                 ) : (
                   <Button
-                    className="me-2 "
+                    className="me-2"
                     style={{
                       border: "1px solid rgb(0, 115, 177)",
                       borderRadius: "20px",
@@ -103,7 +101,7 @@ const MyNetworkPeople = ({ randomized }) => {
                       dispatch(friendsRemoverAction(element._id));
                     }}
                   >
-                    Collegato
+                    collegato
                   </Button>
                 )}
               </Card.Body>

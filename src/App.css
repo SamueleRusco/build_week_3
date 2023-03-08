@@ -170,29 +170,3 @@
 
 
 
-/*button network*/
-
-.buttonMyNetwork:hover{
-
-  background-color: #E2F0FE !important;
-  border: 3px solid #0A66C2 !important;
-
-}
-
-.buttonMyNetworkGrey:hover{
-
-  background-color: #EBEBEB !important;
-  border: 3px solid #666666 !important;
-
-
-}
-
-.hoverButtonDisp:hover{
-  background-color: #004182 !important;
-}
-
-.centrami{
-  display: flex !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-}

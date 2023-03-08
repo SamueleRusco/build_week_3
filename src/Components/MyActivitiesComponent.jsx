@@ -1,6 +1,6 @@
-import { Card, Row, Col, Button } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import { ArrowRight, EyeFill } from "react-bootstrap-icons";
-
+import MyButtonComponent from "./MyButtonComponent";
 
 const MyActivitiesComponent = () => {
   return (
@@ -21,21 +21,7 @@ const MyActivitiesComponent = () => {
               md={4}
               className="offset-md-4 d-flex justify-content-md-end"
             >
-
-              <Button
-      className="me-2 buttonMyNetwork"
-      style={{
-        border: "1px solid #0A66C2",
-        borderRadius: "20px",
-        padding: "4px 16px",
-        fontWeight: "600",
-        color:  "#0A66C2",
-        backgroundColor: "white",
-      }}
-    >
-      Avvia un post
-    </Button>
-
+              <MyButtonComponent text={"Avvia un post"} />
             </Col>
           </Row>
           <p

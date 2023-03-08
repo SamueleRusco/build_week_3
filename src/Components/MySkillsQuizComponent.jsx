@@ -35,19 +35,11 @@ const MySkillsQuizComponent = () => {
                     </p>
                   </Col>
                 </Row>
-                <Button
-      className="me-2 buttonMyNetworkGrey"
-      style={{
-        border: "1px solid #666666",
-        borderRadius: "20px",
-        padding: "4px 16px",
-        fontWeight: "600",
-        color:  "#666666",
-        backgroundColor: "white",
-      }}
-    >
-      Quiz Valutazione competenze
-    </Button>
+                <MyButtonComponent
+                  text={"Quiz valutazione competenze"}
+                  textColor={"grey"}
+                  borderColor={"grey"}
+                />
               </Card.Body>
             </Card>
             <Button

@@ -37,7 +37,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
         <Card.Body className="pb-0">
-          <Row className="d-flex justify-center">
+          <Row>
             <Col xs={12}>
               <Card.Title
                 className="mb-0"
@@ -84,7 +84,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                         <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
                         {!friendIdList.includes(element?._id) ? (
                           <Button
-                            className="me-2 buttonMyNetworkGrey"
+                            className="me-2"
                             style={{
                               border: "1px solid dimgrey",
                               borderRadius: "20px",
@@ -97,7 +97,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                               dispatch(friendsAdderAction(element?._id));
                             }}
                           >
-                            Collegati
+                            collegati
                           </Button>
                         ) : (
                           <Button
@@ -114,7 +114,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                               dispatch(friendsRemoverAction(element?._id));
                             }}
                           >
-                            Collegato
+                            collegato
                           </Button>
                         )}
                       </Col>
