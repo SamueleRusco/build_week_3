@@ -34,10 +34,12 @@ const MyNavBarComponents = (props) => {
             </Link>
 
             <NavList>
-              <a>
-                <img src="/images/nav-network.svg" alt="" />
-                <span>My Network</span>
-              </a>
+              <Link to={"/mynetwork"} style={{ textDecoration: "none" }}>
+                <a>
+                  <img src="/images/nav-network.svg" alt="" />
+                  <span>My Network</span>
+                </a>
+              </Link>
             </NavList>
 
             <NavList>

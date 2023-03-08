@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyExperiencePageComponent from "./Components/MyNotFoundPageComponent";
 import MyNewsSectionComponent from "./Components/MyNewsSectionComponent";
 import UsersPage from "./Components/UsersPage";
+import MyNetworkComponent from "./Components/MyNetworkComponent";
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
           <Route path="*" element={<MyExperiencePageComponent />} />
           <Route path="/news/" element={<MyNewsSectionComponent />} />
           <Route path="/profiles/:usersId" element={<UsersPage />} />
+          <Route path="/mynetwork" element={<MyNetworkComponent />} />
         </Routes>
         <MyNavBarComponents />
-       
       </div>
     </BrowserRouter>
   );
