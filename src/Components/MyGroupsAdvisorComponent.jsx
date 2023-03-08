@@ -1,4 +1,4 @@
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { ArrowDown, ArrowUp } from "react-bootstrap-icons";
 import { useState } from "react";
 import MyButtonComponent from "./MyButtonComponent";
@@ -104,11 +104,19 @@ const MyGroupAdvisorComponent = () => {
                             <p style={{ fontSize: "0.9rem" }}>
                               {element?.title}
                             </p>
-                            <MyButtonComponent
-                              text={"partecipa"}
-                              textColor={"dimgrey"}
-                              borderColor={"dimgrey"}
-                            />
+                            <Button
+      className="me-2 buttonMyNetworkGrey"
+      style={{
+        border: "1px solid #666666",
+        borderRadius: "20px",
+        padding: "4px 16px",
+        fontWeight: "600",
+        color:  "#666666",
+        backgroundColor: "white",
+      }}
+    >
+      Partecipa
+    </Button>
                           </Col>
                         </Row>
                       )
