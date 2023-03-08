@@ -35,7 +35,6 @@ const MyMainComponent = () => {
           <MyUserDetailsCard />
           <MySkillsQuizComponent />
           <MyExperience />
-          <NewsWithFetch />
 
           <MyAnalisisComponent />
           <MyResourceComponent />
