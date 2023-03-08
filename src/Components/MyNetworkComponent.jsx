@@ -15,20 +15,20 @@ import { useSelector } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
 import MyNetworkPeople from "./MyNetworkPeople";
 
-const MyNetworkComponent = () => {
-  const peopleArray = useSelector((state) => state.allProfiles.result);
+const MyNetworkComponent = ({ randomized }) => {
+  //   const peopleArray = useSelector((state) => state.allProfiles.result);
 
-  const randomizeContacts = (arr) => {
-    let randomizedArr = [];
-    while (randomizedArr.length < 18) {
-      let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
-      randomizedArr.push(randomGuy);
-    }
+  //   const randomizeContacts = (arr) => {
+  //     let randomizedArr = [];
+  //     while (randomizedArr.length < 18) {
+  //       let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
+  //       randomizedArr.push(randomGuy);
+  //     }
 
-    return randomizedArr;
-  };
+  //     return randomizedArr;
+  //   };
 
-  const randomized = randomizeContacts(peopleArray);
+  //   const randomized = randomizeContacts(peopleArray);
 
   return (
     <Container style={{ backgroundColor: "#f3f2ef" }}>
