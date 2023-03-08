@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { PencilFill } from "react-bootstrap-icons";
+import { Pencil, PencilFill, ThreeDots, Trash } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
+import { ThreeDRotation } from "@mui/icons-material";
+import zIndex from "@mui/material/styles/zIndex";
+import { lineHeight } from "@mui/system";
 const MyEditPostComponent = ({
   editPost,
   setEditPost,
@@ -13,6 +16,7 @@ const MyEditPostComponent = ({
 }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
+  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const url = "https://striveschool-api.herokuapp.com/api/posts/" + postId;
   const key = useSelector((state) => state.profiles.bearer);
@@ -58,28 +62,59 @@ const MyEditPostComponent = ({
 
   return (
     <>
-      <div className="d-flex flex-column bg-warning">
-        <Button
-          className="mb-2 p-0 bg-transparent text-secondary text-start"
-          style={{ border: "none", fontSize: "0.9rem" }}
-          type="submit"
-          onClick={(e) => {
-            setEditPost(true);
-          }}
-        >
-          post
-        </Button>
-        <Button
-          className="me-2 p-0 bg-transparent text-secondary text-start"
-          style={{ border: "none", fontSize: "0.9rem" }}
-          onClick={() => {
-            deleteExperienceFetch();
-            setRefreshed(true);
-            setEditPost(false);
-          }}
-        >
-          Elimina
-        </Button>
+      <div style={{ position: "relative" }}>
+        <ThreeDots onClick={() => setVisible(!visible)}></ThreeDots>
+        {visible && (
+          <div
+            className="d-flex flex-column"
+            style={{
+              position: "absolute",
+              left: "-1000%",
+              zIndex: "10",
+              border: "1px solid black",
+              backgroundColor: "white",
+              borderRadius: "5px",
+              width: "190px",
+              boxShadow: "-2px 5px 5px 0px rgba(61,61,61,0.38)",
+              overflow: "hidden",
+            }}
+          >
+            <Button
+              className="p-0 bg-transparent text-secondary text-start edit"
+              style={{
+                border: "none",
+                fontSize: "1.2rem",
+                paddingLeft: "10px",
+                borderRadius: "0px",
+                margin: "0",
+              }}
+              type="submit"
+              onClick={(e) => {
+                setEditPost(true);
+              }}
+            >
+              <Pencil /> Modifica post
+            </Button>
+            <Button
+              className=" p-0 bg-transparent text-secondary text-start canc"
+              style={{
+                border: "none",
+                fontSize: "1.2rem",
+                paddingLeft: "10px",
+                borderRadius: "0px",
+                width: "100%",
+                margin: "0",
+              }}
+              onClick={() => {
+                deleteExperienceFetch();
+                setRefreshed(true);
+                setEditPost(false);
+              }}
+            >
+              <Trash></Trash> Elimina post
+            </Button>
+          </div>
+        )}
       </div>
       <Modal
         show={editPost}

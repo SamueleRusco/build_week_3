@@ -20,6 +20,7 @@ import { getProfileAction } from "../Redux/Actions";
 import MySingleComment from "./MySingleNews";
 import MySingleNews from "./MySingleNews";
 import MyCommentArea from "./MyCommentArea";
+import { width } from "@mui/system";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
@@ -215,7 +216,10 @@ const Notizie = () => {
         setRefreshed={setRefreshed}
       />
       {/* {(loader && <Spinner variant="dark" />) || ({listaCommenti && */}
-      <h4>Notizie</h4>
+      <div style={{ display: "flex" }}>
+        <hr class="flex-grow-1 me-2" />
+        <h4>Notizie</h4>
+      </div>
       {loader ? (
         <Spinner />
       ) : (
