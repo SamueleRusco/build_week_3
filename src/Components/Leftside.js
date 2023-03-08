@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Leftside = (props) => {
+  const user = useSelector((state) => state.profiles?.result);
+  console.log("stefano", user);
   return (
     <Container>
       <ArtCard>
@@ -8,7 +11,7 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Ti diamo il benvenuto Paolo!</Link>
+            <Link>Ti diamo il benvenuto {user?.name}!</Link>
           </a>
           <a>
             <AddPhotoText>Aggiungi una foto</AddPhotoText>
@@ -187,7 +190,7 @@ const CommunityCard = styled(ArtCard)`
   flex-direction: column;
   position: sticky;
   top: 80px;
-  
+
   a {
     color: black;
     padding: 4px 12px 4px 12px;
