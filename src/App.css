@@ -48,7 +48,6 @@
 .body {
   display: flex;
   justify-content: center;
-
 }
 
 .feed-inputContainer {
@@ -69,8 +68,6 @@
 }
 
 /*Footer*/
-
-
 
 .footerRow {
   display: flex;
@@ -112,20 +109,20 @@
   width: 220px;
 } */
 .postBtnHover:hover {
-  background-color: #EBEBEB !important;
+  background-color: #ebebeb !important;
 }
 
 .startPostBtnHover:hover {
-  background-color: #EBEBEB !important;
+  background-color: #ebebeb !important;
 }
 
 .closeButton:hover {
-  background-color: #EBEBEB !important;
-  transition: 0.2s,
+  background-color: #ebebeb !important;
+  transition: 0.2s;
 }
 
 .disabled {
-  background-color: #EBEBEB !important;
+  background-color: #ebebeb !important;
   color: darkgrey !important;
 }
 
@@ -134,39 +131,46 @@
   margin-left: 20px;
 
   padding-right: 10px;
-
 }
 
-.styleForm>p {
+.styleForm > p {
   color: #666666;
   margin: 6px;
   height: 30px;
   width: 30px;
   font-size: 1.2em;
-  ;
-
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
-
-.styleForm>p:hover {
-  background-color: #EBEBEB;
-
+.styleForm > p:hover {
+  background-color: #ebebeb;
 }
 
 /*Footer home section*/
 
 .footerHome {
-  
   display: flex;
-  
+
   justify-content: center;
   max-width: 65%;
 }
 
+.edit {
+  padding: 8px 10px 5px !important;
+  margin: 0 !important;
+  font-weight: 600;
+}
 
+.canc {
+  padding: 5px 10px 8px !important;
 
+  font-weight: 600;
+}
+
+.edit:hover,
+.canc:hover {
+  background-color: #ebebeb !important;
+}

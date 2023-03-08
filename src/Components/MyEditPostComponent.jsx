@@ -66,7 +66,7 @@ const MyEditPostComponent = ({
         <ThreeDots onClick={() => setVisible(!visible)}></ThreeDots>
         {visible && (
           <div
-            className="d-flex flex-column p-2"
+            className="d-flex flex-column"
             style={{
               position: "absolute",
               left: "-1000%",
@@ -80,7 +80,7 @@ const MyEditPostComponent = ({
             }}
           >
             <Button
-              className="p-0 bg-transparent text-secondary text-start edit mb-2"
+              className="p-0 bg-transparent text-start edit mb-2"
               style={{
                 border: "none",
                 fontSize: "1.2rem",
@@ -88,6 +88,7 @@ const MyEditPostComponent = ({
                 borderRadius: "0px",
                 margin: "0",
                 fontSize: "1rem",
+                color: "dimgrey",
               }}
               type="submit"
               onClick={(e) => {
@@ -97,7 +98,7 @@ const MyEditPostComponent = ({
               <Pencil /> Modifica post
             </Button>
             <Button
-              className=" p-0 bg-transparent text-secondary text-start canc"
+              className=" p-0 bg-transparent  text-start canc"
               style={{
                 border: "none",
                 fontSize: "1.2rem",
@@ -106,6 +107,7 @@ const MyEditPostComponent = ({
                 width: "100%",
                 margin: "0",
                 fontSize: "1rem",
+                color: "dimgrey",
               }}
               onClick={() => {
                 deleteExperienceFetch();
