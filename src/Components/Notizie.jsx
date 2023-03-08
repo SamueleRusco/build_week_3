@@ -120,7 +120,7 @@ const Notizie = () => {
 
   return (
     <>
-      <Card className="mb-4">
+      <Card className="mb-4 ">
         <Card.Body className="pb-2">
           <Button
             className="text-start startPostBtnHover"
@@ -207,6 +207,7 @@ const Notizie = () => {
           </Row>
         </Card.Body>
       </Card>
+
       <NewPost
         showModal={showModal}
         setShowModal={setShowModal}
@@ -222,23 +223,27 @@ const Notizie = () => {
           return (
             i < scrollComment && (
               <>
-                <MySingleNews
-                  post={post}
-                  showComment={showComment}
-                  key={i}
-                  setShowComment={setShowComment}
-                  editPost={editPost}
-                  setEditPost={setEditPost}
-                  refreshed={refreshed}
-                  setRefreshed={setRefreshed}
-                  rateComment={rateComment}
-                  postCommentFetch={postCommentFetch}
-                />
-                <MyCommentArea
-                  news={post}
-                  refreshed={refreshed}
-                  setRefreshed={setRefreshed}
-                />
+                <Card className="my-2 py-3 text-start">
+                  <Card.Body style={{ paddingTop: "0" }}>
+                    <MySingleNews
+                      post={post}
+                      showComment={showComment}
+                      key={i}
+                      setShowComment={setShowComment}
+                      editPost={editPost}
+                      setEditPost={setEditPost}
+                      refreshed={refreshed}
+                      setRefreshed={setRefreshed}
+                      rateComment={rateComment}
+                      postCommentFetch={postCommentFetch}
+                    />
+                    <MyCommentArea
+                      news={post}
+                      refreshed={refreshed}
+                      setRefreshed={setRefreshed}
+                    />
+                  </Card.Body>
+                </Card>
               </>
             )
           );
@@ -250,7 +255,7 @@ const Notizie = () => {
           setScrollComment(scrollComment + 10);
         }}
       >
-        altri commenti
+        altre notizie
       </Button>
     </>
   );
