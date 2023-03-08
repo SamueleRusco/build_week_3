@@ -62,11 +62,13 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
           mostra altri
         </Button>
       )}
-      {visible && listaCommenti.length < commentPage && (
-        <Button onClick={() => setCommentPage(commentPage - 5)}>
-          mostra meno
-        </Button>
-      )}
+      {visible &&
+        listaCommenti.length < commentPage &&
+        listaCommenti.length !== 0 && (
+          <Button onClick={() => setCommentPage(commentPage - 5)}>
+            mostra meno
+          </Button>
+        )}
     </>
   );
 };
