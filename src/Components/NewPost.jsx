@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-
 import {
   CardImage,
   CaretDownFill,
@@ -26,10 +25,10 @@ import {
 } from "react-bootstrap-icons";
 import { fontWeight } from "@mui/system";
 
-const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
+const NewPost = ({ showModal, setShowModal }) => {
   const [text, setText] = useState("");
   const [fd, setFd] = useState(new FormData());
-  const user = useSelector((state) => state.profiles.result);
+  const [refreshed, setRefreshed] = useState(false);
   const [classButton, setClassButton] = useState("disabled");
 
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -45,6 +44,9 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
     }
   };
 
+  useEffect(() => {
+    postNewCommentFetch();
+  }, [refreshed]);
   const postNewCommentFetch = async () => {
     /* let key =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
@@ -179,7 +181,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                 }}
               >
                 <p style={{ fontWeight: "600", margin: "0" }}>
-                  {user.name} {user.surname}
+                  {"sa"} {"mues"}
                 </p>
 
                 <Button
@@ -207,9 +209,10 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
               style={{ height: "35px", border: "none" }}
               onChange={handleChangeText}
               value={text}
-              type="text"
+              type="input"
               placeholder="Di cosa vorresti parlare?"
             ></FormControl>
+            <input type="text" />
           </Form.Group>
 
           <Form.Group className="d-flex" style={{ marginBottom: "10px" }}>
@@ -293,8 +296,8 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                     onClick={(e) => {
                       e.preventDefault();
                       postNewCommentFetch();
-                      setRefreshed(true);
                       setShowModal(false);
+                      setRefreshed(!refreshed);
                     }}
                   >
                     Pubblica
