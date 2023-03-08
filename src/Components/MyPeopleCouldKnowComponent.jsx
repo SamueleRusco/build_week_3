@@ -94,7 +94,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                               backgroundColor: "white",
                             }}
                             onClick={() => {
-                              dispatch(friendsAdderAction(element._id));
+                              dispatch(friendsAdderAction(element?._id));
                             }}
                           >
                             collegati
@@ -111,7 +111,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                               backgroundColor: "rgb(0, 115, 177)",
                             }}
                             onClick={() => {
-                              dispatch(friendsRemoverAction(element._id));
+                              dispatch(friendsRemoverAction(element?._id));
                             }}
                           >
                             collegato

@@ -16,7 +16,6 @@ import MyFooterPart from "./MyFooterPart";
 import MyNetworkPeople from "./MyNetworkPeople";
 
 const MyNetworkComponent = () => {
-  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const peopleArray = useSelector((state) => state.allProfiles.result);
 
   const randomizeContacts = (arr) => {
@@ -31,15 +30,8 @@ const MyNetworkComponent = () => {
 
   const randomized = randomizeContacts(peopleArray);
 
-  useEffect(() => {
-    console.log(friendIdList);
-    console.log(randomized);
-  });
   return (
-    <Container
-      className="mb-5"
-      style={{ backgroundColor: "#f3f2ef", height: "90vh" }}
-    >
+    <Container style={{ backgroundColor: "#f3f2ef" }}>
       <Row className="mt-5">
         <Col xs={12} md={5} lg={3} className="mt-5 offset-xl-1">
           <Card className="p-0">
@@ -90,7 +82,7 @@ const MyNetworkComponent = () => {
         <Col xs={12} md={7} lg={9} xl={7} className=" mt-5">
           <Card>
             <Card.Body>
-              <h2 style={{ fontSize: "1.2rem" }}>
+              <h2 className="mb-5" style={{ fontSize: "1.2rem" }}>
                 Persone che potresti conoscere
               </h2>
               <MyNetworkPeople randomized={randomized} />

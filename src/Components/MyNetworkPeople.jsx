@@ -14,27 +14,60 @@ const MyNetworkPeople = ({ randomized }) => {
     <Row>
       {randomized &&
         randomized?.map((element, index) => (
-          <Col xs={6} lg={4} xl={4} key={"keyNetwork: " + index}>
-            <Card>
+          <Col
+            xs={6}
+            lg={4}
+            xl={4}
+            key={"keyNetwork: " + index}
+            className="mb-2"
+          >
+            <Card style={{ height: "300px", borderRadius: "8px" }}>
               <Card.Body
-                className="p-2 d-flex justify-content-center flex-column align-items-center"
+                className="p-2 d-flex justify-content-between flex-column align-items-center text-center"
                 style={{
-                  backgroundImage: `url(${element?.image})`,
-                  backgroundSize: "100% 60px",
+                  backgroundImage: `url(${
+                    (element?.image?.length > 6 && element?.image) ||
+                    "https://placekitten.com/200/200"
+                  })`,
+                  backgroundSize: "100% 70px",
                   backgroundRepeat: "no-repeat",
+                  borderTopLeftRadius: "8px",
+                  borderTopRightRadius: "8px",
                 }}
               >
-                <img
-                  alt="#"
-                  src={element?.image}
-                  style={{
-                    height: "104px",
-                    width: "104px",
-                    borderRadius: "50%",
-                  }}
-                />
-                <p className="mt-2" style={{ fontWeight: "600" }}>
-                  {element?.name + " " + element?.surname}
+                <div className="pt-2">
+                  <img
+                    className=""
+                    alt="#"
+                    src={
+                      element?.image?.length > 6
+                        ? element?.image
+                        : "https://placekitten.com/200/200"
+                    }
+                    style={{
+                      height: "104px",
+                      width: "104px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <p
+                    className="mt-2 mb-1"
+                    style={{ fontWeight: "600", overflow: "ellipsis" }}
+                  >
+                    {element?.name + " " + element?.surname}
+                  </p>
+                  <p className="text-secondary" style={{ fontSize: "0.9rem" }}>
+                    {element?.title?.length > 40
+                      ? element?.title?.substring(0, 37) + "..."
+                      : element?.title}
+                  </p>
+                </div>
+                <p className="text-secondary" style={{ fontSize: "0.9rem" }}>
+                  {" "}
+                  In base al tuo profilo
                 </p>
                 {!friendIdList.includes(element?._id) ? (
                   <Button
