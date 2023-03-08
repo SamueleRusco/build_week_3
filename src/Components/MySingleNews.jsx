@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import MyCommentArea from "./MyCommentArea";
 import MyEditPostComponent from "./MyEditPostComponent";
 import MySingleComment from "./MySingleComment";
 
@@ -137,20 +136,19 @@ const MySingleNews = ({
           ) : (
             ""
           )}{" "}
-          {/* {rateComment &&
+          {rateComment &&
             rateComment
               .filter((element) => element.elementId === post._id)
               .map((element, index) => {
                 return (
                   <>
                     {index < otherComments && (
-                      <MyCommentArea />
-                      // <MySingleComment
-                      //   element={element}
-                      //   key={element._id}
-                      //   refreshed={refreshed}
-                      //   setRefreshed={setRefreshed}
-                      // />
+                      <MySingleComment
+                        element={element}
+                        key={element._id}
+                        refreshed={refreshed}
+                        setRefreshed={setRefreshed}
+                      />
                     )}
                   </>
                 );
@@ -172,7 +170,7 @@ const MySingleNews = ({
             >
               Mostra meno
             </Button>
-          )} */}
+          )}
         </Card.Body>
       </Card>
     </>

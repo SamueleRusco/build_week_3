@@ -19,7 +19,6 @@ import { GET_PROFILE_LOADING } from "../Redux/Actions";
 import { getProfileAction } from "../Redux/Actions";
 import MySingleComment from "./MySingleNews";
 import MySingleNews from "./MySingleNews";
-import MyCommentArea from "./MyCommentArea";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
@@ -221,25 +220,18 @@ const Notizie = () => {
         friendPosts?.map((post, i) => {
           return (
             i < scrollComment && (
-              <>
-                <MySingleNews
-                  post={post}
-                  showComment={showComment}
-                  key={i}
-                  setShowComment={setShowComment}
-                  editPost={editPost}
-                  setEditPost={setEditPost}
-                  refreshed={refreshed}
-                  setRefreshed={setRefreshed}
-                  rateComment={rateComment}
-                  postCommentFetch={postCommentFetch}
-                />
-                <MyCommentArea
-                  news={post}
-                  refreshed={refreshed}
-                  setRefreshed={setRefreshed}
-                />
-              </>
+              <MySingleNews
+                post={post}
+                showComment={showComment}
+                key={i}
+                setShowComment={setShowComment}
+                editPost={editPost}
+                setEditPost={setEditPost}
+                refreshed={refreshed}
+                setRefreshed={setRefreshed}
+                rateComment={rateComment}
+                postCommentFetch={postCommentFetch}
+              />
             )
           );
         })
