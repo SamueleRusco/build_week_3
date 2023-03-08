@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const MyButtonComponent = ({ text, bgColor, textColor, borderColor }) => {
+const MyButtonComponent = ({ text, bgColor, textColor, borderColor}) => {
   return (
     <Button
       className="me-2"

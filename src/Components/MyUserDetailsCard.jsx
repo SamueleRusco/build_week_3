@@ -140,20 +140,46 @@ const MyUserDetailsCard = () => {
         </Button>
         <MyForm showModal={showModal} setShowModal={setShowModal} />
         <div>
-          <MyButtonComponent
-            text="Disponibile per"
-            bgColor={"rgb(0, 115, 177)"}
-            textColor="white"
-          />
-          <MyButtonComponent
-            text="Aggiungi sezione del profilo"
-            bgColor={"white"}
-          />
-          <MyButtonComponent
-            text="Altro"
-            textColor="grey"
-            borderColor={"grey"}
-          />
+          <Button 
+          className= "hoverButtonDisp"
+          style={{
+            
+            backgroundColor: 'rgb(0, 115, 177)',
+            color: 'white',
+            borderRadius: '20px' ,
+            marginRight: '10px',
+          }}
+          >
+          Disponibile per
+          </Button>
+        
+               <Button
+      className="me-2 buttonMyNetwork"
+      style={{
+        border: "1px solid #0A66C2",
+        borderRadius: "20px",
+        padding: "4px 16px",
+        fontWeight: "600",
+        color:  "#0A66C2",
+        backgroundColor: "white",
+      }}
+    >
+      Aggiungi sezione del profilo
+    </Button>
+          
+          <Button
+      className="me-2 buttonMyNetworkGrey"
+      style={{
+        border: "1px solid #666666",
+        borderRadius: "20px",
+        padding: "4px 16px",
+        fontWeight: "600",
+        color:  "#666666",
+        backgroundColor: "white",
+      }}
+    >
+      Altro
+    </Button>
         </div>
         <Row
           className="position-relative"
