@@ -38,7 +38,7 @@ const MySingleNews = ({
 
   return (
     <>
-      <Card.Body style={{ paddingTop: "0" }}>
+      <Card.Body style={{ padding: "0" }}>
         <div className="d-flex justify-content-between">
           <Card.Title style={{ fontSize: "1.2rem" }}>
             <img
