@@ -55,6 +55,7 @@ const JobPage = () => {
                 e.preventDefault();
                 dispatch(searchJobsActions(searchParams, category));
                 setfilteredOn(true);
+                setSearchParams("");
               }}
             >
               {" "}
