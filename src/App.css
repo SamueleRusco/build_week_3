@@ -48,6 +48,7 @@
 .body {
   display: flex;
   justify-content: center;
+
 }
 
 .feed-inputContainer {
@@ -68,6 +69,8 @@
 }
 
 /*Footer*/
+
+
 
 .footerRow {
   display: flex;
@@ -109,20 +112,20 @@
   width: 220px;
 } */
 .postBtnHover:hover {
-  background-color: #ebebeb !important;
+  background-color: #EBEBEB !important;
 }
 
 .startPostBtnHover:hover {
-  background-color: #ebebeb !important;
+  background-color: #EBEBEB !important;
 }
 
 .closeButton:hover {
-  background-color: #ebebeb !important;
-  transition: 0.2s;
+  background-color: #EBEBEB !important;
+  transition: 0.2s,
 }
 
 .disabled {
-  background-color: #ebebeb !important;
+  background-color: #EBEBEB !important;
   color: darkgrey !important;
 }
 
@@ -131,65 +134,65 @@
   margin-left: 20px;
 
   padding-right: 10px;
+
 }
 
-.styleForm > p {
+.styleForm>p {
   color: #666666;
   margin: 6px;
   height: 30px;
   width: 30px;
   font-size: 1.2em;
+  ;
+
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
-.styleForm > p:hover {
-  background-color: #ebebeb;
+
+.styleForm>p:hover {
+  background-color: #EBEBEB;
+
 }
 
 /*Footer home section*/
 
 .footerHome {
+  
   display: flex;
-
+  
   justify-content: center;
   max-width: 65%;
 }
 
-.edit {
-  padding: 10px !important;
 
-  font-weight: 600;
-}
 
-.canc {
-  padding: 10px !important;
-  font-weight: 600;
-}
 /*button network*/
 
-.buttonMyNetwork:hover {
-  background-color: #e2f0fe !important;
-  border: 3px solid #0a66c2 !important;
+.buttonMyNetwork:hover{
+
+  background-color: #E2F0FE !important;
+  border: 3px solid #0A66C2 !important;
+
 }
 
-.buttonMyNetworkGrey:hover {
-  background-color: #ebebeb !important;
+.buttonMyNetworkGrey:hover{
+
+  background-color: #EBEBEB !important;
   border: 3px solid #666666 !important;
+
+
 }
 
-.hoverButtonDisp:hover {
+.hoverButtonDisp:hover{
   background-color: #004182 !important;
 }
 
-.centrami {
+.centrami{
   display: flex !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
-}
-.edit:hover,
-.canc:hover {
-  background-color: #ebebeb !important;
 }

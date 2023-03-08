@@ -39,7 +39,7 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
           setVisible(true);
         }}
       >
-        Mostra commenti
+        commenta
       </Button>
       {visible &&
         listaCommenti.length > 0 &&

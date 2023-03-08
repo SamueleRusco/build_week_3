@@ -49,55 +49,6 @@ const MySingleNews = ({
           />
           {post.user.name} {post.user.surname}
         </Card.Title>
-        {post.user._id === profileID ? (
-          <>
-            <MyEditPostComponent
-              editPost={editPost}
-              setEditPost={setEditPost}
-              postId={post?._id}
-              setRefreshed={setRefreshed}
-              refreshed={refreshed}
-            />
-          </>
-        ) : (
-          ""
-        )}
-        {/* {rateComment &&
-            rateComment
-              .filter((element) => element.elementId === post._id)
-              .map((element, index) => {
-                return (
-                  <>
-                    {index < otherComments && (
-                      <MyCommentArea />
-                      // <MySingleComment
-                      //   element={element}
-                      //   key={element._id}
-                      //   refreshed={refreshed}
-                      //   setRefreshed={setRefreshed}
-                      // />
-                    )}
-                  </>
-                );
-              })}
-          {rateComment?.length > otherComments && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments + 5);
-              }}
-            >
-              mostra altri
-            </Button>
-          )}
-          {otherComments > 5 && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments - 5);
-              }}
-            >
-              Mostra meno
-            </Button>
-          )} */}
       </div>
       <Card.Body style={{ position: "relative" }}>
         <Row>
@@ -171,6 +122,55 @@ const MySingleNews = ({
           </Form>
         </div>
       )}
+      {post.user._id === profileID ? (
+        <>
+          <MyEditPostComponent
+            editPost={editPost}
+            setEditPost={setEditPost}
+            postId={post?._id}
+            setRefreshed={setRefreshed}
+            refreshed={refreshed}
+          />
+        </>
+      ) : (
+        ""
+      )}{" "}
+      {/* {rateComment &&
+            rateComment
+              .filter((element) => element.elementId === post._id)
+              .map((element, index) => {
+                return (
+                  <>
+                    {index < otherComments && (
+                      <MyCommentArea />
+                      // <MySingleComment
+                      //   element={element}
+                      //   key={element._id}
+                      //   refreshed={refreshed}
+                      //   setRefreshed={setRefreshed}
+                      // />
+                    )}
+                  </>
+                );
+              })}
+          {rateComment?.length > otherComments && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments + 5);
+              }}
+            >
+              mostra altri
+            </Button>
+          )}
+          {otherComments > 5 && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments - 5);
+              }}
+            >
+              Mostra meno
+            </Button>
+          )} */}
     </>
   );
 };
