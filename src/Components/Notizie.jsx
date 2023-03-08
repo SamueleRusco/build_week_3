@@ -19,7 +19,6 @@ import { GET_PROFILE_LOADING } from "../Redux/Actions";
 import { getProfileAction } from "../Redux/Actions";
 import MySingleComment from "./MySingleNews";
 import MySingleNews from "./MySingleNews";
-import MyCommentArea from "./MyCommentArea";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const listaCommenti = useSelector((state) => state.posts.commenti);
@@ -120,7 +119,7 @@ const Notizie = () => {
 
   return (
     <>
-      <Card className="mb-4 ">
+      <Card className="mb-4">
         <Card.Body className="pb-2">
           <Button
             className="text-start startPostBtnHover"
@@ -207,7 +206,6 @@ const Notizie = () => {
           </Row>
         </Card.Body>
       </Card>
-
       <NewPost
         showModal={showModal}
         setShowModal={setShowModal}
@@ -222,29 +220,18 @@ const Notizie = () => {
         friendPosts?.map((post, i) => {
           return (
             i < scrollComment && (
-              <>
-                <Card className="my-2 py-3 text-start">
-                  <Card.Body style={{ paddingTop: "0" }}>
-                    <MySingleNews
-                      post={post}
-                      showComment={showComment}
-                      key={i}
-                      setShowComment={setShowComment}
-                      editPost={editPost}
-                      setEditPost={setEditPost}
-                      refreshed={refreshed}
-                      setRefreshed={setRefreshed}
-                      rateComment={rateComment}
-                      postCommentFetch={postCommentFetch}
-                    />
-                    <MyCommentArea
-                      news={post}
-                      refreshed={refreshed}
-                      setRefreshed={setRefreshed}
-                    />
-                  </Card.Body>
-                </Card>
-              </>
+              <MySingleNews
+                post={post}
+                showComment={showComment}
+                key={i}
+                setShowComment={setShowComment}
+                editPost={editPost}
+                setEditPost={setEditPost}
+                refreshed={refreshed}
+                setRefreshed={setRefreshed}
+                rateComment={rateComment}
+                postCommentFetch={postCommentFetch}
+              />
             )
           );
         })
@@ -255,7 +242,7 @@ const Notizie = () => {
           setScrollComment(scrollComment + 10);
         }}
       >
-        altre notizie
+        altri commenti
       </Button>
     </>
   );

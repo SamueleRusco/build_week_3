@@ -43,10 +43,12 @@ const MyNavBarComponents = (props) => {
             </NavList>
 
             <NavList>
-              <a>
-                <img src="/images/nav-jobs.svg" alt="" />
-                <span>Jobs</span>
-              </a>
+              <Link to={"/jobs/"} style={{ textDecoration: "none" }}>
+                <a>
+                  <img src="/images/nav-jobs.svg" alt="" />
+                  <span>Jobs</span>
+                </a>
+              </Link>
             </NavList>
 
             <NavList>
