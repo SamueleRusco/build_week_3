@@ -163,9 +163,9 @@
 /*Footer home section*/
 
 .footerHome {
-  
+
   display: flex;
-  
+
   justify-content: center;
   max-width: 65%;
 }
@@ -174,14 +174,14 @@
 
 /*button network*/
 
-.buttonMyNetwork:hover{
+.buttonMyNetwork:hover {
 
   background-color: #E2F0FE !important;
   border: 3px solid #0A66C2 !important;
 
 }
 
-.buttonMyNetworkGrey:hover{
+.buttonMyNetworkGrey:hover {
 
   background-color: #EBEBEB !important;
   border: 3px solid #666666 !important;
@@ -189,42 +189,48 @@
 
 }
 
-.hoverButtonDisp:hover{
+.hoverButtonDisp:hover {
   background-color: #004182 !important;
 }
 
-.hoverNetwork:hover{
+.hoverNetwork:hover {
 
   background-color: #EBEBEB !important;
   border-radius: 5px;
 }
 
-.hMarginNetwork{
+.hMarginNetwork {
   margin-bottom: 1.5rem;
 }
 
-.centrami{
+.centrami {
   display: flex !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
 }
 
-.row{
+.row {
   display: flex;
   justify-content: center;
 }
 
-.ciccio{
+.ciccio {
   display: flex;
   justify-content: flex-start;
 }
 
-.titleInterest{
+.titleInterest {
   justify-content: inherit !important;
 }
 
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: none;
   box-shadow: none;
   outline: 0 none;
+}
+
+.hoverNotizie:hover {
+  background-color: #ebebeb;
+  border-radius: 5px;
+
 }

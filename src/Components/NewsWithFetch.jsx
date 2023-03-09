@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Dot } from "react-bootstrap-icons";
 
 const NewsWithFetch = () => {
   const [newsFetch, setNewsFetch] = useState([null]);
@@ -33,15 +34,37 @@ const NewsWithFetch = () => {
           if (i < 5) {
             return (
               <>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <li key={i}>
-                    <h6>
-                      {titleShortened}
-                      {"..."}
-                    </h6>
-                  </li>
-                  <p>di: {articolo?.author}</p>
-                </div>
+                <li key={i}>
+                  <div className="hoverNotizie" style={{ display: "flex" }}>
+                    <div style={{ display: "flex" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: " flex-start",
+                        }}
+                      >
+                        <h6
+                          style={{
+                            fontSize: "3rem",
+                            margin: "16px",
+                          }}
+                        >
+                          &middot;{" "}
+                        </h6>
+                      </div>
+
+                      <div>
+                        <h6>
+                          {" "}
+                          {titleShortened}
+                          {"..."}
+                        </h6>
+                        <p>di: {articolo?.author}</p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
               </>
             );
           }
