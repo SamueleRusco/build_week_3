@@ -43,7 +43,7 @@ const JobCard = ({ jobs }) => {
                       {singleJob?.job_type}
                     </p>
 
-                    {favouritejobs.includes(singleJob?._id) ? (
+                    {favouritejobs?.includes?.(singleJob?._id) ? (
                       <div>
                         <Button
                           className="px-3"
@@ -70,6 +70,7 @@ const JobCard = ({ jobs }) => {
                             color: "dimgrey",
                           }}
                           onClick={() => {
+                            console.log(favouritejobs);
                             dispatch(addJob(singleJob?._id));
                           }}
                         >
