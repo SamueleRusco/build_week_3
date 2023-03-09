@@ -108,13 +108,13 @@ const MyCommentArea = ({
           );
         })}
       {visible && listaCommenti.length > commentPage && (
-        <Button onClick={() => setCommentPage(commentPage + 5)}>
-          mostra altri
-        </Button>
+        <div onClick={() => setCommentPage(commentPage + 5)}>
+          <p>mostra altri</p>
+        </div>
       )}
       {visible &&
         listaCommenti.length < commentPage &&
-        listaCommenti.length !== 0 && (
+        listaCommenti.length > 5 && (
           <Button onClick={() => setCommentPage(commentPage - 5)}>
             mostra meno
           </Button>
