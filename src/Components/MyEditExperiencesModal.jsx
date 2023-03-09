@@ -1,13 +1,11 @@
-import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
+import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { PencilFill } from "react-bootstrap-icons";
 import { putExperienceImg } from "../Redux/Actions/putProfileImg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { GET_PROFILE_ERROR } from "../Redux/Actions";
 
 const MyEditExperiencesModal = ({ id, refresh, exp }) => {
-  /* const [exp, setExp] = useState(null || {}); */
   const profileID = useSelector((state) => state.profiles.result._id);
   const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
@@ -176,7 +174,6 @@ const MyEditExperiencesModal = ({ id, refresh, exp }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              //   postExperienceFetch();
               editModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
@@ -189,7 +186,6 @@ const MyEditExperiencesModal = ({ id, refresh, exp }) => {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              //   postExperienceFetch();
               deleteModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
