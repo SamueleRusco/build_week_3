@@ -202,6 +202,7 @@ const JobPage = () => {
                     />
                   </Form.Group>
                   <Button
+                    className=""
                     onClick={(e) => {
                       e.preventDefault();
                       dispatch(searchJobsActions(searchParams, category));
@@ -209,7 +210,6 @@ const JobPage = () => {
                       setSearchParams("");
                     }}
                   >
-                    {" "}
                     Cerca
                   </Button>
                 </Form>
