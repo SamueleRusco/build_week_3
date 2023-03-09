@@ -1,10 +1,22 @@
+import { color } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import MySingleComment from "./MySingleComment";
 
-const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
+const MyCommentArea = ({
+  news,
+  refreshed,
+  setRefreshed,
+  postCommentFetch,
+  postList,
+  rateComment,
+}) => {
   const [listaCommenti, setListaCommenti] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [selected, setSelected] = useState(false);
+  const [commento, setCommento] = useState("");
+  const user = useSelector((state) => state.profiles.result);
   const [commentPage, setCommentPage] = useState(5);
   //   useEffect(() => {
   //     commentFetch();
@@ -41,6 +53,44 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
       >
         commenta
       </Button>
+      {visible && (
+        <div>
+          <Form>
+            <Row>
+              <Col xs={2}>
+                <img
+                  style={{ height: "40px", width: "40px", borderRadius: "50%" }}
+                  src={user && user.image}
+                  alt=""
+                />
+              </Col>
+              <Col xs={8}>
+                {" "}
+                <Form.Control
+                  type="text"
+                  placeholder="Inserisci commento"
+                  value={commento}
+                  onChange={(e) => {
+                    setCommento(e.target.value);
+                  }}
+                />
+              </Col>
+              <Col xs={2}>
+                <Button
+                  onClick={() => {
+                    setRefreshed(true);
+                    postCommentFetch(commento, news._id);
+                    setSelected(false);
+                    setCommento("");
+                  }}
+                >
+                  Invia
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </div>
+      )}
       {visible &&
         listaCommenti.length > 0 &&
         listaCommenti.map((element, index) => {
@@ -48,8 +98,10 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
             <>
               {index < commentPage && (
                 <MySingleComment
+                  author={element?.author}
                   element={element}
                   key={element._id}
+                  postList={postList}
                   refreshed={refreshed}
                   setRefreshed={setRefreshed}
                 />
@@ -58,16 +110,35 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
           );
         })}
       {visible && listaCommenti.length > commentPage && (
-        <Button onClick={() => setCommentPage(commentPage + 5)}>
-          mostra altri
-        </Button>
+        <div
+          className="mt-3 mb-0"
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => setCommentPage(commentPage + 5)}
+        >
+          <p className="mb-0" style={{ fontSize: "0.9rem", color: "dimgrey" }}>
+            Carica altri commenti
+          </p>
+        </div>
       )}
       {visible &&
         listaCommenti.length < commentPage &&
-        listaCommenti.length !== 0 && (
-          <Button onClick={() => setCommentPage(commentPage - 5)}>
-            mostra meno
-          </Button>
+        listaCommenti.length > 5 && (
+          <div
+            className="mt-3 mb-0"
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={() => setCommentPage(commentPage - 5)}
+          >
+            <p
+              className="mb-0"
+              style={{ fontSize: "0.9rem", color: "dimgrey" }}
+            >
+              Mostra meno
+            </p>
+          </div>
         )}
     </>
   );

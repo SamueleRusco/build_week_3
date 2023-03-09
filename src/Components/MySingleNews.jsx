@@ -16,16 +16,22 @@ const MySingleNews = ({
   const profileID = useSelector((state) => state.profiles.result._id);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
+  const userMail = useSelector((state) => state.profiles.result.email);
+  const bearer = useSelector((state) => state.profiles.bearer);
+  const [otherComments, setOtherComments] = useState(5);
 
   return (
     <>
       <div className="d-flex justify-content-between">
         <Card.Title style={{ fontSize: "1.2rem" }}>
           <img
+            className="me-2"
             src={post.user.image}
             alt="propic"
             style={{
-              width: "25px",
+              width: "30px",
+              height: "30px",
+              borderRadius: "50%",
             }}
           />
           {post.user.name} {post.user.surname}
@@ -100,7 +106,7 @@ const MySingleNews = ({
       <Card.Subtitle className=" text-muted" style={{ fontWeight: "400" }}>
         pubblicato il {post?.createdAt?.substring(0, 10)}
       </Card.Subtitle>
-      {(!selected && (
+      {/* {(!selected && (
         <Button
           onClick={() => {
             console.log(post._id);
@@ -152,7 +158,7 @@ const MySingleNews = ({
             </Row>
           </Form>
         </div>
-      )}
+      )} */}
     </>
   );
 };
