@@ -6,6 +6,8 @@ import {
   LOADING,
   LOADING_ON,
   LOADING_OFF,
+  ERROR_ON,
+  ERROR_OFF,
 } from "../Actions/jobsActions";
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
   filteredJobsList: [],
   favouriteJobs: [],
   loading: false,
+  error: false,
 };
 
 const jobsReducer = (state = initialState, action) => {
@@ -47,6 +50,10 @@ const jobsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
+    case ERROR_ON:
+      return { ...state, error: true };
+    case ERROR_OFF:
+      return { ...state, error: false };
 
     default:
       return state;

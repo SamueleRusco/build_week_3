@@ -11,7 +11,7 @@ const JobCard = ({ jobs }) => {
   return (
     <Row className="py-3">
       {jobs &&
-        jobs.data?.map((singleJob, index) => {
+        jobs?.map((singleJob, index) => {
           return (
             index < 20 && (
               <div key={"ID: " + index} className="mb-2">

@@ -174,3 +174,16 @@
 .canc:hover {
   background-color: #ebebeb !important;
 }
+
+.newsRightSide:hover {
+  background-color: rgb(242, 242, 242);
+  cursor: pointer;
+}
+
+.bButtonHover:hover {
+  background-color: rgb(1, 66, 101) !important;
+}
+.gButtonHover:hover {
+  background-color: rgb(242, 242, 242) !important;
+  outline: "2px solid darkgrey" !important;
+}

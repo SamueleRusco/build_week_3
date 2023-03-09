@@ -38,13 +38,16 @@ const NewsWithFetch = () => {
           if (i < 5) {
             return (
               <>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <li key={i}>
+                <div
+                  style={{ display: "flex", flexDirection: "column" }}
+                  key={i}
+                >
+                  <div className="newsRightSide">
                     <h6>
                       {titleShortened}
                       {"..."}
                     </h6>
-                  </li>
+                  </div>
                   <p>di: {articolo?.author}</p>
                 </div>
               </>

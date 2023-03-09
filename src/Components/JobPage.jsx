@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Card,
   Col,
@@ -33,6 +34,7 @@ const JobPage = () => {
   const [category, setCategory] = useState("");
   const [filteredOn, setfilteredOn] = useState(false);
   const loading = useSelector((state) => state.jobs.loading);
+  const error = useSelector((state) => state.jobs.error);
   const [hover1, setHover1] = useState(false);
   const [hover2, setHover2] = useState(false);
   const [hover3, setHover3] = useState(false);
@@ -40,6 +42,7 @@ const JobPage = () => {
   const [hover5, setHover5] = useState(false);
 
   useEffect(() => {
+    console.log(jobs);
     dispatch(jobsActions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,7 +55,7 @@ const JobPage = () => {
         backgroundColor: "#f3f2ef",
       }}
     >
-      {!loading ? (
+      {!error && !loading ? (
         <Row>
           <Col xs={3} md={3} className="d-none d-md-block ps-5 ">
             <Card>
@@ -242,7 +245,10 @@ const JobPage = () => {
           className="d-flex justify-content-center align-items-center"
           style={{ height: "100vh", width: "100%" }}
         >
-          <Spinner variant="primary" />
+          {(loading && <Spinner variant="primary" />) ||
+            (error && (
+              <Alert variant="danger">Ops qualcosa è andato storto</Alert>
+            ))}
         </div>
       )}
 
