@@ -217,3 +217,20 @@
 .imageFix {
   justify-content: inherit !important;
 }
+
+.newsRightSide:hover {
+  background-color: rgb(242, 242, 242);
+  cursor: pointer;
+}
+
+.bButtonHover:hover {
+  background-color: rgb(1, 66, 101) !important;
+}
+.gButtonHover:hover {
+  background-color: rgb(242, 242, 242) !important;
+  outline: "2px solid darkgrey" !important;
+}
+
+.jobDescription:hover {
+  text-decoration: underline !important;
+}

@@ -43,7 +43,7 @@ const JobCard = ({ filteredJobsList }) => {
                           <BriefcaseFill className="me-2 mb-1 text-secondary" />
                           {singleJob?.job_type}
                         </p>
-                        {favouritejobs.includes(singleJob?._id) ? (
+                        {favouritejobs?.includes?.(singleJob?._id) ? (
                           <div>
                             <Button
                               className="px-3"

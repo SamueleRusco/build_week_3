@@ -38,37 +38,18 @@ const NewsWithFetch = () => {
           if (i < 5) {
             return (
               <>
-                <li key={i}>
-                  <div className="hoverNotizie" style={{ display: "flex" }}>
-                    <div style={{ display: "flex" }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: " flex-start",
-                        }}
-                      >
-                        <h6
-                          style={{
-                            fontSize: "3rem",
-                            margin: "16px",
-                          }}
-                        >
-                          &middot;{" "}
-                        </h6>
-                      </div>
-
-                      <div>
-                        <h6>
-                          {" "}
-                          {titleShortened}
-                          {"..."}
-                        </h6>
-                        <p>di: {articolo?.author}</p>
-                      </div>
-                    </div>
+                <div
+                  style={{ display: "flex", flexDirection: "column" }}
+                  key={i}
+                >
+                  <div className="newsRightSide">
+                    <h6>
+                      {titleShortened}
+                      {"..."}
+                    </h6>
                   </div>
-                </li>
+                  <p>di: {articolo?.author}</p>
+                </div>
               </>
             );
           }

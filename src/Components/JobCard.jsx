@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { BriefcaseFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,11 +7,12 @@ import { addJob, removeJob } from "../Redux/Actions/jobsActions";
 const JobCard = ({ jobs }) => {
   const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
   const dispatch = useDispatch();
+  const [showDescription, setShowDescription] = useState(false);
 
   return (
     <Row className="py-3">
       {jobs &&
-        jobs.data?.map((singleJob, index) => {
+        jobs?.map((singleJob, index) => {
           return (
             index < 20 && (
               <div key={"ID: " + index} className="mb-2">
@@ -28,7 +29,6 @@ const JobCard = ({ jobs }) => {
                         {singleJob?.title}
                       </a>
                     </h5>
-
                     <div className="d-flex">
                       <p>
                         {singleJob?.company_name}
@@ -42,40 +42,82 @@ const JobCard = ({ jobs }) => {
                       <BriefcaseFill className="me-2 mb-1 text-secondary" />
                       {singleJob?.job_type}
                     </p>
-
-                    {favouritejobs.includes(singleJob?._id) ? (
-                      <div>
-                        <Button
-                          className="px-3"
-                          style={{
-                            backgroundColor: "rgb(0, 115, 177)",
-                            border: "1px solid rgb(0, 115, 177)",
-                            borderRadius: "20px",
-                          }}
+                    <div className="d-flex">
+                      {favouritejobs?.includes?.(singleJob?._id) ? (
+                        <>
+                          <Button
+                            className="px-3 bButtonHover"
+                            style={{
+                              backgroundColor: "rgb(0, 115, 177)",
+                              border: "1px solid rgb(0, 115, 177)",
+                              borderRadius: "20px",
+                            }}
+                            onClick={() => {
+                              dispatch(removeJob(singleJob?._id));
+                            }}
+                          >
+                            Salvato
+                          </Button>
+                        </>
+                      ) : (
+                        <div>
+                          <Button
+                            className="px-3 gButtonHover"
+                            style={{
+                              backgroundColor: "transparent",
+                              border: "2px solid dimgrey",
+                              borderRadius: "20px",
+                              color: "dimgrey",
+                            }}
+                            onClick={() => {
+                              console.log(favouritejobs);
+                              dispatch(addJob(singleJob?._id));
+                            }}
+                          >
+                            Salva
+                          </Button>
+                        </div>
+                      )}{" "}
+                      {!showDescription && (
+                        <p
+                          className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                          style={{ cursor: "pointer" }}
                           onClick={() => {
-                            dispatch(removeJob(singleJob?._id));
+                            setShowDescription(true);
                           }}
                         >
-                          Salvato
-                        </Button>
-                      </div>
-                    ) : (
-                      <div>
-                        <Button
-                          className="px-3"
-                          style={{
-                            backgroundColor: "transparent",
-                            border: "2px solid dimgrey",
-                            borderRadius: "20px",
-                            color: "dimgrey",
-                          }}
+                          Mostra dettagli
+                        </p>
+                      )}
+                      {showDescription && (
+                        <p
+                          className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                          style={{ cursor: "pointer" }}
                           onClick={() => {
-                            dispatch(addJob(singleJob?._id));
+                            setShowDescription(false);
                           }}
                         >
-                          Salva
-                        </Button>
-                      </div>
+                          Mostra meno
+                        </p>
+                      )}
+                    </div>
+                    {showDescription && (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: singleJob?.description,
+                        }}
+                      />
+                    )}
+                    {showDescription && (
+                      <p
+                        className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setShowDescription(false);
+                        }}
+                      >
+                        Mostra meno
+                      </p>
                     )}
                   </Card.Body>
                 </Card>

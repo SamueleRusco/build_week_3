@@ -77,7 +77,7 @@ const MyNetworkPeople = ({ randomized }) => {
                 </p>
                 {!friendIdList.includes(element?._id) ? (
                   <Button
-                    className="me-2 buttonMyNetwork"
+                    className="me-2 gButtonHover"
                     style={{
                       border: "1px solid dimgrey",
                       borderRadius: "20px",
@@ -94,7 +94,7 @@ const MyNetworkPeople = ({ randomized }) => {
                   </Button>
                 ) : (
                   <Button
-                    className="me-2"
+                    className="me-2 bButtonHover"
                     style={{
                       border: "1px solid rgb(0, 115, 177)",
                       borderRadius: "20px",
