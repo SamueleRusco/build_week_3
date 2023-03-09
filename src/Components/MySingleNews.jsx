@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
-import { PencilFill, XLg } from "react-bootstrap-icons";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import MyCommentArea from "./MyCommentArea";
 import MyEditPostComponent from "./MyEditPostComponent";
-import MySingleComment from "./MySingleComment";
 
 const MySingleNews = ({
   post,
@@ -16,25 +13,8 @@ const MySingleNews = ({
   postCommentFetch,
 }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
-  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
-  const userMail = useSelector((state) => state.profiles.result.email);
-  const bearer = useSelector((state) => state.profiles.bearer);
-  const [otherComments, setOtherComments] = useState(5);
-
-  const deleteNewsFetch = async (idcommento) => {
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: bearer,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-  };
 
   return (
     <>
@@ -57,47 +37,12 @@ const MySingleNews = ({
               postId={post?._id}
               setRefreshed={setRefreshed}
               refreshed={refreshed}
+              post={post}
             />
           </>
         ) : (
           ""
         )}
-        {/* {rateComment &&
-            rateComment
-              .filter((element) => element.elementId === post._id)
-              .map((element, index) => {
-                return (
-                  <>
-                    {index < otherComments && (
-                      <MyCommentArea />
-                      // <MySingleComment
-                      //   element={element}
-                      //   key={element._id}
-                      //   refreshed={refreshed}
-                      //   setRefreshed={setRefreshed}
-                      // />
-                    )}
-                  </>
-                );
-              })}
-          {rateComment?.length > otherComments && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments + 5);
-              }}
-            >
-              mostra altri
-            </Button>
-          )}
-          {otherComments > 5 && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments - 5);
-              }}
-            >
-              Mostra meno
-            </Button>
-          )} */}
       </div>
       <Card.Body style={{ position: "relative" }}>
         <Row>
@@ -122,9 +67,6 @@ const MySingleNews = ({
         <Button
           onClick={() => {
             console.log(post._id);
-            // commenta(post._id);
-            // getCommentFetch();
-            // postCommentFetch();
             setSelected(true);
           }}
         >
