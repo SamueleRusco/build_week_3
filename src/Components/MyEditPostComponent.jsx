@@ -13,8 +13,9 @@ const MyEditPostComponent = ({
   postId,
   refreshed,
   setRefreshed,
+  post,
 }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(post.text);
   const [fd, setFd] = useState(new FormData());
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
@@ -182,10 +183,10 @@ const MyEditPostComponent = ({
           </Button>
           <hr />
           <Form.Group className="mb-4" controlId="formQualifica">
-            <Form.Text className="text-muted">Qualifica</Form.Text>
+            <Form.Text className="text-muted">Modifica Post</Form.Text>
             <Form.Control
               type="text"
-              placeholder="Esempio: Teaching assistant"
+              placeholder=""
               value={text}
               onChange={(e) => {
                 setText(e.target.value);

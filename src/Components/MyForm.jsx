@@ -20,6 +20,7 @@ const MyForm = ({ showModal, setShowModal }) => {
   const [area, setArea] = useState(datiProfilo.area);
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile";
   const key = useSelector((state) => state.profiles.bearer);
+  console.log(datiProfilo);
 
   const putProfileFetch = async () => {
     let response = await fetch(baseEndpoint, {
