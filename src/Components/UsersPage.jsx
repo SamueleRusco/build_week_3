@@ -151,7 +151,7 @@ const UsersPage = () => {
                               dispatch(friendsAdderAction(e?._id));
                             }}
                           >
-                            collegati
+                            Collegati
                           </Button>
                         ) : (
                           <Button
