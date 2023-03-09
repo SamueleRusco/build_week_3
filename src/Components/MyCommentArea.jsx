@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import MySingleComment from "./MySingleComment";
 
-const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
+const MyCommentArea = ({ news, refreshed, setRefreshed, postCommentFetch }) => {
   const [listaCommenti, setListaCommenti] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [selected, setSelected] = useState(false);
+  const [commento, setCommento] = useState("");
+  const user = useSelector((state) => state.profiles.result);
   const [commentPage, setCommentPage] = useState(5);
   //   useEffect(() => {
   //     commentFetch();
@@ -41,6 +45,43 @@ const MyCommentArea = ({ news, refreshed, setRefreshed }) => {
       >
         commenta
       </Button>
+      {visible && (
+        <div>
+          <Form>
+            <Row>
+              <Col xs={2}>
+                <img
+                  style={{ height: "40px", width: "40px", borderRadius: "50%" }}
+                  src={user && user.image}
+                />
+              </Col>
+              <Col xs={8}>
+                {" "}
+                <Form.Control
+                  type="text"
+                  placeholder="Inserisci commento"
+                  value={commento}
+                  onChange={(e) => {
+                    setCommento(e.target.value);
+                  }}
+                />
+              </Col>
+              <Col xs={2}>
+                <Button
+                  onClick={() => {
+                    setRefreshed(true);
+                    postCommentFetch(commento, news._id);
+                    setSelected(false);
+                    setCommento("");
+                  }}
+                >
+                  Invia
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </div>
+      )}
       {visible &&
         listaCommenti.length > 0 &&
         listaCommenti.map((element, index) => {

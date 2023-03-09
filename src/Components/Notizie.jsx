@@ -244,9 +244,12 @@ const Notizie = () => {
                       postCommentFetch={postCommentFetch}
                     />
                     <MyCommentArea
+                      showComment={showComment}
+                      setShowComment={setShowComment}
                       news={post}
                       refreshed={refreshed}
                       setRefreshed={setRefreshed}
+                      postCommentFetch={postCommentFetch}
                     />
                   </Card.Body>
                 </Card>

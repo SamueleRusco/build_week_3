@@ -108,7 +108,7 @@ const MySingleNews = ({
       <Card.Subtitle className=" text-muted" style={{ fontWeight: "400" }}>
         pubblicato il {post?.createdAt?.substring(0, 10)}
       </Card.Subtitle>
-      {(!selected && (
+      {/* {(!selected && (
         <Button
           onClick={() => {
             console.log(post._id);
@@ -160,7 +160,7 @@ const MySingleNews = ({
             </Row>
           </Form>
         </div>
-      )}
+      )} */}
     </>
   );
 };
