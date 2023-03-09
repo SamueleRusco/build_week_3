@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { BriefcaseFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { addJob, removeJob } from "../Redux/Actions/jobsActions";
 const JobCard = ({ jobs }) => {
   const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
   const dispatch = useDispatch();
+  const [showDescription, setShowDescription] = useState(false);
 
   return (
     <Row className="py-3">
@@ -44,21 +45,63 @@ const JobCard = ({ jobs }) => {
                     </p>
 
                     {favouritejobs?.includes?.(singleJob?._id) ? (
-                      <div>
-                        <Button
-                          className="px-3"
-                          style={{
-                            backgroundColor: "rgb(0, 115, 177)",
-                            border: "1px solid rgb(0, 115, 177)",
-                            borderRadius: "20px",
-                          }}
-                          onClick={() => {
-                            dispatch(removeJob(singleJob?._id));
-                          }}
-                        >
-                          Salvato
-                        </Button>
-                      </div>
+                      <>
+                        <div className="d-flex">
+                          <Button
+                            className="px-3"
+                            style={{
+                              backgroundColor: "rgb(0, 115, 177)",
+                              border: "1px solid rgb(0, 115, 177)",
+                              borderRadius: "20px",
+                            }}
+                            onClick={() => {
+                              dispatch(removeJob(singleJob?._id));
+                            }}
+                          >
+                            Salvato
+                          </Button>
+                          {!showDescription && (
+                            <p
+                              className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                setShowDescription(true);
+                              }}
+                            >
+                              Mostra dettagli
+                            </p>
+                          )}
+                          {showDescription && (
+                            <p
+                              className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                setShowDescription(false);
+                              }}
+                            >
+                              Mostra meno
+                            </p>
+                          )}
+                        </div>
+                        {showDescription && (
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: singleJob.description,
+                            }}
+                          />
+                        )}
+                        {showDescription && (
+                          <p
+                            className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              setShowDescription(false);
+                            }}
+                          >
+                            Mostra meno
+                          </p>
+                        )}
+                      </>
                     ) : (
                       <div>
                         <Button
