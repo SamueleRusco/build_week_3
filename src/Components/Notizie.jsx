@@ -22,7 +22,8 @@ import MySingleNews from "./MySingleNews";
 import MyCommentArea from "./MyCommentArea";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
-  const listaCommenti = useSelector((state) => state.posts.commenti);
+  const [listaCommenti, setListaCommenti] = useState([]);
+
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
@@ -62,7 +63,7 @@ const Notizie = () => {
 
       const datiNotizie = await result.json();
 
-      dispatch(listaCommentiAction(datiNotizie));
+      setListaCommenti(datiNotizie);
       dispatch(
         commentiFiltratiAction(
           listaCommenti.filter((element) => element.user?._id === profileID)
@@ -224,7 +225,7 @@ const Notizie = () => {
           <Spinner variant="primary" />
         </div>
       ) : (
-        friendPosts?.map((post, i) => {
+        friendPosts?.reverse()?.map((post, i) => {
           return (
             i < scrollComment && (
               <>
