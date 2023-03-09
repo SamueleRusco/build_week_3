@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import MyEditPostComponent from "./MyEditPostComponent";
 
@@ -43,6 +44,42 @@ const MySingleNews = ({
         ) : (
           ""
         )}
+        {/* {rateComment &&
+            rateComment
+              .filter((element) => element.elementId === post._id)
+              .map((element, index) => {
+                return (
+                  <>
+                    {index < otherComments && (
+                      <MyCommentArea />
+                      // <MySingleComment
+                      //   element={element}
+                      //   key={element._id}
+                      //   refreshed={refreshed}
+                      //   setRefreshed={setRefreshed}
+                      // />
+                    )}
+                  </>
+                );
+              })}
+          {rateComment?.length > otherComments && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments + 5);
+              }}
+            >
+              mostra altri
+            </Button>
+          )}
+          {otherComments > 5 && (
+            <Button
+              onClick={() => {
+                setOtherComments(otherComments - 5);
+              }}
+            >
+              Mostra meno
+            </Button>
+          )} */}
       </div>
       <Card.Body style={{ position: "relative" }}>
         <Row>
@@ -67,6 +104,9 @@ const MySingleNews = ({
         <Button
           onClick={() => {
             console.log(post._id);
+            // commenta(post._id);
+            // getCommentFetch();
+            // postCommentFetch();
             setSelected(true);
           }}
         >
