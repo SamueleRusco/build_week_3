@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   jobsList: null,
-  filteredJobsList: [],
+  filteredJobsList: null,
   favouriteJobs: [],
   loading: false,
 };

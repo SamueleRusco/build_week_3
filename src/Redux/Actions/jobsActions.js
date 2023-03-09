@@ -24,6 +24,7 @@ export const jobsActions = () => {
 };
 export const searchJobsActions = (searchParams, category) => {
   return async (dispatch) => {
+    dispatch({ type: LOADING_ON });
     const response = await fetch(baseEndpoint + "?" + category + searchParams, {
       method: "GET",
     });
@@ -33,6 +34,7 @@ export const searchJobsActions = (searchParams, category) => {
       type: FILTERED_JOBS,
       payload: data,
     });
+    dispatch({ type: LOADING_OFF });
   };
 };
 export const addJob = (favouriteJob) => {
