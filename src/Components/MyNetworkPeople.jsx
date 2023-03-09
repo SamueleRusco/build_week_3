@@ -2,6 +2,7 @@ import { borderRadius, height } from "@mui/system";
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   friendsAdderAction,
   friendsRemoverAction,
@@ -57,7 +58,12 @@ const MyNetworkPeople = ({ randomized }) => {
                     className="mt-2 mb-1"
                     style={{ fontWeight: "600", overflow: "ellipsis" }}
                   >
-                    {element?.name + " " + element?.surname}
+                    <Link
+                      to={`/profiles/${element?._id}`}
+                      style={{ color: "black", textDecoration: "none" }}
+                    >
+                      {element?.name + " " + element?.surname}
+                    </Link>
                   </p>
                   <p className="text-secondary" style={{ fontSize: "0.9rem" }}>
                     {element?.title?.length > 40
