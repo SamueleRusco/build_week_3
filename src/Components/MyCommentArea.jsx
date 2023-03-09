@@ -96,6 +96,7 @@ const MyCommentArea = ({
             <>
               {index < commentPage && (
                 <MySingleComment
+                  author={element?.author}
                   element={element}
                   key={element._id}
                   postList={postList}

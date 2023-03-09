@@ -1,14 +1,22 @@
+import { border } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup } from "react-bootstrap";
 import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
-const MySingleComment = ({ element, refreshed, setRefreshed, postList }) => {
+const MySingleComment = ({
+  element,
+  refreshed,
+  setRefreshed,
+  postList,
+  author,
+}) => {
   const [showEditInput, setShowEditInput] = useState(false);
   const userMail = useSelector((state) => state.profiles.result.email);
   const [edit, setEdit] = useState("");
   const [utente, setUtente] = useState(null);
   const listaCommenti = useSelector((state) => state.posts.commenti);
+  const peopleArray = useSelector((state) => state.allProfiles.result);
 
   const deleteCommentFetch = async (idcommento) => {
     let response = await fetch(
@@ -41,20 +49,60 @@ const MySingleComment = ({ element, refreshed, setRefreshed, postList }) => {
   };
 
   const userImage = () => {
-    const image = listaCommenti?.filter(
-      (email, i) => email?.user?.email === element?.author
-    );
+    const image = peopleArray?.filter((e, i) => {
+      return e.email === element.author;
+    });
 
-    return image[0].user;
+    console.log("sono stefano", image);
+    return image[0];
   };
+  console.log("sonoofenew", element);
 
-  console.log(userImage());
+  // useEffect(() => {
+  //   userImage();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  console.log("gorian", userImage());
+
   return (
-    <div className="d-flex justify-content-between align-items-center">
-      <p className="m-0">{element?.comment} </p>
-      <p className="text-secondary">
-        {userImage().name + " " + userImage().surname}
-      </p>
+    <div className="mt-4 d-flex ">
+      <img
+        src={userImage()?.image || "https://placekitten.com/200"}
+        style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+        alt="https://placekitten.com/200"
+      />
+      <div
+        className="ms-1 p-2"
+        style={{
+          backgroundColor: "#F2F2F2",
+          borderRadius: "5px",
+          borderTopLeftRadius: "0px",
+          width: "100%",
+        }}
+      >
+        <div className="d-flex justify-content-between">
+          <div>
+            <p className="mb-0" style={{ fontWeight: "600" }}>
+              {userImage()?.name ||
+                element.author +
+                  " " +
+                  ((userImage()?.surname && userImage()?.surname) || "")}
+            </p>
+            <p className="text-muted mb-0" style={{ fontSize: "14px" }}>
+              {userImage()?.title}
+            </p>
+          </div>
+          <p className="text-muted" style={{ fontSize: "13px" }}>
+            {userImage()?.updatedAt?.substring(0, 10) ||
+              element.createdAt.substring(0, 10)}
+          </p>
+        </div>
+
+        <p className="mb-0 mt-2" style={{ fontSize: "14px" }}>
+          {element?.comment}
+        </p>
+      </div>
       {element?.author === userMail && (
         <>
           <div className="d-flex">
