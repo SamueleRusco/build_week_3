@@ -76,7 +76,7 @@ const MyExperience = () => {
             /* console.log("sono id", element._id); */
             return (
               <Row
-                className="py-3"
+                className="py-3 imageFix"
                 style={{ borderTop: index > 0 && "1px solid lightgrey" }}
                 key={element._id}
               >

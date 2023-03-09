@@ -234,3 +234,7 @@
   border-radius: 5px;
 
 }
+
+.imegeFix {
+  justify-content: inherit !important;
+}
