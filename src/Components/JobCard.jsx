@@ -6,7 +6,9 @@ const JobCard = ({ jobs }) => {
     <Row className="py-3">
       {jobs &&
         jobs.data?.map((singleJob, index) => {
-          return index < 20 && <div>{singleJob.title}</div>;
+          return (
+            index < 20 && <div key={"ID: " + index}>{singleJob.title}</div>
+          );
         })}
       <Col xs={3}></Col>
       <Col xs={10} className="position-relative">

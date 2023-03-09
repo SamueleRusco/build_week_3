@@ -216,8 +216,14 @@ const Notizie = () => {
       />
       {/* {(loader && <Spinner variant="dark" />) || ({listaCommenti && */}
       <h4>Notizie</h4>
+
       {loader ? (
-        <Spinner />
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ width: "100%", height: "80vh" }}
+        >
+          <Spinner variant="primary" />
+        </div>
       ) : (
         friendPosts?.map((post, i) => {
           return (

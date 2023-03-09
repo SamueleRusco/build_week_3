@@ -18,10 +18,7 @@ const JobPage = () => {
   const loading = useSelector((state) => state.jobs.loading);
 
   useEffect(() => {
-    console.log(loading);
     dispatch(jobsActions());
-    console.log(loading);
-    // setTimeout(() => setLoading(false), 1000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -98,7 +95,7 @@ const JobPage = () => {
           className="d-flex justify-content-center align-items-center"
           style={{ height: "100vh", width: "100%" }}
         >
-          <Spinner />
+          <Spinner variant="primary" />
         </div>
       )}
 

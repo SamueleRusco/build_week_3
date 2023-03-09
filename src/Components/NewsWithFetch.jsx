@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 
 const NewsWithFetch = () => {
   const [newsFetch, setNewsFetch] = useState([null]);
+  const [loading, setLoading] = useState(false);
   let key =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
   const url =
@@ -12,6 +14,7 @@ const NewsWithFetch = () => {
   }, []);
 
   const fetchNews = async () => {
+    setLoading(true);
     try {
       const result = await fetch(url, {
         method: "GET",
@@ -21,11 +24,13 @@ const NewsWithFetch = () => {
     } catch (error) {
       console.log("cè un errore", error);
     }
+    setLoading(false);
   };
 
   return (
     <>
-      {newsFetch &&
+      {(!loading &&
+        newsFetch &&
         newsFetch.map((articolo, i) => {
           const titleWords = articolo?.title.split(" "); // Dividi il titolo in parole
           const titleShortened = titleWords?.slice(0, 20).join(" "); // Prendi le prime 20 parole e riuniscile in una stringa
@@ -45,7 +50,14 @@ const NewsWithFetch = () => {
               </>
             );
           }
-        })}
+        })) || (
+        <div
+          style={{ width: "100%", height: "200px" }}
+          className="d-flex justify-content-center align-items-center"
+        >
+          <Spinner variant="primary" />
+        </div>
+      )}
     </>
   );
 };
