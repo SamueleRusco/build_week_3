@@ -156,7 +156,7 @@ const MyUserDetailsCard = () => {
           />
         </div>
         <Row
-          className="position-relative"
+          className="position-relative ciccio"
           style={{ overflow: "hidden", flexWrap: "nowrap" }}
         >
           {sliderCounter > 0 && (

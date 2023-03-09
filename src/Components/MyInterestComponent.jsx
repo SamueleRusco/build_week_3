@@ -9,7 +9,7 @@ const MyInterestComponent = () => {
     <>
       <Card className="my-2 pt-3 pb-3 text-start position-relative">
         <Card.Body className="pb-0">
-          <Row>
+          <Row className="titleInterest">
             <Col xs={12} md={4} className="d-flex">
               <Card.Title
                 className="mb-0"

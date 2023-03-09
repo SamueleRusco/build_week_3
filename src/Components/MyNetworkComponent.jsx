@@ -1,3 +1,4 @@
+import { RampRight } from "@mui/icons-material";
 import { height } from "@mui/system";
 import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
@@ -11,8 +12,9 @@ import {
   PeopleFill,
   PersonFill,
 } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
-import MyFooterPart from "./MyFooterPart";
+import styled from "styled-components";
+
+import MyFooterHome from "./MyFooterHome";
 import MyNetworkPeople from "./MyNetworkPeople";
 
 const MyNetworkComponent = ({ randomized }) => {
@@ -36,48 +38,61 @@ const MyNetworkComponent = ({ randomized }) => {
         <Col xs={12} md={5} lg={3} className="mt-5 offset-xl-1">
           <Card className="p-0">
             <Card.Body>
-              <h5 style={{ fontSize: "1rem", fontWeight: "400" }}>
+              <h5
+                className="hMarginNetwork"
+                style={{ fontSize: "1rem", fontWeight: "400" }}
+              >
                 Gestisci la tua rete
               </h5>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <PeopleFill className="me-2 mb-1" /> Collegamenti
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <JournalCheck
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Contatti
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <PersonFill
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Persone che segui e follower
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <CalendarDate
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Eventi
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <FileBreak className="me-2 mb-1" style={{ color: "dimgrey" }} />
                 Pagine
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <Newspaper className="me-2 mb-1" style={{ color: "dimgrey" }} />
                 Newsletter
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <Hash style={{ color: "dimgrey" }} />
                 Hashtag
               </p>
             </Card.Body>
             <div style={{ borderTop: "1px solid lightgrey" }}></div>
           </Card>
+          <BannerCard className="fixed">
+            <div>
+              <img
+                src="https://img.freepik.com/premium-psd/we-are-hiring-job-vacancy-web-banner-social-media-post-template_169307-1679.jpg?w=360"
+                alt="OOOO"
+              />
+            </div>
+          </BannerCard>
+
+          <MyFooterHome />
         </Col>
         <Col xs={12} md={7} lg={9} xl={7} className=" mt-5">
           <Card>
@@ -90,9 +105,25 @@ const MyNetworkComponent = ({ randomized }) => {
           </Card>
         </Col>
       </Row>
-      <MyFooterPart />
     </Container>
   );
 };
+
+const FollowCard = styled.div`
+  overflow: hidden;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+  padding: 12px;
+`;
+const BannerCard = styled(FollowCard)`
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 export default MyNetworkComponent;

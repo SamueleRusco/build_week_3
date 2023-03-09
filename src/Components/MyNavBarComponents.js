@@ -25,7 +25,7 @@ const MyNavBarComponents = (props) => {
         <Nav>
           <NavListWrap>
             <Link to={"/news"} style={{ textDecoration: "none" }}>
-              <NavList className="active">
+              <NavList>
                 <a>
                   <img src="/images/nav-home.svg" alt="" />
                   <span>Home</span>

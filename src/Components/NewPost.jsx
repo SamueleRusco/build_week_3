@@ -204,7 +204,8 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
             {/* setText(e.target.value) */}
 
             <FormControl
-              style={{ height: "35px", border: "none" }}
+              className="uneditable-input"
+              style={{ height: "35px", border: "none", WebkitAppearance: "none" }}
               onChange={handleChangeText}
               value={text}
               type="text"

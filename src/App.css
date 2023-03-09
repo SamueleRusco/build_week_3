@@ -73,6 +73,7 @@
   display: flex;
   flex-wrap: nowrap;
   max-width: 50%;
+  justify-content: inherit !important;
 }
 
 #footer img {
@@ -158,19 +159,61 @@
   max-width: 65%;
 }
 
-.edit {
-  padding: 8px 10px 5px !important;
-  margin: 0 !important;
+/*button network*/
+
+.buttonMyNetwork:hover {
+  background-color: #e2f0fe !important;
+  border: 3px solid #0a66c2 !important;
+}
+
+.buttonMyNetworkGrey:hover {
   font-weight: 600;
 }
 
-.canc {
-  padding: 5px 10px 8px !important;
-
-  font-weight: 600;
+.hoverButtonDisp:hover {
+  background-color: #004182 !important;
 }
 
-.edit:hover,
-.canc:hover {
+.hoverNetwork:hover {
   background-color: #ebebeb !important;
+  border-radius: 5px;
+}
+
+.hMarginNetwork {
+  margin-bottom: 1.5rem;
+}
+
+.centrami {
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.ciccio {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.titleInterest {
+  justify-content: inherit !important;
+}
+
+.uneditable-input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.hoverNotizie:hover {
+  background-color: #ebebeb;
+  border-radius: 5px;
+}
+
+.imegeFix {
+  justify-content: inherit !important;
 }
