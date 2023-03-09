@@ -98,6 +98,7 @@ const MyCommentArea = ({
                 <MySingleComment
                   element={element}
                   key={element._id}
+                  postList={postList}
                   refreshed={refreshed}
                   setRefreshed={setRefreshed}
                 />

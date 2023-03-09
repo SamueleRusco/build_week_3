@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup } from "react-bootstrap";
 import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
-const MySingleComment = ({ element, refreshed, setRefreshed }) => {
+const MySingleComment = ({ element, refreshed, setRefreshed, postList }) => {
   const [showEditInput, setShowEditInput] = useState(false);
   const userMail = useSelector((state) => state.profiles.result.email);
   const [edit, setEdit] = useState("");
+  const [utente, setUtente] = useState(null);
+  const listaCommenti = useSelector((state) => state.posts.commenti);
 
   const deleteCommentFetch = async (idcommento) => {
     let response = await fetch(
@@ -38,10 +40,21 @@ const MySingleComment = ({ element, refreshed, setRefreshed }) => {
     );
   };
 
+  const userImage = () => {
+    const image = listaCommenti?.filter(
+      (email, i) => email?.user?.email === element?.author
+    );
+
+    return image[0].user;
+  };
+
+  console.log(userImage());
   return (
     <div className="d-flex justify-content-between align-items-center">
       <p className="m-0">{element?.comment} </p>
-      <p className="text-secondary">{element?.author}</p>
+      <p className="text-secondary">
+        {userImage().name + " " + userImage().surname}
+      </p>
       {element?.author === userMail && (
         <>
           <div className="d-flex">
