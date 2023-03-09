@@ -104,7 +104,7 @@ const JobCard = ({ jobs }) => {
                     {showDescription && (
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: singleJob.description,
+                          __html: singleJob?.description,
                         }}
                       />
                     )}
