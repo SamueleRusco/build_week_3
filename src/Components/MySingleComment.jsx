@@ -102,70 +102,71 @@ const MySingleComment = ({
         <p className="mb-0 mt-2" style={{ fontSize: "14px" }}>
           {element?.comment}
         </p>
-      </div>
-      {element?.author === userMail && (
-        <>
-          <div className="d-flex">
-            {!showEditInput && (
-              <Button
-                className="bg-transparent"
-                style={{ border: "none" }}
-                onClick={() => {
-                  setRefreshed(true);
-                  deleteCommentFetch(element?._id);
-                }}
-              >
-                <XLg className="text-secondary" />
-              </Button>
-            )}
-            <Form>
-              {showEditInput && (
-                <>
-                  <FormGroup>
-                    <Form.Control
-                      type="text"
-                      placeholder="Modifica il commento"
-                      value={edit}
-                      onChange={(e) => setEdit(e.target.value)}
-                    />
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setRefreshed(true);
-                        editCommentFetch(element?._id);
-                      }}
-                    >
-                      Conferma
-                    </Button>
-                    <Button
-                      className="bg-danger"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowEditInput(false);
-                      }}
-                    >
-                      Annulla
-                    </Button>
-                  </FormGroup>
-                </>
-              )}
+
+        {element?.author === userMail && (
+          <>
+            <div className="d-flex">
               {!showEditInput && (
                 <Button
                   className="bg-transparent"
                   style={{ border: "none" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowEditInput(true);
-                    // editCommentFetch(element._id);
+                  onClick={() => {
+                    setRefreshed(true);
+                    deleteCommentFetch(element?._id);
                   }}
                 >
-                  <PencilFill className="text-secondary" />
+                  <XLg className="text-secondary" />
                 </Button>
               )}
-            </Form>
-          </div>
-        </>
-      )}
+              <Form>
+                {showEditInput && (
+                  <>
+                    <FormGroup>
+                      <Form.Control
+                        type="text"
+                        placeholder="Modifica il commento"
+                        value={edit}
+                        onChange={(e) => setEdit(e.target.value)}
+                      />
+                      <Button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setRefreshed(true);
+                          editCommentFetch(element?._id);
+                        }}
+                      >
+                        Conferma
+                      </Button>
+                      <Button
+                        className="bg-danger"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setShowEditInput(false);
+                        }}
+                      >
+                        Annulla
+                      </Button>
+                    </FormGroup>
+                  </>
+                )}
+                {!showEditInput && (
+                  <Button
+                    className="bg-transparent"
+                    style={{ border: "none" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowEditInput(true);
+                      // editCommentFetch(element._id);
+                    }}
+                  >
+                    <PencilFill className="text-secondary" />
+                  </Button>
+                )}
+              </Form>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
