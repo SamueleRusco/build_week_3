@@ -1,8 +1,7 @@
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CameraFill, Pencil } from "react-bootstrap-icons";
-import MyButtonComponent from "./MyButtonComponent";
 import MyProfileSettongsComponent from "./MyprofileSettingsCard";
 import MyPeopleCouldKnowComponent from "./MyPeopleCouldKnowComponent";
 import MyGroupAdvisorComponent from "./MyGroupsAdvisorComponent";
@@ -12,17 +11,12 @@ import {
   friendsRemoverAction,
 } from "../Redux/Actions/friendsActions";
 
-const UsersPage = () => {
+const UsersPage = ({ randomized }) => {
+  const peopleArray = useSelector((state) => state.allProfiles.result);
   const dispatch = useDispatch();
   const friendIdList = useSelector((state) => state.friends.friendIdList);
-  const peopleArray = useSelector((state) => state.allProfiles.result);
   const params = useParams();
   const [showModal, setShowModal] = useState(false);
-  /* const [sliderCounter, setSliderCounter] = useState(0); */
-
-  useEffect(() => {
-    console.log(friendIdList);
-  });
 
   return (
     <>
@@ -184,7 +178,7 @@ const UsersPage = () => {
             style={{ backgroundColor: "#f3f2ef" }}
           >
             <MyProfileSettongsComponent />
-            <MyPeopleCouldKnowComponent />
+            <MyPeopleCouldKnowComponent randomized={randomized} />
             <MyGroupAdvisorComponent />
           </Col>
         </Row>
