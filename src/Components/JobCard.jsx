@@ -46,7 +46,7 @@ const JobCard = ({ jobs }) => {
                       {favouritejobs?.includes?.(singleJob?._id) ? (
                         <>
                           <Button
-                            className="px-3"
+                            className="px-3 bButtonHover"
                             style={{
                               backgroundColor: "rgb(0, 115, 177)",
                               border: "1px solid rgb(0, 115, 177)",
@@ -62,7 +62,7 @@ const JobCard = ({ jobs }) => {
                       ) : (
                         <div>
                           <Button
-                            className="px-3"
+                            className="px-3 gButtonHover"
                             style={{
                               backgroundColor: "transparent",
                               border: "2px solid dimgrey",

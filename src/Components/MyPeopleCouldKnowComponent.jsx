@@ -84,7 +84,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                         <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
                         {!friendIdList.includes(element?._id) ? (
                           <Button
-                            className="me-2"
+                            className="me-2 gButtonHover"
                             style={{
                               border: "1px solid dimgrey",
                               borderRadius: "20px",
@@ -101,7 +101,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                           </Button>
                         ) : (
                           <Button
-                            className="me-2"
+                            className="me-2 bButtonHover"
                             style={{
                               border: "1px solid rgb(0, 115, 177)",
                               borderRadius: "20px",

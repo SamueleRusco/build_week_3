@@ -8,9 +8,9 @@ const Leftside = (props) => {
     <Container>
       <ArtCard>
         <UserInfo>
-          <CardBackground />
+          <CardBackground style={{ backgroundImage: `url(${user?.image})` }} />
           <a>
-            <Photo />
+            <Photo style={{ backgroundImage: `url(${user?.image})` }} />
             <Link>Ti diamo il benvenuto {user?.name}!</Link>
           </a>
           <a>
@@ -80,23 +80,21 @@ const UserInfo = styled.div`
 `;
 
 const CardBackground = styled.div`
-  background: url("/images/card-bg.svg");
   background-position: center;
-  background-size: 462px;
+  background-size: cover;
   height: 54px;
   margin: -12px -12px 0;
 `;
 
 const Photo = styled.div`
   box-shadow: none;
-  background-image: url("/images/photo.svg");
   width: 72px;
   height: 72px;
   box-sizing: border-box;
   background-clip: content-box;
   background-color: white;
   background-position: center;
-  background-size: 60%;
+  background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid white;
   margin: -38px auto 12px;
