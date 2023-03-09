@@ -34,7 +34,6 @@ const Notizie = () => {
   const url = "https://striveschool-api.herokuapp.com/api/posts/";
   const [rateComment, setRateComment] = useState(null);
   const [showComment, setShowComment] = useState(false);
-
   const [scrollComment, setScrollComment] = useState(10);
 
   const friendPosts = listaCommenti.filter(
@@ -83,8 +82,7 @@ const Notizie = () => {
       {
         method: "POST",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          Authorization: key,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -230,7 +228,7 @@ const Notizie = () => {
           return (
             i < scrollComment && (
               <>
-                <Card className="my-2 py-3 text-start">
+                <Card className="my-2 pt-3 pb-0 text-start">
                   <Card.Body style={{ paddingTop: "0" }}>
                     <MySingleNews
                       post={post}

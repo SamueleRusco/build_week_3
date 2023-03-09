@@ -1,3 +1,4 @@
+import { color } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -60,6 +61,7 @@ const MyCommentArea = ({
                 <img
                   style={{ height: "40px", width: "40px", borderRadius: "50%" }}
                   src={user && user.image}
+                  alt=""
                 />
               </Col>
               <Col xs={8}>
@@ -108,16 +110,35 @@ const MyCommentArea = ({
           );
         })}
       {visible && listaCommenti.length > commentPage && (
-        <div onClick={() => setCommentPage(commentPage + 5)}>
-          <p>mostra altri</p>
+        <div
+          className="mt-3 mb-0"
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => setCommentPage(commentPage + 5)}
+        >
+          <p className="mb-0" style={{ fontSize: "0.9rem", color: "dimgrey" }}>
+            Carica altri commenti
+          </p>
         </div>
       )}
       {visible &&
         listaCommenti.length < commentPage &&
         listaCommenti.length > 5 && (
-          <Button onClick={() => setCommentPage(commentPage - 5)}>
-            mostra meno
-          </Button>
+          <div
+            className="mt-3 mb-0"
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={() => setCommentPage(commentPage - 5)}
+          >
+            <p
+              className="mb-0"
+              style={{ fontSize: "0.9rem", color: "dimgrey" }}
+            >
+              Mostra meno
+            </p>
+          </div>
         )}
     </>
   );

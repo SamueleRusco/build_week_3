@@ -13,10 +13,14 @@ const MySingleComment = ({
 }) => {
   const [showEditInput, setShowEditInput] = useState(false);
   const userMail = useSelector((state) => state.profiles.result.email);
+  const username = useSelector((state) => state.profiles.result.username);
   const [edit, setEdit] = useState("");
   const [utente, setUtente] = useState(null);
   const listaCommenti = useSelector((state) => state.posts.commenti);
   const peopleArray = useSelector((state) => state.allProfiles.result);
+  const key = useSelector((state) => state.profiles.bearer);
+  const user = useSelector((state) => state.profiles.result);
+  console.log("fioewjfoaf", userMail, element?.author, user);
 
   const deleteCommentFetch = async (idcommento) => {
     let response = await fetch(
@@ -24,8 +28,7 @@ const MySingleComment = ({
       {
         method: "DELETE",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          Authorization: key,
           "Content-Type": "application/json",
         },
       }
@@ -37,8 +40,7 @@ const MySingleComment = ({
       {
         method: "PUT",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          Authorization: key,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -103,7 +105,7 @@ const MySingleComment = ({
           {element?.comment}
         </p>
 
-        {element?.author === userMail && (
+        {(element?.author === userMail || element?.author === username) && (
           <>
             <div className="d-flex">
               {!showEditInput && (
