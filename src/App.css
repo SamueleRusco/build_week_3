@@ -76,7 +76,9 @@
   display: flex;
   flex-wrap: nowrap;
   max-width: 50%;
+  justify-content: inherit !important;
 }
+
 
 #footer img {
   width: 60px;
@@ -191,8 +193,38 @@
   background-color: #004182 !important;
 }
 
+.hoverNetwork:hover{
+
+  background-color: #EBEBEB !important;
+  border-radius: 5px;
+}
+
+.hMarginNetwork{
+  margin-bottom: 1.5rem;
+}
+
 .centrami{
   display: flex !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+}
+
+.ciccio{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.titleInterest{
+  justify-content: inherit !important;
+}
+
+.uneditable-input:focus {   
+  border-color: none;
+  box-shadow: none;
+  outline: 0 none;
 }

@@ -17,8 +17,8 @@ const MyProfileSettongsComponent = () => {
             className=" position-absolute bg-transparent p-0"
             style={{
               border: "none",
-              top: "16%",
-              right: "9%",
+              top: "21%",
+              right: "4%",
               fontSize: "1rem",
             }}
           >
@@ -28,8 +28,8 @@ const MyProfileSettongsComponent = () => {
             className=" position-absolute bg-transparent p-0"
             style={{
               border: "none",
-              top: "60%",
-              right: "9%",
+              top: "67%",
+              right: "4%",
               fontSize: "1rem",
             }}
           >

@@ -30,7 +30,7 @@ const MyFormationComponent = () => {
           >
             <Pencil className="text-dark" />
           </Button>
-          <Row>
+          <Row className="titleInterest">
             <Col xs={12} md={4} className="d-flex">
               <Card.Title
                 className="mb-0"

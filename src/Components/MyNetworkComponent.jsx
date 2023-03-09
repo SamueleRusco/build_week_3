@@ -36,42 +36,42 @@ const MyNetworkComponent = ({ randomized }) => {
         <Col xs={12} md={5} lg={3} className="mt-5 offset-xl-1">
           <Card className="p-0">
             <Card.Body>
-              <h5 style={{ fontSize: "1rem", fontWeight: "400" }}>
+              <h5 className="hMarginNetwork" style={{ fontSize: "1rem", fontWeight: "400" }}>
                 Gestisci la tua rete
               </h5>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <PeopleFill className="me-2 mb-1" /> Collegamenti
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <JournalCheck
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Contatti
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <PersonFill
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Persone che segui e follower
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <CalendarDate
                   className="me-2 mb-1"
                   style={{ color: "dimgrey" }}
                 />
                 Eventi
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <FileBreak className="me-2 mb-1" style={{ color: "dimgrey" }} />
                 Pagine
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <Newspaper className="me-2 mb-1" style={{ color: "dimgrey" }} />
                 Newsletter
               </p>
-              <p className="text-secondary">
+              <p className="text-secondary hoverNetwork">
                 <Hash style={{ color: "dimgrey" }} />
                 Hashtag
               </p>
