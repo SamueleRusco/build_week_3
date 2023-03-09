@@ -21,6 +21,7 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         result: action.payload,
       };
+
     case GET_PROFILE_ERROR:
       return {
         ...state,

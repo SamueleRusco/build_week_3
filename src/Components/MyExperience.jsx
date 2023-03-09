@@ -14,7 +14,7 @@ const MyExperience = () => {
   const key = useSelector((state) => state.profiles.bearer);
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
   const loader = useSelector((state) => state.profiles.loading);
-  console.log(loader);
+  console.log("sono exp2", experiences);
   useEffect(() => {
     getExperienceFetch();
   }, []);
@@ -111,8 +111,7 @@ const MyExperience = () => {
                     Edit
                   </Button> */}
                   <MyEditExperiencesModal
-                    // editModalOn={editModalOn}
-                    // setEditModalOn={setEditModalOn}
+                    exp={element}
                     id={element._id}
                     refresh={getExperienceFetch}
                   />

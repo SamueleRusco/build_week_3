@@ -30,7 +30,10 @@ function App() {
           <Route path="/" element={<MyMainComponent />} />
           <Route path="*" element={<MyExperiencePageComponent />} />
           <Route path="/news/" element={<MyNewsSectionComponent />} />
-          <Route path="/profiles/:usersId" element={<UsersPage />} />
+          <Route
+            path="/profiles/:usersId"
+            element={<UsersPage randomized={randomized} />}
+          />
           <Route path="/jobs/" element={<JobPage />} />
           <Route
             path="/mynetwork"

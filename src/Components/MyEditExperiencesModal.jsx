@@ -1,34 +1,26 @@
-import { Form, Button, Row, Col, Collapse, Modal } from "react-bootstrap";
+import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { PencilFill } from "react-bootstrap-icons";
 import { putExperienceImg } from "../Redux/Actions/putProfileImg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { GET_PROFILE_ERROR } from "../Redux/Actions";
 
-const MyEditExperiencesModal = ({ id, refresh }) => {
+const MyEditExperiencesModal = ({ id, refresh, exp }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const key = useSelector((state) => state.profiles.bearer);
   const dispatch = useDispatch();
   const [fd, setFd] = useState(new FormData());
   const [refreshed, setRefreshed] = useState(false);
   const [editModalOn, setEditModalOn] = useState(false);
-  const [role, setRole] = useState("");
-  const [company, setCompany] = useState("");
+  const [role, setRole] = useState(exp?.role);
+  const [company, setCompany] = useState(exp?.company);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
-  const [area, setArea] = useState("");
+  const [description, setDescription] = useState(exp?.description);
+  const [area, setArea] = useState(exp?.area);
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences/${id}`;
+
   const editModalFetch = async () => {
-    /*  let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */
-    /* dispatch({
-      type: GET_PROFILE_ERROR,
-      payload:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI",
-    }); */
     let response = await fetch(baseEndpoint, {
       method: "PUT",
       headers: {
@@ -44,31 +36,26 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
         area: area,
       }),
     });
-
-    // let data = await response.json();
   };
   const deleteModalFetch = async () => {
-    /* let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */ let response = await fetch(baseEndpoint, {
+    let response = await fetch(baseEndpoint, {
       method: "DELETE",
       headers: { Authorization: key },
     });
     setRefreshed(!refreshed);
-    // let data = await response.json();
   };
 
   useEffect(() => {
     refresh();
     setRefreshed(false);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
 
   const handleFile = (ev) => {
     setFd((prev) => {
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("experience"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("experience", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("experience");
+      prev.append("experience", ev.target.files[0]);
       return prev;
     });
   };
@@ -97,7 +84,7 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
           </Button>
           <hr />
           <Form.Group className="mb-4" controlId="formQualifica">
-            <Form.Text className="text-muted">Qualifica</Form.Text>
+            <Form.Text className="text-muted">Ruolo</Form.Text>
             <Form.Control
               type="text"
               placeholder="Esempio: Teaching assistant"
@@ -187,7 +174,6 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              //   postExperienceFetch();
               editModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);
@@ -200,7 +186,6 @@ const MyEditExperiencesModal = ({ id, refresh }) => {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              //   postExperienceFetch();
               deleteModalFetch();
               setEditModalOn(false);
               setRefreshed(!refreshed);

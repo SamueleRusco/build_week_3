@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { PencilFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import MyCommentArea from "./MyCommentArea";
 import MyEditPostComponent from "./MyEditPostComponent";
-import MySingleComment from "./MySingleComment";
 
 const MySingleNews = ({
   post,
@@ -16,7 +14,6 @@ const MySingleNews = ({
   postCommentFetch,
 }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
-  const friendIdList = useSelector((state) => state.friends.friendIdList);
   const [selected, setSelected] = useState(false);
   const [commento, setCommento] = useState("");
   const userMail = useSelector((state) => state.profiles.result.email);
@@ -47,6 +44,7 @@ const MySingleNews = ({
               postId={post?._id}
               setRefreshed={setRefreshed}
               refreshed={refreshed}
+              post={post}
             />
           </>
         ) : (
