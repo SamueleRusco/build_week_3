@@ -3,12 +3,16 @@ import {
   ADD_JOBS,
   REMOVE_JOBS,
   FILTERED_JOBS,
+  LOADING,
+  LOADING_ON,
+  LOADING_OFF,
 } from "../Actions/jobsActions";
 
 const initialState = {
-  jobsList: [],
+  jobsList: null,
   filteredJobsList: [],
   favouriteJobs: [],
+  loading: false,
 };
 
 const jobsReducer = (state = initialState, action) => {
@@ -32,6 +36,16 @@ const jobsReducer = (state = initialState, action) => {
       return {
         ...state,
         favouriteJobs: state.favouriteJobs.filter((e) => e !== action.payload),
+      };
+    case LOADING_ON:
+      return {
+        ...state,
+        loading: true,
+      };
+    case LOADING_OFF:
+      return {
+        ...state,
+        loading: false,
       };
 
     default:

@@ -2,11 +2,14 @@ export const GET_JOBS = "GET_JOBS";
 export const ADD_JOBS = "ADD_JOBS";
 export const REMOVE_JOBS = "REMOVE_JOBS";
 export const FILTERED_JOBS = "FILTERED_JOBS";
+export const LOADING_ON = "LOADING_ON";
+export const LOADING_OFF = "LOADING_OFF";
 
 const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs";
 
 export const jobsActions = () => {
   return async (dispatch) => {
+    dispatch({ type: LOADING_ON });
     const response = await fetch(baseEndpoint, {
       method: "GET",
     });
@@ -16,6 +19,7 @@ export const jobsActions = () => {
       type: GET_JOBS,
       payload: data,
     });
+    dispatch({ type: LOADING_OFF });
   };
 };
 export const searchJobsActions = (searchParams, category) => {
@@ -41,5 +45,10 @@ export const removeJob = (favouriteJob) => {
   return {
     type: REMOVE_JOBS,
     payload: favouriteJob,
+  };
+};
+export const loadingJob = () => {
+  return {
+    type: REMOVE_JOBS,
   };
 };
