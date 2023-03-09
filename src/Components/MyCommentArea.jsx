@@ -3,7 +3,14 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import MySingleComment from "./MySingleComment";
 
-const MyCommentArea = ({ news, refreshed, setRefreshed, postCommentFetch }) => {
+const MyCommentArea = ({
+  news,
+  refreshed,
+  setRefreshed,
+  postCommentFetch,
+  postList,
+  rateComment,
+}) => {
   const [listaCommenti, setListaCommenti] = useState([]);
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(false);

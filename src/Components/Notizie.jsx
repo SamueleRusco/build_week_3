@@ -115,6 +115,7 @@ const Notizie = () => {
     if (response.ok) {
       let data = await response.json();
       setRateComment(data);
+      console.log("sti cazzo di commenti", rateComment);
     }
   };
 
@@ -250,6 +251,8 @@ const Notizie = () => {
                       refreshed={refreshed}
                       setRefreshed={setRefreshed}
                       postCommentFetch={postCommentFetch}
+                      postList={listaCommenti}
+                      rateComment={rateComment}
                     />
                   </Card.Body>
                 </Card>
