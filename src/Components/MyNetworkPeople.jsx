@@ -71,13 +71,13 @@ const MyNetworkPeople = ({ randomized }) => {
                       : element?.title}
                   </p>
                 </div>
-                <p className="text-secondary" style={{ fontSize: "0.9rem" }}>
+                <p className="text-secondary " style={{ fontSize: "0.9rem" }}>
                   {" "}
                   In base al tuo profilo
                 </p>
                 {!friendIdList.includes(element?._id) ? (
                   <Button
-                    className="me-2"
+                    className="me-2 buttonMyNetwork"
                     style={{
                       border: "1px solid dimgrey",
                       borderRadius: "20px",
@@ -90,7 +90,7 @@ const MyNetworkPeople = ({ randomized }) => {
                       dispatch(friendsAdderAction(element._id));
                     }}
                   >
-                    collegati
+                    Collegati
                   </Button>
                 ) : (
                   <Button
@@ -107,7 +107,7 @@ const MyNetworkPeople = ({ randomized }) => {
                       dispatch(friendsRemoverAction(element._id));
                     }}
                   >
-                    collegato
+                    Collegato
                   </Button>
                 )}
               </Card.Body>

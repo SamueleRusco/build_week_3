@@ -67,7 +67,7 @@ const MyGroupAdvisorComponent = () => {
                           </p>
                           <p style={{ fontSize: "0.9rem" }}>{element?.title}</p>
                           <MyButtonComponent
-                            text={"collegati"}
+                            text={"Collegati"}
                             textColor={"dimgrey"}
                             borderColor={"dimgrey"}
                           />
