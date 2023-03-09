@@ -29,7 +29,6 @@ const JobCard = ({ jobs }) => {
                         {singleJob?.title}
                       </a>
                     </h5>
-
                     <div className="d-flex">
                       <p>
                         {singleJob?.company_name}
@@ -43,10 +42,9 @@ const JobCard = ({ jobs }) => {
                       <BriefcaseFill className="me-2 mb-1 text-secondary" />
                       {singleJob?.job_type}
                     </p>
-
-                    {favouritejobs?.includes?.(singleJob?._id) ? (
-                      <>
-                        <div className="d-flex">
+                    <div className="d-flex">
+                      {favouritejobs?.includes?.(singleJob?._id) ? (
+                        <>
                           <Button
                             className="px-3"
                             style={{
@@ -60,66 +58,66 @@ const JobCard = ({ jobs }) => {
                           >
                             Salvato
                           </Button>
-                          {!showDescription && (
-                            <p
-                              className="text-primary jobDescription mb-0 ms-3 align-self-center"
-                              style={{ cursor: "pointer" }}
-                              onClick={() => {
-                                setShowDescription(true);
-                              }}
-                            >
-                              Mostra dettagli
-                            </p>
-                          )}
-                          {showDescription && (
-                            <p
-                              className="text-primary jobDescription mb-0 ms-3 align-self-center"
-                              style={{ cursor: "pointer" }}
-                              onClick={() => {
-                                setShowDescription(false);
-                              }}
-                            >
-                              Mostra meno
-                            </p>
-                          )}
-                        </div>
-                        {showDescription && (
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: singleJob.description,
+                        </>
+                      ) : (
+                        <div>
+                          <Button
+                            className="px-3"
+                            style={{
+                              backgroundColor: "transparent",
+                              border: "2px solid dimgrey",
+                              borderRadius: "20px",
+                              color: "dimgrey",
                             }}
-                          />
-                        )}
-                        {showDescription && (
-                          <p
-                            className="text-primary jobDescription mb-0 ms-3 align-self-center"
-                            style={{ cursor: "pointer" }}
                             onClick={() => {
-                              setShowDescription(false);
+                              console.log(favouritejobs);
+                              dispatch(addJob(singleJob?._id));
                             }}
                           >
-                            Mostra meno
-                          </p>
-                        )}
-                      </>
-                    ) : (
-                      <div>
-                        <Button
-                          className="px-3"
-                          style={{
-                            backgroundColor: "transparent",
-                            border: "2px solid dimgrey",
-                            borderRadius: "20px",
-                            color: "dimgrey",
-                          }}
+                            Salva
+                          </Button>
+                        </div>
+                      )}{" "}
+                      {!showDescription && (
+                        <p
+                          className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                          style={{ cursor: "pointer" }}
                           onClick={() => {
-                            console.log(favouritejobs);
-                            dispatch(addJob(singleJob?._id));
+                            setShowDescription(true);
                           }}
                         >
-                          Salva
-                        </Button>
-                      </div>
+                          Mostra dettagli
+                        </p>
+                      )}
+                      {showDescription && (
+                        <p
+                          className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            setShowDescription(false);
+                          }}
+                        >
+                          Mostra meno
+                        </p>
+                      )}
+                    </div>
+                    {showDescription && (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: singleJob.description,
+                        }}
+                      />
+                    )}
+                    {showDescription && (
+                      <p
+                        className="text-primary jobDescription mb-0 ms-3 align-self-center"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setShowDescription(false);
+                        }}
+                      >
+                        Mostra meno
+                      </p>
                     )}
                   </Card.Body>
                 </Card>
