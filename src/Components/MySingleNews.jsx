@@ -23,28 +23,18 @@ const MySingleNews = ({
   const bearer = useSelector((state) => state.profiles.bearer);
   const [otherComments, setOtherComments] = useState(5);
 
-  const deleteNewsFetch = async (idcommento) => {
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: bearer,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-  };
-
   return (
     <>
       <div className="d-flex justify-content-between">
         <Card.Title style={{ fontSize: "1.2rem" }}>
           <img
+            className="me-2"
             src={post.user.image}
             alt="propic"
             style={{
-              width: "25px",
+              width: "30px",
+              height: "30px",
+              borderRadius: "50%",
             }}
           />
           {post.user.name} {post.user.surname}
