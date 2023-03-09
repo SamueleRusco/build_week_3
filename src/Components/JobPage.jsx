@@ -202,7 +202,12 @@ const JobPage = () => {
                     />
                   </Form.Group>
                   <Button
-                    className=""
+                    className="px-3"
+                    style={{
+                      backgroundColor: "rgb(0, 115, 177)",
+                      border: "1px, solid, rgb(0, 115, 177)",
+                      borderRadius: "20px",
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       dispatch(searchJobsActions(searchParams, category));
