@@ -34,9 +34,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   };
 
   const postNewCommentFetch = async () => {
-    /* let key =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
-    */ let response = await fetch(url, {
+    let response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: key },
       body: JSON.stringify({
@@ -61,13 +59,6 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   };
   return (
     <>
-      {/* <Button
-        onClick={() => {
-          setShowModal(true);
-        }}
-      >
-        Show Modal
-      </Button> */}
       <Modal
         show={showModal}
         onHide={() => setShowModal(false)}
@@ -148,7 +139,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                   }}
                 >
                   <img
-                    src={"https://placekitten.com/200/200"}
+                    src={user?.image || "https://placekitten.com/200"}
                     alt=""
                     style={{ width: "50px" }}
                   />
@@ -186,8 +177,6 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
                 </Button>
               </div>
             </div>
-            {/* setText(e.target.value) */}
-
             <FormControl
               style={{ height: "35px", border: "none" }}
               onChange={handleChangeText}
@@ -204,7 +193,6 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
           </Form.Group>
 
           <Form.Group className="d-flex" style={{ marginBottom: "10px" }}>
-            {/* <FormLabel>Aggiungi un`immagine</FormLabel> */}
             <FormControl
               onChange={handleFile}
               type="file"

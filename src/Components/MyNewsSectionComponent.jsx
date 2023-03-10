@@ -3,7 +3,6 @@ import Leftside from "./Leftside";
 import Main from "./Main";
 import Rightside from "./Rightside";
 import { Col, Container } from "react-bootstrap";
-import { height } from "@mui/system";
 
 const MyNewsSectionComponent = () => {
   return (

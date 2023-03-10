@@ -1,4 +1,3 @@
-import { height } from "@mui/system";
 import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import {
@@ -7,11 +6,10 @@ import {
   Hash,
   JournalCheck,
   Newspaper,
-  People,
   PeopleFill,
   PersonFill,
 } from "react-bootstrap-icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
 import MyNetworkPeople from "./MyNetworkPeople";
 import {
@@ -20,19 +18,6 @@ import {
 } from "../Redux/Actions/borderSelectorAction";
 
 const MyNetworkComponent = ({ randomized }) => {
-  //   const peopleArray = useSelector((state) => state.allProfiles.result);
-
-  //   const randomizeContacts = (arr) => {
-  //     let randomizedArr = [];
-  //     while (randomizedArr.length < 18) {
-  //       let randomGuy = arr[Math.trunc(Math.random() * arr?.length)];
-  //       randomizedArr.push(randomGuy);
-  //     }
-
-  //     return randomizedArr;
-  //   };
-
-  //   const randomized = randomizeContacts(peopleArray);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(borderSelectorActions(NETWORK));

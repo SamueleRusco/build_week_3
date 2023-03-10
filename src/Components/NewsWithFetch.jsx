@@ -4,8 +4,7 @@ import { Spinner } from "react-bootstrap";
 const NewsWithFetch = () => {
   const [newsFetch, setNewsFetch] = useState([null]);
   const [loading, setLoading] = useState(false);
-  let key =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjU5Y2YxOTNlNjAwMTM4MDdmNGQiLCJpYXQiOjE2Nzc0ODU0NzMsImV4cCI6MTY3ODY5NTA3M30.4UuEx0E0rg5moiQl2yjBzNkAo75xaKrDS6hY-r_GSLI";
+
   const url =
     " https://newsapi.org/v2/everything?q=apple&from=2023-03-02&to=2023-03-02&sortBy=popularity&apiKey=6b9000f1707e464797524605992cc624";
 
@@ -32,8 +31,8 @@ const NewsWithFetch = () => {
       {(!loading &&
         newsFetch &&
         newsFetch.map((articolo, i) => {
-          const titleWords = articolo?.title.split(" "); // Dividi il titolo in parole
-          const titleShortened = titleWords?.slice(0, 20).join(" "); // Prendi le prime 20 parole e riuniscile in una stringa
+          const titleWords = articolo?.title.split(" ");
+          const titleShortened = titleWords?.slice(0, 20).join(" ");
 
           if (i < 5) {
             return (

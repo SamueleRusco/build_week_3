@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const MySingleComment = ({
   element,
-  commentRefresh,
+
   setCommentRefresh,
   refreshed,
   setRefreshed,
@@ -55,12 +55,6 @@ const MySingleComment = ({
 
     return image[0];
   };
-
-  // useEffect(() => {
-  //   userImage();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   return (
     <div className="mt-4 d-flex ">
       <img
@@ -131,7 +125,6 @@ const MySingleComment = ({
                     onClick={(e) => {
                       e.preventDefault();
                       setShowEditInput(true);
-                      // editCommentFetch(element._id);
                     }}
                   >
                     <PencilFill className="text-secondary me-1" />
@@ -173,7 +166,6 @@ const MySingleComment = ({
                     <Col xs={2}>
                       <Button
                         onClick={(e) => {
-                          // setRefreshed(true);
                           e.preventDefault();
                           setCommentRefresh(true);
                           editCommentFetch(element?._id);
@@ -198,7 +190,6 @@ const MySingleComment = ({
                     <Col xs={1}>
                       <Button
                         onClick={(e) => {
-                          // setRefreshed(true);
                           e.preventDefault();
                           setShowEditInput(false);
                         }}

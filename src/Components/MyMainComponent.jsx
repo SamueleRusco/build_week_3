@@ -2,7 +2,6 @@ import { Container, Row, Col, Button, Card, Spinner } from "react-bootstrap";
 import MyActivitiesComponent from "./MyActivitiesComponent";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MyFormationComponent from "./MyFormationComponent";
-import MyGroupAdvisorComponent from "./MyGroupsAdvisorComponent";
 import MyInterestComponent from "./MyInterestComponent";
 import MyPeopleCouldKnowComponent from "./MyPeopleCouldKnowComponent";
 import MyProfileSettongsComponent from "./MyprofileSettingsCard";
@@ -10,8 +9,6 @@ import MyResourceComponent from "./MyResourceComponent";
 import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
-import NewsWithFetch from "./NewsWithFetch";
-import FavouriteJobsComponent from "./FavouriteJobsComponent";
 import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
 import { useDispatch, useSelector } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
@@ -69,9 +66,6 @@ const MyMainComponent = () => {
               <Spinner variant="primary" />
             </div>
           )) || <MyPeopleCouldKnowComponent randomized={randomized} />}
-
-          {/* <MyGroupAdvisorComponent /> */}
-          {/* <FavouriteJobsComponent /> */}
           <Row className="py-3 mt-3">
             <Card.Title
               className="mb-4 text-center"

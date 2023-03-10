@@ -1,10 +1,5 @@
 import { Card, Row, Col, Button } from "react-bootstrap";
-import {
-  EyeFill,
-  Pencil,
-  PlusLg,
-  QuestionCircleFill,
-} from "react-bootstrap-icons";
+import { QuestionCircleFill } from "react-bootstrap-icons";
 import { useState } from "react";
 
 const MyProfileSettongsComponent = () => {
