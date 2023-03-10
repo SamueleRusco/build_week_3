@@ -1,4 +1,10 @@
-import { HOME, NETWORK, ME, JOBS } from "../Actions/borderSelectorAction";
+import {
+  HOME,
+  NETWORK,
+  ME,
+  JOBS,
+  NOT_FOUND,
+} from "../Actions/borderSelectorAction";
 
 const initialState = {
   selector: "",
@@ -25,6 +31,11 @@ const borderReducer = (state = initialState, action) => {
       return {
         ...state,
         selector: "jobs",
+      };
+    case NOT_FOUND:
+      return {
+        ...state,
+        selector: "",
       };
     default:
       return state;
