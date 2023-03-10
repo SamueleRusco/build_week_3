@@ -12,15 +12,17 @@ import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
 import NewsWithFetch from "./NewsWithFetch";
 import FavouriteJobsComponent from "./FavouriteJobsComponent";
-
-import { useSelector } from "react-redux";
+import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
+import { useDispatch, useSelector } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
 import { BriefcaseFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { ME } from "../Redux/Actions/borderSelectorAction";
 const MyMainComponent = () => {
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const favouriteJobs = useSelector((state) => state.jobs.favouriteJobs);
-
+  const dispatch = useDispatch();
   const randomizeContacts = (arr) => {
     let randomizedArr = [];
     while (randomizedArr.length < 6) {
@@ -32,6 +34,9 @@ const MyMainComponent = () => {
   };
 
   const randomized = randomizeContacts(peopleArray);
+  useEffect(() => {
+    dispatch(borderSelectorActions(ME));
+  });
 
   return (
     <Container className="py-4" style={{ marginTop: "80px", height: "100%" }}>

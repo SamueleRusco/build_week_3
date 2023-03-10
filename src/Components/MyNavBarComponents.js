@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MyNavBarComponents = (props) => {
+  const active = useSelector((state) => state.border.selector);
   return (
     <MyContainer>
       <Content>
@@ -28,7 +30,14 @@ const MyNavBarComponents = (props) => {
               <NavList className="active">
                 <a>
                   <img src="/images/nav-home.svg" alt="" />
-                  <span>Home</span>
+                  <span
+                    style={{
+                      borderBottom:
+                        active && active === "home" && "1px solid black",
+                    }}
+                  >
+                    Home
+                  </span>
                 </a>
               </NavList>
             </Link>
@@ -37,7 +46,14 @@ const MyNavBarComponents = (props) => {
               <Link to={"/mynetwork"} style={{ textDecoration: "none" }}>
                 <a>
                   <img src="/images/nav-network.svg" alt="" />
-                  <span>My Network</span>
+                  <span
+                    style={{
+                      borderBottom:
+                        active && active === "network" && "1px solid black",
+                    }}
+                  >
+                    My Network
+                  </span>
                 </a>
               </Link>
             </NavList>
@@ -46,7 +62,14 @@ const MyNavBarComponents = (props) => {
               <Link to={"/jobs/"} style={{ textDecoration: "none" }}>
                 <a>
                   <img src="/images/nav-jobs.svg" alt="" />
-                  <span>Jobs</span>
+                  <span
+                    style={{
+                      borderBottom:
+                        active && active === "jobs" && "1px solid black",
+                    }}
+                  >
+                    Jobs
+                  </span>
                 </a>
               </Link>
             </NavList>
@@ -69,7 +92,12 @@ const MyNavBarComponents = (props) => {
               <Link to={"/"}>
                 <a>
                   <img src="/images/user.svg" alt="" />
-                  <span>
+                  <span
+                    style={{
+                      borderBottom:
+                        active && active === "me" && "1px solid black",
+                    }}
+                  >
                     Me
                     <img src="/images/down-icon.svg" alt="" />
                   </span>

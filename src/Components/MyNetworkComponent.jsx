@@ -11,9 +11,13 @@ import {
   PeopleFill,
   PersonFill,
 } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
 import MyNetworkPeople from "./MyNetworkPeople";
+import {
+  borderSelectorActions,
+  NETWORK,
+} from "../Redux/Actions/borderSelectorAction";
 
 const MyNetworkComponent = ({ randomized }) => {
   //   const peopleArray = useSelector((state) => state.allProfiles.result);
@@ -29,7 +33,12 @@ const MyNetworkComponent = ({ randomized }) => {
   //   };
 
   //   const randomized = randomizeContacts(peopleArray);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(borderSelectorActions(NETWORK));
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container style={{ backgroundColor: "#f3f2ef", height: "100%" }}>
       <Row className="mt-5">

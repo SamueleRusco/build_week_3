@@ -7,6 +7,8 @@ import {
   listaCommentiAction,
 } from "../Redux/Actions/postReducerActions";
 import NewPost from "./NewPost";
+
+import { HOME } from "../Redux/Actions/borderSelectorAction";
 import {
   CalendarDate,
   Image,
@@ -20,6 +22,7 @@ import { getProfileAction } from "../Redux/Actions";
 import MySingleComment from "./MySingleNews";
 import MySingleNews from "./MySingleNews";
 import MyCommentArea from "./MyCommentArea";
+import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
 const Notizie = () => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const [listaCommenti, setListaCommenti] = useState([]);
@@ -45,6 +48,7 @@ const Notizie = () => {
     setRefreshed(false);
     fetchNotizie();
     console.log("friend id list", friendIdList);
+    dispatch(borderSelectorActions(HOME));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
 

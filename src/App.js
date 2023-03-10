@@ -3,7 +3,7 @@ import "./App.css";
 import MyMainComponent from "./Components/MyMainComponent";
 import MyNavBarComponents from "./Components/MyNavBarComponents";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyExperiencePageComponent from "./Components/MyNotFoundPageComponent";
+import MyNotFoundPageComponent from "./Components/MyNotFoundPageComponent";
 import MyNewsSectionComponent from "./Components/MyNewsSectionComponent";
 import UsersPage from "./Components/UsersPage";
 import MyNetworkComponent from "./Components/MyNetworkComponent";
@@ -28,7 +28,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<MyMainComponent />} />
-          <Route path="*" element={<MyExperiencePageComponent />} />
+          <Route path="*" element={<MyNotFoundPageComponent />} />
           <Route path="/news/" element={<MyNewsSectionComponent />} />
           <Route
             path="/profiles/:usersId"

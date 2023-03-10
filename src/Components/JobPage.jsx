@@ -22,6 +22,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import FilteredJobCard from "./FilteredJobCard";
 import { height } from "@mui/system";
+import { JOBS } from "../Redux/Actions/borderSelectorAction";
 import {
   BellFill,
   Bookmark,
@@ -33,9 +34,11 @@ import {
   Youtube,
 } from "react-bootstrap-icons";
 import FavouriteJobsComponent from "./FavouriteJobsComponent";
+import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
 const JobPage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobsList);
+  const active = useSelector((state) => state.border.selector);
   const filteredJobsList = useSelector((state) => state.jobs.filteredJobsList);
   const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
   const [searchParams, setSearchParams] = useState("");
@@ -52,6 +55,8 @@ const JobPage = () => {
   useEffect(() => {
     console.log(jobs);
     dispatch(jobsActions());
+    dispatch(borderSelectorActions(JOBS));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
