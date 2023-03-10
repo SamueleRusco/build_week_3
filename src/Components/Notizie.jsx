@@ -1,25 +1,18 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
-import MyEditPostComponent from "./MyEditPostComponent";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  commentiFiltratiAction,
-  listaCommentiAction,
-} from "../Redux/Actions/postReducerActions";
+import { commentiFiltratiAction } from "../Redux/Actions/postReducerActions";
 import NewPost from "./NewPost";
 
 import { HOME } from "../Redux/Actions/borderSelectorAction";
 import {
   CalendarDate,
   Image,
-  Paperclip,
   PlayBtnFill,
   TextParagraph,
-  ThreeDots,
 } from "react-bootstrap-icons";
 import { GET_PROFILE_LOADING } from "../Redux/Actions";
 import { getProfileAction } from "../Redux/Actions";
-import MySingleComment from "./MySingleNews";
 import MySingleNews from "./MySingleNews";
 import MyCommentArea from "./MyCommentArea";
 import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
@@ -30,7 +23,6 @@ const Notizie = () => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [editPost, setEditPost] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
   const friendIdList = useSelector((state) => state.friends.friendIdList);
   const key = useSelector((state) => state.profiles.bearer);
   const loader = useSelector((state) => state.profiles.loading);
@@ -99,7 +91,7 @@ const Notizie = () => {
       }
     );
     if (response.ok) {
-      let data = await response.json();
+      await response.json();
     }
   };
 

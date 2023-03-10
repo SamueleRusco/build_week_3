@@ -56,6 +56,7 @@ const UsersPage = ({ randomized }) => {
                           >
                             <img
                               src={e.image}
+                              alt=""
                               style={{
                                 width: "170px",
                                 position: "absolute",

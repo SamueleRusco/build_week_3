@@ -2,7 +2,6 @@ import { PUT_PROFILE_IMG } from "../Actions/putProfileImg";
 import { PUT_EXPERIENCE_IMG } from "../Actions/putProfileImg";
 import { PUT_POST_IMG } from "../Actions/putProfileImg";
 const initialState = {
-  /* const [fd, setFd] = useState(new FormData()) */
   profileImg: [],
   experienceImg: [],
   postImg: [],

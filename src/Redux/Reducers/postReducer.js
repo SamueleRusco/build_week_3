@@ -1,11 +1,9 @@
 import {
-  ATTIVAZIONE,
   COMMENTI_FILTRATI_UTENTE,
   LISTA_COMMENTI,
 } from "../Actions/postReducerActions";
 
 const initialState = {
-  /* loginId: "63fc659cf193e60013807f4d", */
   commenti: [],
   commentiFiltrati: [],
 };

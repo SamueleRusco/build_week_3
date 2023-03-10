@@ -33,7 +33,6 @@ const NewsWithFetch = () => {
         newsFetch.map((articolo, i) => {
           const titleWords = articolo?.title.split(" ");
           const titleShortened = titleWords?.slice(0, 20).join(" ");
-
           if (i < 5) {
             return (
               <>

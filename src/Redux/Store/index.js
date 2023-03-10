@@ -39,9 +39,4 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
-
 export const persistor = persistStore(store);
-
-// window.onbeforeunload = function () {
-//   localStorage.clear();
-// };

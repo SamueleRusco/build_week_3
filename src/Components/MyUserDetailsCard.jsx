@@ -68,20 +68,6 @@ const MyUserDetailsCard = () => {
             </div>
           </div>
         </div>
-
-        {/* <Card.Img
-          className="p-5 position-absolute"
-          src={profile.image}
-          style={{
-            borderRadius: "50%",
-            height: "150px",
-            width: "150px",
-            left: "4%",
-            bottom: "-25%",
-            backgroundColor: "green",
-            border: "4px solid white",
-          }}
-        ></Card.Img> */}
         <Button
           className="position-absolute position-relative
           pe-2"
