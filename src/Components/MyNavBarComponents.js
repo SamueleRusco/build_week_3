@@ -26,50 +26,49 @@ const MyNavBarComponents = (props) => {
         </Search>
         <Nav>
           <NavListWrap>
-            <Link to={"/news"} style={{ textDecoration: "none" }}>
+            <Link
+              to={"/news"}
+              style={{
+                textDecoration: "none",
+                borderBottom: active && active === "home" && "2px solid black",
+              }}
+            >
               <NavList className="active">
                 <a>
                   <img src="/images/nav-home.svg" alt="" />
-                  <span
-                    style={{
-                      borderBottom:
-                        active && active === "home" && "1px solid black",
-                    }}
-                  >
-                    Home
-                  </span>
+                  <span>Home</span>
                 </a>
               </NavList>
             </Link>
 
             <NavList>
-              <Link to={"/mynetwork"} style={{ textDecoration: "none" }}>
+              <Link
+                to={"/mynetwork"}
+                style={{
+                  textDecoration: "none",
+                  borderBottom:
+                    active && active === "network" && "2px solid black",
+                }}
+              >
                 <a>
                   <img src="/images/nav-network.svg" alt="" />
-                  <span
-                    style={{
-                      borderBottom:
-                        active && active === "network" && "1px solid black",
-                    }}
-                  >
-                    My Network
-                  </span>
+                  <span>My Network</span>
                 </a>
               </Link>
             </NavList>
 
             <NavList>
-              <Link to={"/jobs/"} style={{ textDecoration: "none" }}>
+              <Link
+                to={"/jobs/"}
+                style={{
+                  textDecoration: "none",
+                  borderBottom:
+                    active && active === "jobs" && "2px solid black",
+                }}
+              >
                 <a>
                   <img src="/images/nav-jobs.svg" alt="" />
-                  <span
-                    style={{
-                      borderBottom:
-                        active && active === "jobs" && "1px solid black",
-                    }}
-                  >
-                    Jobs
-                  </span>
+                  <span>Jobs</span>
                 </a>
               </Link>
             </NavList>
@@ -89,15 +88,15 @@ const MyNavBarComponents = (props) => {
             </NavList>
 
             <User>
-              <Link to={"/"}>
+              <Link
+                to={"/"}
+                style={{
+                  borderBottom: active && active === "me" && "2px solid black",
+                }}
+              >
                 <a>
                   <img src="/images/user.svg" alt="" />
-                  <span
-                    style={{
-                      borderBottom:
-                        active && active === "me" && "1px solid black",
-                    }}
-                  >
+                  <span>
                     Me
                     <img src="/images/down-icon.svg" alt="" />
                   </span>

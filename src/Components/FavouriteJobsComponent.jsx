@@ -36,16 +36,14 @@ const FavouriteJobsComponent = ({ singleJob, index }) => {
               {singleJob?.title}
             </a>
           </h5>
-          <div className="d-flex">
-            <p>
-              {singleJob?.company_name}
-              <span>·</span>
+          <div>
+            <p className="mb-1">{singleJob?.company_name}</p>
+            <p className="mb-1">{singleJob?.candidate_required_location}</p>
+            <p className="mb-1">
+              {singleJob?.publication_date?.substring(0, 10)}
             </p>
-            <p>{singleJob?.candidate_required_location}</p>
-            <span>·</span>
-            <p>{singleJob?.publication_date?.substring(0, 10)}</p>
           </div>
-          <p>
+          <p className="mb-3">
             <BriefcaseFill className="me-2 mb-1 text-secondary" />
             {singleJob?.job_type}
           </p>
