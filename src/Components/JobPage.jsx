@@ -247,19 +247,25 @@ const JobPage = () => {
             className="d-none d-lg-block "
             style={{ backgroundColor: "#f3f2ef" }}
           >
-            <Card className="pt-5">
-              {favouritejobs?.length > 0 &&
-                favouritejobs &&
-                favouritejobs?.map((singleJob, index) => {
-                  return (
-                    <FavouriteJobsComponent
-                      index={index}
-                      singleJob={singleJob}
-                      key={"favJobsKey: " + singleJob._id}
-                    />
-                  );
-                })}
-            </Card>
+            <div
+              className="bg-white pt-5 "
+              style={{ border: "1px solid lightgrey", borderRadius: "6px" }}
+            >
+              <Card.Title className="text-center">Lavori preferiti</Card.Title>
+              <Card.Body className="px-0 pb-0">
+                {favouritejobs?.length > 0 &&
+                  favouritejobs &&
+                  favouritejobs?.map((singleJob, index) => {
+                    return (
+                      <FavouriteJobsComponent
+                        index={index}
+                        singleJob={singleJob}
+                        key={"favJobsKey: " + singleJob._id}
+                      />
+                    );
+                  })}
+              </Card.Body>
+            </div>
           </Col>
         </Row>
       ) : (

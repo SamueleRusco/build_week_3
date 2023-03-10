@@ -10,8 +10,20 @@ const FavouriteJobsComponent = ({ singleJob, index }) => {
   const favouriteJobsId = favouriteJobs?.map((e) => e._id);
   const [showDescription, setShowDescription] = useState(false);
   return (
-    <div key={"ID: " + index} className="mb-2">
-      <Card>
+    <div
+      key={"ID: " + index}
+      className={index === favouriteJobs?.length - 1 ? "mb-0" : "mb-2"}
+    >
+      <Card
+        style={{
+          border: "none",
+          borderRadius: "0px",
+          borderBottom:
+            index === favouriteJobs?.length - 1
+              ? "none"
+              : "1px solid lightgrey",
+        }}
+      >
         <Card.Body>
           <h5 style={{ fontSize: "1.1rem" }}>
             <a
