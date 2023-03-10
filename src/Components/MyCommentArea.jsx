@@ -161,8 +161,8 @@ const MyCommentArea = ({
               <Col xs={11}>
                 <Form.Control
                   type="text"
-                  placeholder="Aggiungi un commento..."
                   value={commento}
+                  placeholder="Aggiungi un commento..."
                   style={{
                     borderRadius: "20px",
                     border: "2px solid rgb(180,180,180)",

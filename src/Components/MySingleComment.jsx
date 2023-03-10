@@ -1,7 +1,7 @@
 import { border } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { Button, Form, FormGroup } from "react-bootstrap";
-import { PencilFill, XLg } from "react-bootstrap-icons";
+import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { PencilFill, SendFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
 const MySingleComment = ({
@@ -104,65 +104,130 @@ const MySingleComment = ({
 
         {(element?.author === userMail || element?.author === username) && (
           <>
-            <div className="d-flex">
-              {!showEditInput && (
-                <Button
-                  className="bg-transparent"
-                  style={{ border: "none" }}
-                  onClick={() => {
-                    setCommentRefresh(true);
-                    deleteCommentFetch(element?._id);
-                  }}
-                >
-                  <XLg className="text-secondary" />
-                </Button>
-              )}
-              <Form>
-                {showEditInput && (
-                  <>
-                    <FormGroup>
-                      <Form.Control
-                        type="text"
-                        placeholder="Modifica il commento"
-                        value={edit}
-                        onChange={(e) => setEdit(e.target.value)}
-                      />
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setCommentRefresh(true);
-                          editCommentFetch(element?._id);
-                        }}
-                      >
-                        Conferma
-                      </Button>
-                      <Button
-                        className="bg-danger"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setShowEditInput(false);
-                        }}
-                      >
-                        Annulla
-                      </Button>
-                    </FormGroup>
-                  </>
-                )}
-                {!showEditInput && (
+            {!showEditInput && (
+              <Row className="justify-content-end">
+                <Col xs={5}>
                   <Button
                     className="bg-transparent"
-                    style={{ border: "none" }}
+                    style={{
+                      border: "none",
+                      color: "dimgrey",
+                      fontSize: "0.9rem",
+                    }}
+                    onClick={() => {
+                      setCommentRefresh(true);
+                      deleteCommentFetch(element?._id);
+                    }}
+                  >
+                    <XLg className="text-secondary" />
+                    cancella commento
+                  </Button>
+                </Col>
+                <Col xs={5}>
+                  <Button
+                    className="bg-transparent"
+                    style={{
+                      border: "none",
+                      color: "dimgrey",
+                      fontSize: "0.9rem",
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       setShowEditInput(true);
                       // editCommentFetch(element._id);
                     }}
                   >
-                    <PencilFill className="text-secondary" />
+                    <PencilFill className="text-secondary me-1" />
+                    modifica commento
                   </Button>
-                )}
-              </Form>
-            </div>
+                </Col>
+              </Row>
+            )}
+            <Form className="mt-2" style={{ width: "100%" }}>
+              {showEditInput && (
+                <>
+                  <FormGroup className="d-flex" style={{ width: "100%" }}>
+                    <Col xs={9}>
+                      <Form.Control
+                        type="text"
+                        value={edit}
+                        placeholder="Aggiungi un commento..."
+                        style={{
+                          borderRadius: "20px",
+                          border: "2px solid rgb(180,180,180)",
+                          fontSize: "0.9rem",
+                          paddingTop: "7px",
+                          paddingBottom: "8px",
+                        }}
+                        onChange={(e) => setEdit(e.target.value)}
+                      />
+                    </Col>
+                    <Col xs={2}>
+                      <Button
+                        onClick={(e) => {
+                          // setRefreshed(true);
+                          e.preventDefault();
+                          setCommentRefresh(true);
+                          editCommentFetch(element?._id);
+                        }}
+                        className="bg-transparent commentHover px-0"
+                        style={{
+                          border: "none",
+                          borderRadius: "3px",
+                          color: "dimgrey",
+                          fontWeight: "500",
+                          fontSize: "0.9rem",
+                          width: "100%",
+                        }}
+                      >
+                        <SendFill
+                          className="mb-1 me-1"
+                          style={{ fontSize: "1.3rem", fontWeight: "600" }}
+                        />
+                        Invia
+                      </Button>
+                    </Col>
+                    <Col xs={1}>
+                      <Button
+                        onClick={(e) => {
+                          // setRefreshed(true);
+                          e.preventDefault();
+                          setShowEditInput(false);
+                        }}
+                        className="bg-transparent commentHover px-0"
+                        style={{
+                          border: "none",
+                          borderRadius: "3px",
+                          color: "dimgrey",
+                          fontWeight: "500",
+                          fontSize: "0.9rem",
+                          width: "100%",
+                        }}
+                      >
+                        <XLg
+                          className="mb-1 me-1"
+                          style={{ fontSize: "1.3rem", fontWeight: "600" }}
+                        />
+                      </Button>
+                    </Col>
+                  </FormGroup>
+                </>
+              )}
+              {/* {!showEditInput && (
+                  <Button
+                    className="bg-transparent"
+                    style={{ border: "none", color: "dimgrey" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowEditInput(true);
+                      // editCommentFetch(element._id);
+                    }}
+                  >
+                    <PencilFill className="text-secondary me-1" />
+                    modifica commento
+                  </Button>
+                )} */}
+            </Form>
           </>
         )}
       </div>
