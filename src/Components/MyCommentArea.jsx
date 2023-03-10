@@ -54,7 +54,7 @@ const MyCommentArea = ({
   return (
     <>
       <Row className="d-flex p-3 px-2 justify-content-between text-center">
-        <Col xs={3} className="commentHover">
+        <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             className="bg-transparent px-0"
             style={{
@@ -73,7 +73,7 @@ const MyCommentArea = ({
             Like
           </Button>
         </Col>
-        <Col xs={3} className="commentHover">
+        <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             className="bg-transparent  px-0"
             style={{
@@ -96,7 +96,7 @@ const MyCommentArea = ({
             Commenta
           </Button>
         </Col>
-        <Col xs={3} className="commentHover">
+        <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             className="bg-transparent commentHover px-0"
             style={{
@@ -115,7 +115,7 @@ const MyCommentArea = ({
             Repost
           </Button>
         </Col>
-        <Col xs={3} className="commentHover">
+        <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             onClick={() => {
               setRefreshed(true);
@@ -157,7 +157,7 @@ const MyCommentArea = ({
                   type="text"
                   placeholder="Inserisci commento"
                   value={commento}
-                  style={}
+                  style={{ borderRadius: "20px", border: "2px solid grey" }}
                   onChange={(e) => {
                     setCommento(e.target.value);
                   }}
