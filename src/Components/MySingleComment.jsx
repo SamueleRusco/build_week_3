@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 const MySingleComment = ({
   element,
+  commentRefresh,
+  setCommentRefresh,
   refreshed,
   setRefreshed,
   postList,
@@ -108,7 +110,7 @@ const MySingleComment = ({
                   className="bg-transparent"
                   style={{ border: "none" }}
                   onClick={() => {
-                    setRefreshed(true);
+                    setCommentRefresh(true);
                     deleteCommentFetch(element?._id);
                   }}
                 >
@@ -128,7 +130,7 @@ const MySingleComment = ({
                       <Button
                         onClick={(e) => {
                           e.preventDefault();
-                          setRefreshed(true);
+                          setCommentRefresh(true);
                           editCommentFetch(element?._id);
                         }}
                       >

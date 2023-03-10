@@ -26,9 +26,12 @@ const MyCommentArea = ({
   const [commento, setCommento] = useState("");
   const user = useSelector((state) => state.profiles.result);
   const [commentPage, setCommentPage] = useState(5);
-  //   useEffect(() => {
-  //     commentFetch();
-  //   }, []);
+  const [commentRefresh, setCommentRefresh] = useState(false);
+
+  useEffect(() => {
+    setCommentRefresh(false);
+    commentFetch();
+  }, [commentRefresh]);
 
   const commentFetch = async () => {
     const url =
@@ -120,7 +123,8 @@ const MyCommentArea = ({
         <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             onClick={() => {
-              setRefreshed(true);
+              // setRefreshed(true);
+              setCommentRefresh(true);
               postCommentFetch(commento, news._id);
               setSelected(false);
               setCommento("");
@@ -200,6 +204,8 @@ const MyCommentArea = ({
                   postList={postList}
                   refreshed={refreshed}
                   setRefreshed={setRefreshed}
+                  commentRefresh={commentRefresh}
+                  setCommentRefresh={setCommentRefresh}
                 />
               )}
             </>
