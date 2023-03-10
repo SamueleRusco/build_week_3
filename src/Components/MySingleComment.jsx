@@ -16,7 +16,6 @@ const MySingleComment = ({
   const userMail = useSelector((state) => state.profiles.result.email);
   const username = useSelector((state) => state.profiles.result.username);
   const [edit, setEdit] = useState(element?.comment);
-  const [utente, setUtente] = useState(null);
   // const listaCommenti = useSelector((state) => state.posts.commenti);
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const key = useSelector((state) => state.profiles.bearer);

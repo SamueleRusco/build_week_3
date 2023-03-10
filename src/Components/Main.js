@@ -5,40 +5,6 @@ import Notizie from "./Notizie";
 const Main = (props) => {
   return (
     <Container>
-      {/* <FeedInputContainer>
-        <FeedInput>
-          <form>
-            <input type="text" />
-            <button type="submit">Invia</button>
-          </form>
-        </FeedInput>
-        <div className="feed-inputOptions">
-          <div className="feed-inputFlex">
-            <div className="hover">
-              <button>
-                <span>Foto</span>
-              </button>
-            </div>
-
-            <div className="hover">
-              <button>
-                <span>Video</span>
-              </button>
-            </div>
-            <div className="hover">
-              <button>
-                <span>Evento</span>
-              </button>
-            </div>
-            <div className="hover">
-              <button>
-                <span>Scrivi un articolo</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </FeedInputContainer> */}
-
       <div className="post">
         <Notizie />
       </div>

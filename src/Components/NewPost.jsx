@@ -1,30 +1,18 @@
 import { useState } from "react";
-import {
-  Button,
-  Col,
-  Form,
-  FormControl,
-  FormLabel,
-  Modal,
-  Row,
-} from "react-bootstrap";
+import { Button, Form, FormControl, FormLabel, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 import {
   CardImage,
   CaretDownFill,
   ChatRightDots,
-  ChatText,
   Clock,
-  EmojiSmileUpsideDown,
   FileText,
   GlobeEuropeAfrica,
   ThreeDots,
   XLg,
   Youtube,
 } from "react-bootstrap-icons";
-import { fontWeight } from "@mui/system";
 
 const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
   const [text, setText] = useState("");

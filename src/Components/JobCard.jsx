@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Row } from "react-bootstrap";
 import { BriefcaseFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addJob, removeJob } from "../Redux/Actions/jobsActions";
@@ -128,13 +128,6 @@ const JobCard = ({ jobs }) => {
             )
           );
         })}
-      {/* <Col xs={3}></Col>
-      <Col xs={10} className="position-relative">
-        <p className="mb-0" style={{ fontWeight: "600" }}></p>
-        <p style={{ fontSize: "0.9rem" }}></p>
-        <p style={{ fontSize: "0.9rem" }}></p>
-        <p style={{ fontSize: "0.9rem" }}></p>
-      </Col> */}
     </Row>
   );
 };

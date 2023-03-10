@@ -24,7 +24,7 @@ const MyCommentArea = ({
   const user = useSelector((state) => state.profiles.result);
   const [commentPage, setCommentPage] = useState(5);
   const [commentRefresh, setCommentRefresh] = useState(false);
-
+  const key = useSelector((state) => state.profiles.bearer);
   useEffect(() => {
     setCommentRefresh(false);
     commentFetch();
@@ -39,8 +39,7 @@ const MyCommentArea = ({
       const fetchResult = await fetch(url, {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YjI1OTAyY2FjZDAwMTMyZjE5OTYiLCJpYXQiOjE2NzgwOTQ5MzcsImV4cCI6MTY3OTMwNDUzN30.uzRPHpAAwxcNdLkzPvK3hvnf52zq0lEMj8yeocjustA",
+          Authorization: key,
           "Content-Type": "application/json",
         },
       });
@@ -121,7 +120,6 @@ const MyCommentArea = ({
         <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             onClick={() => {
-              // setRefreshed(true);
               setCommentRefresh(true);
               postCommentFetch(commento, news._id);
               setSelected(false);
@@ -181,18 +179,6 @@ const MyCommentArea = ({
                   }}
                 />
               </Col>
-              {/* <Col xs={2}>
-                <Button
-                  onClick={() => {
-                    setRefreshed(true);
-                    postCommentFetch(commento, news._id);
-                    setSelected(false);
-                    setCommento("");
-                  }}
-                >
-                  Invia
-                </Button>
-              </Col> */}
             </Row>
           </Form>
         </div>
