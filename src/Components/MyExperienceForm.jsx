@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
+import { SendFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
   const [refreshed, setRefreshed] = useState(false);
@@ -58,13 +59,6 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
         dialogClassName="modal-90w"
       >
         <Form className="p-3">
-          <Button
-            onClick={() => {
-              setShowModal(false);
-            }}
-          >
-            Chiudi
-          </Button>
           <div className="text-center mt-3">
             <h5 style={{ fontSize: "1rem" }}>
               Per aggiungere un'esperienza compila tutti i campi
@@ -126,7 +120,9 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
             </Col>
             <Col>
               <Form.Group className="active mb-4" controlId="formDatePickerEnd">
-                <Form.Text className="text-muted">Data di fine</Form.Text>
+                <Form.Text className="text-muted d-block">
+                  Data di fine
+                </Form.Text>
                 <input
                   type="date"
                   id="dateStandardEnd"
@@ -158,6 +154,15 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
             />
           </Form.Group>
           <Button
+            className="bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
             type="submit"
             onClick={(e) => {
               e.preventDefault();
@@ -177,7 +182,28 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
               }
             }}
           >
+            <SendFill
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
             Invia
+          </Button>
+          <Button
+            className="bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
+            <XLg className="mb-1 me-1" />
+            Chiudi
           </Button>
         </Form>
       </Modal>

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { getProfileAction } from "../Redux/Actions";
 import { putProfileImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
+import { SendFill, XLg } from "react-bootstrap-icons";
 const MyForm = ({ showModal, setShowModal }) => {
   const profileID = useSelector((state) => state.profiles.result._id);
   const datiProfilo = useSelector((state) => state.profiles.result);
@@ -134,7 +135,15 @@ const MyForm = ({ showModal, setShowModal }) => {
             />
           </Form.Group>
           <Button
-            className="me-2"
+            className="me-2 bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
             onClick={(e) => {
               e.preventDefault();
               if (
@@ -157,13 +166,27 @@ const MyForm = ({ showModal, setShowModal }) => {
             variant="primary"
             type="submit"
           >
+            <SendFill
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
             Invia
           </Button>
           <Button
+            className="me-2 bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
             onClick={() => {
               setShowModal(false);
             }}
           >
+            <XLg className="mb-1 me-1" />
             Chiudi
           </Button>
         </Form>

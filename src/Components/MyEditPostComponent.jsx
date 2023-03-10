@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { Pencil, PencilFill, ThreeDots, Trash } from "react-bootstrap-icons";
+import {
+  Pencil,
+  PencilFill,
+  SendFill,
+  ThreeDots,
+  Trash,
+  XLg,
+} from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { putPostImg } from "../Redux/Actions/putProfileImg";
 import { useSelector } from "react-redux";
@@ -153,8 +160,16 @@ const MyEditPostComponent = ({
           </Form.Group>
 
           <Button
-            className="me-2"
+            className="me-2 bg-transparent commentHover px-0"
             type="submit"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
             onClick={(e) => {
               e.preventDefault();
               postExperienceFetch(postId);
@@ -163,15 +178,29 @@ const MyEditPostComponent = ({
               setEditPost(false);
             }}
           >
+            <SendFill
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
             Invia
           </Button>
           <Button
+            className=" bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
             onClick={(e) => {
               e.preventDefault();
               deleteExperienceFetch();
               setEditPost(false);
             }}
           >
+            <XLg className="mb-1 me-1" />
             Elimina
           </Button>
         </Form>
