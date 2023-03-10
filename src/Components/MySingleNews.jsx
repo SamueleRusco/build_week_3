@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
-import { PencilFill, XLg } from "react-bootstrap-icons";
+import { Card, Col, Form, FormGroup, Row } from "react-bootstrap";
+
 import { useSelector } from "react-redux";
 import MyEditPostComponent from "./MyEditPostComponent";
 
@@ -50,42 +50,6 @@ const MySingleNews = ({
         ) : (
           ""
         )}
-        {/* {rateComment &&
-            rateComment
-              .filter((element) => element.elementId === post._id)
-              .map((element, index) => {
-                return (
-                  <>
-                    {index < otherComments && (
-                      <MyCommentArea />
-                      // <MySingleComment
-                      //   element={element}
-                      //   key={element._id}
-                      //   refreshed={refreshed}
-                      //   setRefreshed={setRefreshed}
-                      // />
-                    )}
-                  </>
-                );
-              })}
-          {rateComment?.length > otherComments && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments + 5);
-              }}
-            >
-              mostra altri
-            </Button>
-          )}
-          {otherComments > 5 && (
-            <Button
-              onClick={() => {
-                setOtherComments(otherComments - 5);
-              }}
-            >
-              Mostra meno
-            </Button>
-          )} */}
       </div>
       <Card.Body style={{ position: "relative" }}>
         <Row>
@@ -106,59 +70,6 @@ const MySingleNews = ({
       <Card.Subtitle className=" text-muted" style={{ fontWeight: "400" }}>
         pubblicato il {post?.createdAt?.substring(0, 10)}
       </Card.Subtitle>
-      {/* {(!selected && (
-        <Button
-          onClick={() => {
-            console.log(post._id);
-            // commenta(post._id);
-            // getCommentFetch();
-            // postCommentFetch();
-            setSelected(true);
-          }}
-        >
-          Scrivi commento
-        </Button>
-      )) || (
-        <div>
-          <Form>
-            <Row>
-              <Col xs={7}>
-                {" "}
-                <Form.Control
-                  type="text"
-                  placeholder="Inserisci commento"
-                  value={commento}
-                  onChange={(e) => {
-                    setCommento(e.target.value);
-                  }}
-                />
-              </Col>
-              <Col xs={2}>
-                <Button
-                  onClick={() => {
-                    setRefreshed(true);
-                    postCommentFetch(commento, post._id);
-                    setSelected(false);
-                    setCommento("");
-                  }}
-                >
-                  Invia
-                </Button>
-              </Col>
-              <Col xs={3}>
-                <Button
-                  className="bg-danger"
-                  onClick={() => {
-                    setSelected(false);
-                  }}
-                >
-                  Annulla
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
-      )} */}
     </>
   );
 };
