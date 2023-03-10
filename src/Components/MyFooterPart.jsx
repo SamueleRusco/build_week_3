@@ -98,7 +98,4 @@ const MyFooterPart = () => {
     </Container>
   );
 };
-
-/*gdgd*/
-
 export default MyFooterPart;

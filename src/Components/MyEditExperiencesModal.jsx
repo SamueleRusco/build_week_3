@@ -21,7 +21,7 @@ const MyEditExperiencesModal = ({ id, refresh, exp }) => {
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences/${id}`;
 
   const editModalFetch = async () => {
-    let response = await fetch(baseEndpoint, {
+    await fetch(baseEndpoint, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const MyEditExperiencesModal = ({ id, refresh, exp }) => {
     });
   };
   const deleteModalFetch = async () => {
-    let response = await fetch(baseEndpoint, {
+    await fetch(baseEndpoint, {
       method: "DELETE",
       headers: { Authorization: key },
     });

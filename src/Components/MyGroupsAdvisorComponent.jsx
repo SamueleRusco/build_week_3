@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const MyGroupAdvisorComponent = () => {
   const [visible, setVisible] = useState(true);
   const [show, setShow] = useState(false);
-  const usersList = [1, 2, 3, 4, 5];
   const peopleArray = useSelector((state) => state.allProfiles.result);
 
   const randomizeContacts = (arr) => {

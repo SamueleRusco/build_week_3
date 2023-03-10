@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card, Button, Row, Col, Spinner } from "react-bootstrap";
-import { Pencil, XLg } from "react-bootstrap-icons";
+import { Card, Button, Row, Col } from "react-bootstrap";
+import { Pencil } from "react-bootstrap-icons";
 import MyEditExperiencesModal from "./MyEditExperiencesModal";
 import MyExperienceForm from "./MyExperienceForm";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,7 +20,6 @@ const MyExperience = () => {
   }, []);
 
   const getExperienceFetch = async () => {
-    /* dispatch({ type: GET_PROFILE_LOADING, payload: true }); */
     let response = await fetch(baseEndpoint, {
       method: "GET",
       headers: { Authorization: key },
@@ -33,8 +32,6 @@ const MyExperience = () => {
     let data = await response.json();
 
     setExperiences(data);
-
-    /* console.log("sono get", experiences); */
   };
 
   return (
@@ -46,8 +43,6 @@ const MyExperience = () => {
             className="mb-2 text-muted"
             style={{ fontWeight: "400" }}
           ></Card.Subtitle>
-
-          {/*inserire qui esperienze */}
         </Card.Body>
         <Button
           className="position-absolute"
@@ -73,7 +68,6 @@ const MyExperience = () => {
 
         {experiences &&
           experiences?.map((element, index) => {
-            /* console.log("sono id", element._id); */
             return (
               <Row
                 className="py-3"
@@ -102,14 +96,6 @@ const MyExperience = () => {
                   </p>
                 </Col>
                 <Col xs={2} style={{ textAlign: "end" }}>
-                  {/* <Button
-                    onClick={() => {
-                      setEditModalOn(true);
-                      console.log("ewafwe", element._id);
-                    }}
-                  >
-                    Edit
-                  </Button> */}
                   <MyEditExperiencesModal
                     exp={element}
                     id={element._id}

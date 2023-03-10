@@ -35,7 +35,7 @@ const MyForm = ({ showModal, setShowModal }) => {
         area: area,
       }),
     });
-    let data = await response.json();
+    await response.json();
   };
 
   useEffect(() => {
