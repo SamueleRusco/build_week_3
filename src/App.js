@@ -3,12 +3,12 @@ import "./App.css";
 import MyMainComponent from "./Components/MyMainComponent";
 import MyNavBarComponents from "./Components/MyNavBarComponents";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyExperiencePageComponent from "./Components/MyNotFoundPageComponent";
 import MyNewsSectionComponent from "./Components/MyNewsSectionComponent";
 import UsersPage from "./Components/UsersPage";
 import MyNetworkComponent from "./Components/MyNetworkComponent";
 import JobPage from "./Components/JobPage";
 import { useSelector } from "react-redux";
+import MyNotFoundPageComponent from "./Components/MyNotFoundPageComponent";
 
 function App() {
   const peopleArray = useSelector((state) => state.allProfiles.result);
@@ -28,7 +28,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<MyMainComponent />} />
-          <Route path="*" element={<MyExperiencePageComponent />} />
+          <Route path="*" element={<MyNotFoundPageComponent />} />
           <Route path="/news/" element={<MyNewsSectionComponent />} />
           <Route
             path="/profiles/:usersId"
