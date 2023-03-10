@@ -265,12 +265,18 @@ const Notizie = () => {
         })
       )}
       <Button
-        className="bg-secondary"
-        onClick={() => {
+        className="mt-2 px-3 bButtonHover"
+        style={{
+          backgroundColor: "rgb(0, 115, 177)",
+          border: "1px, solid, rgb(0, 115, 177)",
+          borderRadius: "20px",
+        }}
+        onClick={(e) => {
+          e.preventDefault();
           setScrollComment(scrollComment + 10);
         }}
       >
-        altre notizie
+        Mostra altre notizie
       </Button>
     </>
   );
