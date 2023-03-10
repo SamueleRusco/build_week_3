@@ -61,6 +61,7 @@ const JobPage = () => {
       style={{
         marginTop: "70px",
         backgroundColor: "#f3f2ef",
+        height: "100%",
       }}
     >
       {!error && !loading ? (
