@@ -42,7 +42,8 @@
 /*Footer*/
 
 .App {
-  background-color: #f3f2ef;
+  background-color: #f3f2ef !important;
+  height: 100% !important;
 }
 
 .body {

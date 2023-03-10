@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import MyActivitiesComponent from "./MyActivitiesComponent";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MyFormationComponent from "./MyFormationComponent";
@@ -11,10 +11,15 @@ import MySkillsQuizComponent from "./MySkillsQuizComponent";
 import MyUserDetailsCard from "./MyUserDetailsCard";
 import MyExperience from "./MyExperience";
 import NewsWithFetch from "./NewsWithFetch";
+import FavouriteJobsComponent from "./FavouriteJobsComponent";
+
 import { useSelector } from "react-redux";
 import MyFooterPart from "./MyFooterPart";
+import { BriefcaseFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 const MyMainComponent = () => {
   const peopleArray = useSelector((state) => state.allProfiles.result);
+  const favouriteJobs = useSelector((state) => state.jobs.favouriteJobs);
 
   const randomizeContacts = (arr) => {
     let randomizedArr = [];
@@ -52,7 +57,71 @@ const MyMainComponent = () => {
         >
           <MyProfileSettongsComponent />
           <MyPeopleCouldKnowComponent randomized={randomized} />
-          <MyGroupAdvisorComponent />
+          {/* <MyGroupAdvisorComponent /> */}
+          {/* <FavouriteJobsComponent /> */}
+          <Row className="py-3">
+            <Card.Title
+              className="mb-0"
+              style={{ fontSize: "1.2rem", alignSelf: "center" }}
+            >
+              {"Lavori che ti interessano"}
+            </Card.Title>
+            {favouriteJobs &&
+              favouriteJobs?.map((singleJob, index) => {
+                return (
+                  <div key={"ID: " + index} className="mb-2 mt-2">
+                    <Card>
+                      <Card.Body>
+                        <h5 style={{ fontSize: "1.1rem" }}>
+                          <a
+                            alt="nulla"
+                            href={singleJob.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ textDecoration: "none" }}
+                          >
+                            {singleJob?.title}
+                          </a>
+                        </h5>
+                        <div className="d-flex">
+                          <p>
+                            {singleJob?.company_name}
+                            <span>·</span>
+                          </p>
+                          <p>{singleJob?.candidate_required_location}</p>
+                          <span>·</span>
+                          <p>{singleJob?.publication_date?.substring(0, 10)}</p>
+                        </div>
+                        <p>
+                          <BriefcaseFill className="me-2 mb-1 text-secondary" />
+                          {singleJob?.job_type}
+                        </p>
+                        <div className="d-flex">
+                          <div></div>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                );
+              })}
+          </Row>
+          <div>
+            <Link
+              to="/jobs"
+              className="gButtonHover"
+              style={{
+                textDecoration: "none",
+                border: "1px solid rgb(0, 115, 177)",
+                borderRadius: "20px",
+                padding: "4px 16px",
+                fontWeight: "600",
+                color: "rgb(0, 115, 177)",
+                backgroundColor: "white",
+              }}
+            >
+              Browse jobs
+            </Link>
+          </div>
         </Col>
       </Row>
       <MyFooterPart />
