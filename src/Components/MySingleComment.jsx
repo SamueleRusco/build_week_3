@@ -1,5 +1,4 @@
-import { border } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { PencilFill, SendFill, XLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
@@ -21,10 +20,9 @@ const MySingleComment = ({
   // const listaCommenti = useSelector((state) => state.posts.commenti);
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const key = useSelector((state) => state.profiles.bearer);
-  const user = useSelector((state) => state.profiles.result);
 
   const deleteCommentFetch = async (idcommento) => {
-    let response = await fetch(
+    await fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" + idcommento,
       {
         method: "DELETE",
@@ -36,7 +34,7 @@ const MySingleComment = ({
     );
   };
   const editCommentFetch = async (idcommento) => {
-    let response = await fetch(
+    await fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" + idcommento,
       {
         method: "PUT",
