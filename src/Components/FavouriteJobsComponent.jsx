@@ -17,7 +17,7 @@ const FavouriteJobsComponent = ({ singleJob, index }) => {
       <Card
         style={{
           border: "none",
-          borderRadius: "0px",
+          borderRadius: index === favouriteJobs?.length - 1 ? "8px" : "0px",
           borderBottom:
             index === favouriteJobs?.length - 1
               ? "none"

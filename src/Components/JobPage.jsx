@@ -248,7 +248,7 @@ const JobPage = () => {
             style={{ backgroundColor: "#f3f2ef" }}
           >
             <div
-              className="bg-white pt-5 "
+              className="bg-white pt-4 "
               style={{ border: "1px solid lightgrey", borderRadius: "6px" }}
             >
               <Card.Title className="text-center">Lavori preferiti</Card.Title>
