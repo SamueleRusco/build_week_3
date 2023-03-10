@@ -38,7 +38,9 @@ const jobsReducer = (state = initialState, action) => {
     case REMOVE_JOBS:
       return {
         ...state,
-        favouriteJobs: state.favouriteJobs.filter((e) => e !== action.payload),
+        favouriteJobs: state.favouriteJobs.filter(
+          (e) => e._id !== action.payload._id
+        ),
       };
     case LOADING_ON:
       return {

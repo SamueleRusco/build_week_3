@@ -6,9 +6,11 @@ import { addJob, removeJob } from "../Redux/Actions/jobsActions";
 
 const JobCard = ({ jobs }) => {
   const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
+  const favouriteJobsId = favouritejobs.map((e) => e._id);
   const dispatch = useDispatch();
   const [showDescription, setShowDescription] = useState(false);
 
+  console.log(favouritejobs);
   return (
     <Row className="py-3">
       {jobs &&
@@ -43,7 +45,7 @@ const JobCard = ({ jobs }) => {
                       {singleJob?.job_type}
                     </p>
                     <div className="d-flex">
-                      {favouritejobs?.includes?.(singleJob?._id) ? (
+                      {favouriteJobsId?.includes?.(singleJob?._id) ? (
                         <>
                           <Button
                             className="px-3 bButtonHover"
@@ -53,7 +55,7 @@ const JobCard = ({ jobs }) => {
                               borderRadius: "20px",
                             }}
                             onClick={() => {
-                              dispatch(removeJob(singleJob?._id));
+                              dispatch(removeJob(singleJob));
                             }}
                           >
                             Salvato
@@ -70,8 +72,8 @@ const JobCard = ({ jobs }) => {
                               color: "dimgrey",
                             }}
                             onClick={() => {
+                              dispatch(addJob(singleJob));
                               console.log(favouritejobs);
-                              dispatch(addJob(singleJob?._id));
                             }}
                           >
                             Salva
