@@ -45,7 +45,6 @@ const MyCommentArea = ({
       });
       const arrayResult = await fetchResult.json();
       setListaCommenti(arrayResult);
-      console.log("arrayresult", arrayResult);
     } catch (error) {
       console.log(error);
     }

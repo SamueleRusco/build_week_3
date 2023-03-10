@@ -55,6 +55,7 @@ const MyPeopleCouldKnowComponent = ({ randomized }) => {
                     <Row
                       className="py-3"
                       style={{ borderTop: index > 0 && "1px solid lightgrey" }}
+                      key={"elem: " + index}
                     >
                       <Col xs={3}>
                         <div

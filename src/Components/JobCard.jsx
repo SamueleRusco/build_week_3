@@ -10,7 +10,6 @@ const JobCard = ({ jobs }) => {
   const dispatch = useDispatch();
   const [showDescription, setShowDescription] = useState(false);
 
-  console.log(favouritejobs);
   return (
     <Row className="py-3">
       {jobs &&
@@ -76,7 +75,6 @@ const JobCard = ({ jobs }) => {
                             }}
                             onClick={() => {
                               dispatch(addJob(singleJob));
-                              console.log(favouritejobs);
                             }}
                           >
                             Salva

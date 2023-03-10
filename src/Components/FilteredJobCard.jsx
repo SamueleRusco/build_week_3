@@ -75,7 +75,6 @@ const JobCard = ({ filteredJobsList }) => {
                                   color: "dimgrey",
                                 }}
                                 onClick={() => {
-                                  console.log(favouritejobs);
                                   dispatch(addJob(singleJob?._id));
                                 }}
                               >

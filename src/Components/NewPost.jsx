@@ -58,15 +58,11 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
     let data = await response.json();
     let postId = data._id;
 
-    console.log("id del post", postId);
-
     await fetch(url + postId, {
       method: "POST",
       headers: { Authorization: key },
       body: fd,
     });
-
-    console.log("immagine gogogoo");
   };
   const handleFile = (ev) => {
     setFd((prev) => {

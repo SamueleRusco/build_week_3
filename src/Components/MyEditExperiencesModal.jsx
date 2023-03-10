@@ -178,7 +178,6 @@ const MyEditExperiencesModal = ({ id, refresh, exp }) => {
               setEditModalOn(false);
               setRefreshed(!refreshed);
               dispatch(putExperienceImg(fd, id, profileID, key));
-              console.log("id esperienza " + id);
             }}
           >
             Invia

@@ -36,7 +36,6 @@ const MyEditPostComponent = ({
       }
     );
     let data = await response.json();
-    console.log("text", data);
   };
 
   const deleteExperienceFetch = async () => {
@@ -48,7 +47,6 @@ const MyEditPostComponent = ({
     });
     setRefreshed(!refreshed);
     let data = await response.json();
-    console.log("text", data);
   };
 
   const handleFile = (ev) => {
@@ -213,7 +211,6 @@ const MyEditPostComponent = ({
               setRefreshed(true);
               dispatch(putPostImg(fd, postId, key));
               setEditPost(false);
-              console.log("LIDIAAAAAAAAAAAAAAAAAAAAAAAA", postId);
             }}
           >
             Invia

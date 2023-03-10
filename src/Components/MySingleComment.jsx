@@ -20,7 +20,6 @@ const MySingleComment = ({
   const peopleArray = useSelector((state) => state.allProfiles.result);
   const key = useSelector((state) => state.profiles.bearer);
   const user = useSelector((state) => state.profiles.result);
-  console.log("fioewjfoaf", userMail, element?.author, user);
 
   const deleteCommentFetch = async (idcommento) => {
     let response = await fetch(
@@ -55,17 +54,13 @@ const MySingleComment = ({
       return e.email === element.author;
     });
 
-    console.log("sono stefano", image);
     return image[0];
   };
-  console.log("sonoofenew", element);
 
   // useEffect(() => {
   //   userImage();
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
-
-  console.log("gorian", userImage());
 
   return (
     <div className="mt-4 d-flex ">

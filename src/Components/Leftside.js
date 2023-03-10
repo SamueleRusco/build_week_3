@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Leftside = (props) => {
   const user = useSelector((state) => state.profiles?.result);
-  console.log("stefano", user);
+
   return (
     <Container>
       <ArtCard>

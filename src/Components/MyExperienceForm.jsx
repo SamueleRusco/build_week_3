@@ -30,7 +30,7 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
         area: area,
       }),
     });
-    console.log(baseEndpoint);
+
     let data = await response.json();
     let experienceId = data._id;
 
@@ -39,7 +39,6 @@ const MyExperienceForm = ({ showModal, setShowModal, refresh }) => {
       headers: { Authorization: key },
       body: fd,
     });
-    console.log(baseEndpoint + "/" + experienceId + "/picture");
   };
   const handleFile = (ev) => {
     setFd((prev) => {

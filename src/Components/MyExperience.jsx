@@ -14,7 +14,7 @@ const MyExperience = () => {
   const key = useSelector((state) => state.profiles.bearer);
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/profile/${profileID}/experiences`;
   const loader = useSelector((state) => state.profiles.loading);
-  console.log("sono exp2", experiences);
+
   useEffect(() => {
     getExperienceFetch();
   }, []);

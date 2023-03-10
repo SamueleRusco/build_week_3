@@ -53,7 +53,6 @@ const JobPage = () => {
   const [hover5, setHover5] = useState(false);
 
   useEffect(() => {
-    console.log(jobs);
     dispatch(jobsActions());
     dispatch(borderSelectorActions(JOBS));
 
@@ -214,7 +213,6 @@ const JobPage = () => {
                       value={searchParams}
                       onChange={(e) => {
                         setSearchParams(e.target.value);
-                        console.log(searchParams);
                       }}
                     />
                   </Form.Group>

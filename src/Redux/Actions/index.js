@@ -26,7 +26,6 @@ export const getProfileAction = (key) => {
         });
       } else {
         alert("error fetching profiles");
-        console.log("error");
         dispatch({
           type: GET_PROFILE_ERROR,
         });

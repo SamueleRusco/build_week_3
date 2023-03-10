@@ -47,7 +47,7 @@ const Notizie = () => {
   useEffect(() => {
     setRefreshed(false);
     fetchNotizie();
-    console.log("friend id list", friendIdList);
+
     dispatch(borderSelectorActions(HOME));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshed]);
@@ -73,7 +73,7 @@ const Notizie = () => {
           listaCommenti.filter((element) => element.user?._id === profileID)
         )
       );
-      console.log("lista commenti ", listaCommenti);
+
       getCommentFetch();
     } catch (error) {
       console.log(error);
@@ -99,7 +99,6 @@ const Notizie = () => {
     );
     if (response.ok) {
       let data = await response.json();
-      console.log("commenti libri", data);
     }
   };
 
@@ -118,7 +117,6 @@ const Notizie = () => {
     if (response.ok) {
       let data = await response.json();
       setRateComment(data);
-      console.log("sti cazzo di commenti", rateComment);
     }
   };
 

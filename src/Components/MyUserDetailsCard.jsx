@@ -21,7 +21,6 @@ const MyUserDetailsCard = () => {
   const dispatch = useDispatch();
   const loader = useSelector((state) => state.profiles.loading);
 
-  console.log(loader);
   useEffect(() => {
     dispatch(getProfileAction(key));
     dispatch(getAllProfileFetchAction(key));
@@ -62,11 +61,9 @@ const MyUserDetailsCard = () => {
               <img
                 src={profile.image}
                 style={{
-                  width: "170px",
-                  position: "absolute",
-                  right: "-15%",
-                  top: "-15%",
+                  width: "152px",
                 }}
+                alt=""
               ></img>
             </div>
           </div>
@@ -184,7 +181,6 @@ const MyUserDetailsCard = () => {
               }}
               onClick={() => {
                 sliderCounter < 2 && setSliderCounter(sliderCounter + 1);
-                console.log(sliderCounter);
               }}
             />
           )}
