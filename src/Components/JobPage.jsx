@@ -12,24 +12,16 @@ import JobCard from "./JobCard";
 import MyFooterPart from "./MyFooterPart";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  addJob,
-  jobsActions,
-  removeJob,
-  searchJobsActions,
-} from "../Redux/Actions/jobsActions";
+import { jobsActions, searchJobsActions } from "../Redux/Actions/jobsActions";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import FilteredJobCard from "./FilteredJobCard";
-import { height } from "@mui/system";
+
 import { JOBS } from "../Redux/Actions/borderSelectorAction";
 import {
   BellFill,
-  Bookmark,
   BookmarkFill,
-  BriefcaseFill,
   Clipboard2Check,
-  Clipboard2CheckFill,
   GearFill,
   Youtube,
 } from "react-bootstrap-icons";
@@ -38,7 +30,6 @@ import { borderSelectorActions } from "../Redux/Actions/borderSelectorAction";
 const JobPage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobsList);
-  const active = useSelector((state) => state.border.selector);
   const filteredJobsList = useSelector((state) => state.jobs.filteredJobsList);
   const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
   const [searchParams, setSearchParams] = useState("");

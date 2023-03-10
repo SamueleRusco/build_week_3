@@ -1,12 +1,9 @@
-import { color } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import {
   ArrowLeftRight,
-  Chat,
   ChatText,
   HandThumbsUp,
-  Send,
   SendFill,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
@@ -31,6 +28,7 @@ const MyCommentArea = ({
   useEffect(() => {
     setCommentRefresh(false);
     commentFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentRefresh]);
 
   const commentFetch = async () => {
