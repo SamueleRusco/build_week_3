@@ -143,7 +143,10 @@ const MySingleComment = ({
                 </Col>
               </Row>
             )}
-            <Form className="mt-2" style={{ width: "100%" }}>
+            <Form
+              onSubmit={(e) => e.preventDefault()}
+              style={{ width: "100%" }}
+            >
               {showEditInput && (
                 <>
                   <FormGroup className="d-flex" style={{ width: "100%" }}>
@@ -160,6 +163,14 @@ const MySingleComment = ({
                           paddingBottom: "8px",
                         }}
                         onChange={(e) => setEdit(e.target.value)}
+                        onKeyUp={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            e.preventDefault();
+                            setCommentRefresh(true);
+                            editCommentFetch(element?._id);
+                          }
+                        }}
                       />
                     </Col>
                     <Col xs={2}>
