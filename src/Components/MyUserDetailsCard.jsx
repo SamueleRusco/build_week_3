@@ -39,7 +39,7 @@ const MyUserDetailsCard = () => {
           style={{
             height: "260px",
             width: "100%",
-            backgroundImage: "url(https://placekitten.com/200)",
+            backgroundImage: `url(${profile?.image})`,
             backgroundSize: "cover",
             borderTopLeftRadius: "10px",
             borderTopRightRadius: "10px",

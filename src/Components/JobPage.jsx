@@ -205,7 +205,7 @@ const JobPage = () => {
                     />
                   </Form.Group>
                   <Button
-                    className="px-3"
+                    className="px-3 bButtonHover"
                     style={{
                       backgroundColor: "rgb(0, 115, 177)",
                       border: "1px, solid, rgb(0, 115, 177)",
