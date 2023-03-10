@@ -86,6 +86,7 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
         dialogClassName="modal-90w"
       >
         <Form
+          onSubmit={(e) => e.preventDefault()}
           style={{
             height: "350px",
             display: "flex",
@@ -202,6 +203,12 @@ const NewPost = ({ showModal, setShowModal, refreshed, setRefreshed }) => {
             <FormControl
               style={{ height: "35px", border: "none" }}
               onChange={handleChangeText}
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleChangeText();
+                }
+              }}
               value={text}
               type="text"
               placeholder="Di cosa vorresti parlare?"
