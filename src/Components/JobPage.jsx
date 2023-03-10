@@ -12,7 +12,12 @@ import JobCard from "./JobCard";
 import MyFooterPart from "./MyFooterPart";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { jobsActions, searchJobsActions } from "../Redux/Actions/jobsActions";
+import {
+  addJob,
+  jobsActions,
+  removeJob,
+  searchJobsActions,
+} from "../Redux/Actions/jobsActions";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import FilteredJobCard from "./FilteredJobCard";
@@ -21,15 +26,18 @@ import {
   BellFill,
   Bookmark,
   BookmarkFill,
+  BriefcaseFill,
   Clipboard2Check,
   Clipboard2CheckFill,
   GearFill,
   Youtube,
 } from "react-bootstrap-icons";
+import FavouriteJobsComponent from "./FavouriteJobsComponent";
 const JobPage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobsList);
   const filteredJobsList = useSelector((state) => state.jobs.filteredJobsList);
+  const favouritejobs = useSelector((state) => state.jobs.favouriteJobs);
   const [searchParams, setSearchParams] = useState("");
   const [category, setCategory] = useState("");
   const [filteredOn, setfilteredOn] = useState(false);
@@ -236,9 +244,23 @@ const JobPage = () => {
           <Col
             lg={4}
             xl={4}
-            className="d-none d-lg-block bg-warning"
+            className="d-none d-lg-block "
             style={{ backgroundColor: "#f3f2ef" }}
-          ></Col>
+          >
+            <Card className="pt-5">
+              {favouritejobs?.length > 0 &&
+                favouritejobs &&
+                favouritejobs?.map((singleJob, index) => {
+                  return (
+                    <FavouriteJobsComponent
+                      index={index}
+                      singleJob={singleJob}
+                      key={"favJobsKey: " + singleJob._id}
+                    />
+                  );
+                })}
+            </Card>
+          </Col>
         </Row>
       ) : (
         <div
