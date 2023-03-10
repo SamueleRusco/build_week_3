@@ -182,7 +182,6 @@ const NavListWrap = styled.ul`
       position: absolute;
       transition: transform 0.2s ease-in-out;
       width: 100%;
-      border-color: rgba(0, 0, 0, 0.9);
     }
   }
 `;
