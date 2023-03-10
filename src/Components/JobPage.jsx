@@ -188,7 +188,7 @@ const JobPage = () => {
           <Col xs={12} md={8} lg={5} xl={5}>
             <Card>
               <Card.Body>
-                <Form>
+                <Form onSubmit={(e) => e.preventDefault()}>
                   <Form.Group>
                     <Form.Text className="text-muted">
                       Cerca per tipologia
@@ -213,6 +213,15 @@ const JobPage = () => {
                       value={searchParams}
                       onChange={(e) => {
                         setSearchParams(e.target.value);
+                      }}
+                      onKeyUp={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          dispatch(searchJobsActions(searchParams, category));
+                          setfilteredOn(true);
+                          setSearchParams("");
+                          console.log("ciao");
+                        }
                       }}
                     />
                   </Form.Group>
