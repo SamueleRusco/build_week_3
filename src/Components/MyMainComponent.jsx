@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Card, Spinner } from "react-bootstrap";
 import MyActivitiesComponent from "./MyActivitiesComponent";
 import MyAnalisisComponent from "./MyAnalisisComponent";
 import MyFormationComponent from "./MyFormationComponent";
@@ -61,7 +61,15 @@ const MyMainComponent = () => {
           style={{ backgroundColor: "#f3f2ef" }}
         >
           <MyProfileSettongsComponent />
-          <MyPeopleCouldKnowComponent randomized={randomized} />
+          {(peopleArray?.length === 0 && (
+            <div
+              className="d-flex justify-content-center align-items-center"
+              style={{ width: "100%", height: "100px" }}
+            >
+              <Spinner variant="primary" />
+            </div>
+          )) || <MyPeopleCouldKnowComponent randomized={randomized} />}
+
           {/* <MyGroupAdvisorComponent /> */}
           {/* <FavouriteJobsComponent /> */}
           <Row className="py-3 mt-3">

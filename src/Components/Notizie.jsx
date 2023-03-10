@@ -60,14 +60,11 @@ const Notizie = () => {
         method: "GET",
         headers: { Authorization: key },
       });
-      dispatch({
-        type: GET_PROFILE_LOADING,
-        payload: false,
-      });
 
       const datiNotizie = await result.json();
 
       setListaCommenti(datiNotizie);
+
       dispatch(
         commentiFiltratiAction(
           listaCommenti.filter((element) => element.user?._id === profileID)
@@ -75,6 +72,10 @@ const Notizie = () => {
       );
 
       getCommentFetch();
+      dispatch({
+        type: GET_PROFILE_LOADING,
+        payload: false,
+      });
     } catch (error) {
       console.log(error);
     }
