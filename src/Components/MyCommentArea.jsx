@@ -53,7 +53,10 @@ const MyCommentArea = ({
 
   return (
     <>
-      <Row className="d-flex p-3 px-2 justify-content-between text-center">
+      <Row
+        className="d-flex py-0 pt-2 px-2 justify-content-between text-center mt-3"
+        style={{ borderTop: "1px solid lightgrey" }}
+      >
         <Col xs={3} className="commentHover" style={{ borderRadius: "3px" }}>
           <Button
             className="bg-transparent px-0"
@@ -144,7 +147,7 @@ const MyCommentArea = ({
       {visible && (
         <div>
           <Form>
-            <Row>
+            <Row className="mt-3 mb-4">
               <Col xs={1} className="text-center">
                 <img
                   style={{ height: "40px", width: "40px", borderRadius: "50%" }}
@@ -155,9 +158,15 @@ const MyCommentArea = ({
               <Col xs={11}>
                 <Form.Control
                   type="text"
-                  placeholder="Inserisci commento"
+                  placeholder="Aggiungi un commento..."
                   value={commento}
-                  style={{ borderRadius: "20px", border: "2px solid grey" }}
+                  style={{
+                    borderRadius: "20px",
+                    border: "2px solid rgb(180,180,180)",
+                    fontSize: "0.9rem",
+                    paddingTop: "7px",
+                    paddingBottom: "8px",
+                  }}
                   onChange={(e) => {
                     setCommento(e.target.value);
                   }}

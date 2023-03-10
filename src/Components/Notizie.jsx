@@ -234,7 +234,7 @@ const Notizie = () => {
             i < scrollComment && (
               <>
                 <Card className="my-2 pt-3 pb-0 text-start">
-                  <Card.Body style={{ paddingTop: "0" }}>
+                  <Card.Body className="py-0 pb-2">
                     <MySingleNews
                       post={post}
                       showComment={showComment}
