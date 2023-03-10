@@ -31,7 +31,7 @@ const MyNetworkComponent = ({ randomized }) => {
   //   const randomized = randomizeContacts(peopleArray);
 
   return (
-    <Container style={{ backgroundColor: "#f3f2ef" }}>
+    <Container style={{ backgroundColor: "#f3f2ef", height: "100%" }}>
       <Row className="mt-5">
         <Col xs={12} md={5} lg={3} className="mt-5 offset-xl-1">
           <Card className="p-0">

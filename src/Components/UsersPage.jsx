@@ -20,7 +20,7 @@ const UsersPage = ({ randomized }) => {
 
   return (
     <>
-      <Container className="py-4" style={{ marginTop: "80px" }}>
+      <Container className="py-4" style={{ marginTop: "80px", height: "100%" }}>
         <Row>
           <Col xs={12} md={7} xl={7} className="offset-xl-1">
             {peopleArray &&
