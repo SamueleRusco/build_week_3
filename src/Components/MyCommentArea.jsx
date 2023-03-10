@@ -149,7 +149,7 @@ const MyCommentArea = ({
       </Row>
       {visible && (
         <div>
-          <Form>
+          <Form onSubmit={(e) => e.preventDefault()}>
             <Row className="mt-3 mb-4">
               <Col xs={1} className="text-center">
                 <img
@@ -172,6 +172,14 @@ const MyCommentArea = ({
                   }}
                   onChange={(e) => {
                     setCommento(e.target.value);
+                  }}
+                  onKeyUp={(e) => {
+                    if (e.key === "Enter") {
+                      setCommentRefresh(true);
+                      postCommentFetch(commento, news._id);
+                      setSelected(false);
+                      setCommento("");
+                    }
                   }}
                 />
               </Col>
