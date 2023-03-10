@@ -192,3 +192,7 @@
 .jobDescription:hover {
   text-decoration: underline !important;
 }
+
+.commentHover:hover {
+  background-color: #ebebeb !important;
+}

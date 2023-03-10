@@ -1,6 +1,14 @@
 import { color } from "@mui/system";
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import {
+  ArrowLeftRight,
+  Chat,
+  ChatText,
+  HandThumbsUp,
+  Send,
+  SendFill,
+} from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import MySingleComment from "./MySingleComment";
 
@@ -45,37 +53,117 @@ const MyCommentArea = ({
 
   return (
     <>
-      <Button
-        onClick={() => {
-          commentFetch();
-          setVisible(true);
-        }}
-      >
-        commenta
-      </Button>
+      <Row className="d-flex p-3 px-2 justify-content-between text-center">
+        <Col xs={3} className="commentHover">
+          <Button
+            className="bg-transparent px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
+          >
+            <HandThumbsUp
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
+            Like
+          </Button>
+        </Col>
+        <Col xs={3} className="commentHover">
+          <Button
+            className="bg-transparent  px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
+            onClick={() => {
+              commentFetch();
+              setVisible(true);
+            }}
+          >
+            <ChatText
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
+            Commenta
+          </Button>
+        </Col>
+        <Col xs={3} className="commentHover">
+          <Button
+            className="bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
+          >
+            <ArrowLeftRight
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
+            Repost
+          </Button>
+        </Col>
+        <Col xs={3} className="commentHover">
+          <Button
+            onClick={() => {
+              setRefreshed(true);
+              postCommentFetch(commento, news._id);
+              setSelected(false);
+              setCommento("");
+            }}
+            className="bg-transparent commentHover px-0"
+            style={{
+              border: "none",
+              borderRadius: "3px",
+              color: "dimgrey",
+              fontWeight: "500",
+              fontSize: "0.9rem",
+              width: "100%",
+            }}
+          >
+            <SendFill
+              className="mb-1 me-1"
+              style={{ fontSize: "1.3rem", fontWeight: "600" }}
+            />
+            Invia
+          </Button>
+        </Col>
+      </Row>
       {visible && (
         <div>
           <Form>
             <Row>
-              <Col xs={2}>
+              <Col xs={1} className="text-center">
                 <img
                   style={{ height: "40px", width: "40px", borderRadius: "50%" }}
                   src={user && user.image}
                   alt=""
                 />
               </Col>
-              <Col xs={8}>
-                {" "}
+              <Col xs={11}>
                 <Form.Control
                   type="text"
                   placeholder="Inserisci commento"
                   value={commento}
+                  style={}
                   onChange={(e) => {
                     setCommento(e.target.value);
                   }}
                 />
               </Col>
-              <Col xs={2}>
+              {/* <Col xs={2}>
                 <Button
                   onClick={() => {
                     setRefreshed(true);
@@ -86,7 +174,7 @@ const MyCommentArea = ({
                 >
                   Invia
                 </Button>
-              </Col>
+              </Col> */}
             </Row>
           </Form>
         </div>
