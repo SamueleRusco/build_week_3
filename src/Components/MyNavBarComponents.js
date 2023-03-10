@@ -96,16 +96,9 @@ const MyNavBarComponents = (props) => {
               >
                 <a>
                   <img src="/images/user.svg" alt="" />
-                  <span>
-                    Me
-                    <img src="/images/down-icon.svg" alt="" />
-                  </span>
+                  <span>Me</span>
                 </a>
               </Link>
-
-              <SignOut>
-                <a>Sign Out</a>
-              </SignOut>
             </User>
 
             <Work>
